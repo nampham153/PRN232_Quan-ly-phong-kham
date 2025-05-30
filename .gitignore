@@ -1,0 +1,19 @@
+# Build results
+bin/
+obj/
+**/bin/
+**/obj/
+
+# User-specific files
+*.user
+*.suo
+
+# Visual Studio folder
+.vs/
+
+# Others
+*.log
+*.tmp
+
+# ASP.NET related
+wwwroot/node_modules/
