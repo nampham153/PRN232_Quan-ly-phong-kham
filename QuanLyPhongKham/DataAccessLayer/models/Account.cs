@@ -10,6 +10,7 @@ namespace DataAccessLayer.models
 {
     public class Account
     {
+        [Key]
         public int AccountId { get; set; }
         public string Username { get; set; }
         public string PasswordHash { get; set; }

@@ -10,6 +10,7 @@ namespace DataAccessLayer.models
 {
     public class Test
     {
+        [Key]
         public int TestId { get; set; }
         public string TestName { get; set; }
         public string Description { get; set; }

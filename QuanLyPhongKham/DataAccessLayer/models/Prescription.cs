@@ -10,6 +10,7 @@ namespace DataAccessLayer.models
 {
     public class Prescription
     {
+        [Key]
         public int PrescriptionId { get; set; }
 
         public int RecordId { get; set; }

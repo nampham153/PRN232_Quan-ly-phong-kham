@@ -25,22 +25,8 @@ namespace DataAccessLayer.dbcontext
         public DbSet<Prescription> Prescriptions { get; set; }
 
 
-        public ClinicDbContext CreateDbContext(string[] args)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<ClinicDbContext>();
-
-            // Đường dẫn đến appsettings.json trong dự án chính
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../QuanLyPhongKham"))
-                .AddJsonFile("appsettings.json")
-                .Build();
-
-            var connectionString = configuration.GetConnectionString("MyCnn");
-            optionsBuilder.UseSqlServer(connectionString);
-
-            return new ClinicDbContext(optionsBuilder.Options);
-        }
-    }
+      
+    
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

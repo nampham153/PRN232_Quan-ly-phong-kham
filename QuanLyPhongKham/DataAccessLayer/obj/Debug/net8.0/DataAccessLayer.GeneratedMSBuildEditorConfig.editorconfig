@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DataAccessLayer
-build_property.ProjectDir = E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\
+build_property.ProjectDir = D:\PRN232\Prj\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

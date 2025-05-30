@@ -4463,19 +4463,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\FPT\\.nuget\\packages\\": {}
+    "C:\\Users\\DELL\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Ky8\\PRN232\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\QuanLyPhongKham.csproj",
+      "projectUniqueName": "D:\\PRN232\\Prj\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\QuanLyPhongKham.csproj",
       "projectName": "QuanLyPhongKham",
-      "projectPath": "E:\\Ky8\\PRN232\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\QuanLyPhongKham.csproj",
-      "packagesPath": "C:\\Users\\FPT\\.nuget\\packages\\",
-      "outputPath": "E:\\Ky8\\PRN232\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\obj\\",
+      "projectPath": "D:\\PRN232\\Prj\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\QuanLyPhongKham.csproj",
+      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+      "outputPath": "D:\\PRN232\\Prj\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\FPT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4483,17 +4488,18 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "E:\\Ky8\\PRN232\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\BusinessAccessLayer.csproj": {
-              "projectPath": "E:\\Ky8\\PRN232\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\BusinessAccessLayer.csproj"
+            "D:\\PRN232\\Prj\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\BusinessAccessLayer.csproj": {
+              "projectPath": "D:\\PRN232\\Prj\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\BusinessAccessLayer.csproj"
             },
-            "E:\\Ky8\\PRN232\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\DataAccessLayer.csproj": {
-              "projectPath": "E:\\Ky8\\PRN232\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\DataAccessLayer.csproj"
+            "D:\\PRN232\\Prj\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\DataAccessLayer.csproj": {
+              "projectPath": "D:\\PRN232\\Prj\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\DataAccessLayer.csproj"
             }
           }
         }

@@ -10,7 +10,7 @@ namespace DataAccessLayer.models
 {
     public class User
     {
-
+        [Key]
         public int UserId { get; set; }
         public string FullName { get; set; }
         public string Gender { get; set; }

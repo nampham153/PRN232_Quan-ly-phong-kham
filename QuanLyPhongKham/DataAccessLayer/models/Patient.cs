@@ -10,7 +10,7 @@ namespace DataAccessLayer.models
 {
     public class Patient
     {
-
+        [Key]
         public int PatientId { get; set; }
         public string FullName { get; set; }
         public string Gender { get; set; }
