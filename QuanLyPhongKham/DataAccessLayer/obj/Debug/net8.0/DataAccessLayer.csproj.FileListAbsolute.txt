@@ -1,0 +1,15 @@
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.deps.json
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.dll
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.pdb
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfoInputs.cache
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfo.cs
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.sourcelink.json
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.dll
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\obj\Debug\net8.0\refint\DataAccessLayer.dll
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.pdb
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\obj\Debug\net8.0\ref\DataAccessLayer.dll
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.runtimeconfig.json
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.AssemblyReference.cache
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.genruntimeconfig.cache

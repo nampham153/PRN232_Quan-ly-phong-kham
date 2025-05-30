@@ -1,4 +1,7 @@
 
+using DataAccessLayer.dbcontext;
+using Microsoft.EntityFrameworkCore;
+
 namespace QuanLyPhongKham
 {
     public class Program
@@ -8,6 +11,10 @@ namespace QuanLyPhongKham
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddDbContext<ClinicDbContext>(options =>
+   options.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn")));
+
+          
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

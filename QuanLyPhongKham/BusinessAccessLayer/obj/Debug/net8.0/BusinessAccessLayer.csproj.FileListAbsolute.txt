@@ -1,0 +1,16 @@
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\bin\Debug\net8.0\BusinessAccessLayer.deps.json
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\bin\Debug\net8.0\BusinessAccessLayer.dll
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\bin\Debug\net8.0\BusinessAccessLayer.pdb
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.AssemblyInfoInputs.cache
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.AssemblyInfo.cs
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.csproj.CoreCompileInputs.cache
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.sourcelink.json
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.dll
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\obj\Debug\net8.0\refint\BusinessAccessLayer.dll
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.pdb
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\obj\Debug\net8.0\ref\BusinessAccessLayer.dll
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\bin\Debug\net8.0\DataAccessLayer.dll
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\bin\Debug\net8.0\DataAccessLayer.pdb
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\obj\Debug\net8.0\BusinessAccessLayer.csproj.AssemblyReference.cache
+E:\Ky8\PRN232\PRN232_Quan-ly-phong-kham\QuanLyPhongKham\BusinessAccessLayer\obj\Debug\net8.0\Business.395A7FC9.Up2Date
