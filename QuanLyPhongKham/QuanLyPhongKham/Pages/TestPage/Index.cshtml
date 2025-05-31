@@ -1,0 +1,59 @@
+﻿@page
+@model Frontendui.Pages.TestPage.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Test Management</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Create New</a>
+</p>
+
+@if (Model.Test.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Test.First().TestId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Test.First().TestName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Test.First().Description)
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Test)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TestId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TestName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.TestId" class="btn btn-sm btn-secondary">Edit</a>
+                        <a asp-page="./Details" asp-route-id="@item.TestId" class="btn btn-sm btn-info">Details</a>
+                        <a asp-page="./Delete" asp-route-id="@item.TestId" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">
+        <h4>No tests found</h4>
+        <p>There are currently no tests in the system. <a asp-page="Create">Create a new test</a> to get started.</p>
+    </div>
+}
