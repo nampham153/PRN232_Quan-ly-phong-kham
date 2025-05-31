@@ -1,88 +1,48 @@
 ﻿using DataAccessLayer.dbcontext;
 using DataAccessLayer.models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DataAccessLayer.DAO
+namespace DataAccessLayer.DAO { 
+
+public class TestDAO
 {
-    public class TestDAO
+    private readonly ClinicDbContext _context;
+
+    public TestDAO(ClinicDbContext context)
     {
-        public static List<Test> GetTest()
-        {
-            var listTests = new List<Test>();
-            try
-            {
-                using var context = new ClinicDbContext();
-                listTests = context.Tests.Include(t => t.TestResults).ToList();
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-            return listTests;
-        }
+        _context = context;
+    }
 
-        public static void SaveTest(Test t)
-        {
-            try
-            {
-                using var context = new ClinicDbContext();
-                context.Tests.Add(t);
-                context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-        }
+    public List<Test> GetTests()
+    {
+        return _context.Tests.Include(t => t.TestResults).ToList();
+    }
 
-        public static void UpdateTest(Test t)
-        {
-            try
-            {
-                using var context = new ClinicDbContext();
-                context.Entry<Test>(t).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-                context.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-        }
+    public void SaveTest(Test t)
+    {
+        _context.Tests.Add(t);
+        _context.SaveChanges();
+    }
 
-        public static void DeleteTest(Test t)
-        {
-            try
-            {
-                using var context = new ClinicDbContext();
-                var t1 = context.Tests.SingleOrDefault(c => c.TestId == t.TestId);
-                if (t1 != null)
-                {
-                    context.Tests.Remove(t1);
-                    context.SaveChanges();
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
-        }
+    public void UpdateTest(Test t)
+    {
+        _context.Entry(t).State = EntityState.Modified;
+        _context.SaveChanges();
+    }
 
-        public static Test GetTestById(int id)
+    public void DeleteTest(Test t)
+    {
+        var t1 = _context.Tests.SingleOrDefault(c => c.TestId == t.TestId);
+        if (t1 != null)
         {
-            try
-            {
-                using var db = new ClinicDbContext();
-                return db.Tests.Include(t => t.TestResults).FirstOrDefault(c => c.TestId.Equals(id));
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.Message);
-            }
+            _context.Tests.Remove(t1);
+            _context.SaveChanges();
         }
     }
+
+    public Test GetTestById(int id)
+    {
+        return _context.Tests.Include(t => t.TestResults).FirstOrDefault(c => c.TestId == id);
+    }
+}
 }

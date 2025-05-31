@@ -13,14 +13,21 @@ namespace DataAccessLayer.Repository
 {
     public class TestRepository : ITestRepository
     {
-        public List<Test> GetAllTests()
+        private readonly TestDAO _testDao;
+
+        public TestRepository(TestDAO testDao)
         {
-            return TestDAO.GetTest();
+            _testDao = testDao;
+        }
+
+        public List<Test> GetTests()
+        {
+            return _testDao.GetTests();
         }
 
         public Test GetTestById(int id)
         {
-            return TestDAO.GetTestById(id);
+            return _testDao.GetTestById(id);
         }
 
         public void CreateTest(TestVM testVM)
@@ -32,28 +39,28 @@ namespace DataAccessLayer.Repository
                 TestResults = new List<TestResult>()
             };
 
-            TestDAO.SaveTest(test);
+            _testDao.SaveTest(test);
         }
 
         public void UpdateTest(int id, TestVM testVM)
         {
-            var existingTest = TestDAO.GetTestById(id);
+            var existingTest = _testDao.GetTestById(id);
             if (existingTest == null)
                 throw new ArgumentException($"Test with ID {id} not found");
 
             existingTest.TestName = testVM.TestName;
             existingTest.Description = testVM.Description;
 
-            TestDAO.UpdateTest(existingTest);
+            _testDao.UpdateTest(existingTest);
         }
 
         public void DeleteTest(int id)
         {
-            var existingTest = TestDAO.GetTestById(id);
+            var existingTest = _testDao.GetTestById(id);
             if (existingTest == null)
                 throw new ArgumentException($"Test with ID {id} not found");
 
-            TestDAO.DeleteTest(existingTest);
+            _testDao.DeleteTest(existingTest);
         }
     }
 }

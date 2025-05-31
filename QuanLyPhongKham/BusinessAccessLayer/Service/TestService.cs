@@ -21,7 +21,7 @@ namespace BusinessAccessLayer.Service
 
         public List<Test> GetAllTests()
         {
-            return _testRepository.GetAllTests();
+            return _testRepository.GetTests();
         }
 
         public Test GetTestById(int id)

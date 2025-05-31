@@ -14,7 +14,7 @@ namespace DataAccessLayer.dbcontext
         public ClinicDbContext()
         {
         }
-
+      
         public ClinicDbContext(DbContextOptions<ClinicDbContext> options) : base(options) { }
 
         public DbSet<Role> Roles { get; set; }
@@ -27,19 +27,6 @@ namespace DataAccessLayer.dbcontext
         public DbSet<TestResult> TestResults { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
         public DbSet<Prescription> Prescriptions { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                // Fallback configuration - though this shouldn't be needed with proper DI
-                optionsBuilder.UseSqlServer("Server=LAPTOP-LANNDU0O\\NGUYENDANG2412;Database=PhongKhamTuBan;Trusted_Connection=True;TrustServerCertificate=True;");
-            }
-        }
-
-
-
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

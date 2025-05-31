@@ -1,9 +1,11 @@
 ﻿using BusinessAccessLayer.IService;
 using BusinessAccessLayer.Service;
+using DataAccessLayer.DAO;
 using DataAccessLayer.dbcontext;
 using DataAccessLayer.IRepository;
 using DataAccessLayer.Repository;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace QuanLyPhongKham
 {
@@ -13,11 +15,10 @@ namespace QuanLyPhongKham
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddDbContext<ClinicDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn")));
+
 
             // Changed to Scoped instead of Singleton
+            builder.Services.AddScoped<TestDAO>();
             builder.Services.AddScoped<ITestService, TestService>();
             builder.Services.AddScoped<ITestRepository, TestRepository>();
 
@@ -26,7 +27,10 @@ namespace QuanLyPhongKham
             builder.Services.AddHttpClient();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddDbContext<ClinicDbContext>(option =>
+            {
+                option.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn"));
+            });
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
