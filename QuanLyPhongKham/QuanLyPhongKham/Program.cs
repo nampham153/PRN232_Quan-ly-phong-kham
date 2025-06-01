@@ -22,6 +22,10 @@ namespace QuanLyPhongKham
             builder.Services.AddScoped<ITestService, TestService>();
             builder.Services.AddScoped<ITestRepository, TestRepository>();
 
+            builder.Services.AddScoped<TestResultDAO>();
+            builder.Services.AddScoped<ITestResultRepository, TestResultRepository>();
+            builder.Services.AddScoped<ITestResultService, TestResultService>();
+
             builder.Services.AddControllers();
             builder.Services.AddRazorPages();
             builder.Services.AddHttpClient();

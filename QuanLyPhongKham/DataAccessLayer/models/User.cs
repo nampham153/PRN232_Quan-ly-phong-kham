@@ -21,7 +21,7 @@ namespace DataAccessLayer.models
         public int AccountId { get; set; }
         public Account Account { get; set; }
 
-        public ICollection<MedicalRecord> MedicalRecords { get; set; } // Nếu là bác sĩ
+        public ICollection<MedicalRecord> MedicalRecords { get; set; }
         public ICollection<TestResult> TestResults { get; set; }
     }
 }

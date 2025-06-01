@@ -2,8 +2,8 @@
 using DataAccessLayer.models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DataAccessLayer.DAO
-{
+namespace DataAccessLayer.DAO 
+{ 
     public class TestDAO
     {
         private readonly ClinicDbContext _context;
@@ -26,16 +26,16 @@ namespace DataAccessLayer.DAO
 
             return _context.Tests
                 .Include(t => t.TestResults)
-                .Where(t => t.TestName.Contains(searchTerm) ||
+                .Where(t => t.TestName.Contains(searchTerm) || 
                            t.Description.Contains(searchTerm))
                 .ToList();
         }
 
         // Thêm method filter tests với pagination
-        public List<Test> GetTestsWithFilter(string searchTerm = null,
-                                           string sortBy = "TestName",
+        public List<Test> GetTestsWithFilter(string searchTerm = null, 
+                                           string sortBy = "TestName", 
                                            bool sortDescending = false,
-                                           int pageNumber = 1,
+                                           int pageNumber = 1, 
                                            int pageSize = 10)
         {
             var query = _context.Tests.Include(t => t.TestResults).AsQueryable();
@@ -43,7 +43,7 @@ namespace DataAccessLayer.DAO
             // Apply search filter
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
-                query = query.Where(t => t.TestName.Contains(searchTerm) ||
+                query = query.Where(t => t.TestName.Contains(searchTerm) || 
                                         t.Description.Contains(searchTerm));
             }
 
@@ -51,15 +51,15 @@ namespace DataAccessLayer.DAO
             switch (sortBy.ToLower())
             {
                 case "testname":
-                    query = sortDescending ? query.OrderByDescending(t => t.TestName)
+                    query = sortDescending ? query.OrderByDescending(t => t.TestName) 
                                            : query.OrderBy(t => t.TestName);
                     break;
                 case "description":
-                    query = sortDescending ? query.OrderByDescending(t => t.Description)
+                    query = sortDescending ? query.OrderByDescending(t => t.Description) 
                                            : query.OrderBy(t => t.Description);
                     break;
                 case "testid":
-                    query = sortDescending ? query.OrderByDescending(t => t.TestId)
+                    query = sortDescending ? query.OrderByDescending(t => t.TestId) 
                                            : query.OrderBy(t => t.TestId);
                     break;
                 default:
@@ -80,7 +80,7 @@ namespace DataAccessLayer.DAO
 
             if (!string.IsNullOrWhiteSpace(searchTerm))
             {
-                query = query.Where(t => t.TestName.Contains(searchTerm) ||
+                query = query.Where(t => t.TestName.Contains(searchTerm) || 
                                         t.Description.Contains(searchTerm));
             }
 
