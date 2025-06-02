@@ -1,0 +1,61 @@
+﻿@page
+@model QuanLyPhongKham.Pages.Patient.EditPatientModel
+@{
+    ViewData["Title"] = "Sửa Thông Tin Bệnh Nhân";
+}
+
+<h2>Sửa Thông Tin Bệnh Nhân</h2>
+
+@if (!ModelState.IsValid)
+{
+    <div style="color: red;">
+        Vui lòng sửa các lỗi sau:
+        <ul>
+            @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+<form method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="PatientViewModel.PatientId" />
+    <div>
+        <label asp-for="PatientViewModel.FullName">Họ Tên</label>
+        <input asp-for="PatientViewModel.FullName" />
+        <span asp-validation-for="PatientViewModel.FullName" style="color: red;"></span>
+    </div>
+    <div>
+        <label asp-for="PatientViewModel.DOB">Ngày Sinh</label>
+        <input asp-for="PatientViewModel.DOB" type="date" />
+        <span asp-validation-for="PatientViewModel.DOB" style="color: red;"></span>
+    </div>
+    <div>
+        <label asp-for="PatientViewModel.Gender">Giới Tính</label>
+        <input asp-for="PatientViewModel.Gender" />
+        <span asp-validation-for="PatientViewModel.Gender" style="color: red;"></span>
+    </div>
+    <div>
+        <label asp-for="PatientViewModel.Phone">Số Điện Thoại</label>
+        <input asp-for="PatientViewModel.Phone" />
+        <span asp-validation-for="PatientViewModel.Phone" style="color: red;"></span>
+    </div>
+    <div>
+        <label asp-for="PatientViewModel.Email">Email</label>
+        <input asp-for="PatientViewModel.Email" type="email" />
+        <span asp-validation-for="PatientViewModel.Email" style="color: red;"></span>
+    </div>
+    <div>
+        <label asp-for="PatientViewModel.Address">Địa Chỉ</label>
+        <input asp-for="PatientViewModel.Address" />
+        <span asp-validation-for="PatientViewModel.Address" style="color: red;"></span>
+    </div>
+    <button type="submit">Cập Nhật</button>
+    <a asp-page="/Patient/PatientList">Hủy</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

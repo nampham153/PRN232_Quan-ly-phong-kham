@@ -1,0 +1,80 @@
+﻿@page
+@model QuanLyPhongKham.Pages.Patient.CreatePatientModel
+@{
+    ViewData["Title"] = "Thêm Bệnh Nhân";
+}
+
+<h3>Thêm Bệnh Nhân</h3>
+
+<!-- Hiển thị thông báo lỗi tổng quát -->
+@if (!ModelState.IsValid)
+{
+    <div style="color: red;">
+        Vui lòng sửa các lỗi sau:
+        <ul>
+            @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+}
+
+<form method="post">
+    @Html.AntiForgeryToken() <!-- Thêm anti-forgery token -->
+    <table border="1">
+        <tr>
+            <td>Họ Tên:</td>
+            <td>
+                <input asp-for="PatientViewModel.FullName" />
+                <span asp-validation-for="PatientViewModel.FullName" style="color: red;"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Ngày Sinh:</td>
+            <td>
+                <input asp-for="PatientViewModel.DOB" type="date" />
+                <span asp-validation-for="PatientViewModel.DOB" style="color: red;"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Giới Tính:</td>
+            <td>
+                <input asp-for="PatientViewModel.Gender" />
+                <span asp-validation-for="PatientViewModel.Gender" style="color: red;"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Số Điện Thoại:</td>
+            <td>
+                <input asp-for="PatientViewModel.Phone" />
+                <span asp-validation-for="PatientViewModel.Phone" style="color: red;"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td>
+                <input asp-for="PatientViewModel.Email" type="email" />
+                <span asp-validation-for="PatientViewModel.Email" style="color: red;"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Địa Chỉ:</td>
+            <td>
+                <input asp-for="PatientViewModel.Address" />
+                <span asp-validation-for="PatientViewModel.Address" style="color: red;"></span>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="submit">Thêm</button>
+                <a href="/Patient/PatientList">Hủy</a>
+            </td>
+        </tr>
+    </table>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

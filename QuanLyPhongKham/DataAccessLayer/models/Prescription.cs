@@ -14,6 +14,7 @@ namespace DataAccessLayer.models
         public int PrescriptionId { get; set; }
 
         public int RecordId { get; set; }
+        [ForeignKey("RecordId")]
         public MedicalRecord MedicalRecord { get; set; }
 
         public int MedicineId { get; set; }
