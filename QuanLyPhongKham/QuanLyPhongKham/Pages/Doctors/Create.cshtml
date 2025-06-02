@@ -14,8 +14,14 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
         <div class="mb-3">
-            <label asp-for="Doctor.AccountId" class="form-label"></label>
-            <input asp-for="Doctor.AccountId" class="form-control" />
+            <label class="form-label">Select Account (Username)</label>
+            <select asp-for="Doctor.AccountId" class="form-select">
+                <option value="">-- Select Account --</option>
+                @foreach (var acc in Model.DoctorAccounts)
+                {
+                    <option value="@acc.AccountId">@acc.Username</option>
+                }
+            </select>
             <span asp-validation-for="Doctor.AccountId" class="text-danger"></span>
         </div>
 

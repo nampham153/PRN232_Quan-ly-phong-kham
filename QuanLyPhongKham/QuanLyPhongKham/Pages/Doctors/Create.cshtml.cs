@@ -4,6 +4,7 @@ using DataAccessLayer.models;
 using DataAccessLayer.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Collections.Generic;
 
 namespace QuanLyPhongKham.Pages.Doctors
 {
@@ -21,13 +22,18 @@ namespace QuanLyPhongKham.Pages.Doctors
         [BindProperty]
         public DoctorVM Doctor { get; set; }
 
+        public List<Account> DoctorAccounts { get; set; }
+
         public void OnGet()
         {
             Doctor = new DoctorVM();
+            DoctorAccounts = _accountRepository.GetDoctorAccounts(); // <-- dùng phương thức đúng
         }
 
         public IActionResult OnPost()
         {
+            DoctorAccounts = _accountRepository.GetDoctorAccounts(); // <-- đảm bảo dropdown luôn được hiển thị
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -58,9 +64,7 @@ namespace QuanLyPhongKham.Pages.Doctors
             };
 
             _doctorService.CreateDoctor(doctorEntity);
-
             return RedirectToPage("Index");
         }
-
     }
 }
