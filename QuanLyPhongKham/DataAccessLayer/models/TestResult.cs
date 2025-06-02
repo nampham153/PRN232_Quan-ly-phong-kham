@@ -14,14 +14,14 @@ namespace DataAccessLayer.models
         public int ResultId { get; set; }
 
         public int RecordId { get; set; }
+        [ForeignKey("RecordId")]
         public MedicalRecord MedicalRecord { get; set; }
 
         public int TestId { get; set; }
         public Test Test { get; set; }
 
-        public int TechnicianId { get; set; }
-        public User Technician { get; set; }
-
+        public int UserId { get; set; }
+        public User User { get; set; }
         public string ResultDetail { get; set; }
         public DateTime TestDate { get; set; }
     }

@@ -63,9 +63,6 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Note")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -77,11 +74,14 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("RecordId");
 
-                    b.HasIndex("DoctorId");
-
                     b.HasIndex("PatientId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("MedicalRecords");
                 });
@@ -166,9 +166,6 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MedicalRecordRecordId")
-                        .HasColumnType("int");
-
                     b.Property<int>("MedicineId")
                         .HasColumnType("int");
 
@@ -180,9 +177,9 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("PrescriptionId");
 
-                    b.HasIndex("MedicalRecordRecordId");
-
                     b.HasIndex("MedicineId");
+
+                    b.HasIndex("RecordId");
 
                     b.ToTable("Prescriptions");
                 });
@@ -262,9 +259,6 @@ namespace DataAccessLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ResultId"));
 
-                    b.Property<int>("MedicalRecordRecordId")
-                        .HasColumnType("int");
-
                     b.Property<int>("RecordId")
                         .HasColumnType("int");
 
@@ -272,22 +266,22 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TechnicianId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("TestDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("TestId")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("ResultId");
 
-                    b.HasIndex("MedicalRecordRecordId");
-
-                    b.HasIndex("TechnicianId");
+                    b.HasIndex("RecordId");
 
                     b.HasIndex("TestId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("TestResults");
                 });
@@ -343,21 +337,21 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.models.MedicalRecord", b =>
                 {
-                    b.HasOne("DataAccessLayer.models.User", "Doctor")
-                        .WithMany("MedicalRecords")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("DataAccessLayer.models.Patient", "Patient")
                         .WithMany("MedicalRecords")
                         .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Doctor");
+                    b.HasOne("DataAccessLayer.models.User", "User")
+                        .WithMany("MedicalRecords")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Patient");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DataAccessLayer.models.Patient", b =>
@@ -371,15 +365,15 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("DataAccessLayer.models.Prescription", b =>
                 {
-                    b.HasOne("DataAccessLayer.models.MedicalRecord", "MedicalRecord")
-                        .WithMany("Prescriptions")
-                        .HasForeignKey("MedicalRecordRecordId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("DataAccessLayer.models.Medicine", "Medicine")
                         .WithMany("Prescriptions")
                         .HasForeignKey("MedicineId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataAccessLayer.models.MedicalRecord", "MedicalRecord")
+                        .WithMany("Prescriptions")
+                        .HasForeignKey("RecordId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -403,14 +397,8 @@ namespace DataAccessLayer.Migrations
                 {
                     b.HasOne("DataAccessLayer.models.MedicalRecord", "MedicalRecord")
                         .WithMany("TestResults")
-                        .HasForeignKey("MedicalRecordRecordId")
+                        .HasForeignKey("RecordId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DataAccessLayer.models.User", "Technician")
-                        .WithMany("TestResults")
-                        .HasForeignKey("TechnicianId")
-                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("DataAccessLayer.models.Test", "Test")
@@ -419,11 +407,17 @@ namespace DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("DataAccessLayer.models.User", "User")
+                        .WithMany("TestResults")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("MedicalRecord");
 
-                    b.Navigation("Technician");
-
                     b.Navigation("Test");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("DataAccessLayer.models.User", b =>

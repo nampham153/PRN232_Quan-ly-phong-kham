@@ -47,15 +47,15 @@ namespace DataAccessLayer.dbcontext
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<MedicalRecord>()
-                .HasOne(m => m.Doctor)
+                .HasOne(m => m.User)
                 .WithMany(d => d.MedicalRecords)
-                .HasForeignKey(m => m.DoctorId)
+                .HasForeignKey(m => m.UserId)
                 .OnDelete(DeleteBehavior.Restrict); // tránh xóa bác sĩ thì xóa hồ sơ
 
             modelBuilder.Entity<TestResult>()
-                .HasOne(t => t.Technician)
+                .HasOne(t => t.User )
                 .WithMany(u => u.TestResults)
-                .HasForeignKey(t => t.TechnicianId)
+                .HasForeignKey(t => t.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

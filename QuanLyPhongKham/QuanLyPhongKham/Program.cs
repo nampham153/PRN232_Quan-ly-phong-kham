@@ -6,7 +6,6 @@ using DataAccessLayer.IRepository;
 using DataAccessLayer.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
-
 namespace QuanLyPhongKham
 {
     public class Program
@@ -21,6 +20,9 @@ namespace QuanLyPhongKham
             builder.Services.AddScoped<TestDAO>();
             builder.Services.AddScoped<ITestService, TestService>();
             builder.Services.AddScoped<ITestRepository, TestRepository>();
+            builder.Services.AddScoped<IDoctorService, DoctorService>();
+            builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+            builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
             builder.Services.AddControllers();
             builder.Services.AddRazorPages();
