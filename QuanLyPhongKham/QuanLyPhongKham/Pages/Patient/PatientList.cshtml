@@ -5,7 +5,54 @@
 }
 
 <h2>Danh Sách Bệnh Nhân</h2>
-<table>
+
+<!-- Form search và filter -->
+<form method="get">
+    <table border="1">
+        <tr>
+            <td>Tìm kiếm theo họ tên:</td>
+            <td><input type="text" name="searchFullName" value="@Model.SearchFullName" /></td>
+        </tr>
+        <tr>
+            <td>Tìm kiếm theo số điện thoại:</td>
+            <td><input type="text" name="searchPhone" value="@Model.SearchPhone" /></td>
+        </tr>
+        <tr>
+            <td>Tìm kiếm theo email:</td>
+            <td><input type="text" name="searchEmail" value="@Model.SearchEmail" /></td>
+        </tr>
+        <tr>
+            <td>Tìm kiếm theo địa chỉ:</td>
+            <td><input type="text" name="searchAddress" value="@Model.SearchAddress" /></td>
+        </tr>
+        <tr>
+            <td>Lọc theo giới tính:</td>
+            <td>
+                <select name="genderFilter">
+                    <option value="">Tất cả</option>
+                    <option value="Nam" selected="@(Model.GenderFilter == "Nam")">Nam</option>
+                    <option value="Nữ" selected="@(Model.GenderFilter == "Nữ")">Nữ</option>
+                    <option value="Khác" selected="@(Model.GenderFilter == "Khác")">Khác</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Lọc theo ngày sinh (từ):</td>
+            <td><input type="date" name="dobFrom" value="@Model.DOBFrom?.ToString("yyyy-MM-dd")" /></td>
+        </tr>
+        <tr>
+            <td>Lọc theo ngày sinh (đến):</td>
+            <td><input type="date" name="dobTo" value="@Model.DOBTo?.ToString("yyyy-MM-dd")" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit">Tìm kiếm & Lọc</button></td>
+        </tr>
+    </table>
+</form>
+
+<!-- Bảng danh sách bệnh nhân -->
+<table border="1">
     <thead>
         <tr>
             <th>ID</th>
@@ -32,11 +79,11 @@
                 <td>@patient.Address</td>
                 <td>@patient.MedicalRecordCount</td>
                 <td>
-                    <a asp-page="/Patient/EditPatient" asp-route-id="@patient.PatientId">Sửa</a>
-                    <a asp-page="/Patient/DeletePatient" asp-route-id="@patient.PatientId">Xóa</a>
+                    <a href="/Patient/EditPatient?id=@patient.PatientId">Sửa</a>
+                    <a href="/Patient/DeletePatient?id=@patient.PatientId">Xóa</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-<a asp-page="/Patient/CreatePatient">Thêm Bệnh Nhân</a>
+<a href="/Patient/CreatePatient">Thêm Bệnh Nhân</a>
