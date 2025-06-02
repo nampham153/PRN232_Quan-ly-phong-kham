@@ -34,10 +34,26 @@ namespace QuanLyPhongKham
             // Register Services and Repositories
             // ========================================
 
+            // Patient-related services
+            builder.Services.AddScoped<PatientDAO>();
+            builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+            builder.Services.AddScoped<IPatientService, PatientService>();
+
             // General Test Logic
             builder.Services.AddScoped<TestDAO>();
             builder.Services.AddScoped<ITestRepository, TestRepository>();
             builder.Services.AddScoped<ITestService, TestService>();
+
+            builder.Services.AddScoped<ITestService, TestService>();
+            builder.Services.AddScoped<ITestRepository, TestRepository>();
+            builder.Services.AddScoped<IDoctorService, DoctorService>();
+            builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+           builder.Services.AddScoped< DataAccessLayer.IRepository.IAccountRepository, DataAccessLayer.IRepository.IAccountRepository.AccountRepository>();
+
+            builder.Services.AddScoped<TestResultDAO>();
+            builder.Services.AddScoped<ITestResultRepository, TestResultRepository>();
+            builder.Services.AddScoped<ITestResultService, TestResultService>();
+
 
             // ManagerUser Logic
             builder.Services.AddScoped<ManagerUserDAO>();
@@ -46,7 +62,7 @@ namespace QuanLyPhongKham
 
             // Account Logic
             builder.Services.AddScoped<AccountDAO>();
-            builder.Services.AddScoped<AccountRepository>();
+            builder.Services.AddScoped<DataAccessLayer.Repository.Authen.AccountRepository>();
             builder.Services.AddScoped<IAccountService, AccountService>();
 
 
