@@ -48,7 +48,7 @@ namespace QuanLyPhongKham
             builder.Services.AddScoped<ITestRepository, TestRepository>();
             builder.Services.AddScoped<IDoctorService, DoctorService>();
             builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
-            builder.Services.AddScoped<DataAccessLayer.IRepository.IAccountRepository, DataAccessLayer.IRepository.IAccountRepository.AccountRepository>();
+            builder.Services.AddScoped<DataAccessLayer.IRepository.IAccountRepository, DataAccessLayer.Repository.AccountRepository>();
 
             builder.Services.AddScoped<TestResultDAO>();
             builder.Services.AddScoped<ITestResultRepository, TestResultRepository>();
