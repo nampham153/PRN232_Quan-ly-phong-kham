@@ -93,5 +93,20 @@ namespace DataAccessLayer.Repository
 
             return query.ToList();
         }
+        public bool IsPhoneExists(string phone, int excludePatientId)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(phone))
+                    return false;
+
+                return _context.Patients
+                    .Any(p => p.Phone == phone && p.PatientId != excludePatientId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi khi kiểm tra số điện thoại: {ex.Message}");
+            }
+        }
     }
 }
