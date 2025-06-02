@@ -28,6 +28,10 @@ namespace QuanLyPhongKham
             builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 
+            builder.Services.AddScoped<TestResultDAO>();
+            builder.Services.AddScoped<ITestResultRepository, TestResultRepository>();
+            builder.Services.AddScoped<ITestResultService, TestResultService>();
+
             builder.Services.AddControllers();
             builder.Services.AddRazorPages();
             builder.Services.AddHttpClient();
