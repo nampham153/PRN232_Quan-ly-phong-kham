@@ -40,7 +40,6 @@ namespace QuanLyPhongKham.Pages.Doctors
                 return Page();
             }
 
-            // Kiểm tra User đã có AccountId đó chưa
             var existingUser = _doctorService.GetDoctorByAccountId(Doctor.AccountId);
             if (existingUser != null)
             {

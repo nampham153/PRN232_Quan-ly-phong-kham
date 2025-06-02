@@ -23,7 +23,7 @@ namespace DataAccessLayer.Repository
         {
             var query = _context.Users
                 .Include(u => u.Account)
-                .Where(u => u.Account.RoleId == 2); // Role 2 = Doctor
+                .Where(u => u.Account.RoleId == 2);
 
             if (!string.IsNullOrEmpty(searchTerm))
             {

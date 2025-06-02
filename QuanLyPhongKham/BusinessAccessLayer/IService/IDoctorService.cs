@@ -2,7 +2,7 @@
 using DataAccessLayer.ViewModels;
 
 using System.Collections.Generic;
-using DataAccessLayer.models; // chứa class User
+using DataAccessLayer.models;
 
 namespace BusinessAccessLayer.IService
 {

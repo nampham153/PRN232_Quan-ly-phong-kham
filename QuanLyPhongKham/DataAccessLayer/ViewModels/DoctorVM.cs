@@ -1,6 +1,6 @@
 ﻿using DataAccessLayer.models;
 using System;
-using System.ComponentModel.DataAnnotations;  // nhớ thêm namespace này
+using System.ComponentModel.DataAnnotations;
 
 namespace DataAccessLayer.ViewModels
 {
@@ -32,7 +32,6 @@ namespace DataAccessLayer.ViewModels
         [Required(ErrorMessage = "AccountId là bắt buộc")]
         public int AccountId { get; set; }
 
-        // Optional converter
         public static User ToEntity(DoctorVM vm)
         {
             return new User

@@ -45,7 +45,6 @@ namespace BusinessAccessLayer.Service
             var existingDoctor = _doctorRepository.GetDoctorByAccountId(accountId);
             if (existingDoctor == null) return;
 
-            // Update thủ công các trường cần thiết
             existingDoctor.FullName = updatedDoctor.FullName;
             existingDoctor.Gender = updatedDoctor.Gender;
             existingDoctor.DOB = updatedDoctor.DOB;
