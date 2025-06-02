@@ -24,6 +24,12 @@ namespace DataAccessLayer.Repository
         {
             return _context.Accounts.FirstOrDefault(a => a.AccountId == accountid);
         }
+        public List<Account> GetDoctorAccounts()
+        {
+            return _context.Accounts
+                .Where(a => a.RoleId == 2)
+                .ToList();
+        }
 
     }
 }

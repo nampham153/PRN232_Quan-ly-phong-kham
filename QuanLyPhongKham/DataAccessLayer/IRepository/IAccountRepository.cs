@@ -10,5 +10,7 @@ namespace DataAccessLayer.IRepository
     public interface IAccountRepository
     {
         Account GetAccountById(int id);
+        List<Account> GetDoctorAccounts();
+
     }
 }
