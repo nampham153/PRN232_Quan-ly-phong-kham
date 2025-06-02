@@ -15,12 +15,22 @@ namespace QuanLyPhongKham
         {
             var builder = WebApplication.CreateBuilder(args);
 
-
+            // Patient-related services
+            builder.Services.AddScoped<PatientDAO>();
+            builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+            builder.Services.AddScoped<IPatientService, PatientService>();
 
             // Changed to Scoped instead of Singleton
             builder.Services.AddScoped<TestDAO>();
             builder.Services.AddScoped<ITestService, TestService>();
             builder.Services.AddScoped<ITestRepository, TestRepository>();
+            builder.Services.AddScoped<IDoctorService, DoctorService>();
+            builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+            builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+
+            builder.Services.AddScoped<TestResultDAO>();
+            builder.Services.AddScoped<ITestResultRepository, TestResultRepository>();
+            builder.Services.AddScoped<ITestResultService, TestResultService>();
 
             builder.Services.AddControllers();
             builder.Services.AddRazorPages();
