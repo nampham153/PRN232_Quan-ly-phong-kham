@@ -1,6 +1,5 @@
 ﻿using DataAccessLayer.Repository;
 using DataAccessLayer.models;
-using System;
 using BusinessAccessLayer.IService;
 using DataAccessLayer.IRepository;
 
@@ -27,13 +26,12 @@ namespace BusinessAccessLayer.Service
 
         public void AddPatient(DataAccessLayer.models.Patient patient)
         {
-            // Kiểm tra số điện thoại đã tồn tại
-            if (_patientRepository.GetAllPatients().Any(p => p.Phone == patient.Phone))
+            if (_patientRepository.IsPhoneExists(patient.Phone))
             {
                 throw new ArgumentException("Số điện thoại đã tồn tại trong hệ thống.");
             }
 
-            // Validation cơ bản (có thể bỏ nếu đã validate ở ViewModel)
+            // Validation cơ bản
             if (string.IsNullOrEmpty(patient.FullName))
                 throw new ArgumentException("Họ tên không được để trống");
 
@@ -57,11 +55,10 @@ namespace BusinessAccessLayer.Service
 
         public void UpdatePatient(DataAccessLayer.models.Patient patient)
         {
-            // Kiểm tra số điện thoại đã tồn tại, nhưng bỏ qua nếu không thay đổi
             var existingPatient = _patientRepository.GetPatientById(patient.PatientId);
             if (existingPatient != null && existingPatient.Phone != patient.Phone)
             {
-                if (_patientRepository.GetAllPatients().Any(p => p.Phone == patient.Phone && p.PatientId != patient.PatientId))
+                if (_patientRepository.IsPhoneExists(patient.Phone, patient.PatientId))
                 {
                     throw new ArgumentException("Số điện thoại đã tồn tại trong hệ thống.");
                 }
@@ -92,6 +89,11 @@ namespace BusinessAccessLayer.Service
         public void DeletePatient(int id)
         {
             _patientRepository.DeletePatient(id);
+        }
+
+        public List<DataAccessLayer.models.Patient> SearchPatients(string fullName, string phone, string email, string address, string gender, DateTime? dobFrom, DateTime? dobTo)
+        {
+            return _patientRepository.SearchPatients(fullName, phone, email, address, gender, dobFrom, dobTo);
         }
 
         private bool IsValidEmail(string email)

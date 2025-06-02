@@ -9,10 +9,11 @@ namespace BusinessAccessLayer.IService
 {
     public interface IPatientService
     {
-        List<Patient> GetAllPatients();
-        Patient GetPatientById(int id);
-        void AddPatient(Patient patient);
-        void UpdatePatient(Patient patient);
+        List<DataAccessLayer.models.Patient> GetAllPatients();
+        DataAccessLayer.models.Patient GetPatientById(int id);
+        void AddPatient(DataAccessLayer.models.Patient patient);
+        void UpdatePatient(DataAccessLayer.models.Patient patient);
         void DeletePatient(int id);
+        List<DataAccessLayer.models.Patient> SearchPatients(string fullName, string phone, string email, string address, string gender, DateTime? dobFrom, DateTime? dobTo);
     }
 }
