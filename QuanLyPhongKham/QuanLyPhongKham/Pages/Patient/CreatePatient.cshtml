@@ -138,7 +138,12 @@
             <tr>
                 <td>Giới Tính:</td>
                 <td>
-                    <input asp-for="PatientViewModel.Gender" />
+                    <select asp-for="PatientViewModel.Gender" class="form-control">
+                        <option value="">-- Chọn giới tính --</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
                     <span asp-validation-for="PatientViewModel.Gender" class="validation-error"></span>
                 </td>
             </tr>
