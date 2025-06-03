@@ -1,11 +1,18 @@
 ﻿using BusinessAccessLayer.IService;
+using BusinessAccessLayer.IService.Authen;
 using BusinessAccessLayer.Service;
+using BusinessAccessLayer.Service.Authen;
 using DataAccessLayer.DAO;
+using DataAccessLayer.DAO.Authen;
 using DataAccessLayer.dbcontext;
 using DataAccessLayer.IRepository;
+using DataAccessLayer.IRepository.Authen;
 using DataAccessLayer.Repository;
+using DataAccessLayer.Repository.Authen;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using System;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace QuanLyPhongKham
 {
@@ -15,32 +22,95 @@ namespace QuanLyPhongKham
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // ========================================
+            // Register DbContext
+            // ========================================
+            builder.Services.AddDbContext<ClinicDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn"));
+            });
+
+            // ========================================
+            // Register Services and Repositories
+            // ========================================
+
             // Patient-related services
             builder.Services.AddScoped<PatientDAO>();
             builder.Services.AddScoped<IPatientRepository, PatientRepository>();
             builder.Services.AddScoped<IPatientService, PatientService>();
 
-            // Changed to Scoped instead of Singleton
+            // General Test Logic
             builder.Services.AddScoped<TestDAO>();
+            builder.Services.AddScoped<ITestRepository, TestRepository>();
+            builder.Services.AddScoped<ITestService, TestService>();
+
             builder.Services.AddScoped<ITestService, TestService>();
             builder.Services.AddScoped<ITestRepository, TestRepository>();
             builder.Services.AddScoped<IDoctorService, DoctorService>();
             builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
-            builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+            builder.Services.AddScoped<DataAccessLayer.IRepository.IAccountRepository, DataAccessLayer.Repository.AccountRepository>();
 
             builder.Services.AddScoped<TestResultDAO>();
             builder.Services.AddScoped<ITestResultRepository, TestResultRepository>();
             builder.Services.AddScoped<ITestResultService, TestResultService>();
 
-            builder.Services.AddControllers();
+
+            // ManagerUser Logic
+            builder.Services.AddScoped<ManagerUserDAO>();
+            builder.Services.AddScoped<IManagerUserRepository, ManagerUserRepository>();
+            builder.Services.AddScoped<IManagerUserService, ManagerUserService>();
+
+            // Account Logic
+            builder.Services.AddScoped<AccountDAO>();
+            builder.Services.AddScoped<DataAccessLayer.Repository.Authen.AccountRepository>();
+            builder.Services.AddScoped<IAccountService, AccountService>();
+
+
+            // ========================================
+            // Register MVC & JSON options
+            // ========================================
+            builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+                });
+
+            // Đọc cấu hình JWT từ appsettings.json
+            var jwtSecret = builder.Configuration["Jwt:Key"];
+            var jwtIssuer = builder.Configuration["Jwt:Issuer"];
+            var jwtAudience = builder.Configuration["Jwt:Audience"] ?? jwtIssuer; // Nếu không có Audience thì lấy Issuer
+
+            // Đăng ký Authentication với JWT Bearer
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = jwtIssuer,
+
+                    ValidateAudience = true,
+                    ValidAudience = jwtAudience,
+
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret)),
+
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
             builder.Services.AddRazorPages();
             builder.Services.AddHttpClient();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddDbContext<ClinicDbContext>(option =>
-            {
-                option.UseSqlServer(builder.Configuration.GetConnectionString("MyCnn"));
-            });
+
+            // ========================================
+            // Build & Configure Middleware
+            // ========================================
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
@@ -51,7 +121,11 @@ namespace QuanLyPhongKham
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseRouting();
+
             app.UseAuthorization();
+
             app.MapControllers();
             app.MapRazorPages();
 
