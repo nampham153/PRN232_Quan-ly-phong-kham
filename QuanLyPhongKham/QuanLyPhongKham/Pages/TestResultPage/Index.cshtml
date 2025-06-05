@@ -1,0 +1,191 @@
+﻿@page
+@model QuanLyPhongKham.Pages.TestResultPage.IndexModel
+@{
+    ViewData["Title"] = "Test Results Management";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Test Results Management</h3>
+                    <div class="card-tools">
+                        <a asp-page="./Create" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Add New Test Result
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            @TempData["SuccessMessage"]
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                    }
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            @TempData["ErrorMessage"]
+                            <button type="button" class="close" data-dismiss="alert">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                    }
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover" id="testResultsTable">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Test Name</th>
+                                    <th>Patient Name</th>
+                                    <th>Technician</th>
+                                    <th>Test Date</th>
+                                    <th>Result Detail</th>
+                                    <th>Medical Record Date</th>
+                                    <th>Diagnosis</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.TestResults != null && Model.TestResults.Any())
+                                {
+                                    @foreach (var item in Model.TestResults)
+                                    {
+                                        <tr>
+                                            <td>@item.TestName</td>
+                                            <td>@item.PatientName</td>
+                                            <td>@item.UserName</td>
+                                            <td>@item.FormattedTestDate</td>
+                                            <td>
+                                                <div class="result-detail" title="@item.ResultDetail">
+                                                    @(item.ResultDetail?.Length > 50 ? item.ResultDetail.Substring(0, 50) + "..." : item.ResultDetail)
+                                                </div>
+                                            </td>
+                                            <td>@item.MedicalRecordDate</td>
+                                            <td>
+                                                <div class="diagnosis" title="@item.Diagnosis">
+                                                    @(item.Diagnosis?.Length > 30 ? item.Diagnosis.Substring(0, 30) + "..." : item.Diagnosis)
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="btn-group" role="group">
+                                                    <a asp-page="./Details" asp-route-id="@item.RecordId" class="btn btn-info btn-sm" title="View Details">
+                                                        <i class="fas fa-eye"></i>
+                                                    </a>
+                                                    <a asp-page="./Edit" asp-route-id="@item.RecordId" class="btn btn-warning btn-sm" title="Edit">
+                                                        <i class="fas fa-edit"></i>
+                                                    </a>
+                                                    <button type="button" class="btn btn-danger btn-sm" title="Delete"
+                                                            onclick="confirmDelete(@item.RecordId, '@item.TestName', '@item.PatientName')">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td colspan="8" class="text-center">No test results found.</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this test result?</p>
+                <p><strong>Test:</strong> <span id="deleteTestName"></span></p>
+                <p><strong>Patient:</strong> <span id="deletePatientName"></span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form asp-page-handler="Delete" method="post" style="display: inline;">
+                    <input type="hidden" id="deleteId" name="id" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#testResultsTable').DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "order": [[3, "desc"]], // Sort by test date descending
+                "columnDefs": [
+                    { "orderable": false, "targets": 7 } // Disable sorting for Actions column
+                ]
+            });
+        });
+
+        function confirmDelete(id, testName, patientName) {
+            $('#deleteId').val(id);
+            $('#deleteTestName').text(testName);
+            $('#deletePatientName').text(patientName);
+            $('#deleteModal').modal('show');
+        }
+
+        // Auto-hide alerts after 5 seconds
+        setTimeout(function () {
+            $('.alert').fadeOut('slow');
+        }, 5000);
+
+        
+    </script>
+}
+
+@section Styles {
+
+    <style>
+        .result-detail, .diagnosis {
+            max-width: 200px;
+            word-wrap: break-word;
+        }
+
+        .btn-group .btn {
+            margin-right: 2px;
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table th {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .table td {
+            vertical-align: middle;
+        }
+    </style>
+   
+}

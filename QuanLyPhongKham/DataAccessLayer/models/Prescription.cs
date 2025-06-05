@@ -24,3 +24,4 @@ namespace DataAccessLayer.models
         public string Dosage { get; set; }
     }
 }
+

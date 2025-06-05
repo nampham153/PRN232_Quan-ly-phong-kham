@@ -13,6 +13,7 @@ namespace DataAccessLayer.dbcontext
     {
         public ClinicDbContext()
         {
+
         }
 
         public ClinicDbContext(DbContextOptions<ClinicDbContext> options) : base(options) { }
@@ -61,4 +62,5 @@ namespace DataAccessLayer.dbcontext
     }
 
 }
+
 
