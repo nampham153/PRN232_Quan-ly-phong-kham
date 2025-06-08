@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.models;
 using DataAccessLayer.ViewModels;
+using DataAccessLayer.ViewModels.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,9 @@ namespace BusinessAccessLayer.IService
         void CreateTest(TestVM testVM);
         void UpdateTest(int id, TestVM testVM);
         void DeleteTest(int id);
+
+        // Thêm methods mới
+        List<Test> SearchTests(string searchTerm);
+        PaginatedResult<Test> GetTestsWithFilter(SearchFilterVM filter);
     }
 }

@@ -15,6 +15,7 @@ namespace DataAccessLayer.IRepository
         void UpdatePatient(Patient patient);
         void DeletePatient(int id);
         bool IsPhoneExists(string phone, int? excludePatientId = null);
+        bool IsPhoneExists(string phone, int excludePatientId);
         List<Patient> SearchPatients(string fullName, string phone, string email, string address, string gender, DateTime? dobFrom, DateTime? dobTo);
     }
 }

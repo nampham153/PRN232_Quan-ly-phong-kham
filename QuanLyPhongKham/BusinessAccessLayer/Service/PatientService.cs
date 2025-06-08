@@ -37,6 +37,8 @@ namespace BusinessAccessLayer.Service
 
             if (patient.DOB == default)
                 throw new ArgumentException("Ngày sinh không được để trống");
+            if (patient.DOB > DateTime.Now.Date)
+                throw new ArgumentException("Ngày sinh không được vượt quá ngày hiện tại");
 
             if (string.IsNullOrEmpty(patient.Gender))
                 throw new ArgumentException("Giới tính không được để trống");
@@ -70,6 +72,8 @@ namespace BusinessAccessLayer.Service
 
             if (patient.DOB == default)
                 throw new ArgumentException("Ngày sinh không được để trống");
+            if (patient.DOB > DateTime.Now.Date)
+                throw new ArgumentException("Ngày sinh không được vượt quá ngày hiện tại");
 
             if (string.IsNullOrEmpty(patient.Gender))
                 throw new ArgumentException("Giới tính không được để trống");

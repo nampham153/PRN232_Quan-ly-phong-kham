@@ -2,6 +2,7 @@
 using DataAccessLayer.IRepository;
 using DataAccessLayer.models;
 using DataAccessLayer.ViewModels;
+using DataAccessLayer.ViewModels.Search;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace BusinessAccessLayer.Service
 
         public List<Test> GetAllTests()
         {
-            return _testRepository.GetTests();
+            return _testRepository.GetAllTests();
         }
 
         public Test GetTestById(int id)
@@ -41,10 +42,8 @@ namespace BusinessAccessLayer.Service
             // Validation
             if (testVM == null)
                 throw new ArgumentNullException(nameof(testVM));
-
             if (string.IsNullOrWhiteSpace(testVM.TestName))
                 throw new ArgumentException("Test name is required");
-
             if (string.IsNullOrWhiteSpace(testVM.Description))
                 throw new ArgumentException("Description is required");
 
@@ -56,13 +55,10 @@ namespace BusinessAccessLayer.Service
             // Validation
             if (id <= 0)
                 throw new ArgumentException("Test ID must be greater than 0");
-
             if (testVM == null)
                 throw new ArgumentNullException(nameof(testVM));
-
             if (string.IsNullOrWhiteSpace(testVM.TestName))
                 throw new ArgumentException("Test name is required");
-
             if (string.IsNullOrWhiteSpace(testVM.Description))
                 throw new ArgumentException("Description is required");
 
@@ -75,6 +71,35 @@ namespace BusinessAccessLayer.Service
                 throw new ArgumentException("Test ID must be greater than 0");
 
             _testRepository.DeleteTest(id);
+        }
+
+        // Implement search method với validation
+        public List<Test> SearchTests(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+                return GetAllTests();
+
+            return _testRepository.SearchTests(searchTerm.Trim());
+        }
+
+        // Implement filter method với validation
+        public PaginatedResult<Test> GetTestsWithFilter(SearchFilterVM filter)
+        {
+            if (filter == null)
+                throw new ArgumentNullException(nameof(filter));
+
+            // Validate filter parameters
+            if (filter.PageNumber <= 0)
+                filter.PageNumber = 1;
+
+            if (filter.PageSize <= 0 || filter.PageSize > 100)
+                filter.PageSize = 10;
+
+            var validSortColumns = new[] { "TestName", "Description", "TestId" };
+            if (!validSortColumns.Contains(filter.SortBy, StringComparer.OrdinalIgnoreCase))
+                filter.SortBy = "TestName";
+
+            return _testRepository.GetTestsWithFilter(filter);
         }
     }
 }

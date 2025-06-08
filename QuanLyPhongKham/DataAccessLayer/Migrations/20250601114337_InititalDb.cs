@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccessLayer.Migrations
 {
     /// <inheritdoc />
-    public partial class InitalDb : Migration
+    public partial class InititalDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -151,7 +151,7 @@ namespace DataAccessLayer.Migrations
                     RecordId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PatientId = table.Column<int>(type: "int", nullable: false),
-                    DoctorId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Symptoms = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Diagnosis = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -167,8 +167,8 @@ namespace DataAccessLayer.Migrations
                         principalColumn: "PatientId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MedicalRecords_Users_DoctorId",
-                        column: x => x.DoctorId,
+                        name: "FK_MedicalRecords_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
@@ -181,7 +181,6 @@ namespace DataAccessLayer.Migrations
                     PrescriptionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RecordId = table.Column<int>(type: "int", nullable: false),
-                    MedicalRecordRecordId = table.Column<int>(type: "int", nullable: false),
                     MedicineId = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Dosage = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -190,8 +189,8 @@ namespace DataAccessLayer.Migrations
                 {
                     table.PrimaryKey("PK_Prescriptions", x => x.PrescriptionId);
                     table.ForeignKey(
-                        name: "FK_Prescriptions_MedicalRecords_MedicalRecordRecordId",
-                        column: x => x.MedicalRecordRecordId,
+                        name: "FK_Prescriptions_MedicalRecords_RecordId",
+                        column: x => x.RecordId,
                         principalTable: "MedicalRecords",
                         principalColumn: "RecordId",
                         onDelete: ReferentialAction.Cascade);
@@ -210,9 +209,8 @@ namespace DataAccessLayer.Migrations
                     ResultId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RecordId = table.Column<int>(type: "int", nullable: false),
-                    MedicalRecordRecordId = table.Column<int>(type: "int", nullable: false),
                     TestId = table.Column<int>(type: "int", nullable: false),
-                    TechnicianId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
                     ResultDetail = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TestDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
@@ -220,8 +218,8 @@ namespace DataAccessLayer.Migrations
                 {
                     table.PrimaryKey("PK_TestResults", x => x.ResultId);
                     table.ForeignKey(
-                        name: "FK_TestResults_MedicalRecords_MedicalRecordRecordId",
-                        column: x => x.MedicalRecordRecordId,
+                        name: "FK_TestResults_MedicalRecords_RecordId",
+                        column: x => x.RecordId,
                         principalTable: "MedicalRecords",
                         principalColumn: "RecordId",
                         onDelete: ReferentialAction.Cascade);
@@ -232,8 +230,8 @@ namespace DataAccessLayer.Migrations
                         principalColumn: "TestId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_TestResults_Users_TechnicianId",
-                        column: x => x.TechnicianId,
+                        name: "FK_TestResults_Users_UserId",
+                        column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
@@ -245,14 +243,14 @@ namespace DataAccessLayer.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MedicalRecords_DoctorId",
-                table: "MedicalRecords",
-                column: "DoctorId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_MedicalRecords_PatientId",
                 table: "MedicalRecords",
                 column: "PatientId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MedicalRecords_UserId",
+                table: "MedicalRecords",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Patients_AccountId",
@@ -262,14 +260,14 @@ namespace DataAccessLayer.Migrations
                 filter: "[AccountId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Prescriptions_MedicalRecordRecordId",
-                table: "Prescriptions",
-                column: "MedicalRecordRecordId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Prescriptions_MedicineId",
                 table: "Prescriptions",
                 column: "MedicineId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Prescriptions_RecordId",
+                table: "Prescriptions",
+                column: "RecordId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RefreshTokens_AccountId",
@@ -278,19 +276,19 @@ namespace DataAccessLayer.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_TestResults_MedicalRecordRecordId",
+                name: "IX_TestResults_RecordId",
                 table: "TestResults",
-                column: "MedicalRecordRecordId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TestResults_TechnicianId",
-                table: "TestResults",
-                column: "TechnicianId");
+                column: "RecordId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TestResults_TestId",
                 table: "TestResults",
                 column: "TestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TestResults_UserId",
+                table: "TestResults",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_AccountId",
