@@ -18,6 +18,13 @@ namespace QuanLyPhongKham
 
 
             // Changed to Scoped instead of Singleton
+            builder.Services.AddScoped<MedicineDAO>();
+            builder.Services.AddScoped<IMedicineRepository, MedicineRepository>();
+            builder.Services.AddScoped<IMedicineService, MedicineService>();
+
+
+
+
             builder.Services.AddScoped<TestDAO>();
             builder.Services.AddScoped<ITestService, TestService>();
             builder.Services.AddScoped<ITestRepository, TestRepository>();
