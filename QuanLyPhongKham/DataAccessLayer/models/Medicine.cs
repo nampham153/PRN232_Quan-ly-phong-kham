@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace DataAccessLayer.models
 {
@@ -16,6 +17,7 @@ namespace DataAccessLayer.models
         public string Unit { get; set; }
         public string Usage { get; set; }
 
+        [JsonIgnore]
         public ICollection<Prescription> Prescriptions { get; set; }
     }
 }

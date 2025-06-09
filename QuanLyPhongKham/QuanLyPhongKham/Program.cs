@@ -1,4 +1,4 @@
-﻿using BusinessAccessLayer.IService;
+using BusinessAccessLayer.IService;
 using BusinessAccessLayer.IService.Authen;
 using BusinessAccessLayer.Service;
 using BusinessAccessLayer.Service.Authen;
@@ -35,6 +35,9 @@ namespace QuanLyPhongKham
             // ========================================
 
             // Patient-related services
+            builder.Services.AddScoped<MedicineDAO>();
+            builder.Services.AddScoped<IMedicineRepository, MedicineRepository>();
+            builder.Services.AddScoped<IMedicineService, MedicineService>();
             builder.Services.AddScoped<PatientDAO>();
             builder.Services.AddScoped<IPatientRepository, PatientRepository>();
             builder.Services.AddScoped<IPatientService, PatientService>();
@@ -69,11 +72,7 @@ namespace QuanLyPhongKham
             // ========================================
             // Register MVC & JSON options
             // ========================================
-            builder.Services.AddControllers()
-                .AddJsonOptions(options =>
-                {
-                    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-                });
+            builder.Services.AddControllers();
 
             // Đọc cấu hình JWT từ appsettings.json
             var jwtSecret = builder.Configuration["Jwt:Key"];
