@@ -18,6 +18,79 @@
                     </a>
                 </div>
 
+                <!-- Filter Section -->
+                <div class="row mb-4">
+                    <div class="col-lg-4 col-md-6">
+                        <form method="get" class="d-flex align-items-end gap-2">
+                            <div class="form-group flex-grow-1 mb-0">
+                                <label for="selectedTestName" class="form-label">
+                                    <i class="mdi mdi-filter-variant me-1"></i>Filter by Test Type
+                                </label>
+                                <select asp-for="SelectedTestName" asp-items="Model.TestNameOptions"
+                                        class="form-select" id="selectedTestName" onchange="this.form.submit()">
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <form method="get" class="d-flex align-items-end gap-2">
+                            <div class="form-group flex-grow-1 mb-0">
+                                <label for="selectedUserName" class="form-label">
+                                    <i class="mdi mdi-account-filter me-1"></i>Filter by Technician
+                                </label>
+                                <select asp-for="SelectedUserName" asp-items="Model.UserNameOptions"
+                                        class="form-select" id="selectedUserName" onchange="this.form.submit()">
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="d-flex align-items-end gap-2 h-100">
+                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="applyFilters()">
+                                <i class="mdi mdi-filter"></i> Apply Filters
+                            </button>
+                            @if (!string.IsNullOrEmpty(Model.SelectedTestName) || !string.IsNullOrEmpty(Model.SelectedUserName))
+                            {
+                                <a asp-page="./Index" class="btn btn-outline-danger btn-sm" title="Clear All Filters">
+                                    <i class="mdi mdi-close"></i> Clear All
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Filters Display -->
+                @if (!string.IsNullOrEmpty(Model.SelectedTestName) || !string.IsNullOrEmpty(Model.SelectedUserName))
+                {
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="alert alert-info py-2">
+                                <i class="mdi mdi-information me-2"></i>
+                                <strong>Active Filters:</strong>
+                                @if (!string.IsNullOrEmpty(Model.SelectedTestName))
+                                {
+                                    <span class="badge badge-info me-2">
+                                        Test: @Model.SelectedTestName
+                                        <a asp-page="./Index" asp-route-selectedUserName="@Model.SelectedUserName" class="text-white ms-1" title="Remove test filter">
+                                            <i class="mdi mdi-close"></i>
+                                        </a>
+                                    </span>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.SelectedUserName))
+                                {
+                                    <span class="badge badge-info me-2">
+                                        Technician: @Model.SelectedUserName
+                                        <a asp-page="./Index" asp-route-selectedTestName="@Model.SelectedTestName" class="text-white ms-1" title="Remove technician filter">
+                                            <i class="mdi mdi-close"></i>
+                                        </a>
+                                    </span>
+                                }
+                                <span class="badge badge-secondary">@Model.TestResults.Count result(s)</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+
                 @if (TempData["SuccessMessage"] != null)
                 {
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -58,7 +131,7 @@
                                 {
                                     <tr>
                                         <td>
-                                            <label class="badge badge-success">@item.TestId</label>
+                                            <label class="badge badge-success">@Model.GetResultId(item.RecordId)</label>
                                         </td>
                                         <td>
                                             <h6 class="mb-0">@item.TestName</h6>
@@ -127,11 +200,27 @@
                                 <div class="card-body text-center py-5">
                                     <div class="empty-state">
                                         <i class="mdi mdi-file-search-outline display-1 text-muted mb-4"></i>
-                                        <h4 class="mb-3">No test results found</h4>
-                                        <p class="text-muted mb-4">There are currently no test results in the system.</p>
-                                        <a asp-page="Create" class="btn btn-primary">
-                                            <i class="mdi mdi-plus"></i> Create Your First Test Result
-                                        </a>
+                                        @if (!string.IsNullOrEmpty(Model.SelectedTestName) || !string.IsNullOrEmpty(Model.SelectedUserName))
+                                        {
+                                            <h4 class="mb-3">No test results found with current filters</h4>
+                                            <p class="text-muted mb-4">Try adjusting your filters or clear them to see all results.</p>
+                                            <div class="d-flex justify-content-center gap-2">
+                                                <a asp-page="./Index" class="btn btn-outline-secondary">
+                                                    <i class="mdi mdi-close"></i> Clear All Filters
+                                                </a>
+                                                <a asp-page="Create" class="btn btn-primary">
+                                                    <i class="mdi mdi-plus"></i> Create New Test Result
+                                                </a>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <h4 class="mb-3">No test results found</h4>
+                                            <p class="text-muted mb-4">There are currently no test results in the system.</p>
+                                            <a asp-page="Create" class="btn btn-primary">
+                                                <i class="mdi mdi-plus"></i> Create Your First Test Result
+                                            </a>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -283,6 +372,24 @@
             }, 5000);
         });
 
+        function applyFilters() {
+            var testName = $('#selectedTestName').val();
+            var userName = $('#selectedUserName').val();
+
+            var url = new URL(window.location.href);
+            url.searchParams.delete('selectedTestName');
+            url.searchParams.delete('selectedUserName');
+
+            if (testName) {
+                url.searchParams.set('selectedTestName', testName);
+            }
+            if (userName) {
+                url.searchParams.set('selectedUserName', userName);
+            }
+
+            window.location.href = url.toString();
+        }
+
         function confirmDelete(id, testName, patientName) {
             $('#deleteId').val(id);
             $('#deleteTestName').text(testName);
@@ -319,6 +426,11 @@
             color: #17a2b8;
             border: 1px solid #17a2b8;
             background-color: transparent;
+        }
+
+        .badge-secondary {
+            background-color: #6c757d;
+            color: white;
         }
 
         .table th {
@@ -370,6 +482,11 @@
         .alert-warning {
             background-color: #fff3cd;
             color: #664d03;
+        }
+
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
         }
 
         .card {
@@ -444,5 +561,17 @@
         .gap-2 {
             gap: 0.5rem;
         }
+
+        .filter-badge {
+            cursor: pointer;
+        }
+
+            .filter-badge a {
+                text-decoration: none;
+            }
+
+            .filter-badge:hover {
+                opacity: 0.8;
+            }
     </style>
 }

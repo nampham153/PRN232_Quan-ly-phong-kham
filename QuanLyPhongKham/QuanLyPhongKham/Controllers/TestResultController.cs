@@ -1,9 +1,9 @@
 ﻿using BusinessAccessLayer.IService;
 using DataAccessLayer.models;
 using DataAccessLayer.ViewModels;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.OData.Query;
+using Microsoft.EntityFrameworkCore;
 
 namespace QuanLyPhongKham.Controllers
 {
@@ -14,216 +14,259 @@ namespace QuanLyPhongKham.Controllers
         private readonly ITestResultService _testResultService;
 
         public TestResultController(ITestResultService testResultService)
-        {
-            _testResultService = testResultService;
-        }
+            => _testResultService = testResultService;
 
-        // GET: api/TestResult
-        [HttpGet]
-        public ActionResult<List<TestResultVM>> GetAllTestResults()
+        // OData endpoint - Sửa để include các entity liên quan
+        [HttpGet("odata")]
+        [EnableQuery]
+        public IQueryable<TestResult> GetTestResultsOData()
         {
             try
             {
-                var testResults = _testResultService.GetAllTestResultVMs();
+                // Chuyển đổi List thành IQueryable và để OData tự động load navigation properties
+                var testResults = _testResultService.GetAllTestResults().AsQueryable();
+                return testResults;
+            }
+            catch (Exception ex)
+            {
+                // Log error và return empty queryable
+                // Có thể log error tại đây
+                return new List<TestResult>().AsQueryable();
+            }
+        }
+
+        // Main endpoint with filtering support
+        [HttpGet]
+        public ActionResult<List<TestResultVM>> GetAllTestResults([FromQuery] string? testName = null, [FromQuery] string? userName = null)
+        {
+            try
+            {
+                var vm = _testResultService.GetAllTestResultVMs();
+
+                // Filter by test name if provided
+                if (!string.IsNullOrEmpty(testName))
+                {
+                    vm = vm.Where(x => x.TestName != null && x.TestName.Equals(testName, StringComparison.OrdinalIgnoreCase)).ToList();
+                }
+
+                // Filter by user name if provided
+                if (!string.IsNullOrEmpty(userName))
+                {
+                    vm = vm.Where(x => x.UserName != null && x.UserName.Equals(userName, StringComparison.OrdinalIgnoreCase)).ToList();
+                }
+
+                return Ok(vm);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error retrieving test results", error = ex.Message });
+            }
+        }
+
+        // New endpoint to get TestResult entities with ResultId for mapping
+        [HttpGet("with-resultid")]
+        public ActionResult<List<TestResult>> GetTestResultsWithResultId()
+        {
+            try
+            {
+                var testResults = _testResultService.GetAllTestResults();
                 return Ok(testResults);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while retrieving test results", error = ex.Message });
+                return StatusCode(500, new { message = "Error retrieving test results with ResultId", error = ex.Message });
             }
         }
 
-        // GET: api/TestResult/{id}
+        // New endpoint to get distinct test names for filter dropdown
+        [HttpGet("test-names")]
+        public ActionResult<List<string>> GetDistinctTestNames()
+        {
+            try
+            {
+                var testResults = _testResultService.GetAllTestResultVMs();
+                var distinctTestNames = testResults
+                    .Where(x => !string.IsNullOrEmpty(x.TestName))
+                    .Select(x => x.TestName)
+                    .Distinct()
+                    .OrderBy(x => x)
+                    .ToList();
+
+                return Ok(distinctTestNames);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error retrieving test names", error = ex.Message });
+            }
+        }
+
+        // New endpoint to get distinct user names for filter dropdown
+        [HttpGet("user-names")]
+        public ActionResult<List<string>> GetDistinctUserNames()
+        {
+            try
+            {
+                var testResults = _testResultService.GetAllTestResultVMs();
+                var distinctUserNames = testResults
+                    .Where(x => !string.IsNullOrEmpty(x.UserName))
+                    .Select(x => x.UserName)
+                    .Distinct()
+                    .OrderBy(x => x)
+                    .ToList();
+
+                return Ok(distinctUserNames);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Error retrieving user names", error = ex.Message });
+            }
+        }
+
         [HttpGet("{id}")]
         public ActionResult<TestResult> GetTestResult(int id)
         {
             try
             {
-                var testResult = _testResultService.GetTestResultById(id);
-                if (testResult == null)
-                {
-                    return NotFound(new { message = "Test result not found" });
-                }
-                return Ok(testResult);
+                var tr = _testResultService.GetTestResultById(id);
+                if (tr == null) return NotFound(new { message = "Test result not found" });
+                return Ok(tr);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while retrieving the test result", error = ex.Message });
+                return StatusCode(500, new { message = "Error retrieving test result", error = ex.Message });
             }
         }
 
-        // GET: api/TestResult/record/{recordId}
         [HttpGet("record/{recordId}")]
-        public ActionResult<List<TestResult>> GetTestResultsByRecord(int recordId)
+        public ActionResult<List<TestResult>> GetByRecord(int recordId)
         {
             try
             {
-                var testResults = _testResultService.GetTestResultsByRecordId(recordId);
-                return Ok(testResults);
+                var list = _testResultService.GetTestResultsByRecordId(recordId);
+                return Ok(list);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while retrieving test results by record", error = ex.Message });
+                return StatusCode(500, new { message = "Error retrieving by record", error = ex.Message });
             }
         }
 
-        // GET: api/TestResult/user/{userId}
         [HttpGet("user/{userId}")]
-        public ActionResult<List<TestResult>> GetTestResultsByUser(int userId)
+        public ActionResult<List<TestResult>> GetByUser(int userId)
         {
             try
             {
-                var testResults = _testResultService.GetTestResultsByUserId(userId);
-                return Ok(testResults);
+                var list = _testResultService.GetTestResultsByUserId(userId);
+                return Ok(list);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while retrieving test results by user", error = ex.Message });
+                return StatusCode(500, new { message = "Error retrieving by user", error = ex.Message });
             }
         }
 
-        // GET: api/TestResult/edit/{id}
         [HttpGet("edit/{id}")]
-        public ActionResult<TestResultVM> GetTestResultForEdit(int id)
+        public ActionResult<TestResultVM> GetForEdit(int id)
         {
             try
             {
-                var testResultVM = _testResultService.GetTestResultForEdit(id);
-                if (testResultVM == null)
-                {
-                    return NotFound(new { message = "Test result not found" });
-                }
-                return Ok(testResultVM);
+                var vm = _testResultService.GetTestResultForEdit(id);
+                if (vm == null) return NotFound(new { message = "Not found" });
+                return Ok(vm);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while retrieving test result for edit", error = ex.Message });
+                return StatusCode(500, new { message = "Error retrieving for edit", error = ex.Message });
             }
         }
 
-        // GET: api/TestResult/new
         [HttpGet("new")]
-        public ActionResult<TestResultVM> GetNewTestResult()
+        public ActionResult<TestResultVM> GetNew()
         {
             try
             {
-                var newTestResultVM = _testResultService.GetNewTestResultVM();
-                return Ok(newTestResultVM);
+                var vm = _testResultService.GetNewTestResultVM();
+                return Ok(vm);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while creating new test result template", error = ex.Message });
+                return StatusCode(500, new { message = "Error creating template", error = ex.Message });
             }
         }
 
-        // POST: api/TestResult
         [HttpPost]
-        public ActionResult CreateTestResult([FromBody] TestResultVM testResultVM)
+        public ActionResult Create([FromBody] TestResultVM vm)
         {
             try
             {
-                if (testResultVM == null)
-                {
-                    return BadRequest(new { message = "Test result data is required" });
-                }
+                if (vm == null) return BadRequest(new { message = "Data required" });
 
-                if (!_testResultService.ValidateTestResult(testResultVM, out List<string> errors))
-                {
-                    return BadRequest(new { message = "Validation failed", errors = errors });
-                }
+                if (!_testResultService.ValidateTestResult(vm, out var errors))
+                    return BadRequest(new { message = "Validation failed", errors });
 
-                bool result = _testResultService.CreateTestResult(testResultVM);
-                if (result)
-                {
-                    return Ok(new { message = "Test result created successfully" });
-                }
-                else
-                {
-                    return StatusCode(500, new { message = "Failed to create test result" });
-                }
+                if (_testResultService.CreateTestResult(vm))
+                    return Ok(new { message = "Created successfully" });
+
+                return StatusCode(500, new { message = "Create failed" });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while creating test result", error = ex.Message });
+                return StatusCode(500, new { message = "Error creating", error = ex.Message });
             }
         }
 
-        // PUT: api/TestResult/{id}
         [HttpPut("{id}")]
-        public ActionResult UpdateTestResult(int id, [FromBody] TestResultVM testResultVM)
+        public ActionResult Update(int id, [FromBody] TestResultVM vm)
         {
             try
             {
-                if (testResultVM == null)
-                {
-                    return BadRequest(new { message = "Test result data is required" });
-                }
-
+                if (vm == null) return BadRequest(new { message = "Data required" });
                 if (!_testResultService.TestResultExists(id))
-                {
-                    return NotFound(new { message = "Test result not found" });
-                }
+                    return NotFound(new { message = "Not found" });
+                if (!_testResultService.ValidateTestResult(vm, out var errors))
+                    return BadRequest(new { message = "Validation failed", errors });
 
-                if (!_testResultService.ValidateTestResult(testResultVM, out List<string> errors))
-                {
-                    return BadRequest(new { message = "Validation failed", errors = errors });
-                }
+                if (_testResultService.UpdateTestResult(id, vm))
+                    return Ok(new { message = "Updated successfully" });
 
-                bool result = _testResultService.UpdateTestResult(id, testResultVM);
-                if (result)
-                {
-                    return Ok(new { message = "Test result updated successfully" });
-                }
-                else
-                {
-                    return StatusCode(500, new { message = "Failed to update test result" });
-                }
+                return StatusCode(500, new { message = "Update failed" });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while updating test result", error = ex.Message });
+                return StatusCode(500, new { message = "Error updating", error = ex.Message });
             }
         }
 
-        // DELETE: api/TestResult/{id}
         [HttpDelete("{id}")]
-        public ActionResult DeleteTestResult(int id)
+        public ActionResult Delete(int id)
         {
             try
             {
                 if (!_testResultService.TestResultExists(id))
-                {
-                    return NotFound(new { message = "Test result not found" });
-                }
+                    return NotFound(new { message = "Not found" });
 
-                bool result = _testResultService.DeleteTestResult(id);
-                if (result)
-                {
-                    return Ok(new { message = "Test result deleted successfully" });
-                }
-                else
-                {
-                    return StatusCode(500, new { message = "Failed to delete test result" });
-                }
+                if (_testResultService.DeleteTestResult(id))
+                    return Ok(new { message = "Deleted successfully" });
+
+                return StatusCode(500, new { message = "Delete failed" });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while deleting test result", error = ex.Message });
+                return StatusCode(500, new { message = "Error deleting", error = ex.Message });
             }
         }
 
-        // GET: api/TestResult/exists/{id}
         [HttpGet("exists/{id}")]
-        public ActionResult<bool> TestResultExists(int id)
+        public ActionResult<bool> Exists(int id)
         {
             try
             {
-                bool exists = _testResultService.TestResultExists(id);
-                return Ok(new { exists = exists });
+                var exists = _testResultService.TestResultExists(id);
+                return Ok(new { exists });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while checking test result existence", error = ex.Message });
+                return StatusCode(500, new { message = "Error checking exists", error = ex.Message });
             }
         }
     }

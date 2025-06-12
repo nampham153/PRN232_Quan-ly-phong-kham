@@ -67,6 +67,12 @@ namespace QuanLyPhongKham
             builder.Services.AddScoped<AccountDAO>();
             builder.Services.AddScoped<DataAccessLayer.Repository.Authen.AccountRepository>();
             builder.Services.AddScoped<IAccountService, AccountService>();
+            builder.Services.AddControllers()
+                .AddOData(opt =>
+                {
+                    opt.Select().Filter().OrderBy().Expand().Count().SetMaxTop(100)
+                       .AddRouteComponents("odata", GetEdmModel());
+                });
 
 
             // ========================================
@@ -106,6 +112,13 @@ namespace QuanLyPhongKham
             builder.Services.AddHttpClient();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            IEdmModel GetEdmModel()
+            {
+                var odataBuilder = new ODataConventionModelBuilder();
+                odataBuilder.EntitySet<TestResult>("TestResults");
+                return odataBuilder.GetEdmModel();
+            }
 
             // ========================================
             // Build & Configure Middleware
