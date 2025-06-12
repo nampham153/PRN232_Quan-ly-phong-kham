@@ -7,11 +7,15 @@ using DataAccessLayer.DAO.Authen;
 using DataAccessLayer.dbcontext;
 using DataAccessLayer.IRepository;
 using DataAccessLayer.IRepository.Authen;
+using DataAccessLayer.models;
 using DataAccessLayer.Repository;
 using DataAccessLayer.Repository.Authen;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OData.Edm;
+using Microsoft.OData.ModelBuilder;
 using System.Text;
 
 namespace QuanLyPhongKham
