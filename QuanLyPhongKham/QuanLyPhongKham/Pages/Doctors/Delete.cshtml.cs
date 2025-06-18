@@ -1,5 +1,4 @@
 using BusinessAccessLayer.IService;
-using BusinessAccessLayer.Mappers;
 using DataAccessLayer.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -25,7 +24,17 @@ namespace QuanLyPhongKham.Pages.Doctors
             {
                 return NotFound();
             }
-            Doctor = DoctorMapper.ToViewModel(doctorEntity);
+
+            Doctor = new DoctorVM
+            {
+                UserId = doctorEntity.UserId,
+                FullName = doctorEntity.FullName,
+                Gender = doctorEntity.Gender,
+                DOB = doctorEntity.DOB,
+                Phone = doctorEntity.Phone,
+                Email = doctorEntity.Email,
+                AccountId = doctorEntity.AccountId
+            };
 
             return Page();
         }

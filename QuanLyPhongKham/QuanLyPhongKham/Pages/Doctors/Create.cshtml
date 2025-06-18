@@ -10,9 +10,9 @@
 </div>
 
 <div class="modal-body">
-    <form method="post" id="doctorCreateForm">
+    <form method="post" id="doctorCreateForm" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+        @Html.AntiForgeryToken()
         <div class="mb-3">
             <label class="form-label">Select Account (Username)</label>
             <select asp-for="Doctor.AccountId" class="form-select">
@@ -22,6 +22,7 @@
                     <option value="@acc.AccountId">@acc.Username</option>
                 }
             </select>
+
             <span asp-validation-for="Doctor.AccountId" class="text-danger"></span>
         </div>
 
@@ -58,6 +59,16 @@
                 <option value="Other">Other</option>
             </select>
             <span asp-validation-for="Doctor.Gender" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <td>Ảnh Đại Diện:</td>
+            <td>
+                <input type="text" asp-for="Doctor.DoctorPath" class="form-control mb-2" placeholder="Dán đường dẫn ảnh (URL) nếu có" />
+                <span asp-validation-for="Doctor.DoctorPath" class="text-danger"></span>
+
+                <input type="file" name="DoctorFile" accept="image/*" class="form-control" />
+                <span asp-validation-for="DoctorFile" class="text-danger"></span>
+            </td>
         </div>
 
         <div>
