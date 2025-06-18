@@ -62,6 +62,7 @@ namespace QuanLyPhongKham.Pages.Patient
                 patient.Phone = PatientViewModel.Phone;
                 patient.Email = PatientViewModel.Email;
                 patient.Address = PatientViewModel.Address;
+                patient.AvatarPath = PatientViewModel.AvatarPath;
 
                 _patientService.UpdatePatient(patient);
                 return RedirectToPage("/Patient/PatientList");

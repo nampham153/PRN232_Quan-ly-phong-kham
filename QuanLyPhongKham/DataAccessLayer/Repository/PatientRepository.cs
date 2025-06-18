@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.dbcontext;
+﻿using DataAccessLayer.DAO;
+using DataAccessLayer.dbcontext;
 using DataAccessLayer.IRepository;
 using DataAccessLayer.models;
 using Microsoft.EntityFrameworkCore;
@@ -7,54 +8,51 @@ namespace DataAccessLayer.Repository
 {
     public class PatientRepository : IPatientRepository
     {
-        private readonly ClinicDbContext _context;
+        private readonly PatientDAO _patientDAO;
 
-        public PatientRepository(ClinicDbContext context)
+        public PatientRepository(PatientDAO patientDAO)
         {
-            _context = context;
+            _patientDAO = patientDAO;
         }
 
         public List<Patient> GetAllPatients()
         {
-            return _context.Patients.ToList();
+            return _patientDAO.GetPatients();
         }
 
         public Patient GetPatientById(int id)
         {
-            return _context.Patients.Find(id);
+            return _patientDAO.GetPatientById(id);
         }
 
         public void AddPatient(Patient patient)
         {
-            _context.Patients.Add(patient);
-            _context.SaveChanges();
+            _patientDAO.SavePatient(patient);
         }
 
         public void UpdatePatient(Patient patient)
         {
-            _context.Patients.Update(patient);
-            _context.SaveChanges();
+            _patientDAO.UpdatePatient(patient);
         }
 
         public void DeletePatient(int id)
         {
-            var patient = _context.Patients.Find(id);
+            var patient = _patientDAO.GetPatientById(id);
             if (patient != null)
             {
-                _context.Patients.Remove(patient);
-                _context.SaveChanges();
+                _patientDAO.DeletePatient(patient);
             }
         }
 
         public bool IsPhoneExists(string phone, int? excludePatientId = null)
         {
-            return _context.Patients
-                .Any(p => p.Phone == phone && (excludePatientId == null || p.PatientId != excludePatientId));
+            var patients = _patientDAO.GetPatients();
+            return patients.Any(p => p.Phone == phone && (excludePatientId == null || p.PatientId != excludePatientId));
         }
 
         public List<Patient> SearchPatients(string fullName, string phone, string email, string address, string gender, DateTime? dobFrom, DateTime? dobTo)
         {
-            var query = _context.Patients.AsQueryable();
+            var query = _patientDAO.GetPatients().AsQueryable();
 
             if (!string.IsNullOrEmpty(fullName))
             {
@@ -93,6 +91,7 @@ namespace DataAccessLayer.Repository
 
             return query.ToList();
         }
+
         public bool IsPhoneExists(string phone, int excludePatientId)
         {
             try
@@ -100,8 +99,8 @@ namespace DataAccessLayer.Repository
                 if (string.IsNullOrEmpty(phone))
                     return false;
 
-                return _context.Patients
-                    .Any(p => p.Phone == phone && p.PatientId != excludePatientId);
+                var patients = _patientDAO.GetPatients();
+                return patients.Any(p => p.Phone == phone && p.PatientId != excludePatientId);
             }
             catch (Exception ex)
             {

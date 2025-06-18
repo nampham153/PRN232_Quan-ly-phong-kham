@@ -1,5 +1,5 @@
 ﻿@page
-@model QuanLyPhongKham.Pages.Patient.PatientListModel
+@model QuanLyPhongKham.Pages.Patient.PatientList
 @{
     ViewData["Title"] = "Danh Sách Bệnh Nhân";
 }
@@ -244,6 +244,7 @@
     <table class="patient-table">
         <thead>
             <tr>
+                <th>Ảnh</th>
                 <th>ID</th>
                 <th>Họ Tên</th>
                 <th>Ngày Sinh</th>
@@ -259,6 +260,16 @@
             @foreach (var patient in Model.Patients)
             {
                 <tr>
+                    <td>
+                        @if (!string.IsNullOrEmpty(patient.AvatarPath))
+                        {
+                            <img src="@patient.AvatarPath" alt="Avatar" style="width: 50px; height: 50px; object-fit: cover;" />
+                        }
+                        else
+                        {
+                            <span>Không có ảnh</span>
+                        }
+                    </td>
                     <td>@patient.PatientId</td>
                     <td>@patient.FullName</td>
                     <td>@patient.DOB.ToShortDateString()</td>

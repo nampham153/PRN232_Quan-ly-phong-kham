@@ -118,8 +118,9 @@
         </div>
     }
 
-    <form method="post">
-        @Html.AntiForgeryToken() <!-- Thêm anti-forgery token -->
+    <form method="post" enctype="multipart/form-data">
+        <!-- Đảm bảo enctype cho upload file -->
+        @Html.AntiForgeryToken()
         <table class="form-table">
             <tr>
                 <td>Họ Tên:</td>
@@ -168,6 +169,19 @@
                     <span asp-validation-for="PatientViewModel.Address" class="validation-error"></span>
                 </td>
             </tr>
+            <tr>
+                <td>Ảnh Đại Diện:</td>
+                <td>
+                    <!-- Nhập link ảnh (URL) -->
+                    <input type="text" asp-for="PatientViewModel.AvatarPath" class="form-control mb-2" placeholder="Dán đường dẫn ảnh (URL) nếu có" />
+                    <span asp-validation-for="PatientViewModel.AvatarPath" class="text-danger"></span>
+
+                    <!-- Hoặc upload ảnh từ máy -->
+                    <input type="file" name="AvatarFile" accept="image/*" class="form-control" />
+                    <span asp-validation-for="AvatarFile" class="text-danger"></span>
+                </td>
+            </tr>
+
         </table>
 
         <div class="button-group">

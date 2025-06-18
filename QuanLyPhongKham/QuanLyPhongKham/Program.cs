@@ -173,6 +173,14 @@ namespace QuanLyPhongKham
 
             app.UseRouting();
 
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+                RequestPath = ""
+            });
+
+
             app.UseAuthorization();
 
             app.MapControllers();

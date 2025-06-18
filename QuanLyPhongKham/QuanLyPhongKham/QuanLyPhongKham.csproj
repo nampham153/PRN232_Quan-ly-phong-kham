@@ -26,8 +26,8 @@
     <ProjectReference Include="..\BusinessAccessLayer\BusinessAccessLayer.csproj" />
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
   </ItemGroup>
-
   <ItemGroup>
+    <Folder Include="wwwroot\uploadsPatient\" />
     <Folder Include="wwwroot\uploadsDoctor\" />
   </ItemGroup>
 
