@@ -30,6 +30,17 @@ namespace DataAccessLayer.Repository
                 .Where(a => a.RoleId == 2)
                 .ToList();
         }
+        public List<Account> GetAvailableAccountsForDoctor()
+        {
+            var usedAccountIds = _context.Users
+                .Where(u => u.Account.RoleId == 2)
+                .Select(u => u.AccountId)
+                .ToList();
+
+            return _context.Accounts
+                .Where(a => a.RoleId == 2 && !usedAccountIds.Contains(a.AccountId))
+                .ToList();
+        }
 
     }
 }
