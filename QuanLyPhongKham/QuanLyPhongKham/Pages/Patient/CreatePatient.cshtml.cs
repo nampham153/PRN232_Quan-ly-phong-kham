@@ -28,14 +28,16 @@ namespace QuanLyPhongKham.Pages.Patient
 
         public IActionResult OnPost()
         {
+            // Nếu không upload file và không có link -> báo lỗi
             if ((AvatarFile == null || AvatarFile.Length == 0) && string.IsNullOrWhiteSpace(PatientViewModel.AvatarPath))
             {
                 ModelState.AddModelError("AvatarFile", "Bạn phải chọn ảnh từ máy hoặc dán link ảnh.");
             }
 
-            if (AvatarFile == null || AvatarFile.Length == 0)
+            // Nếu có upload file thì bỏ qua bắt buộc của AvatarPath (coi như không cần nhập)
+            if (AvatarFile != null && AvatarFile.Length > 0)
             {
-                ModelState.Remove(nameof(AvatarFile)); // Gỡ bắt buộc nếu không upload
+                ModelState.Remove("PatientViewModel.AvatarPath");
             }
 
             if (!ModelState.IsValid)
@@ -55,6 +57,7 @@ namespace QuanLyPhongKham.Pages.Patient
                     Address = PatientViewModel.Address
                 };
 
+                // Ưu tiên file upload
                 if (AvatarFile != null && AvatarFile.Length > 0)
                 {
                     var uploadsFolder = Path.Combine("wwwroot/uploadsPatient");
@@ -70,9 +73,9 @@ namespace QuanLyPhongKham.Pages.Patient
 
                     patient.AvatarPath = $"/uploadsPatient/{fileName}";
                 }
-                else
+                else if (!string.IsNullOrWhiteSpace(PatientViewModel.AvatarPath))
                 {
-                    patient.AvatarPath = PatientViewModel.AvatarPath?.Trim();
+                    patient.AvatarPath = PatientViewModel.AvatarPath.Trim();
                 }
 
                 _patientService.AddPatient(patient);
