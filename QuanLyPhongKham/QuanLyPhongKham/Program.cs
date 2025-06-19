@@ -12,6 +12,7 @@ using DataAccessLayer.Repository.Authen;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 namespace QuanLyPhongKham
@@ -44,16 +45,14 @@ namespace QuanLyPhongKham
             builder.Services.AddScoped<ITestRepository, TestRepository>();
             builder.Services.AddScoped<ITestService, TestService>();
 
-            builder.Services.AddScoped<ITestService, TestService>();
-            builder.Services.AddScoped<ITestRepository, TestRepository>();
             builder.Services.AddScoped<IDoctorService, DoctorService>();
             builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
-           builder.Services.AddScoped< DataAccessLayer.IRepository.IAccountRepository, DataAccessLayer.Repository.AccountRepository>();
+
+            builder.Services.AddScoped<DataAccessLayer.IRepository.IAccountRepository, DataAccessLayer.Repository.AccountRepository>();
 
             builder.Services.AddScoped<TestResultDAO>();
             builder.Services.AddScoped<ITestResultRepository, TestResultRepository>();
             builder.Services.AddScoped<ITestResultService, TestResultService>();
-
 
             // ManagerUser Logic
             builder.Services.AddScoped<ManagerUserDAO>();
@@ -65,15 +64,10 @@ namespace QuanLyPhongKham
             builder.Services.AddScoped<DataAccessLayer.Repository.Authen.AccountRepository>();
             builder.Services.AddScoped<IAccountService, AccountService>();
 
-
             // ========================================
             // Register MVC & JSON options
             // ========================================
-            builder.Services.AddControllers()
-                .AddJsonOptions(options =>
-                {
-                    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-                });
+            builder.Services.AddControllers().AddXmlDataContractSerializerFormatters();
 
             // Đọc cấu hình JWT từ appsettings.json
             var jwtSecret = builder.Configuration["Jwt:Key"];
@@ -102,11 +96,79 @@ namespace QuanLyPhongKham
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero
                 };
+
+                // Cho phép token không cần prefix "Bearer "
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
+                        if (!string.IsNullOrEmpty(authHeader))
+                        {
+                            if (authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+                            {
+                                context.Token = authHeader.Substring("Bearer ".Length).Trim();
+                            }
+                            else
+                            {
+                                context.Token = authHeader.Trim();
+                            }
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
             });
+
+            // Đăng ký Authorization policy "Admin"
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", policy =>
+                    policy.RequireRole("Admin")); // Role "Admin" trong DB phải đúng tên này
+            });
+
+            // Cấu hình Swagger hỗ trợ Bearer token
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "QuanLyPhongKham API", Version = "v1" });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "Nhập token JWT của bạn, không cần tiền tố 'Bearer '",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
+            });
+
             builder.Services.AddRazorPages();
             builder.Services.AddHttpClient();
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+
+            // ** Thêm đăng ký dịch vụ Session và cache cho Session **
+            builder.Services.AddDistributedMemoryCache(); // Cache cho Session
+
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // Thời gian session hết hạn
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             // ========================================
             // Build & Configure Middleware
@@ -123,6 +185,10 @@ namespace QuanLyPhongKham
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+
+            app.UseSession(); // Phải nằm giữa UseRouting và UseAuthorization
 
             app.UseAuthorization();
 

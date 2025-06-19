@@ -1,19 +1,18 @@
 ﻿using DataAccessLayer.models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Net.Http.Headers;
 using System.Text.Json;
 
 namespace QuanLyPhongKham.Pages.Authen
 {
     public class IndexModel : PageModel
     {
-        private readonly HttpClient _httpClient;
-        private readonly IConfiguration _configuration;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public IndexModel(IHttpClientFactory factory, IConfiguration configuration)
+        public IndexModel(IHttpClientFactory httpClientFactory)
         {
-            _httpClient = factory.CreateClient();
-            _configuration = configuration;
+            _httpClientFactory = httpClientFactory;
         }
 
         [BindProperty(SupportsGet = true)]
@@ -28,17 +27,31 @@ namespace QuanLyPhongKham.Pages.Authen
         [BindProperty(SupportsGet = true)]
         public int Page { get; set; } = 1;
 
-
-        public List<Account> Accounts { get; set; } = new();  // Dùng Account entity
+        public List<Account> Accounts { get; set; } = new();
         public List<Role> Roles { get; set; } = new();
         public int TotalPages { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
-            Console.WriteLine($"Page nhận được: {Page}");
+            // Lấy token từ Session
+            var token = HttpContext.Session.GetString("JWTToken");
+            if (string.IsNullOrEmpty(token))
+            {
+                // Chưa đăng nhập, chuyển về login
+                return RedirectToPage("/Authen/Login");
+            }
 
-            // Lấy danh sách Roles
-            var rolesResponse = await _httpClient.GetAsync("https://localhost:7086/api/account/roles");
+            var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            // Lấy danh sách roles (cũng có thể cache nếu cần)
+            var rolesResponse = await client.GetAsync("https://localhost:7086/api/account/roles");
+            if (rolesResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                // Token hết hạn hoặc không hợp lệ
+                return RedirectToPage("/Authen/Login");
+            }
+
             if (rolesResponse.IsSuccessStatusCode)
             {
                 var rolesJson = await rolesResponse.Content.ReadAsStringAsync();
@@ -48,24 +61,28 @@ namespace QuanLyPhongKham.Pages.Authen
                 }) ?? new();
             }
 
-            // Xây dựng query string
+            // Tạo query string cho count
             var queryParams = new List<string>();
-
             if (!string.IsNullOrWhiteSpace(Search))
-                queryParams.Add($"searchKeyword={Uri.EscapeDataString(Search)}");
+                queryParams.Add($"search={Uri.EscapeDataString(Search)}");
+
 
             if (RoleId.HasValue)
                 queryParams.Add($"roleId={RoleId.Value}");
-
             if (Status.HasValue)
                 queryParams.Add($"status={Status.Value}");
 
             var countQuery = string.Join("&", queryParams);
-            var countUrl = $"https://localhost:7086/api/account/count";
+            var countUrl = "https://localhost:7086/api/account/count";
             if (!string.IsNullOrEmpty(countQuery))
                 countUrl += "?" + countQuery;
 
-            var countResponse = await _httpClient.GetAsync(countUrl);
+            var countResponse = await client.GetAsync(countUrl);
+            if (countResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                return RedirectToPage("/Authen/Login");
+            }
+
             if (countResponse.IsSuccessStatusCode)
             {
                 var countJson = await countResponse.Content.ReadAsStringAsync();
@@ -75,27 +92,31 @@ namespace QuanLyPhongKham.Pages.Authen
                 }
             }
 
-            // Validate page số hợp lệ
             if (Page < 1) Page = 1;
             if (Page > TotalPages) Page = TotalPages;
 
             queryParams.Add($"page={Page}");
             var listQuery = string.Join("&", queryParams);
-            var listUrl = $"https://localhost:7086/api/account/list";
+            var listUrl = "https://localhost:7086/api/account/list";
             if (!string.IsNullOrEmpty(listQuery))
                 listUrl += "?" + listQuery;
 
-            var accResponse = await _httpClient.GetAsync(listUrl);
-            if (accResponse.IsSuccessStatusCode)
+            var listResponse = await client.GetAsync(listUrl);
+            if (listResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
             {
-                var accJson = await accResponse.Content.ReadAsStringAsync();
-                Accounts = JsonSerializer.Deserialize<List<Account>>(accJson, new JsonSerializerOptions
+                return RedirectToPage("/Authen/Login");
+            }
+
+            if (listResponse.IsSuccessStatusCode)
+            {
+                var listJson = await listResponse.Content.ReadAsStringAsync();
+                Accounts = JsonSerializer.Deserialize<List<Account>>(listJson, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 }) ?? new();
             }
+
+            return Page();
         }
-
-
     }
 }

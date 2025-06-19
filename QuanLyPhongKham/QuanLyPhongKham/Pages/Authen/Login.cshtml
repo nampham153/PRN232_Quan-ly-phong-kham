@@ -4,7 +4,7 @@
     ViewData["Title"] = "Login";
 }
 
-<h2>Login</h2>
+<h2>Đăng nhập</h2>
 
 <form method="post">
     <div>
@@ -15,9 +15,9 @@
         <label asp-for="LoginRequest.Password"></label>
         <input asp-for="LoginRequest.Password" type="password" />
     </div>
-    <button type="submit">Login</button>
+    <button type="submit">Đăng nhập</button>
 
-    @if (Model.ErrorMessage != null)
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
     {
         <p style="color:red">@Model.ErrorMessage</p>
     }

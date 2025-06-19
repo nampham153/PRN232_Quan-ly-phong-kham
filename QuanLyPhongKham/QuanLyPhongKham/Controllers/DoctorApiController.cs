@@ -4,11 +4,14 @@ using DataAccessLayer.models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using DataAccessLayer.IRepository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace QuanLyPhongKham.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Doctor")]
+
     public class DoctorApiController : ControllerBase
     {
         private readonly IDoctorService _doctorService;

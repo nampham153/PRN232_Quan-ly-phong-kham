@@ -1,4 +1,5 @@
-﻿using DataAccessLayer.ViewModels.Authen;
+﻿// Login.cshtml.cs
+using DataAccessLayer.ViewModels.Authen;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Text.Json;
@@ -22,23 +23,24 @@ namespace QuanLyPhongKham.Pages.Authen
         public async Task<IActionResult> OnPostAsync()
         {
             var client = _httpClientFactory.CreateClient();
+
             var response = await client.PostAsJsonAsync("https://localhost:7086/api/auth/login", LoginRequest);
 
-            if (response.IsSuccessStatusCode)
+            if (!response.IsSuccessStatusCode)
             {
-                var responseBody = await response.Content.ReadAsStringAsync();
-                var json = JsonDocument.Parse(responseBody);
-                var token = json.RootElement.GetProperty("token").GetString();
-
-                // Lưu token vào session hoặc cookie
-                HttpContext.Session.SetString("JWTToken", token);
-
-                // Chuyển hướng sau khi đăng nhập thành công
-                return RedirectToPage("/Authen/Index");
+                ErrorMessage = "Tên đăng nhập hoặc mật khẩu không đúng";
+                return Page();
             }
 
-            ErrorMessage = "Invalid username or password";
-            return Page();
+            var jsonString = await response.Content.ReadAsStringAsync();
+            var jsonDoc = JsonDocument.Parse(jsonString);
+            var token = jsonDoc.RootElement.GetProperty("token").GetString();
+
+            // Lưu token vào session
+            HttpContext.Session.SetString("JWTToken", token);
+
+            // Redirect sang trang admin
+            return RedirectToPage("/Authen/Index"); // ✅ đúng cú pháp Razor Pages
         }
     }
 }

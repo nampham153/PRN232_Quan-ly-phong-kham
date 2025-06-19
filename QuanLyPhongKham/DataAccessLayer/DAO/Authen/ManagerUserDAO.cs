@@ -20,7 +20,7 @@ namespace BusinessAccessLayer.Service.Authen
         }
 
         // 1 + 3: Danh sách tài khoản có search + phân trang (6 account / trang)
-        public List<Account> GetAccounts(string searchKeyword = "", int page = 1, int? roleId = null, bool? status = null)
+        public List<AccountDTO> GetAccounts(string searchKeyword = "", int page = 1, int? roleId = null, bool? status = null)
         {
             var query = _context.Accounts
                 .Include(a => a.Role)
@@ -52,8 +52,17 @@ namespace BusinessAccessLayer.Service.Authen
                 .OrderBy(a => a.AccountId)
                 .Skip((page - 1) * 6)
                 .Take(6)
+                .Select(a => new AccountDTO
+                {
+                    AccountId = a.AccountId,
+                    Username = a.Username,
+                    RoleName = a.Role != null ? a.Role.RoleName : null,
+                    Email = a.User != null ? a.User.Email : null,
+                    Status = a.Status
+                })
                 .ToList();
         }
+
         // Lấy danh sách Role (async)
         public async Task<List<Role>> GetRolesAsync()
         {
@@ -130,14 +139,25 @@ namespace BusinessAccessLayer.Service.Authen
 
 
         // 5: Xem chi tiết tài khoản theo ID
-        public Account GetAccountById(int accountId)
+        public AccountDTO GetAccountById(int id)
         {
-            return _context.Accounts
+            var account = _context.Accounts
                 .Include(a => a.Role)
                 .Include(a => a.User)
-                .Include(a => a.Patient)
-                .FirstOrDefault(a => a.AccountId == accountId);
+                .FirstOrDefault(a => a.AccountId == id);
+
+            if (account == null) return null;
+
+            return new AccountDTO
+            {
+                AccountId = account.AccountId,
+                Username = account.Username,
+                RoleName = account.Role.RoleName,
+                Email = account.User?.Email,
+                Status = account.Status
+            };
         }
+
 
         // 6: Xóa tài khoản nếu Status = false
         public bool DeleteAccount(int accountId)

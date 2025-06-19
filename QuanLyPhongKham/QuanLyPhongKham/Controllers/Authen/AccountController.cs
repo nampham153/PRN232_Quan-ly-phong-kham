@@ -1,6 +1,7 @@
 ﻿using BusinessAccessLayer.IService.Authen;
 using DataAccessLayer.models;
 using DataAccessLayer.ViewModels.Authen;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,9 @@ namespace QuanLyPhongKham.Controllers.Authen
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize(Policy = "Admin")]
+    [Authorize(Roles = "Admin")]
+
     public class AccountController : ControllerBase
     {
         private readonly IManagerUserService _userService;

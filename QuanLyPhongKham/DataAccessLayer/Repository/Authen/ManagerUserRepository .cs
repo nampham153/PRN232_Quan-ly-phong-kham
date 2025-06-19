@@ -22,7 +22,7 @@ namespace DataAccessLayer.Repository.Authen
             _accountDAO = accountDAO;
         }
 
-        public List<Account> GetAccounts(string searchKeyword, int page, int? roleId, bool? status)
+        public List<AccountDTO> GetAccounts(string searchKeyword, int page, int? roleId, bool? status)
         {
             return _accountDAO.GetAccounts(searchKeyword, page, roleId, status);
         }
@@ -37,7 +37,7 @@ namespace DataAccessLayer.Repository.Authen
             return _accountDAO.CreateAccount(account);
         }
 
-        public Account GetAccountById(int accountId)
+        public AccountDTO GetAccountById(int accountId)
         {
             return _accountDAO.GetAccountById(accountId);
         }

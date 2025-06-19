@@ -9,6 +9,7 @@ namespace QuanLyPhongKham.Controllers.Authen
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class AuthController : ControllerBase
     {
         private readonly IAccountService _accountService;

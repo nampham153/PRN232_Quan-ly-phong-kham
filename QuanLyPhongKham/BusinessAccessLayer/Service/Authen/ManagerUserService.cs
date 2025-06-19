@@ -22,7 +22,7 @@ namespace BusinessAccessLayer.Service.Authen
 
       
 
-        public List<Account> GetAccounts(string searchKeyword, int page, int? roleId, bool? status)
+        public List<AccountDTO> GetAccounts(string searchKeyword, int page, int? roleId, bool? status)
         {
             if (page < 1) page = 1;
             return _repository.GetAccounts(searchKeyword, page, roleId, status);
@@ -38,7 +38,7 @@ namespace BusinessAccessLayer.Service.Authen
             return _repository.CreateAccount(account);
         }
 
-        public Account GetAccountById(int accountId)
+        public AccountDTO GetAccountById(int accountId)
         {
             return _repository.GetAccountById(accountId);
         }
