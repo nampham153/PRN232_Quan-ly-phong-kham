@@ -16,6 +16,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <th>Ảnh</th>
             <th>Full Name</th>
             <th>Phone</th>
             <th>Email</th>
@@ -28,6 +29,16 @@
         @foreach (var doctor in Model.Doctors)
         {
             <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(doctor.DoctorPath))
+                    {
+                        <img src="@doctor.DoctorPath" alt="Avatar" style="width: 50px; height: 50px; object-fit: cover;" />
+                    }
+                    else
+                    {
+                        <span>Không có ảnh</span>
+                    }
+                </td>
                 <td>@doctor.FullName</td>
                 <td>@doctor.Phone</td>
                 <td>@doctor.Email</td>

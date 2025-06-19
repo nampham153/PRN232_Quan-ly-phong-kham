@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net.Http.Headers;
@@ -6,6 +7,9 @@ using System.Text.Json;
 
 namespace QuanLyPhongKham.Pages.Authen
 {
+    //[Authorize(Policy = "Admin")]
+    //[Authorize]
+
     public class IndexModel : PageModel
     {
         private readonly IHttpClientFactory _httpClientFactory;

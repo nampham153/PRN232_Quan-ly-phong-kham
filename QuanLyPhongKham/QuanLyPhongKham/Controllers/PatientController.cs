@@ -44,7 +44,7 @@ namespace QuanLyPhongKham.Controllers
             {
                 return NotFound();
             }
-            return Ok(new PatientViewModel
+            var viewModel = new PatientViewModel
             {
                 PatientId = patient.PatientId,
                 FullName = patient.FullName,
@@ -54,7 +54,8 @@ namespace QuanLyPhongKham.Controllers
                 Email = patient.Email,
                 Address = patient.Address,
                 MedicalRecordCount = patient.MedicalRecords?.Count ?? 0
-            });
+            };
+            return Ok(viewModel);
         }
 
         [HttpPost]
@@ -72,7 +73,8 @@ namespace QuanLyPhongKham.Controllers
                 DOB = patientViewModel.DOB,
                 Phone = patientViewModel.Phone,
                 Email = patientViewModel.Email,
-                Address = patientViewModel.Address
+                Address = patientViewModel.Address,
+                AvatarPath = patientViewModel.AvatarPath
             };
 
             _patientService.AddPatient(patient);
@@ -99,6 +101,7 @@ namespace QuanLyPhongKham.Controllers
             patient.Phone = patientViewModel.Phone;
             patient.Email = patientViewModel.Email;
             patient.Address = patientViewModel.Address;
+            patient.AvatarPath = patientViewModel.AvatarPath;
 
             _patientService.UpdatePatient(patient);
             return NoContent();
@@ -114,6 +117,32 @@ namespace QuanLyPhongKham.Controllers
             }
             _patientService.DeletePatient(id);
             return NoContent();
+        }
+
+        [HttpGet("search")]
+        public ActionResult<IEnumerable<PatientViewModel>> SearchPatients(
+       string fullName = null,
+       string phone = null,
+       string email = null,
+       string address = null,
+       string gender = null,
+       DateTime? dobFrom = null,
+       DateTime? dobTo = null)
+        {
+            var patients = _patientService.SearchPatients(fullName, phone, email, address, gender, dobFrom, dobTo);
+            var patientViewModels = patients.Select(p => new PatientViewModel
+            {
+                PatientId = p.PatientId,
+                FullName = p.FullName,
+                Gender = p.Gender,
+                DOB = (DateTime)p.DOB,
+                Phone = p.Phone,
+                Email = p.Email,
+                Address = p.Address,
+                MedicalRecordCount = p.MedicalRecords?.Count ?? 0,
+                AvatarPath = p.AvatarPath // Ensure this is mapped
+            }).ToList();
+            return Ok(patientViewModels);
         }
     }
 }

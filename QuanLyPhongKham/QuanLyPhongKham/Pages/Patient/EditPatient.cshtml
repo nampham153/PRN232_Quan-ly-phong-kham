@@ -168,6 +168,19 @@
             <span asp-validation-for="PatientViewModel.Address" class="validation-error"></span>
         </div>
 
+        <div class="form-group">
+            <label asp-for="PatientViewModel.AvatarPath">Link Ảnh (AvatarPath)</label>
+            <input asp-for="PatientViewModel.AvatarPath" />
+            <span asp-validation-for="PatientViewModel.AvatarPath" class="validation-error"></span>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.PatientViewModel.AvatarPath))
+        {
+            <div class="form-group">
+                <label>Ảnh hiện tại:</label><br />
+                <img src="@Model.PatientViewModel.AvatarPath" alt="Avatar" style="width: 100px; height: 100px; object-fit: cover;" />
+            </div>
+        }
+
         <div class="button-group">
             <button type="submit" class="btn btn-primary">Cập Nhật</button>
             <a asp-page="/Patient/PatientList" class="btn btn-secondary">Hủy</a>

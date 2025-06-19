@@ -3,32 +3,16 @@
   "WorkspaceRootPath": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\doctorapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\doctorapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\testresultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\testresultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\repository\\testrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\repository\\testrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\service\\testresultservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\service\\testresultservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\authen\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\authen\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\authen\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\authen\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\authen\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\authen\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\authen\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -39,64 +23,84 @@
       "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\authen\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\authen\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\authen\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\authen\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\authen\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\authen\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\authen\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\irepository\\authen\\imanageruserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\irepository\\authen\\imanageruserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testresultpage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testresultpage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\testresultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\testresultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\doctorapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\doctorapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\service\\authen\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\service\\authen\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\authen\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\authen\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\authen\\refreshtokenrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\authen\\refreshtokenrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\authen\\useraccountviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\authen\\useraccountviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\authen\\accountcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\authen\\accountcreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\authen\\accountdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\authen\\accountdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\authen\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\authen\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\authen\\loginrequest .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\authen\\loginrequest .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\patient\\createpatient.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\patient\\createpatient.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\authen\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\authen\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\patient\\patientlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\patient\\patientlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\authen\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\authen\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testresultpage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testresultpage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\authen\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\authen\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|d:\\prn232_quan-ly-phong-kham\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\doctorodatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\doctorodatacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -106,7 +110,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -130,93 +134,172 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PatientController.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\PatientController.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\PatientController.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\PatientController.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Controllers\\PatientController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T03:03:30.394Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "TestResultController.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestResultController.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\TestResultController.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestResultController.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Controllers\\TestResultController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAACAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T03:01:39.745Z",
+              "DocumentIndex": 1,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Login.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Authen\\Login.cshtml",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Login.cshtml*",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Authen\\Login.cshtml*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T04:02:56.019Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "TestController.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestController.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\TestController.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestController.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Controllers\\TestController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAADAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T03:01:33.506Z",
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Edit.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Authen\\Edit.cshtml",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Edit.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Authen\\Edit.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T04:02:53.626Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
+              "Title": "DoctorController.cs",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\DoctorController.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\DoctorController.cs",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\DoctorController.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Controllers\\DoctorController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T04:00:52.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "DoctorApiController.cs",
               "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\DoctorApiController.cs",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\DoctorApiController.cs",
               "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\DoctorApiController.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Controllers\\DoctorApiController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAhAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T03:01:29.473Z",
+              "WhenOpened": "2025-06-19T04:00:49.921Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "TestRepository.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\TestRepository.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\Repository\\TestRepository.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\TestRepository.cs",
-              "RelativeToolTip": "DataAccessLayer\\Repository\\TestRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 11,
+              "Title": "AccountService.cs",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\Authen\\AccountService.cs",
+              "RelativeDocumentMoniker": "BusinessAccessLayer\\Service\\Authen\\AccountService.cs",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\Authen\\AccountService.cs",
+              "RelativeToolTip": "BusinessAccessLayer\\Service\\Authen\\AccountService.cs",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAkwIMAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T03:01:23.957Z",
+              "WhenOpened": "2025-06-19T03:53:37.976Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Index.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Authen\\Index.cshtml",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Index.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Authen\\Index.cshtml",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T03:42:07.116Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Authen\\Index.cshtml.cs",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Index.cshtml.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Authen\\Index.cshtml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T03:26:34.029Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "TestResultService.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\TestResultService.cs",
-              "RelativeDocumentMoniker": "BusinessAccessLayer\\Service\\TestResultService.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\TestResultService.cs",
-              "RelativeToolTip": "BusinessAccessLayer\\Service\\TestResultService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "Login.cshtml.cs",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Login.cshtml.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Authen\\Login.cshtml.cs",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Login.cshtml.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Authen\\Login.cshtml.cs",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAkwFYAAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T03:01:17.707Z",
+              "WhenOpened": "2025-06-19T03:26:18.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\Authen\\AccountController.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\Authen\\AccountController.cs",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\Authen\\AccountController.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Controllers\\Authen\\AccountController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T03:26:07.358Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 12,
-              "Title": "IManagerUserRepository.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\Authen\\IManagerUserRepository.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\IRepository\\Authen\\IManagerUserRepository.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\Authen\\IManagerUserRepository.cs",
-              "RelativeToolTip": "DataAccessLayer\\IRepository\\Authen\\IManagerUserRepository.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwAAAAAAAAAAA",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\Authen\\AuthController.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\Authen\\AuthController.cs",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\Authen\\AuthController.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Controllers\\Authen\\AuthController.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAYwDcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T09:33:39.427Z"
+              "WhenOpened": "2025-06-19T03:26:06.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TestResultController.cs",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestResultController.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\TestResultController.cs",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestResultController.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Controllers\\TestResultController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T03:26:02.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\appsettings.Development.json",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\appsettings.Development.json",
+              "RelativeToolTip": "QuanLyPhongKham\\appsettings.Development.json",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAuwBIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-19T03:23:46.039Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\appsettings.json",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\appsettings.json",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\appsettings.json",
+              "RelativeToolTip": "QuanLyPhongKham\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-19T03:17:20.801Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -226,202 +309,153 @@
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Program.cs",
               "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Program.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Program.cs",
-              "ViewState": "AQIAAK4AAAAAAAAAAAArwKcAAAAkAAAA",
+              "ViewState": "AQIAAP4AAAAAAAAAAAAcwBkBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T09:23:31.231Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AccessDenied.cshtml",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\AccessDenied.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\AccessDenied.cshtml",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\AccessDenied.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\AccessDenied.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T09:12:25.658Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\Authen\\AuthController.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\Authen\\AuthController.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\Authen\\AuthController.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Controllers\\Authen\\AuthController.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAACwAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T09:05:11.458Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\Authen\\AccountController.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\Authen\\AccountController.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\Authen\\AccountController.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Controllers\\Authen\\AccountController.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAAADEAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T09:05:09.259Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "AccountCreateDto.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\Authen\\AccountCreateDto.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\Authen\\AccountCreateDto.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\Authen\\AccountCreateDto.cs",
-              "RelativeToolTip": "DataAccessLayer\\ViewModels\\Authen\\AccountCreateDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T08:58:44.694Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "AccountDTO.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\Authen\\AccountDTO.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\Authen\\AccountDTO.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\Authen\\AccountDTO.cs",
-              "RelativeToolTip": "DataAccessLayer\\ViewModels\\Authen\\AccountDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T08:58:42.502Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "JwtSettings.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\Authen\\JwtSettings.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\Authen\\JwtSettings.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\Authen\\JwtSettings.cs",
-              "RelativeToolTip": "DataAccessLayer\\ViewModels\\Authen\\JwtSettings.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T08:58:40.65Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "LoginRequest .cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\Authen\\LoginRequest .cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\Authen\\LoginRequest .cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\Authen\\LoginRequest .cs",
-              "RelativeToolTip": "DataAccessLayer\\ViewModels\\Authen\\LoginRequest .cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T08:42:20.596Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "RefreshTokenRequest.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\Authen\\RefreshTokenRequest.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\Authen\\RefreshTokenRequest.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\Authen\\RefreshTokenRequest.cs",
-              "RelativeToolTip": "DataAccessLayer\\ViewModels\\Authen\\RefreshTokenRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T08:58:38.599Z"
+              "WhenOpened": "2025-06-19T03:11:58.831Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 16,
-              "Title": "UserAccountViewModel.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\Authen\\UserAccountViewModel.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\Authen\\UserAccountViewModel.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\Authen\\UserAccountViewModel.cs",
-              "RelativeToolTip": "DataAccessLayer\\ViewModels\\Authen\\UserAccountViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAsAAAA",
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml.cs",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T08:58:35.487Z"
+              "WhenOpened": "2025-06-19T03:11:32.863Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Edit.cshtml.cs",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml.cs",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml.cs",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T03:11:27.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Create.cshtml.cs",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml.cs",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml.cs",
+              "ViewState": "AQIAAGsAAAAAAAAAAAAswAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T03:11:21.182Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T03:11:16.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CreatePatient.cshtml",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Patient\\CreatePatient.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Patient\\CreatePatient.cshtml",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Patient\\CreatePatient.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Patient\\CreatePatient.cshtml",
+              "ViewState": "AQIAAJgAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T03:11:08.35Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 21,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Delete.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Authen\\Delete.cshtml",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Delete.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Authen\\Delete.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "PatientList.cshtml",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Patient\\PatientList.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Patient\\PatientList.cshtml",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Patient\\PatientList.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Patient\\PatientList.cshtml",
+              "ViewState": "AQIAAKAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T08:49:18.78Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Details.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Authen\\Details.cshtml",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Details.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Authen\\Details.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T08:49:16.94Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Edit.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Authen\\Edit.cshtml",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Edit.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Authen\\Edit.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T08:49:14.469Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Authen\\Index.cshtml.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Index.cshtml.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Authen\\Index.cshtml.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAkwEMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T08:48:27.562Z"
+              "WhenOpened": "2025-06-19T03:11:03.014Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Index.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Authen\\Index.cshtml",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Index.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Authen\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAKAAAA",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml",
+              "ViewState": "AQIAADYCAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T08:48:17.891Z",
+              "WhenOpened": "2025-06-19T03:10:55.814Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml",
+              "ViewState": "AQIAAIABAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T03:10:50.469Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "TestController.cs",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestController.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\TestController.cs",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestController.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Controllers\\TestController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T03:09:44.129Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Login.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Authen\\Login.cshtml",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Login.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Authen\\Login.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAgAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T08:43:21.793Z"
+              "Title": "PatientController.cs",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\PatientController.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\PatientController.cs",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\PatientController.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Controllers\\PatientController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T03:09:35.02Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Login.cshtml.cs",
-              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Login.cshtml.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Authen\\Login.cshtml.cs",
-              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Authen\\Login.cshtml.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Authen\\Login.cshtml.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAQwCsAAAAAAAAA",
+              "DocumentIndex": 24,
+              "Title": "DoctorODataController.cs",
+              "DocumentMoniker": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\DoctorODataController.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\DoctorODataController.cs",
+              "ToolTip": "D:\\PRN232_Quan-ly-phong-kham\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\DoctorODataController.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Controllers\\DoctorODataController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T08:42:15.902Z"
+              "WhenOpened": "2025-06-19T03:08:56.734Z",
+              "EditorCaption": ""
             }
           ]
         },

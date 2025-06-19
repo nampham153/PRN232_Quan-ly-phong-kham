@@ -49,6 +49,18 @@
             </select>
             <span asp-validation-for="Doctor.Gender" class="text-danger"></span>
         </div>
+        <div class="form-group">
+            <label asp-for="Doctor.DoctorPath">Link Ảnh (AvatarPath)</label>
+            <input asp-for="Doctor.DoctorPath"  />
+            <span asp-validation-for="Doctor.DoctorPath" class="validation-error"></span>
+        </div>
+        @if (!string.IsNullOrEmpty(Model.Doctor.DoctorPath))
+        {
+            <div class="form-group">
+                <label>Ảnh hiện tại:</label><br />
+                <img src="@Model.Doctor.DoctorPath" alt="Avatar" style="width: 100px; height: 100px; object-fit: cover;" />
+            </div>
+        }
 
         <div>
             <button type="submit" class="btn btn-primary">Save Changes</button>

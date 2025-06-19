@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.models;
+using Microsoft.AspNetCore.Http; // Để dùng IFormFile
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -31,6 +32,7 @@ namespace DataAccessLayer.ViewModels
 
         [Required(ErrorMessage = "AccountId là bắt buộc")]
         public int AccountId { get; set; }
+        public string? DoctorPath { get; set; } 
 
         public static User ToEntity(DoctorVM vm)
         {
@@ -42,7 +44,8 @@ namespace DataAccessLayer.ViewModels
                 DOB = vm.DOB,
                 Phone = vm.Phone,
                 Email = vm.Email,
-                AccountId = vm.AccountId
+                AccountId = vm.AccountId,
+                DoctorPath = vm.DoctorPath
             };
         }
     }

@@ -2,21 +2,22 @@
 using DataAccessLayer.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Text.Json;
 
 namespace QuanLyPhongKham.Pages.Patient
 {
-    public class PatientListModel : PageModel
+    public class PatientList : PageModel
     {
-        private readonly IPatientService _patientService;
+        private readonly HttpClient _httpClient;
 
-        public PatientListModel(IPatientService patientService)
+        public PatientList(IHttpClientFactory httpClientFactory)
         {
-            _patientService = patientService;
+            _httpClient = httpClientFactory.CreateClient();
+            _httpClient.BaseAddress = new Uri("https://localhost:7086/api/"); // API base address
         }
 
         public List<PatientViewModel> Patients { get; set; }
 
-        // Các property cũ (giữ lại cho tương thích)
         [BindProperty(SupportsGet = true)]
         public string SearchFullName { get; set; }
 
@@ -29,7 +30,6 @@ namespace QuanLyPhongKham.Pages.Patient
         [BindProperty(SupportsGet = true)]
         public string SearchAddress { get; set; }
 
-        // Property mới cho tìm kiếm tổng hợp
         [BindProperty(SupportsGet = true)]
         public string SearchAll { get; set; }
 
@@ -42,7 +42,7 @@ namespace QuanLyPhongKham.Pages.Patient
         [BindProperty(SupportsGet = true)]
         public DateTime? DOBTo { get; set; }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
             if (!string.IsNullOrEmpty(SearchAll))
             {
@@ -52,19 +52,38 @@ namespace QuanLyPhongKham.Pages.Patient
                 SearchAddress = SearchAll;
             }
 
-            var patients = _patientService.SearchPatients(SearchFullName, SearchPhone, SearchEmail, SearchAddress, GenderFilter, DOBFrom, DOBTo);
-
-            Patients = patients.Select(p => new PatientViewModel
+            var queryString = BuildQueryString();
+            var response = await _httpClient.GetAsync($"Patient/search?{queryString}"); // Call the search endpoint
+            if (response.IsSuccessStatusCode)
             {
-                PatientId = p.PatientId,
-                FullName = p.FullName,
-                Gender = p.Gender,
-                DOB = (DateTime)p.DOB,
-                Phone = p.Phone,
-                Email = p.Email,
-                Address = p.Address,
-                MedicalRecordCount = p.MedicalRecords?.Count ?? 0
-            }).ToList();
+                var content = await response.Content.ReadAsStringAsync();
+                var patients = JsonSerializer.Deserialize<List<PatientViewModel>>(content, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+
+
+                Patients = patients;
+            }
+            else
+            {
+                Patients = new List<PatientViewModel>(); // Handle error with empty list
+            }
+        }
+
+        private string BuildQueryString()
+        {
+            var parameters = new List<string>();
+            if (!string.IsNullOrEmpty(SearchFullName)) parameters.Add($"fullName={Uri.EscapeDataString(SearchFullName)}");
+            if (!string.IsNullOrEmpty(SearchPhone)) parameters.Add($"phone={Uri.EscapeDataString(SearchPhone)}");
+            if (!string.IsNullOrEmpty(SearchEmail)) parameters.Add($"email={Uri.EscapeDataString(SearchEmail)}");
+            if (!string.IsNullOrEmpty(SearchAddress)) parameters.Add($"address={Uri.EscapeDataString(SearchAddress)}");
+            if (!string.IsNullOrEmpty(GenderFilter)) parameters.Add($"gender={Uri.EscapeDataString(GenderFilter)}");
+            if (DOBFrom.HasValue) parameters.Add($"dobFrom={Uri.EscapeDataString(DOBFrom.Value.ToString("yyyy-MM-dd"))}");
+            if (DOBTo.HasValue) parameters.Add($"dobTo={Uri.EscapeDataString(DOBTo.Value.ToString("yyyy-MM-dd"))}");
+
+            return string.Join("&", parameters);
         }
     }
+
 }
