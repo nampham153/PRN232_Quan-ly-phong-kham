@@ -1,19 +1,51 @@
+# ========================================
 # Build results
 bin/
 obj/
 **/bin/
 **/obj/
 
+# ========================================
 # User-specific files
 *.user
 *.suo
 
+# ========================================
 # Visual Studio folder
 .vs/
 
-# Others
+# ========================================
+# Logs & temporary files
 *.log
 *.tmp
 
+# ========================================
 # ASP.NET related
 wwwroot/node_modules/
+
+# ========================================
+# Configuration files (ignore optional)
+appsettings.Development.json
+appsettings.*.json
+launchSettings.json
+
+# ========================================
+# EF Core Migrations
+**/Migrations/
+*.Designer.cs
+*ModelSnapshot.cs
+
+# ========================================
+# Git merge/rebase temporary files
+*.orig
+*.rej
+
+# ========================================
+# Rider IDE (nếu dùng JetBrains)
+.idea/
+*.sln.iml
+
+# ========================================
+# Untracked system files (Windows/Mac)
+Thumbs.db
+.DS_Store

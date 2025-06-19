@@ -76,6 +76,8 @@ namespace QuanLyPhongKham.Controllers.Authen
             var result = _userService.DeleteAccount(id);
             return result ? Ok("Deleted") : BadRequest("Account is active or not found");
         }
+
+
     }
 
 
