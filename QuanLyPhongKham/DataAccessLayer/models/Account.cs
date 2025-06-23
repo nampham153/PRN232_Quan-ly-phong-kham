@@ -16,6 +16,7 @@ namespace DataAccessLayer.models
         public string PasswordHash { get; set; }
 
         public int RoleId { get; set; }
+        public bool Status { get; set; }
         public Role Role { get; set; }
 
         public RefreshToken RefreshToken { get; set; }

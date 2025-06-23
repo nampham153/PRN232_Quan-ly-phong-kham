@@ -1,0 +1,154 @@
+﻿@page
+@model QuanLyPhongKham.Pages.Patient.PatientList
+@{
+    ViewData["Title"] = "Danh Sách Bệnh Nhân";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h4 class="card-title mb-0">Danh Sách Bệnh Nhân</h4>
+                        <p class="card-description">Quản lý thông tin bệnh nhân trong hệ thống</p>
+                    </div>
+                    <a href="/Patient/CreatePatient" class="btn btn-primary btn-sm">
+                        <i class="mdi mdi-plus"></i> Thêm Bệnh Nhân
+                    </a>
+                </div>
+
+                <!-- Search Section -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Tìm kiếm & Lọc</h6>
+                                <form method="get">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label">Từ khoá tìm kiếm:</label>
+                                            <input type="text" class="form-control form-control-sm" name="searchFullName" value="@Model.SearchFullName" placeholder="Nhập họ tên, SĐT, email, địa chỉ..." />
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label class="form-label">Giới tính:</label>
+                                            <select class="form-select form-select-sm" name="genderFilter">
+                                                <option value="">Tất cả</option>
+                                                <option value="Nam" selected="@(Model.GenderFilter == "Nam")">Nam</option>
+                                                <option value="Nữ" selected="@(Model.GenderFilter == "Nữ")">Nữ</option>
+                                                <option value="Khác" selected="@(Model.GenderFilter == "Khác")">Khác</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label class="form-label">Ngày sinh từ:</label>
+                                            <input type="date" class="form-control form-control-sm" name="dobFrom" value="@Model.DOBFrom?.ToString("yyyy-MM-dd")" />
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label class="form-label">Ngày sinh đến:</label>
+                                            <input type="date" class="form-control form-control-sm" name="dobTo" value="@Model.DOBTo?.ToString("yyyy-MM-dd")" />
+                                        </div>
+                                        <div class="col-md-2 mb-3 d-flex align-items-end">
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                <i class="mdi mdi-magnify"></i> Tìm kiếm
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table Section -->
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Ảnh</th>
+                                <th>ID</th>
+                                <th>Họ Tên</th>
+                                <th>Ngày Sinh</th>
+                                <th>Giới Tính</th>
+                                <th>SĐT</th>
+                                <th>Email</th>
+                                <th>Địa Chỉ</th>
+                                <th>Hồ Sơ</th>
+                                <th>Thao Tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var patient in Model.Patients)
+                            {
+                                <tr>
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(patient.AvatarPath))
+                                        {
+                                            <img src="@patient.AvatarPath" alt="Avatar" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" />
+                                        }
+                                        else
+                                        {
+                                            <span>Không có ảnh</span>
+                                        }
+                                    </td>
+                                    <td>@patient.PatientId</td>
+                                    <td>@patient.FullName</td>
+                                    <td>@patient.DOB.ToShortDateString()</td>
+                                    <td>@patient.Gender</td>
+                                    <td>@patient.Phone</td>
+                                    <td>@patient.Email</td>
+                                    <td>@patient.Address</td>
+                                    <td>@patient.MedicalRecordCount</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href="/Patient/EditPatient?id=@patient.PatientId" class="btn btn-outline-warning btn-sm btn-icon-text">
+                                                <i class="mdi mdi-pencil"></i> Sửa
+                                            </a>
+                                            <a href="/Patient/DeletePatient?id=@patient.PatientId" class="btn btn-outline-danger btn-sm btn-icon-text">
+                                                <i class="mdi mdi-delete"></i> Xoá
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .card-title {
+            color: #6c7293;
+            font-weight: 500;
+        }
+
+        .card-description {
+            color: #a7a7a7;
+            font-size: 0.875rem;
+            margin-bottom: 0;
+        }
+
+        .form-label {
+            color: #6c7293;
+            font-weight: 500;
+        }
+
+        .btn-icon-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .table th a {
+            color: #6c7293;
+            font-weight: 500;
+        }
+
+            .table th a:hover {
+                color: #007bff;
+            }
+    </style>
+}
