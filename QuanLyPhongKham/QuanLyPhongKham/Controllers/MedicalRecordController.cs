@@ -23,6 +23,7 @@ namespace QuanLyPhongKham.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
+
             if (_medicalRecordService.PatientHasRecord(model.PatientId))
             {
                 return BadRequest(new { message = "Bệnh nhân đã có hồ sơ y tế." });
@@ -38,9 +39,17 @@ namespace QuanLyPhongKham.Controllers
                 Note = model.Note
             };
 
-            _medicalRecordService.Add(newRecord);
-            return Ok(new { success = true, recordId = newRecord.RecordId });
+            try
+            {
+                _medicalRecordService.Add(newRecord);
+                return Ok(new { success = true, recordId = newRecord.RecordId });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
+
 
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] MedicalRecordVM model)
@@ -182,8 +191,6 @@ namespace QuanLyPhongKham.Controllers
 
             return Ok(recordVm);
         }
-
-        // API lấy danh sách tên bác sĩ (User.FullName) dùng để filter dropdown
         [HttpGet("doctor-names")]
         public IActionResult GetDoctorNames()
         {
@@ -196,8 +203,6 @@ namespace QuanLyPhongKham.Controllers
 
             return Ok(names);
         }
-
-        // API lấy danh sách tên bệnh nhân dùng để filter dropdown
         [HttpGet("patient-names")]
         public IActionResult GetPatientNames()
         {

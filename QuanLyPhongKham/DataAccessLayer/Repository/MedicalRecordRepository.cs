@@ -38,6 +38,15 @@ namespace DataAccessLayer.Repository
         {
             return _dao.DoctorHasRecord(doctorId);
         }
+        public bool DoctorExists(int doctorId)
+        {
+            return _dao.DoctorExists(doctorId);
+        }
+
+        public bool PatientExists(int patientId)
+        {
+            return _dao.PatientExists(patientId);
+        }
 
     }
 }

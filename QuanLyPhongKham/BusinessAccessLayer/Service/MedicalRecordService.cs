@@ -26,7 +26,17 @@ namespace BusinessAccessLayer.Service
 
         public MedicalRecord? GetById(int id) => _repository.GetById(id);
 
-        public void Add(MedicalRecord record) => _repository.Add(record);
+        public void Add(MedicalRecord record)
+        {
+            if (!_repository.DoctorExists(record.UserId))
+                throw new Exception("Bác sĩ không tồn tại hoặc không hợp lệ.");
+
+            if (!_repository.PatientExists(record.PatientId))
+                throw new Exception("Bệnh nhân không tồn tại.");
+
+            _repository.Add(record);
+        }
+
 
         public void Update(MedicalRecord record) => _repository.Update(record);
 

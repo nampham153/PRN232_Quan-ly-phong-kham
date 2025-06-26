@@ -40,6 +40,17 @@ namespace DataAccessLayer.DAO
             _context.MedicalRecords.Add(record);
             _context.SaveChanges();
         }
+        public bool DoctorExists(int doctorId)
+        {
+            return _context.Users
+                .Include(u => u.Account)
+                .Any(u => u.UserId == doctorId && u.Account.RoleId == 2);
+        }
+
+        public bool PatientExists(int patientId)
+        {
+            return _context.Patients.Any(p => p.PatientId == patientId);
+        }
 
         public void Update(MedicalRecord record)
         {

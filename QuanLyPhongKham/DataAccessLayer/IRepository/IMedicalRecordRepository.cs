@@ -18,6 +18,8 @@ namespace DataAccessLayer.IRepository
         IQueryable<MedicalRecord> QueryAll();
         bool PatientHasRecord(int patientId);
         bool DoctorHasRecord(int doctorId);
+        bool PatientExists(int patientId);
+        bool DoctorExists(int doctorId);
 
     }
 }
