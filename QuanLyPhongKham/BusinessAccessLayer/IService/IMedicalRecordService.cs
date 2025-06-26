@@ -1,10 +1,9 @@
-﻿using System;
+﻿using DataAccessLayer.models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using DataAccessLayer.models;
 using DataAccessLayer.ViewModels;
 
 namespace BusinessAccessLayer.IService
@@ -21,5 +20,5 @@ namespace BusinessAccessLayer.IService
         IQueryable<MedicalRecord> QueryAll();
 
     }
-}
 
+}

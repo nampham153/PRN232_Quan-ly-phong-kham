@@ -134,6 +134,11 @@ namespace QuanLyPhongKham.Controllers
             }
             catch (Exception ex)
             {
+                if (ex.Message.Contains("hồ sơ liên quan"))
+                {
+                    return BadRequest(new { message = ex.Message });
+                }
+
                 return StatusCode(500, new { message = "Lỗi xóa bác sĩ", error = ex.Message });
             }
         }

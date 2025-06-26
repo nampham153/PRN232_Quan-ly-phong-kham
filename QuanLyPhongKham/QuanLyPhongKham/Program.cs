@@ -46,6 +46,14 @@ namespace QuanLyPhongKham
             builder.Services.AddScoped<PatientDAO>();
             builder.Services.AddScoped<IPatientRepository, PatientRepository>();
             builder.Services.AddScoped<IPatientService, PatientService>();
+            builder.Services.AddScoped<ClinicDbContext>();
+            builder.Services.AddScoped<PrescriptionDAO>();
+            builder.Services.AddScoped<IPrescriptionRepository, PrescriptionRepository>();
+            builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
+
+            builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
+            builder.Services.AddScoped<IMedicalRecordRepository, MedicalRecordRepository>();
+
 
             // General Test Logic
             builder.Services.AddScoped<TestDAO>();
@@ -161,6 +169,14 @@ namespace QuanLyPhongKham
             });
 
             app.UseRouting();
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+                RequestPath = ""
+            });
+
 
             app.UseAuthorization();
 

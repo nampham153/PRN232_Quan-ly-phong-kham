@@ -1,5 +1,5 @@
 ﻿using DataAccessLayer.models;
-using Microsoft.AspNetCore.Http; // Để dùng IFormFile
+using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel.DataAnnotations;
 

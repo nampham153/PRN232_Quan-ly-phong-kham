@@ -1,5 +1,4 @@
-﻿// DataAccessLayer/DAO/DoctorDAO.cs
-using DataAccessLayer.dbcontext;
+﻿using DataAccessLayer.dbcontext;
 using DataAccessLayer.models;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +17,7 @@ namespace DataAccessLayer.DAO
         {
             return _context.Users.Include(u => u.Account).Where(u => u.Account.RoleId == 2);
         }
+
         public List<Account> GetAvailableAccountsForDoctor()
         {
             var usedAccountIds = _context.Users
@@ -30,11 +30,15 @@ namespace DataAccessLayer.DAO
                 .ToList();
         }
 
-
         public User? GetByAccountId(int accountId)
         {
             return _context.Users.Include(u => u.Account)
                                  .FirstOrDefault(u => u.AccountId == accountId && u.Account.RoleId == 2);
+        }
+
+        public User? GetById(int userId)
+        {
+            return _context.Users.Include(u => u.Account).FirstOrDefault(u => u.UserId == userId);
         }
 
         public bool ExistsUserByAccountId(int accountId)
@@ -66,4 +70,3 @@ namespace DataAccessLayer.DAO
         }
     }
 }
-

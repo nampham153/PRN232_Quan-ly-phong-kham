@@ -17,6 +17,9 @@ namespace QuanLyPhongKham.Pages.Patient
         [BindProperty]
         public PatientViewModel PatientViewModel { get; set; }
 
+        [BindProperty]
+        public IFormFile AvatarFile { get; set; } // Sử dụng để upload file
+
         public IActionResult OnGet()
         {
             PatientViewModel = new PatientViewModel();
@@ -25,6 +28,18 @@ namespace QuanLyPhongKham.Pages.Patient
 
         public IActionResult OnPost()
         {
+            // Nếu không upload file và không có link -> báo lỗi
+            if ((AvatarFile == null || AvatarFile.Length == 0) && string.IsNullOrWhiteSpace(PatientViewModel.AvatarPath))
+            {
+                ModelState.AddModelError("AvatarFile", "Bạn phải chọn ảnh từ máy hoặc dán link ảnh.");
+            }
+
+            // Nếu có upload file thì bỏ qua bắt buộc của AvatarPath (coi như không cần nhập)
+            if (AvatarFile != null && AvatarFile.Length > 0)
+            {
+                ModelState.Remove("PatientViewModel.AvatarPath");
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -42,19 +57,36 @@ namespace QuanLyPhongKham.Pages.Patient
                     Address = PatientViewModel.Address
                 };
 
+                // Ưu tiên file upload
+                if (AvatarFile != null && AvatarFile.Length > 0)
+                {
+                    var uploadsFolder = Path.Combine("wwwroot/uploadsPatient");
+                    Directory.CreateDirectory(uploadsFolder);
+
+                    var fileName = Guid.NewGuid() + Path.GetExtension(AvatarFile.FileName);
+                    var filePath = Path.Combine(uploadsFolder, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        AvatarFile.CopyTo(stream);
+                    }
+
+                    patient.AvatarPath = $"/uploadsPatient/{fileName}";
+                }
+                else if (!string.IsNullOrWhiteSpace(PatientViewModel.AvatarPath))
+                {
+                    patient.AvatarPath = PatientViewModel.AvatarPath.Trim();
+                }
+
                 _patientService.AddPatient(patient);
                 return RedirectToPage("/Patient/PatientList");
             }
-            catch (ArgumentException ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message); // Hiển thị lỗi từ Service
-                return Page();
-            }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Đã xảy ra lỗi khi thêm bệnh nhân: " + ex.Message);
+                ModelState.AddModelError(string.Empty, "Lỗi khi thêm bệnh nhân: " + ex.Message);
                 return Page();
             }
         }
+
     }
 }

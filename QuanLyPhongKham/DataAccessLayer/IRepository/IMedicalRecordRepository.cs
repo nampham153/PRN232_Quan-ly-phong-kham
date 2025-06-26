@@ -1,10 +1,10 @@
-﻿using System;
+
+using DataAccessLayer.models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-using DataAccessLayer.models;
 
 namespace DataAccessLayer.IRepository
 {
@@ -17,6 +17,7 @@ namespace DataAccessLayer.IRepository
         void Delete(MedicalRecord record);
         IQueryable<MedicalRecord> QueryAll();
         bool PatientHasRecord(int patientId);
+        bool DoctorHasRecord(int doctorId);
 
     }
 }

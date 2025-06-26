@@ -60,9 +60,13 @@ namespace DataAccessLayer.Repository
             _doctorDao.Update(doctor);
         }
 
-        public void DeleteDoctor(User doctor)
+        public void DeleteDoctor(int userId)
         {
-            _doctorDao.Delete(doctor);
+            var doctor = _doctorDao.GetById(userId);
+            if (doctor != null)
+            {
+                _doctorDao.Delete(doctor);
+            }
         }
     }
 }

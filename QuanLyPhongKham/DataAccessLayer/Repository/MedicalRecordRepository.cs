@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,10 @@ namespace DataAccessLayer.Repository
         {
             return _dao.PatientHasRecord(patientId);
         }
+        public bool DoctorHasRecord(int doctorId)
+        {
+            return _dao.DoctorHasRecord(doctorId);
+        }
 
     }
 }
-

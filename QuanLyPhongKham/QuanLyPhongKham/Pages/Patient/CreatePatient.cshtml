@@ -4,177 +4,100 @@
     ViewData["Title"] = "Thêm Bệnh Nhân";
 }
 
-<style>
-    .container {
-        max-width: 600px;
-        margin: 20px auto;
-        padding: 20px;
-        font-family: Arial, sans-serif;
-    }
+<div class="row">
+    <div class="col-lg-8 offset-lg-2 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h4 class="card-title mb-0">Thêm Bệnh Nhân</h4>
+                        <p class="card-description">Điền thông tin chi tiết để thêm bệnh nhân mới</p>
+                    </div>
+                    <a href="/Patient/PatientList" class="btn btn-outline-secondary btn-sm">
+                        <i class="mdi mdi-arrow-left"></i> Quay lại danh sách
+                    </a>
+                </div>
 
-    h3 {
-        color: #333;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .error-box {
-        color: red;
-        background-color: #ffe6e6;
-        border: 1px solid #ff9999;
-        padding: 10px;
-        margin-bottom: 20px;
-        border-radius: 4px;
-    }
-
-    .form-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
-
-        .form-table td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            vertical-align: top;
-        }
-
-            .form-table td:first-child {
-                background-color: #f5f5f5;
-                font-weight: bold;
-                width: 150px;
-            }
-
-    input[type="text"], input[type="email"], input[type="date"] {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 14px;
-    }
-
-    input:focus {
-        outline: none;
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-    }
-
-    .validation-error {
-        color: red;
-        font-size: 12px;
-        margin-top: 5px;
-        display: block;
-    }
-
-    .button-group {
-        text-align: center;
-        padding: 20px 0;
-    }
-
-    button[type="submit"] {
-        background-color: #28a745;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        font-size: 16px;
-        cursor: pointer;
-        margin-right: 10px;
-    }
-
-        button[type="submit"]:hover {
-            background-color: #218838;
-        }
-
-    .cancel-link {
-        background-color: #6c757d;
-        color: white;
-        padding: 10px 20px;
-        text-decoration: none;
-        border-radius: 4px;
-        font-size: 16px;
-    }
-
-        .cancel-link:hover {
-            background-color: #5a6268;
-            color: white;
-        }
-</style>
-
-<div class="container">
-    <h3>Thêm Bệnh Nhân</h3>
-
-    <!-- Hiển thị thông báo lỗi tổng quát -->
-    @if (!ModelState.IsValid)
-    {
-        <div class="error-box">
-            Vui lòng sửa các lỗi sau:
-            <ul>
-                @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                @if (!ModelState.IsValid)
                 {
-                    <li>@error.ErrorMessage</li>
+                    <div class="alert alert-danger">
+                        <strong>Lỗi!</strong> Vui lòng kiểm tra lại các thông tin bên dưới:
+                        <ul>
+                            @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                            {
+                                <li>@error.ErrorMessage</li>
+                            }
+                        </ul>
+                    </div>
                 }
-            </ul>
-        </div>
-    }
 
-    <form method="post">
-        @Html.AntiForgeryToken() <!-- Thêm anti-forgery token -->
-        <table class="form-table">
-            <tr>
-                <td>Họ Tên:</td>
-                <td>
-                    <input asp-for="PatientViewModel.FullName" />
-                    <span asp-validation-for="PatientViewModel.FullName" class="validation-error"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>Ngày Sinh:</td>
-                <td>
-                    <input asp-for="PatientViewModel.DOB" type="date" />
-                    <span asp-validation-for="PatientViewModel.DOB" class="validation-error"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>Giới Tính:</td>
-                <td>
-                    <select asp-for="PatientViewModel.Gender" class="form-control">
-                        <option value="">-- Chọn giới tính --</option>
-                        <option value="Nam">Nam</option>
-                        <option value="Nữ">Nữ</option>
-                        <option value="Khác">Khác</option>
-                    </select>
-                    <span asp-validation-for="PatientViewModel.Gender" class="validation-error"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>Số Điện Thoại:</td>
-                <td>
-                    <input asp-for="PatientViewModel.Phone" />
-                    <span asp-validation-for="PatientViewModel.Phone" class="validation-error"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td>
-                    <input asp-for="PatientViewModel.Email" type="email" />
-                    <span asp-validation-for="PatientViewModel.Email" class="validation-error"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>Địa Chỉ:</td>
-                <td>
-                    <input asp-for="PatientViewModel.Address" />
-                    <span asp-validation-for="PatientViewModel.Address" class="validation-error"></span>
-                </td>
-            </tr>
-        </table>
+                <form method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="PatientViewModel.FullName" class="form-label">Họ Tên</label>
+                            <input asp-for="PatientViewModel.FullName" class="form-control form-control-sm" />
+                            <span asp-validation-for="PatientViewModel.FullName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="PatientViewModel.DOB" class="form-label">Ngày Sinh</label>
+                            <input asp-for="PatientViewModel.DOB" type="date" class="form-control form-control-sm" />
+                            <span asp-validation-for="PatientViewModel.DOB" class="text-danger"></span>
+                        </div>
+                    </div>
 
-        <div class="button-group">
-            <button type="submit">Thêm</button>
-            <a href="/Patient/PatientList" class="cancel-link">Hủy</a>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="PatientViewModel.Gender" class="form-label">Giới Tính</label>
+                            <select asp-for="PatientViewModel.Gender" class="form-select form-select-sm">
+                                <option value="">-- Chọn giới tính --</option>
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                                <option value="Khác">Khác</option>
+                            </select>
+                            <span asp-validation-for="PatientViewModel.Gender" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="PatientViewModel.Phone" class="form-label">Số Điện Thoại</label>
+                            <input asp-for="PatientViewModel.Phone" class="form-control form-control-sm" />
+                            <span asp-validation-for="PatientViewModel.Phone" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label asp-for="PatientViewModel.Email" class="form-label">Email</label>
+                            <input asp-for="PatientViewModel.Email" type="email" class="form-control form-control-sm" />
+                            <span asp-validation-for="PatientViewModel.Email" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="PatientViewModel.Address" class="form-label">Địa Chỉ</label>
+                            <input asp-for="PatientViewModel.Address" class="form-control form-control-sm" />
+                            <span asp-validation-for="PatientViewModel.Address" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="PatientViewModel.AvatarPath" class="form-label">Ảnh Đại Diện (tùy chọn)</label>
+                        <input type="text" asp-for="PatientViewModel.AvatarPath" class="form-control form-control-sm mb-2" placeholder="Dán đường dẫn ảnh (URL) nếu có" />
+                        <span asp-validation-for="PatientViewModel.AvatarPath" class="text-danger"></span>
+
+                        <input type="file" name="AvatarFile" accept="image/*" class="form-control form-control-sm" />
+                        <span asp-validation-for="AvatarFile" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <button type="submit" class="btn btn-success btn-sm">
+                            <i class="mdi mdi-content-save"></i> Thêm
+                        </button>
+                        <a href="/Patient/PatientList" class="btn btn-outline-secondary btn-sm">
+                            <i class="mdi mdi-close"></i> Hủy
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
+    </div>
 </div>
 
 @section Scripts {

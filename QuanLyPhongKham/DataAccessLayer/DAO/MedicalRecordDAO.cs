@@ -65,5 +65,10 @@ namespace DataAccessLayer.DAO
             return _context.MedicalRecords
                 .Any(r => r.PatientId == patientId);
         }
+        public bool DoctorHasRecord(int doctorId)
+        {
+            return _context.MedicalRecords.Any(r => r.UserId == doctorId);
+        }
+
     }
 }
