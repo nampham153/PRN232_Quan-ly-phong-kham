@@ -57,6 +57,9 @@ namespace QuanLyPhongKham
             builder.Services.AddScoped<DoctorDAO>();
             builder.Services.AddScoped<IDoctorService, DoctorService>();
             builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+            builder.Services.AddScoped<MedicalRecordDAO>();
+            builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
+            builder.Services.AddScoped<IMedicalRecordRepository, MedicalRecordRepository>();
             builder.Services.AddScoped<DataAccessLayer.IRepository.IAccountRepository, DataAccessLayer.Repository.AccountRepository>();
 
             builder.Services.AddScoped<TestResultDAO>();
@@ -117,22 +120,7 @@ namespace QuanLyPhongKham
             builder.Services.AddRazorPages();
             builder.Services.AddHttpClient();
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen(c =>
-            {
-                c.DocInclusionPredicate((docName, apiDesc) =>
-                {
-                    var controllerActionDescriptor = apiDesc.ActionDescriptor as Microsoft.AspNetCore.Mvc.Controllers.ControllerActionDescriptor;
-
-                    if (controllerActionDescriptor != null &&
-                        typeof(Microsoft.AspNetCore.OData.Routing.Controllers.ODataController)
-                            .IsAssignableFrom(controllerActionDescriptor.ControllerTypeInfo.AsType()))
-                    {
-                        return false; // Ẩn OData controller khỏi Swagger
-                    }
-
-                    return true;
-                });
-            });
+            builder.Services.AddSwaggerGen();
 
 
             IEdmModel GetEdmModel()
@@ -140,6 +128,7 @@ namespace QuanLyPhongKham
                 var odataBuilder = new ODataConventionModelBuilder();
                 odataBuilder.EntitySet<TestResult>("TestResults");
                 odataBuilder.EntitySet<User>("Doctors");
+                odataBuilder.EntitySet<MedicalRecord>("MedicalRecords");
                 return odataBuilder.GetEdmModel();
             }
 
@@ -149,7 +138,7 @@ namespace QuanLyPhongKham
             var app = builder.Build();
             if (app.Environment.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage(); // Rất quan trọng để hiển thị lỗi
+                app.UseDeveloperExceptionPage();
             }
             else
             {

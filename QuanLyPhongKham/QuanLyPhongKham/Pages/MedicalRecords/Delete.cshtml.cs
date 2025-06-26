@@ -1,10 +1,11 @@
-using DataAccessLayer.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using DataAccessLayer.ViewModels;
 using System.Net.Http;
 using System.Text.Json;
+using System.Threading.Tasks;
 
-namespace QuanLyPhongKham.Pages.Doctors
+namespace QuanLyPhongKham.Pages.MedicalRecords
 {
     public class DeleteModel : PageModel
     {
@@ -16,38 +17,41 @@ namespace QuanLyPhongKham.Pages.Doctors
         }
 
         [BindProperty]
-        public DoctorVM Doctor { get; set; }
+        public MedicalRecordVM MedicalRecord { get; set; } = new();
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync($"https://localhost:7086/api/doctor/{id}");
+            var response = await client.GetAsync($"https://localhost:7086/api/MedicalRecord/{id}");
 
             if (!response.IsSuccessStatusCode)
-                return NotFound();
+            {
+                // Không tìm th?y ho?c l?i thì chuy?n v? Index
+                return RedirectToPage("Index");
+            }
 
             var json = await response.Content.ReadAsStringAsync();
-            Doctor = JsonSerializer.Deserialize<DoctorVM>(json, new JsonSerializerOptions
+            MedicalRecord = JsonSerializer.Deserialize<MedicalRecordVM>(json, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
-            });
+            }) ?? new MedicalRecordVM();
 
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (Doctor == null || Doctor.AccountId == 0)
-                return BadRequest();
-
             var client = _httpClientFactory.CreateClient();
-            var response = await client.DeleteAsync($"https://localhost:7086/api/doctor/{Doctor.AccountId}");
+
+            var response = await client.DeleteAsync($"https://localhost:7086/api/MedicalRecord/{MedicalRecord.RecordId}");
 
             if (response.IsSuccessStatusCode)
+            {
                 return RedirectToPage("Index");
+            }
 
             var error = await response.Content.ReadAsStringAsync();
-            ModelState.AddModelError(string.Empty, $"L?i API khi xóa: {error}");
+            ModelState.AddModelError(string.Empty, $"L?i xóa h? s?: {error}");
             return Page();
         }
     }

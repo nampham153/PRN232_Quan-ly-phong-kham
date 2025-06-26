@@ -1,125 +1,101 @@
-﻿using BusinessAccessLayer.IService;
-using DataAccessLayer.ViewModels;
-using DataAccessLayer.models;
-using DataAccessLayer.IRepository;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using DataAccessLayer.ViewModels;
+using System.Net.Http;
+using System.Text.Json;
+using System.Text;
+using System.Threading.Tasks;
 using System.Collections.Generic;
-
+using DataAccessLayer.models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Azure;
 namespace QuanLyPhongKham.Pages.Doctors
 {
     public class CreateModel : PageModel
     {
-        private readonly IDoctorService _doctorService;
-        private readonly IAccountRepository _accountRepository;
+        [BindProperty]
+        public DoctorVM Doctor { get; set; } = new();
 
-        public CreateModel(IDoctorService doctorService, IAccountRepository accountRepository)
-        {
-            _doctorService = doctorService;
-            _accountRepository = accountRepository;
-        }
+        public List<Account> AvailableAccounts { get; set; } = new();
 
         [BindProperty]
-        public DoctorVM Doctor { get; set; }
-        [BindProperty]
-        public IFormFile DoctorFile { get; set; }
+        public IFormFile? ImageFile { get; set; }
 
-        public List<Account> DoctorAccounts { get; set; }
+        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IWebHostEnvironment _env;
 
-        public void OnGet()
+        public CreateModel(IHttpClientFactory httpClientFactory, IWebHostEnvironment env)
         {
-            Doctor = new DoctorVM();
-            DoctorAccounts = _accountRepository.GetAvailableAccountsForDoctor();
+            _httpClientFactory = httpClientFactory;
+            _env = env;
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnGetAsync()
         {
-            DoctorAccounts = _accountRepository.GetDoctorAccounts();
-            var account = _accountRepository.GetAccountById(Doctor.AccountId);
-            if (account == null || account.RoleId != 2)
-            {
-                ModelState.AddModelError("Doctor.AccountId", "Tài khoản không tồn tại hoặc không phải tài khoản bác sĩ.");
-                return Page();
-            }
+            await LoadAvailableAccountsAsync();
+            return Page();
+        }
 
-            var existingUser = _doctorService.GetDoctorByAccountId(Doctor.AccountId);
-            if (existingUser != null)
+        private async Task LoadAvailableAccountsAsync()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.GetAsync("https://localhost:7086/api/doctor/accounts/available");
+            if (response.IsSuccessStatusCode)
             {
-                ModelState.AddModelError("Doctor.AccountId", "Tài khoản này đã được đăng ký.");
-                return Page();
+                var json = await response.Content.ReadAsStringAsync();
+                AvailableAccounts = JsonSerializer.Deserialize<List<Account>>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                }) ?? new List<Account>();
             }
-            if (!Doctor.DOB.HasValue)
-            {
-                ModelState.AddModelError("Doctor.DOB", "Vui lòng nhập ngày sinh.");
-                return Page();
-            }
+        }
 
-            var today = DateTime.Today;
-            var dob = Doctor.DOB.Value;
-            var age = today.Year - dob.Year;
-            if (dob > today.AddYears(-age)) age--;
-
-            if (age < 18)
-            {
-                ModelState.AddModelError("Doctor.DOB", "Bác sĩ phải từ 18 tuổi trở lên.");
-                return Page();
-            }
-            if ((DoctorFile == null || DoctorFile.Length == 0) && string.IsNullOrWhiteSpace(Doctor.DoctorPath))
-            {
-                ModelState.AddModelError("AvatarFile", "Bạn phải chọn ảnh từ máy hoặc dán link ảnh.");
-            }
-
-            if (DoctorFile == null || DoctorFile.Length == 0)
-            {
-                ModelState.Remove(nameof(DoctorFile)); 
-            }
-
+        public async Task<IActionResult> OnPostAsync()
+        {
             if (!ModelState.IsValid)
             {
+                await LoadAvailableAccountsAsync();
                 return Page();
             }
-            try
+            // Nếu có file ảnh upload
+            if (ImageFile != null && ImageFile.Length > 0)
             {
-                var doctorEntity = new User
-            {
-                FullName = Doctor.FullName,
-                Gender = Doctor.Gender,
-                DOB = Doctor.DOB,
-                Phone = Doctor.Phone,
-                Email = Doctor.Email,
-                AccountId = Doctor.AccountId
-            };
+                var uploadFolder = Path.Combine(_env.WebRootPath, "uploadsDoctor");
+                Directory.CreateDirectory(uploadFolder); // Đảm bảo thư mục tồn tại
 
-                if (DoctorFile != null && DoctorFile.Length > 0)
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(ImageFile.FileName);
+                var filePath = Path.Combine(uploadFolder, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    var uploadsFolder = Path.Combine("wwwroot/uploadsDoctor");
-                    Directory.CreateDirectory(uploadsFolder);
-
-                    var fileName = Guid.NewGuid() + Path.GetExtension(DoctorFile.FileName);
-                    var filePath = Path.Combine(uploadsFolder, fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        DoctorFile.CopyTo(stream);
-                    }
-
-                    doctorEntity.DoctorPath = $"/uploadsDoctor/{fileName}";
-                }
-                else
-                {
-                    doctorEntity.DoctorPath = Doctor.DoctorPath?.Trim();
+                    await ImageFile.CopyToAsync(stream);
                 }
 
-
-                _doctorService.CreateDoctor(doctorEntity);
-            return RedirectToPage("Index");
-
+                Doctor.DoctorPath = "/uploadsDoctor/" + fileName;
             }
-            catch (Exception ex)
+
+            var client = _httpClientFactory.CreateClient();
+
+            var jsonContent = new StringContent(
+                JsonSerializer.Serialize(Doctor),
+                Encoding.UTF8,
+                "application/json"
+            );
+
+            var response = await client.PostAsync("https://localhost:7086/api/Doctor", jsonContent);
+
+            if (response.IsSuccessStatusCode)
             {
-                ModelState.AddModelError(string.Empty, "Lỗi khi thêm bac si: " + ex.Message);
-                return Page();
+                return RedirectToPage("Index");
             }
+
+            var error = await response.Content.ReadAsStringAsync();
+            ModelState.AddModelError(string.Empty, "Lỗi tạo bác sĩ: " + error);
+
+            await LoadAvailableAccountsAsync();
+            return Page();
         }
     }
 }

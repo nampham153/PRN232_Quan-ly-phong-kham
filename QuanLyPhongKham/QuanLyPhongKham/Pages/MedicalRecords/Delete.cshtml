@@ -1,0 +1,15 @@
+﻿@page "{id:int}"
+@model QuanLyPhongKham.Pages.MedicalRecords.DeleteModel
+@{
+    ViewData["Title"] = "Xóa hồ sơ y tế";
+}
+
+<h2>Xóa hồ sơ y tế</h2>
+
+<h4>Bạn có chắc muốn xóa hồ sơ y tế của bệnh nhân: <strong>@Model.MedicalRecord.PatientName</strong> do bác sĩ: <strong>@Model.MedicalRecord.DoctorName</strong>?</h4>
+
+<form method="post">
+    <input type="hidden" asp-for="MedicalRecord.RecordId" />
+    <button type="submit" class="btn btn-danger">Xóa</button>
+    <a asp-page="Index" class="btn btn-secondary">Hủy</a>
+</form>
