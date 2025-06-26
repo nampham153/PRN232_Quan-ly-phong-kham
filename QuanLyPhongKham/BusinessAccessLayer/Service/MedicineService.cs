@@ -40,6 +40,7 @@ namespace BusinessAccessLayer.Service
                 Usage = medicineVM.Usage?.Trim()
             };
 
+
             return _medicineRepository.AddMedicine(medicine);
         }
 

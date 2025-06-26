@@ -62,8 +62,12 @@ namespace QuanLyPhongKham
 
             builder.Services.AddScoped<ITestService, TestService>();
             builder.Services.AddScoped<ITestRepository, TestRepository>();
+            builder.Services.AddScoped<DoctorDAO>();
             builder.Services.AddScoped<IDoctorService, DoctorService>();
             builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+            builder.Services.AddScoped<MedicalRecordDAO>();
+            builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
+            builder.Services.AddScoped<IMedicalRecordRepository, MedicalRecordRepository>();
             builder.Services.AddScoped<DataAccessLayer.IRepository.IAccountRepository, DataAccessLayer.Repository.AccountRepository>();
 
             builder.Services.AddScoped<TestResultDAO>();
@@ -126,10 +130,13 @@ namespace QuanLyPhongKham
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+
             IEdmModel GetEdmModel()
             {
                 var odataBuilder = new ODataConventionModelBuilder();
                 odataBuilder.EntitySet<TestResult>("TestResults");
+                odataBuilder.EntitySet<User>("Doctors");
+                odataBuilder.EntitySet<MedicalRecord>("MedicalRecords");
                 return odataBuilder.GetEdmModel();
             }
 
@@ -137,6 +144,14 @@ namespace QuanLyPhongKham
             // Build & Configure Middleware
             // ========================================
             var app = builder.Build();
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
 
             if (app.Environment.IsDevelopment())
             {
@@ -145,7 +160,13 @@ namespace QuanLyPhongKham
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+                RequestPath = ""
+            });
 
             app.UseRouting();
 
@@ -164,5 +185,6 @@ namespace QuanLyPhongKham
 
             app.Run();
         }
+
     }
 }

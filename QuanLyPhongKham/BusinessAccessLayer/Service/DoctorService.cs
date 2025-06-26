@@ -10,10 +10,12 @@ namespace BusinessAccessLayer.Service
     public class DoctorService : IDoctorService
     {
         private readonly IDoctorRepository _doctorRepository;
+        private readonly IMedicalRecordRepository _medicalRecordRepository;
 
-        public DoctorService(IDoctorRepository doctorRepository)
+        public DoctorService(IDoctorRepository doctorRepository, IMedicalRecordRepository medicalRecordRepository)
         {
             _doctorRepository = doctorRepository;
+            _medicalRecordRepository = medicalRecordRepository;
         }
 
         public List<User> GetAllDoctors(string searchTerm = "")
@@ -54,12 +56,17 @@ namespace BusinessAccessLayer.Service
             _doctorRepository.UpdateDoctor(existingDoctor);
         }
 
-        public void DeleteDoctor(int accountId)
+        public bool DeleteDoctor(int accountId)
         {
             var doctor = _doctorRepository.GetDoctorByAccountId(accountId);
-            if (doctor == null) return;
+            if (doctor == null)
+                throw new Exception("Không tìm thấy bác sĩ.");
 
-            _doctorRepository.DeleteDoctor(doctor);
+            if (_medicalRecordRepository.DoctorHasRecord(doctor.UserId))
+                throw new Exception("Bác sĩ đang có hồ sơ liên quan, vui lòng không xóa.");
+
+            _doctorRepository.DeleteDoctor(doctor.UserId);
+            return true;
         }
     }
 }
