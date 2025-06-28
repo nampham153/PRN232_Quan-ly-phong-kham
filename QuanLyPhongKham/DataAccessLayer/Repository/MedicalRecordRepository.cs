@@ -1,32 +1,52 @@
-﻿using DataAccessLayer.dbcontext;
-using DataAccessLayer.IRepository;
-using DataAccessLayer.models;
-using System;
+
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using DataAccessLayer.DAO;
+using DataAccessLayer.IRepository;
+using DataAccessLayer.models;
+
 namespace DataAccessLayer.Repository
 {
     public class MedicalRecordRepository : IMedicalRecordRepository
     {
-        private readonly ClinicDbContext _context;
+        private readonly MedicalRecordDAO _dao;
 
-        public MedicalRecordRepository(ClinicDbContext context)
+        public MedicalRecordRepository(MedicalRecordDAO dao)
         {
-            _context = context;
+            _dao = dao;
         }
 
-        public List<MedicalRecord> GetAll()
+        public List<MedicalRecord> GetAll() => _dao.GetAll();
+
+        public MedicalRecord? GetById(int id) => _dao.GetById(id);
+
+        public void Add(MedicalRecord record) => _dao.Add(record);
+
+        public void Update(MedicalRecord record) => _dao.Update(record);
+
+        public void Delete(MedicalRecord record) => _dao.Delete(record);
+        public IQueryable<MedicalRecord> QueryAll() => _dao.QueryAll();
+        public bool PatientHasRecord(int patientId)
         {
-            return _context.MedicalRecords.ToList();
+            return _dao.PatientHasRecord(patientId);
+        }
+        public bool DoctorHasRecord(int doctorId)
+        {
+            return _dao.DoctorHasRecord(doctorId);
+        }
+        public bool DoctorExists(int doctorId)
+        {
+            return _dao.DoctorExists(doctorId);
         }
 
-        public MedicalRecord? GetById(int id)
+        public bool PatientExists(int patientId)
         {
-            return _context.MedicalRecords.FirstOrDefault(r => r.RecordId == id);
+            return _dao.PatientExists(patientId);
         }
+
     }
-
 }

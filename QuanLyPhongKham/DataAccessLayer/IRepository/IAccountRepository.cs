@@ -11,6 +11,6 @@ namespace DataAccessLayer.IRepository
     {
         Account GetAccountById(int id);
         List<Account> GetDoctorAccounts();
-
+        List<Account> GetAvailableAccountsForDoctor();
     }
 }

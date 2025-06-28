@@ -1,29 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataAccessLayer.dbcontext;
+﻿using DataAccessLayer.DAO;
 using DataAccessLayer.IRepository;
 using DataAccessLayer.models;
-using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Repository
 {
     public class DoctorRepository : IDoctorRepository
     {
-        private readonly ClinicDbContext _context;
+        private readonly DoctorDAO _doctorDao;
 
-        public DoctorRepository(ClinicDbContext context)
+        public DoctorRepository(DoctorDAO doctorDao)
         {
-            _context = context;
+            _doctorDao = doctorDao;
         }
 
         public List<User> GetAllDoctors(string searchTerm = "")
         {
-            var query = _context.Users
-                .Include(u => u.Account)
-                .Where(u => u.Account.RoleId == 2);
+            var query = _doctorDao.GetAllDoctors();
 
             if (!string.IsNullOrEmpty(searchTerm))
             {
@@ -33,26 +25,22 @@ namespace DataAccessLayer.Repository
             return query.ToList();
         }
 
-
-        public User GetDoctorByAccountId(int accountId)
+        public User? GetDoctorByAccountId(int accountId)
         {
-            return _context.Users
-                .Include(u => u.Account)
-                .FirstOrDefault(u => u.AccountId == accountId && u.Account.RoleId== 2);
+            return _doctorDao.GetByAccountId(accountId);
         }
 
         public bool CanCreateDoctor(int accountId, out string errorMessage)
         {
             errorMessage = "";
 
-            bool existsUser = _context.Users.Any(u => u.AccountId == accountId);
-            if (existsUser)
+            if (_doctorDao.ExistsUserByAccountId(accountId))
             {
                 errorMessage = "Tài khoản này đã được đăng ký";
                 return false;
             }
 
-            var account = _context.Accounts.FirstOrDefault(a => a.AccountId == accountId);
+            var account = _doctorDao.GetAccount(accountId);
             if (account == null || account.RoleId != 2)
             {
                 errorMessage = "Vui lòng nhập lại AccountId";
@@ -64,22 +52,21 @@ namespace DataAccessLayer.Repository
 
         public void CreateDoctor(User doctor)
         {
-            _context.Users.Add(doctor);
-            _context.SaveChanges();
+            _doctorDao.Add(doctor);
         }
 
         public void UpdateDoctor(User doctor)
         {
-            _context.Users.Update(doctor);
-            _context.SaveChanges();
+            _doctorDao.Update(doctor);
         }
 
-        public void DeleteDoctor(User doctor)
+        public void DeleteDoctor(int userId)
         {
-            _context.Users.Remove(doctor);
-            _context.SaveChanges();
+            var doctor = _doctorDao.GetById(userId);
+            if (doctor != null)
+            {
+                _doctorDao.Delete(doctor);
+            }
         }
     }
-
-
 }

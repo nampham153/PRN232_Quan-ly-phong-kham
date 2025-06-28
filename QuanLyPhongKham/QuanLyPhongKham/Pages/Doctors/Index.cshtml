@@ -1,167 +1,343 @@
 ﻿@page
 @model QuanLyPhongKham.Pages.Doctors.IndexModel
 @{
-    ViewData["Title"] = "Manage Doctors";
+    ViewData["Title"] = "Doctor Management";
 }
 
-<h1>Doctors</h1>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
 
-<form method="get" class="mb-3">
-    <input type="text" name="SearchTerm" value="@Model.SearchTerm" placeholder="Search by name..." class="form-control mb-2" />
-    <button type="submit" class="btn btn-primary">Search</button>
-</form>
+                <h4 class="card-title mb-4">Doctor Management</h4>
 
-<button class="btn btn-success mb-3" onclick="loadCreateForm()">Add Doctor</button>
+                <!-- Hiển thị Success và Error messages -->
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        @TempData["SuccessMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Full Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>DOB</th>
-            <th>Gender</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var doctor in Model.Doctors)
-        {
-            <tr>
-                <td>@doctor.FullName</td>
-                <td>@doctor.Phone</td>
-                <td>@doctor.Email</td>
-                <td>@(doctor.DOB?.ToString("yyyy-MM-dd"))</td>
-                <th>@doctor.Gender</th>
-                <td>
-                    <button class="btn btn-sm btn-warning" onclick="loadEditForm(@doctor.AccountId)">Edit</button>
-                    <button class="btn btn-sm btn-danger" onclick="loadDeleteForm(@doctor.AccountId)">Delete</button>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        @TempData["ErrorMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
 
-<div class="modal fade" id="doctorModal" tabindex="-1" aria-labelledby="doctorModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content" id="doctorModalContent"></div>
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <a asp-page="./Create" class="btn btn-primary btn-sm">
+                        <i class="mdi mdi-plus"></i> Add New Doctor
+                    </a>
+                </div>
+
+                <!-- Filter Section -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <form method="get">
+                            <label class="form-label">
+                                <i class="mdi mdi-account-search me-1"></i> Filter by Name
+                            </label>
+                            <select asp-for="SelectedName" asp-items="Model.NameOptions"
+                                    class="form-select" onchange="this.form.submit()">
+                            </select>
+                        </form>
+                    </div>
+                    <div class="col-md-4">
+                        <form method="get">
+                            <label class="form-label">
+                                <i class="mdi mdi-email-search-outline me-1"></i> Filter by Email
+                            </label>
+                            <select asp-for="SelectedEmail" asp-items="Model.EmailOptions"
+                                    class="form-select" onchange="this.form.submit()">
+                            </select>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                @if (Model.Doctors != null && Model.Doctors.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="doctorsTable">
+                            <thead>
+                                <tr>
+                                    <th>Photo</th>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Gender</th>
+                                    <th>Date of Birth</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var doctor in Model.Doctors)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="@doctor.DoctorPath" alt="Doctor Image" width="50" height="50" class="rounded-circle object-fit-cover" />
+                                        </td>
+                                        <td>@doctor.FullName</td>
+                                        <td>@doctor.Email</td>
+                                        <td>@doctor.Phone</td>
+                                        <td>@(doctor.Gender == "Male" ? "Male" : doctor.Gender == "Female" ? "Female" : "Other")</td>
+                                        <td>@(doctor.DOB.HasValue ? doctor.DOB.Value.ToString("dd/MM/yyyy") : "")</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <a asp-page="./Edit" asp-route-id="@doctor.AccountId"
+                                                   class="btn btn-sm btn-outline-warning">
+                                                    <i class="mdi mdi-pencil"></i> Edit
+                                                </a>
+                                                <button type="button" class="btn btn-sm btn-outline-danger"
+                                                        onclick="confirmDelete(@doctor.AccountId, '@doctor.FullName')">
+                                                    <i class="mdi mdi-delete"></i> Delete
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info mt-4">
+                        <i class="mdi mdi-information-outline me-1"></i> No doctors found with the current filters.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="post" asp-page-handler="Delete">
+            <input type="hidden" name="id" id="deleteId" />
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger">
+                        <i class="mdi mdi-alert-circle-outline me-2"></i>Confirm Delete
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete doctor <strong id="deleteName"></strong>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 
 @section Scripts {
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
     <script>
-        function loadCreateForm() {
-            fetch('/Doctors/Create')
-                .then(res => res.text())
-                .then(html => {
-                    document.getElementById('doctorModalContent').innerHTML = html;
-                    var modal = new bootstrap.Modal(document.getElementById('doctorModal'));
-                    modal.show();
-
-                    bindCreateFormSubmit();
-                });
-        }
-
-        function loadEditForm(id) {
-            fetch(`/Doctors/Edit?id=${id}`)
-                .then(res => res.text())
-                .then(html => {
-                    document.getElementById('doctorModalContent').innerHTML = html;
-                    var modal = new bootstrap.Modal(document.getElementById('doctorModal'));
-                    modal.show();
-
-                    bindEditFormSubmit();
-                });
-        }
-
-        function loadDeleteForm(id) {
-            fetch(`/Doctors/Delete?id=${id}`)
-                .then(res => res.text())
-                .then(html => {
-                    document.getElementById('doctorModalContent').innerHTML = html;
-                    var modal = new bootstrap.Modal(document.getElementById('doctorModal'));
-                    modal.show();
-
-                    bindDeleteFormSubmit();
-                });
-        }
-
-        function bindCreateFormSubmit() {
-            const form = document.getElementById('doctorCreateForm');
-            if (!form) return;
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                fetch('/Doctors/Create', {
-                    method: 'POST',
-                    body: new FormData(form)
-                })
-                .then(res => {
-                    if (res.redirected) {
-                        window.location.href = res.url;
-                        return;
-                    }
-                    return res.text();
-                })
-                .then(html => {
-                    if (html) {
-                        document.getElementById('doctorModalContent').innerHTML = html;
-                        bindCreateFormSubmit();
-                    }
-                });
+        $(document).ready(function () {
+            $('#doctorsTable').DataTable({
+                responsive: true,
+                order: [[1, 'asc']],
+                columnDefs: [
+                    { orderable: false, targets: [0, 6] },
+                    { searchable: false, targets: [0, 6] }
+                ]
             });
-        }
 
-        function bindEditFormSubmit() {
-            const form = document.getElementById('doctorEditForm');
-            if (!form) return;
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
+            setTimeout(() => $('.alert').fadeOut('slow'), 5000);
+        });
 
-                fetch('/Doctors/Edit', {
-                    method: 'POST',
-                    body: new FormData(form)
-                })
-                .then(res => {
-                    if (res.redirected) {
-                        window.location.href = res.url;
-                        return;
-                    }
-                    return res.text();
-                })
-                .then(html => {
-                    if (html) {
-                        document.getElementById('doctorModalContent').innerHTML = html;
-                        bindEditFormSubmit();
-                    }
-                });
-            });
-        }
-
-        function bindDeleteFormSubmit() {
-            const form = document.getElementById('doctorDeleteForm');
-            if (!form) return;
-            form.addEventListener('submit', function (e) {
-                e.preventDefault();
-
-                fetch('/Doctors/Delete', {
-                    method: 'POST',
-                    body: new FormData(form)
-                })
-                .then(res => {
-                    if (res.redirected) {
-                        window.location.href = res.url;
-                        return;
-                    }
-                    return res.text();
-                })
-                .then(html => {
-                    if (html) {
-                        document.getElementById('doctorModalContent').innerHTML = html;
-                        bindDeleteFormSubmit();
-                    }
-                });
-            });
+        function confirmDelete(id, name) {
+            $('#deleteId').val(id);
+            $('#deleteName').text(name);
+            new bootstrap.Modal(document.getElementById('deleteModal')).show();
         }
     </script>
+}
+
+
+@section Styles {
+    <style>
+        .card-title {
+            color: #6c7293;
+            font-weight: 500;
+        }
+
+        .card-description {
+            color: #a7a7a7;
+            font-size: 0.875rem;
+            margin-bottom: 0;
+        }
+
+        .badge-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .badge-success {
+            background-color: #84ba3f;
+        }
+
+        .badge-outline-info {
+            color: #17a2b8;
+            border: 1px solid #17a2b8;
+            background-color: transparent;
+        }
+
+        .badge-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .table th {
+            color: #6c7293;
+            font-weight: 500;
+            border-top: none;
+            border-bottom: 2px solid #dee2e6;
+            background-color: #f8f9fa;
+        }
+
+        .table td {
+            vertical-align: middle;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .btn-group .btn {
+            margin-right: 4px;
+        }
+
+            .btn-group .btn:last-child {
+                margin-right: 0;
+            }
+
+        .btn-icon-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .empty-state {
+            padding: 2rem 0;
+        }
+
+        .alert {
+            border: none;
+            border-radius: 0.375rem;
+        }
+
+        .alert-success {
+            background-color: #d1e7dd;
+            color: #0a3622;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #58151c;
+        }
+
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #664d03;
+        }
+
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .card {
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            border: 1px solid rgba(0, 0, 0, 0.125);
+        }
+
+        .grid-margin {
+            margin-bottom: 1.875rem;
+        }
+
+        .stretch-card {
+            display: flex;
+            align-items: stretch;
+        }
+
+            .stretch-card > .card {
+                width: 100%;
+                min-height: 100%;
+            }
+
+        .modal-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        /* DataTables custom styling */
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_filter {
+            margin-bottom: 1rem;
+        }
+
+            .dataTables_wrapper .dataTables_filter input {
+                margin-left: 0.5rem;
+                width: 250px;
+            }
+
+            .dataTables_wrapper .dataTables_length select {
+                width: auto;
+                display: inline-block;
+            }
+
+        .dataTables_wrapper .dataTables_info {
+            color: #6c7293;
+            font-size: 0.875rem;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0.375rem 0.75rem;
+            margin-left: 2px;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            color: #6c7293;
+        }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+                background: #e9ecef;
+                border-color: #adb5bd;
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+                background: #007bff;
+                border-color: #007bff;
+                color: white !important;
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+                color: #6c757d;
+                cursor: not-allowed;
+            }
+
+        .gap-2 {
+            gap: 0.5rem;
+        }
+
+        .filter-badge {
+            cursor: pointer;
+        }
+
+            .filter-badge a {
+                text-decoration: none;
+            }
+
+            .filter-badge:hover {
+                opacity: 0.8;
+            }
+    </style>
 }

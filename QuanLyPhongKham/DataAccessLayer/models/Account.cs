@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace DataAccessLayer.models
 {
@@ -20,6 +21,7 @@ namespace DataAccessLayer.models
         public Role Role { get; set; }
 
         public RefreshToken RefreshToken { get; set; }
+        [JsonIgnore]
         public User User { get; set; }
         public Patient Patient { get; set; }
     }

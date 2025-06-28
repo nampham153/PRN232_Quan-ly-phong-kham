@@ -1,66 +1,70 @@
-﻿using BusinessAccessLayer.IService;
+﻿using System;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 using DataAccessLayer.ViewModels;
-using DataAccessLayer.models;
-using DataAccessLayer.IRepository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using BusinessAccessLayer.Mappers;
 
 namespace QuanLyPhongKham.Pages.Doctors
 {
     public class EditModel : PageModel
     {
-        private readonly IDoctorService _doctorService;
-        private readonly IAccountRepository _accountRepository;
+        private readonly HttpClient _httpClient;
+        private readonly string _apiBaseUrl = "https://localhost:7086/api/doctor";
 
-        public EditModel(IDoctorService doctorService, IAccountRepository accountRepository)
+        public EditModel(IHttpClientFactory httpClientFactory)
         {
-            _doctorService = doctorService;
-            _accountRepository = accountRepository;
+            _httpClient = httpClientFactory.CreateClient();
         }
 
         [BindProperty]
         public DoctorVM Doctor { get; set; }
 
-        public IActionResult OnGet(int id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            var doctorEntity = _doctorService.GetDoctorByAccountId(id);
-            if (doctorEntity == null)
+            Doctor = await _httpClient.GetFromJsonAsync<DoctorVM>($"{_apiBaseUrl}/{id}");
+            if (Doctor == null)
             {
                 return NotFound();
             }
-            Doctor = DoctorMapper.ToViewModel(doctorEntity);
-
             return Page();
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
+                return Page();
+
+            if (!Doctor.DOB.HasValue)
             {
+                ModelState.AddModelError("Doctor.DOB", "Vui lòng nhập ngày sinh.");
                 return Page();
             }
 
-            var account = _accountRepository.GetAccountById(Doctor.AccountId);
-            if (account == null || account.RoleId != 2)
+            var today = DateTime.Today;
+            var dob = Doctor.DOB.Value;
+            var age = today.Year - dob.Year;
+            if (dob > today.AddYears(-age)) age--;
+            if (age < 18)
             {
-                ModelState.AddModelError("Doctor.AccountId", "Tài khoản không tồn tại hoặc không phải tài khoản bác sĩ.");
+                ModelState.AddModelError("Doctor.DOB", "Bác sĩ phải từ 18 tuổi trở lên.");
                 return Page();
             }
 
-            var updatedDoctor = new User
+            // Gửi PUT request cập nhật doctor
+            var response = await _httpClient.PutAsJsonAsync($"{_apiBaseUrl}/{Doctor.AccountId}", Doctor);
+
+            if (response.IsSuccessStatusCode)
             {
-                AccountId = Doctor.AccountId,
-                FullName = Doctor.FullName,
-                Email = Doctor.Email,
-                Phone = Doctor.Phone,
-                DOB = Doctor.DOB,
-                Gender = Doctor.Gender
-            };
-
-            _doctorService.UpdateDoctor(Doctor.AccountId, updatedDoctor);
-
-            return RedirectToPage("Index");
+                return RedirectToPage("Index");
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                ModelState.AddModelError(string.Empty, "Lỗi khi cập nhật bác sĩ: " + error);
+                return Page();
+            }
         }
     }
 }

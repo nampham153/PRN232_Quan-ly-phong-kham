@@ -1,0 +1,184 @@
+﻿@page
+@model QuanLyPhongKham.Pages.MedicalRecords.IndexModel
+@{
+    ViewData["Title"] = "Medical Records Management";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h4 class="card-title mb-0">Medical Records Management</h4>
+                        <p class="card-description">Manage and filter medical records</p>
+                    </div>
+                    <a asp-page="./Create" class="btn btn-primary btn-sm">
+                        <i class="mdi mdi-plus"></i> Add New Record
+                    </a>
+                </div>
+
+                <!-- Filter Section -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <form method="get">
+                            <label class="form-label">
+                                <i class="mdi mdi-stethoscope"></i> Filter by Doctor
+                            </label>
+                            <select asp-for="SelectedDoctorId" asp-items="Model.DoctorOptions" class="form-select" onchange="this.form.submit()">
+                            </select>
+                        </form>
+                    </div>
+                    <div class="col-md-4">
+                        <form method="get">
+                            <label class="form-label">
+                                <i class="mdi mdi-account-multiple"></i> Filter by Patient
+                            </label>
+                            <select asp-for="SelectedPatientId" asp-items="Model.PatientOptions" class="form-select" onchange="this.form.submit()">
+                            </select>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                @if (Model.MedicalRecords != null && Model.MedicalRecords.Any())
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="medicalRecordsTable">
+                            <thead>
+                                <tr>
+                                    <th>Record ID</th>
+                                    <th>Doctor</th>
+                                    <th>Patient</th>
+                                    <th>Date</th>
+                                    <th>Symptoms</th>
+                                    <th>Diagnosis</th>
+                                    <th>Note</th>
+                                    <th style="width:150px;">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var record in Model.MedicalRecords)
+                                {
+                                    <tr>
+                                        <td>@record.RecordId</td>
+                                        <td>@record.DoctorName</td>
+                                        <td>@record.PatientName</td>
+                                        <td>@record.Date.ToString("dd/MM/yyyy")</td>
+                                        <td>@record.Symptoms</td>
+                                        <td>@record.Diagnosis</td>
+                                        <td>@record.Note</td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a asp-page="./Details" asp-route-id="@record.RecordId" class="btn btn-sm btn-info" title="Details">
+                                                    <i class="mdi mdi-eye"></i>
+                                                </a>
+                                                <a asp-page="./Edit" asp-route-id="@record.RecordId" class="btn btn-sm btn-warning" title="Edit">
+                                                    <i class="mdi mdi-pencil"></i>
+                                                </a>
+                                                <button type="button" class="btn btn-sm btn-danger" onclick="confirmDelete(@record.RecordId, '@record.PatientName')"
+                                                        title="Delete">
+                                                    <i class="mdi mdi-delete"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info mt-4">
+                        <i class="mdi mdi-information-outline me-1"></i> No medical records found with the current filters.
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <form method="post" asp-page-handler="Delete">
+            <input type="hidden" name="id" id="deleteId" />
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger"><i class="mdi mdi-alert-circle-outline me-2"></i> Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete the medical record of <strong id="deleteName"></strong>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" />
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#medicalRecordsTable').DataTable({
+                responsive: true,
+                order: [[0, 'desc']],
+                columnDefs: [
+                    { orderable: false, targets: [7] }
+                ]
+            });
+
+            setTimeout(() => $('.alert').fadeOut('slow'), 5000);
+        });
+
+        function confirmDelete(id, name) {
+            $('#deleteId').val(id);
+            $('#deleteName').text(name);
+            new bootstrap.Modal(document.getElementById('deleteModal')).show();
+        }
+    </script>
+}
+
+@section Styles {
+    <style>
+        .card-title {
+            color: #6c7293;
+            font-weight: 500;
+        }
+
+        .card-description {
+            color: #a7a7a7;
+            font-size: 0.875rem;
+            margin-bottom: 0;
+        }
+
+        .table th {
+            color: #6c7293;
+            font-weight: 500;
+            border-top: none;
+            border-bottom: 2px solid #dee2e6;
+            background-color: #f8f9fa;
+        }
+
+        .table td {
+            vertical-align: middle;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .btn-group .btn {
+            margin-right: 4px;
+        }
+
+            .btn-group .btn:last-child {
+                margin-right: 0;
+            }
+    </style>
+}

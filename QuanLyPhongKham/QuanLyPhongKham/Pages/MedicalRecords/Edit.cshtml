@@ -1,0 +1,49 @@
+﻿@page "{id:int}"
+@model QuanLyPhongKham.Pages.MedicalRecords.EditModel
+@{
+    ViewData["Title"] = "Chỉnh sửa hồ sơ";
+}
+
+<h2>Chỉnh sửa hồ sơ</h2>
+
+<form method="post" class="row g-3">
+    <input type="hidden" asp-for="MedicalRecord.RecordId" />
+    <div class="col-md-4">
+        <label asp-for="MedicalRecord.PatientId" class="form-label">Bệnh nhân</label>
+        <input asp-for="MedicalRecord.PatientId" class="form-control" readonly />
+        <span asp-validation-for="MedicalRecord.PatientId" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="MedicalRecord.UserId" class="form-label">Bác sĩ</label>
+        <input asp-for="MedicalRecord.UserId" class="form-control" readonly />
+        <span asp-validation-for="MedicalRecord.UserId" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="MedicalRecord.Date" class="form-label">Ngày</label>
+        <input asp-for="MedicalRecord.Date" type="date" class="form-control" />
+        <span asp-validation-for="MedicalRecord.Date" class="text-danger"></span>
+    </div>
+    <div class="col-12">
+        <label asp-for="MedicalRecord.Symptoms" class="form-label">Triệu chứng</label>
+        <textarea asp-for="MedicalRecord.Symptoms" class="form-control" rows="2"></textarea>
+        <span asp-validation-for="MedicalRecord.Symptoms" class="text-danger"></span>
+    </div>
+    <div class="col-12">
+        <label asp-for="MedicalRecord.Diagnosis" class="form-label">Chuẩn đoán</label>
+        <textarea asp-for="MedicalRecord.Diagnosis" class="form-control" rows="2"></textarea>
+        <span asp-validation-for="MedicalRecord.Diagnosis" class="text-danger"></span>
+    </div>
+    <div class="col-12">
+        <label asp-for="MedicalRecord.Note" class="form-label">Ghi chú</label>
+        <textarea asp-for="MedicalRecord.Note" class="form-control" rows="2"></textarea>
+        <span asp-validation-for="MedicalRecord.Note" class="text-danger"></span>
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-success">Cập nhật</button>
+        <a asp-page="Index" class="btn btn-secondary">Quay lại</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

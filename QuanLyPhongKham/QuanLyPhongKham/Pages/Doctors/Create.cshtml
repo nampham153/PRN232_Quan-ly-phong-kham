@@ -1,71 +1,71 @@
 ﻿@page
 @model QuanLyPhongKham.Pages.Doctors.CreateModel
 @{
-    Layout = null;
+    ViewData["Title"] = "Tạo bác sĩ";
 }
+<h2>@ViewData["Title"]</h2>
 
-<div class="modal-header">
-    <h5 class="modal-title">Create Doctor</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-</div>
+<form method="post" enctype="multipart/form-data" id="doctorCreateForm">
+    <div class="mb-3">
+        <label asp-for="Doctor.FullName" class="form-label"></label>
+        <input asp-for="Doctor.FullName" class="form-control" />
+        <span asp-validation-for="Doctor.FullName" class="text-danger"></span>
+    </div>
 
-<div class="modal-body">
-    <form method="post" id="doctorCreateForm">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="Doctor.Gender" class="form-label"></label>
+        <select asp-for="Doctor.Gender" class="form-control">
+            <option value="">-- Chọn giới tính --</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select>
+        <span asp-validation-for="Doctor.Gender" class="text-danger"></span>
+    </div>
 
-        <div class="mb-3">
-            <label class="form-label">Select Account (Username)</label>
-            <select asp-for="Doctor.AccountId" class="form-select">
-                <option value="">-- Select Account --</option>
-                @foreach (var acc in Model.DoctorAccounts)
-                {
-                    <option value="@acc.AccountId">@acc.Username</option>
-                }
-            </select>
-            <span asp-validation-for="Doctor.AccountId" class="text-danger"></span>
-        </div>
+    <div class="mb-3">
+        <label asp-for="Doctor.DOB" class="form-label"></label>
+        <input asp-for="Doctor.DOB" class="form-control" type="date" />
+        <span asp-validation-for="Doctor.DOB" class="text-danger"></span>
+    </div>
 
-        <div class="mb-3">
-            <label asp-for="Doctor.FullName" class="form-label"></label>
-            <input asp-for="Doctor.FullName" class="form-control" />
-            <span asp-validation-for="Doctor.FullName" class="text-danger"></span>
-        </div>
+    <div class="mb-3">
+        <label asp-for="Doctor.Phone" class="form-label"></label>
+        <input asp-for="Doctor.Phone" class="form-control" />
+        <span asp-validation-for="Doctor.Phone" class="text-danger"></span>
+    </div>
 
-        <div class="mb-3">
-            <label asp-for="Doctor.Email" class="form-label"></label>
-            <input asp-for="Doctor.Email" class="form-control" />
-            <span asp-validation-for="Doctor.Email" class="text-danger"></span>
-        </div>
+    <div class="mb-3">
+        <label asp-for="Doctor.Email" class="form-label"></label>
+        <input asp-for="Doctor.Email" class="form-control" />
+        <span asp-validation-for="Doctor.Email" class="text-danger"></span>
+    </div>
 
-        <div class="mb-3">
-            <label asp-for="Doctor.Phone" class="form-label"></label>
-            <input asp-for="Doctor.Phone" class="form-control" />
-            <span asp-validation-for="Doctor.Phone" class="text-danger"></span>
-        </div>
+    <div class="mb-3">
+        <label asp-for="Doctor.AccountId" class="form-label"></label>
+        <select asp-for="Doctor.AccountId" class="form-control">
+            <option value="">-- Chọn tài khoản --</option>
+            @foreach (var acc in Model.AvailableAccounts)
+            {
+                <option value="@acc.AccountId">@acc.Username</option>
+            }
+        </select>
+        <span asp-validation-for="Doctor.AccountId" class="text-danger"></span>
+    </div>
 
-        <div class="mb-3">
-            <label asp-for="Doctor.DOB" class="form-label"></label>
-            <input asp-for="Doctor.DOB" type="date" class="form-control" />
-            <span asp-validation-for="Doctor.DOB" class="text-danger"></span>
-        </div>
+    <div class="mb-3">
+        <label asp-for="ImageFile" class="form-label">Ảnh đại diện (chọn tệp hoặc để trống)</label>
+        <input asp-for="ImageFile" type="file" accept="image/*" class="form-control" />
+    </div>
 
-        <div class="mb-3">
-            <label asp-for="Doctor.Gender" class="form-label"></label>
-            <select asp-for="Doctor.Gender" class="form-select">
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-            </select>
-            <span asp-validation-for="Doctor.Gender" class="text-danger"></span>
-        </div>
+    <div class="mb-3">
+        <label asp-for="Doctor.DoctorPath" class="form-label">Hoặc nhập URL ảnh (nếu có)</label>
+        <input asp-for="Doctor.DoctorPath" class="form-control" />
+    </div>
 
-        <div>
-            <button type="submit" class="btn btn-primary">Create</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        </div>
-    </form>
-</div>
+    <button type="submit" class="btn btn-primary">Tạo mới</button>
+    <a asp-page="Index" class="btn btn-secondary">Hủy</a>
+</form>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
