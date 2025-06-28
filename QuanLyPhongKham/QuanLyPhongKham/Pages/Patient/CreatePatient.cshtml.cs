@@ -1,40 +1,38 @@
-﻿using BusinessAccessLayer.IService;
-using DataAccessLayer.ViewModels;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using DataAccessLayer.ViewModels;
+using System.Text.Json;
+using System.Text;
 
 namespace QuanLyPhongKham.Pages.Patient
 {
     public class CreatePatientModel : PageModel
     {
-        private readonly IPatientService _patientService;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public CreatePatientModel(IPatientService patientService)
+        public CreatePatientModel(IHttpClientFactory httpClientFactory)
         {
-            _patientService = patientService;
+            _httpClientFactory = httpClientFactory;
         }
 
         [BindProperty]
         public PatientViewModel PatientViewModel { get; set; }
 
         [BindProperty]
-        public IFormFile AvatarFile { get; set; } // Sử dụng để upload file
+        public IFormFile AvatarFile { get; set; }
 
-        public IActionResult OnGet()
+        public void OnGet()
         {
             PatientViewModel = new PatientViewModel();
-            return Page();
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
-            // Nếu không upload file và không có link -> báo lỗi
             if ((AvatarFile == null || AvatarFile.Length == 0) && string.IsNullOrWhiteSpace(PatientViewModel.AvatarPath))
             {
                 ModelState.AddModelError("AvatarFile", "Bạn phải chọn ảnh từ máy hoặc dán link ảnh.");
             }
 
-            // Nếu có upload file thì bỏ qua bắt buộc của AvatarPath (coi như không cần nhập)
             if (AvatarFile != null && AvatarFile.Length > 0)
             {
                 ModelState.Remove("PatientViewModel.AvatarPath");
@@ -47,17 +45,7 @@ namespace QuanLyPhongKham.Pages.Patient
 
             try
             {
-                var patient = new DataAccessLayer.models.Patient
-                {
-                    FullName = PatientViewModel.FullName,
-                    Gender = PatientViewModel.Gender,
-                    DOB = PatientViewModel.DOB,
-                    Phone = PatientViewModel.Phone,
-                    Email = PatientViewModel.Email,
-                    Address = PatientViewModel.Address
-                };
-
-                // Ưu tiên file upload
+                // Xử lý file upload nếu có
                 if (AvatarFile != null && AvatarFile.Length > 0)
                 {
                     var uploadsFolder = Path.Combine("wwwroot/uploadsPatient");
@@ -68,25 +56,39 @@ namespace QuanLyPhongKham.Pages.Patient
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        AvatarFile.CopyTo(stream);
+                        await AvatarFile.CopyToAsync(stream);
                     }
 
-                    patient.AvatarPath = $"/uploadsPatient/{fileName}";
-                }
-                else if (!string.IsNullOrWhiteSpace(PatientViewModel.AvatarPath))
-                {
-                    patient.AvatarPath = PatientViewModel.AvatarPath.Trim();
+                    PatientViewModel.AvatarPath = $"/uploadsPatient/{fileName}";
                 }
 
-                _patientService.AddPatient(patient);
-                return RedirectToPage("/Patient/PatientList");
+                // Gọi API
+                var client = _httpClientFactory.CreateClient();
+                var jsonString = JsonSerializer.Serialize(PatientViewModel, new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                });
+
+                var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync("https://localhost:7086/api/Patient", content); // hoặc cổng đúng
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return RedirectToPage("/Patient/PatientList");
+                }
+                else
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    ModelState.AddModelError(string.Empty, "Lỗi khi tạo bệnh nhân: " + errorContent);
+                    return Page();
+                }
             }
             catch (Exception ex)
             {
-                ModelState.AddModelError(string.Empty, "Lỗi khi thêm bệnh nhân: " + ex.Message);
+                ModelState.AddModelError(string.Empty, "Lỗi hệ thống: " + ex.Message);
                 return Page();
             }
         }
-
     }
 }

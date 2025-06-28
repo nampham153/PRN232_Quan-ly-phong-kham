@@ -2,26 +2,21 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using DataAccessLayer.ViewModels;
-using BusinessAccessLayer.IService;
+using System.Net.Http;
+using System.Text.Json;
 
 namespace QuanLyPhongKham.Pages.Prescription
 {
     public class ListPrescriptionModel : PageModel
     {
-        private readonly IPrescriptionService _prescriptionService;
-        private readonly IMedicineService _medicineService;
-        private readonly IMedicalRecordService _recordService;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public ListPrescriptionModel(IPrescriptionService prescriptionService,
-                                     IMedicineService medicineService,
-                                     IMedicalRecordService recordService)
+        public ListPrescriptionModel(IHttpClientFactory httpClientFactory)
         {
-            _prescriptionService = prescriptionService;
-            _medicineService = medicineService;
-            _recordService = recordService;
+            _httpClientFactory = httpClientFactory;
         }
 
-        public List<PrescriptionViewModel> Prescriptions { get; set; }
+        public List<PrescriptionViewModel> Prescriptions { get; set; } = new();
 
         [BindProperty(SupportsGet = true)]
         public int? RecordId { get; set; }
@@ -38,16 +33,48 @@ namespace QuanLyPhongKham.Pages.Prescription
         public SelectList Medicines { get; set; }
         public SelectList Records { get; set; }
 
-        public void OnGet()
+        public async Task<IActionResult> OnGetAsync()
         {
-            // Lấy danh sách đơn thuốc sau khi lọc
-            Prescriptions = _prescriptionService.SearchPrescriptions(RecordId, MedicineId, Quantity, Dosage);
+            var client = _httpClientFactory.CreateClient();
 
-            // Load danh sách thuốc
-            Medicines = new SelectList(_medicineService.GetAllMedicines(), "MedicineId", "MedicineName");
+            // Gọi API tìm đơn thuốc
+            var searchUrl = $"https://localhost:7086/api/Prescription/search?recordId={RecordId}&medicineId={MedicineId}&quantity={Quantity}&dosage={Dosage}";
+            var prescriptionResponse = await client.GetAsync(searchUrl);
 
-            // Load danh sách hồ sơ
-            Records = new SelectList(_recordService.GetAll(), "RecordId", "RecordId"); // hoặc có thể dùng PatientName
+            if (prescriptionResponse.IsSuccessStatusCode)
+            {
+                var json = await prescriptionResponse.Content.ReadAsStringAsync();
+                Prescriptions = JsonSerializer.Deserialize<List<PrescriptionViewModel>>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+            }
+
+            // Gọi API để lấy danh sách thuốc
+            var medicineResponse = await client.GetAsync("https://localhost:7086/api/Medicine");
+            if (medicineResponse.IsSuccessStatusCode)
+            {
+                var json = await medicineResponse.Content.ReadAsStringAsync();
+                var medicines = JsonSerializer.Deserialize<List<MedicineVM>>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+                Medicines = new SelectList(medicines, "MedicineId", "MedicineName");
+            }
+
+            // Gọi API để lấy danh sách hồ sơ
+            var recordResponse = await client.GetAsync("https://localhost:7086/api/MedicalRecord");
+            if (recordResponse.IsSuccessStatusCode)
+            {
+                var json = await recordResponse.Content.ReadAsStringAsync();
+                var records = JsonSerializer.Deserialize<List<MedicalRecordVM>>(json, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+                Records = new SelectList(records, "RecordId", "RecordId"); // hoặc "PatientName" nếu muốn
+            }
+
+            return Page();
         }
     }
 }

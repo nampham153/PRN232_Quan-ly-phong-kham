@@ -1,53 +1,49 @@
-using BusinessAccessLayer.IService;
-using DataAccessLayer.models;
-using DataAccessLayer.ViewModels;
+﻿using DataAccessLayer.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace QuanLyPhongKham.Pages.Patient
 {
     public class DeletePatientModel : PageModel
     {
-        private readonly IPatientService _patientService;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public DeletePatientModel(IPatientService patientService)
+        public DeletePatientModel(IHttpClientFactory httpClientFactory)
         {
-            _patientService = patientService;
+            _httpClientFactory = httpClientFactory;
         }
 
         [BindProperty]
         public PatientViewModel PatientViewModel { get; set; }
 
-        public IActionResult OnGet(int id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            var patient = _patientService.GetPatientById(id);
-            if (patient == null)
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.GetAsync($"https://localhost:5001/api/Patient/{id}");
+
+            if (!response.IsSuccessStatusCode)
             {
                 return NotFound();
             }
 
-            PatientViewModel = new PatientViewModel
+            var json = await response.Content.ReadAsStringAsync();
+            PatientViewModel = JsonSerializer.Deserialize<PatientViewModel>(json, new JsonSerializerOptions
             {
-                PatientId = patient.PatientId,
-                FullName = patient.FullName,
-                Gender = patient.Gender,
-                DOB = (DateTime)patient.DOB,
-                Phone = patient.Phone,
-                Email = patient.Email,
-                Address = patient.Address
-            };
+                PropertyNameCaseInsensitive = true
+            });
 
             return Page();
         }
 
-        public IActionResult OnPost(int id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
-            var patient = _patientService.GetPatientById(id);
-            if (patient != null)
-            {
-                _patientService.DeletePatient(id);
-            }
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.DeleteAsync($"https://localhost:5001/api/Patient/{id}");
 
+            // Có thể xử lý thêm response.StatusCode nếu cần
             return RedirectToPage("/Patient/PatientList");
         }
     }
