@@ -22,10 +22,10 @@ namespace BusinessAccessLayer.Service.Authen
 
       
 
-        public List<AccountDTO> GetAccounts(string searchKeyword, int page, int? roleId, bool? status)
+        public List<AccountDTO> GetAccounts(string searchKeyword, int pages, int? roleId, bool? status)
         {
-            if (page < 1) page = 1;
-            return _repository.GetAccounts(searchKeyword, page, roleId, status);
+            if (pages < 1) pages = 1;
+            return _repository.GetAccounts(searchKeyword, pages, roleId, status);
         }
 
 

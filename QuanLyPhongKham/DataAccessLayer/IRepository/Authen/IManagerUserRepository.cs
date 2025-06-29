@@ -10,7 +10,7 @@ namespace DataAccessLayer.IRepository.Authen
 {
     public interface IManagerUserRepository
     {
-        List<AccountDTO> GetAccounts(string searchKeyword, int page, int? roleId, bool? status);
+        List<AccountDTO> GetAccounts(string searchKeyword, int pages, int? roleId, bool? status);
         Task<int> CountAccountsAsync(string searchKeyword, int? roleId, bool? status);
         bool CreateAccount(UserAccountViewModel account);
         AccountDTO GetAccountById(int accountId);

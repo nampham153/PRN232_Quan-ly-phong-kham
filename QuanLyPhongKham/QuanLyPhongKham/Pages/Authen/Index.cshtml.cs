@@ -1,5 +1,4 @@
 ﻿using DataAccessLayer.models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net.Http.Headers;
@@ -7,9 +6,6 @@ using System.Text.Json;
 
 namespace QuanLyPhongKham.Pages.Authen
 {
-    //[Authorize(Policy = "Admin")]
-    //[Authorize]
-
     public class IndexModel : PageModel
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -28,65 +24,60 @@ namespace QuanLyPhongKham.Pages.Authen
         [BindProperty(SupportsGet = true)]
         public bool? Status { get; set; }
 
+        // ✅ Đổi tên không bị conflict với từ khóa hệ thống
         [BindProperty(SupportsGet = true)]
-        public int Page { get; set; } = 1;
+        public int Pages { get; set; } = 1;
 
-        public List<Account> Accounts { get; set; } = new();
+        public List<AccountDTO> Accounts { get; set; } = new();
         public List<Role> Roles { get; set; } = new();
         public int TotalPages { get; set; }
+        public int CurrentPage => Pages;
 
-        public async Task<IActionResult> OnGetAsync()
+        public async Task<IActionResult> OnGetAsync(
+      string? search,
+      int? roleId,
+      bool? status,
+      int pages = 1)
         {
-            // Lấy token từ Session
             var token = HttpContext.Session.GetString("JWTToken");
             if (string.IsNullOrEmpty(token))
-            {
-                // Chưa đăng nhập, chuyển về login
                 return RedirectToPage("/Authen/Login");
-            }
 
             var client = _httpClientFactory.CreateClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-            // Lấy danh sách roles (cũng có thể cache nếu cần)
-            var rolesResponse = await client.GetAsync("https://localhost:7086/api/account/roles");
-            if (rolesResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-            {
-                // Token hết hạn hoặc không hợp lệ
-                return RedirectToPage("/Authen/Login");
-            }
+            // Gán giá trị từ query vào property
+            Search = search;
+            RoleId = roleId;
+            Status = status;
+            Pages = pages;
 
-            if (rolesResponse.IsSuccessStatusCode)
+            // 1. Lấy danh sách Role
+            var roleResponse = await client.GetAsync("https://localhost:7086/api/account/roles");
+            if (roleResponse.IsSuccessStatusCode)
             {
-                var rolesJson = await rolesResponse.Content.ReadAsStringAsync();
+                var rolesJson = await roleResponse.Content.ReadAsStringAsync();
                 Roles = JsonSerializer.Deserialize<List<Role>>(rolesJson, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 }) ?? new();
             }
 
-            // Tạo query string cho count
+            // 2. Tạo query filter
             var queryParams = new List<string>();
             if (!string.IsNullOrWhiteSpace(Search))
                 queryParams.Add($"search={Uri.EscapeDataString(Search)}");
-
-
             if (RoleId.HasValue)
                 queryParams.Add($"roleId={RoleId.Value}");
             if (Status.HasValue)
                 queryParams.Add($"status={Status.Value}");
 
-            var countQuery = string.Join("&", queryParams);
+            // 3. Gọi API đếm tổng số tài khoản
             var countUrl = "https://localhost:7086/api/account/count";
-            if (!string.IsNullOrEmpty(countQuery))
-                countUrl += "?" + countQuery;
+            if (queryParams.Any())
+                countUrl += "?" + string.Join("&", queryParams);
 
             var countResponse = await client.GetAsync(countUrl);
-            if (countResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-            {
-                return RedirectToPage("/Authen/Login");
-            }
-
             if (countResponse.IsSuccessStatusCode)
             {
                 var countJson = await countResponse.Content.ReadAsStringAsync();
@@ -96,31 +87,45 @@ namespace QuanLyPhongKham.Pages.Authen
                 }
             }
 
-            if (Page < 1) Page = 1;
-            if (Page > TotalPages) Page = TotalPages;
+            if (TotalPages <= 0) TotalPages = 1;
+            Pages = Math.Clamp(Pages, 1, TotalPages); // Cố định trong khoảng hợp lệ
 
-            queryParams.Add($"page={Page}");
-            var listQuery = string.Join("&", queryParams);
-            var listUrl = "https://localhost:7086/api/account/list";
-            if (!string.IsNullOrEmpty(listQuery))
-                listUrl += "?" + listQuery;
+            // 4. Gọi API danh sách
+            queryParams.Add($"page={Pages}");
+            var listUrl = "https://localhost:7086/api/account/list?" + string.Join("&", queryParams);
+
+            Console.WriteLine($"[DEBUG] GET list URL: {listUrl}");
 
             var listResponse = await client.GetAsync(listUrl);
-            if (listResponse.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-            {
-                return RedirectToPage("/Authen/Login");
-            }
-
             if (listResponse.IsSuccessStatusCode)
             {
                 var listJson = await listResponse.Content.ReadAsStringAsync();
-                Accounts = JsonSerializer.Deserialize<List<Account>>(listJson, new JsonSerializerOptions
+                Accounts = JsonSerializer.Deserialize<List<AccountDTO>>(listJson, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 }) ?? new();
             }
 
+            // DEBUG
+            Console.WriteLine($"[DEBUG] Page: {Pages}");
+            Console.WriteLine($"[DEBUG] Search: {Search}");
+            Console.WriteLine($"[DEBUG] RoleId: {RoleId}");
+            Console.WriteLine($"[DEBUG] Status: {Status}");
+
             return Page();
         }
+
+
+    }
+
+    public class AccountDTO
+    {
+        public int AccountId { get; set; }
+        public string Username { get; set; }
+        public int RoleId { get; set; }
+        public string RoleName { get; set; }
+        public bool Status { get; set; }
+        public string FullName { get; set; }
+        public string Email { get; set; }
     }
 }

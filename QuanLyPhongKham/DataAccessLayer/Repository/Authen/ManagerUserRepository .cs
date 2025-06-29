@@ -22,9 +22,9 @@ namespace DataAccessLayer.Repository.Authen
             _accountDAO = accountDAO;
         }
 
-        public List<AccountDTO> GetAccounts(string searchKeyword, int page, int? roleId, bool? status)
+        public List<AccountDTO> GetAccounts(string searchKeyword, int pages, int? roleId, bool? status)
         {
-            return _accountDAO.GetAccounts(searchKeyword, page, roleId, status);
+            return _accountDAO.GetAccounts(searchKeyword, pages, roleId, status);
         }
         public async Task<int> CountAccountsAsync(string searchKeyword, int? roleId, bool? status)
         {

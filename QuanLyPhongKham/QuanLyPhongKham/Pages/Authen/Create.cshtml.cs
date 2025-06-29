@@ -6,6 +6,8 @@ using System.Text;
 using System.Text.Json;
 using DataAccessLayer.ViewModels.Authen;
 using System.Net.Http;
+using System.ComponentModel.DataAnnotations;
+using System.Net.Http.Headers;
 
 namespace QuanLyPhongKham.Pages.Authen
 {
@@ -19,7 +21,7 @@ namespace QuanLyPhongKham.Pages.Authen
         }
 
         [BindProperty]
-        public UserAccountViewModel Account { get; set; }
+        public CreateAccountDto Account { get; set; }
 
         public List<SelectListItem> RoleSelectList { get; set; } = new();
 
@@ -33,9 +35,7 @@ namespace QuanLyPhongKham.Pages.Authen
             await LoadRolesAsync();
 
             if (!ModelState.IsValid)
-            {
                 return Page();
-            }
 
             if (string.IsNullOrWhiteSpace(Account.Password))
             {
@@ -52,7 +52,7 @@ namespace QuanLyPhongKham.Pages.Authen
 
             var dto = new AccountCreateDto
             {
-                AccountId = new Random().Next(1000, 9999), // hoặc 0 nếu API tạo tự động
+                AccountId = 0,
                 Username = Account.Username,
                 RoleId = Account.RoleId,
                 RoleName = selectedRole.Text,
@@ -61,12 +61,17 @@ namespace QuanLyPhongKham.Pages.Authen
                 Password = Account.Password
             };
 
+            var token = HttpContext.Session.GetString("JWTToken");
+            if (string.IsNullOrEmpty(token))
+                return RedirectToPage("/Authen/Login");
+
             var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
             var jsonContent = new StringContent(
                 JsonSerializer.Serialize(dto),
                 Encoding.UTF8,
-                "application/json-patch+json"
+                "application/json"
             );
 
             var response = await client.PostAsync("https://localhost:7086/api/account", jsonContent);
@@ -82,11 +87,15 @@ namespace QuanLyPhongKham.Pages.Authen
         }
 
 
-
-
         private async Task LoadRolesAsync()
         {
+            var token = HttpContext.Session.GetString("JWTToken");
+            if (string.IsNullOrEmpty(token))
+                return; // hoặc RedirectToPage("/Authen/Login");
+
             var client = _httpClientFactory.CreateClient();
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
             var response = await client.GetAsync("https://localhost:7086/api/account/roles");
 
             if (response.IsSuccessStatusCode)
@@ -104,6 +113,26 @@ namespace QuanLyPhongKham.Pages.Authen
                 }).ToList();
             }
         }
-    }
 
+
+        public class CreateAccountDto
+        {
+            public int AccountId { get; set; } = 0;
+
+            [Required(ErrorMessage = "Tên đăng nhập không được để trống")]
+            public string Username { get; set; } = string.Empty;
+
+            [Required(ErrorMessage = "Mật khẩu không được để trống")]
+            public string Password { get; set; } = string.Empty;
+
+            [Required(ErrorMessage = "Họ và tên không được để trống")]
+            public string FullName { get; set; } = string.Empty;
+
+            [Required(ErrorMessage = "Vui lòng chọn vai trò")]
+            [Range(1, int.MaxValue, ErrorMessage = "Vui lòng chọn vai trò hợp lệ")]
+            public int RoleId { get; set; }
+
+            public bool Status { get; set; } = false;
+        }
+    }
 }

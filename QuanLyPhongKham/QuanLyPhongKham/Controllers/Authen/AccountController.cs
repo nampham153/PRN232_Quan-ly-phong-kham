@@ -30,14 +30,15 @@ namespace QuanLyPhongKham.Controllers.Authen
 
         [HttpGet("list")]
         public IActionResult GetAccounts(
-            [FromQuery] string search = "",
-            [FromQuery] int page = 1,
-            [FromQuery] int? roleId = null,
-            [FromQuery] bool? status = null)
+     [FromQuery(Name = "Search")] string search = "",
+[FromQuery(Name = "page")] int pages = 1,
+     [FromQuery] int? roleId = null,
+     [FromQuery] bool? status = null)
         {
-            var accounts = _userService.GetAccounts(search, page, roleId, status);
+            var accounts = _userService.GetAccounts(search, pages, roleId, status);
             return Ok(accounts);
         }
+
 
         [HttpGet("count")]
         public async Task<IActionResult> CountAccounts(
