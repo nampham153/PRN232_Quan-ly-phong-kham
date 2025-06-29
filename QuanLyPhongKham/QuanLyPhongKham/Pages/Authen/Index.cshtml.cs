@@ -88,7 +88,7 @@ namespace QuanLyPhongKham.Pages.Authen
             }
 
             if (TotalPages <= 0) TotalPages = 1;
-            Pages = Math.Clamp(Pages, 1, TotalPages); // Cố định trong khoảng hợp lệ
+            Pages = Math.Clamp(Pages, 1, TotalPages); 
 
             // 4. Gọi API danh sách
             queryParams.Add($"page={Pages}");
@@ -105,12 +105,6 @@ namespace QuanLyPhongKham.Pages.Authen
                     PropertyNameCaseInsensitive = true
                 }) ?? new();
             }
-
-            // DEBUG
-            Console.WriteLine($"[DEBUG] Page: {Pages}");
-            Console.WriteLine($"[DEBUG] Search: {Search}");
-            Console.WriteLine($"[DEBUG] RoleId: {RoleId}");
-            Console.WriteLine($"[DEBUG] Status: {Status}");
 
             return Page();
         }
