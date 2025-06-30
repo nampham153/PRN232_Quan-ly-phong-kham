@@ -22,7 +22,7 @@ namespace QuanLyPhongKham.Pages.Patient
         public async Task<IActionResult> OnGetAsync(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync($"https://localhost:5001/api/Patient/{id}");
+            var response = await client.GetAsync($"https://localhost:7086/api/Patient/{id}");
 
             if (!response.IsSuccessStatusCode)
             {
