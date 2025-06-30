@@ -53,6 +53,8 @@ namespace QuanLyPhongKham
 
             builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
             builder.Services.AddScoped<IMedicalRecordRepository, MedicalRecordRepository>();
+            builder.Services.AddScoped<ITestResultPdfService, TestResultPdfService>();
+
 
 
             // General Test Logic
@@ -161,21 +163,11 @@ namespace QuanLyPhongKham
 
             app.UseHttpsRedirection();
 
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
-                RequestPath = ""
-            });
+            app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-         Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
-                RequestPath = ""
-            });
+            app.UseStaticFiles();
 
 
             app.UseAuthorization();

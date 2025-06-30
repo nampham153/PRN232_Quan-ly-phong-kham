@@ -27,13 +27,12 @@ namespace DataAccessLayer.ViewModels
         public DateTime TestDate { get; set; }
 
         // Display properties for dropdown lists and information display
-        // Remove [Required] attributes from these display properties
-        public string TestName { get; set; } = "";
-        public string TestDescription { get; set; } = "";
-        public string UserName { get; set; } = "";
-        public string PatientName { get; set; } = "";
-        public string MedicalRecordDate { get; set; } = "";
-        public string Diagnosis { get; set; } = "";
+        public string TestName { get; set; }
+        public string TestDescription { get; set; }
+        public string UserName { get; set; }
+        public string PatientName { get; set; }
+        public string MedicalRecordDate { get; set; }
+        public string Diagnosis { get; set; }
 
         // Additional helper properties for better user experience
         public string FormattedTestDate => TestDate.ToString("dd/MM/yyyy HH:mm");
