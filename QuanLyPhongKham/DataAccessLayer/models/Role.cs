@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace DataAccessLayer.models
@@ -13,6 +14,7 @@ namespace DataAccessLayer.models
         [Key]
         public int RoleId { get; set; }
         public string RoleName { get; set; }
+        [JsonIgnore]
 
         public ICollection<Account> Accounts { get; set; }
     }

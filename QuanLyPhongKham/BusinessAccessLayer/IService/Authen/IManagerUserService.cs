@@ -10,15 +10,23 @@ namespace BusinessAccessLayer.IService.Authen
 {
     public interface IManagerUserService
     {
-        List<Account> GetAccounts(string searchKeyword, int page, int? roleId, bool? status);
+        List<AccountDTO> GetAccounts(string searchKeyword, int pages, int? roleId, bool? status);
         Task<int> CountAccountsAsync(string searchKeyword, int? roleId, bool? status);
 
         Task<List<Role>> GetRolesAsync();
 
         bool CreateAccount(UserAccountViewModel account);
-        Account GetAccountById(int accountId);
+        AccountDTO GetAccountById(int accountId);
         bool DeleteAccount(int accountId);
         bool UpdateAccount(UserAccountViewModel updatedAccount);
+
+        User? GetUserEntity(int accountId);
+        UserDTO? GetUserDto(int accountId);
+
+        bool UpdateAccountInfor(ChangeInformationViewModel model);
+        bool ChangepassInfor(ChangePasswordViewModel model);
+
+
     }
 
 }

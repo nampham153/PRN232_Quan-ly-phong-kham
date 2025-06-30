@@ -22,9 +22,9 @@ namespace DataAccessLayer.Repository.Authen
             _accountDAO = accountDAO;
         }
 
-        public List<Account> GetAccounts(string searchKeyword, int page, int? roleId, bool? status)
+        public List<AccountDTO> GetAccounts(string searchKeyword, int pages, int? roleId, bool? status)
         {
-            return _accountDAO.GetAccounts(searchKeyword, page, roleId, status);
+            return _accountDAO.GetAccounts(searchKeyword, pages, roleId, status);
         }
         public async Task<int> CountAccountsAsync(string searchKeyword, int? roleId, bool? status)
         {
@@ -37,7 +37,7 @@ namespace DataAccessLayer.Repository.Authen
             return _accountDAO.CreateAccount(account);
         }
 
-        public Account GetAccountById(int accountId)
+        public AccountDTO GetAccountById(int accountId)
         {
             return _accountDAO.GetAccountById(accountId);
         }
@@ -55,6 +55,28 @@ namespace DataAccessLayer.Repository.Authen
         {
             return await _accountDAO.GetRolesAsync();
         }
+
+        // Trả về entity User (bao gồm cả Account nếu cần)
+        public User? GetUserByAccountId(int accountId)
+        {
+            return _accountDAO.GetUserByAccountId(accountId);
+        }
+
+        // Trả về DTO để dùng cho view hoặc API
+        public UserDTO? GetUserDtoByAccountId(int accountId)
+        {
+            return _accountDAO.GetUserDtoByAccountId(accountId);
+        }
+        public bool UpdateAccountInfor(ChangeInformationViewModel model)
+        {
+            return _accountDAO.UpdateUserInformation(model);
+        }
+
+        public bool ChangepassInfor(ChangePasswordViewModel model)
+        {
+            return _accountDAO.ChangePassword(model);
+        }
     }
+
 
 }

@@ -2,12 +2,15 @@
 using DataAccessLayer.IRepository;
 using DataAccessLayer.models;
 using DataAccessLayer.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace QuanLyPhongKham.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Doctor")]
+
     public class DoctorController : ControllerBase
     {
         private readonly IDoctorService _doctorService;

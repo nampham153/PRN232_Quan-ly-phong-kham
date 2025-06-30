@@ -2,33 +2,39 @@
 using BusinessAccessLayer.Service;
 using DataAccessLayer.models;
 using DataAccessLayer.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 
 namespace QuanLyPhongKham.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class TestResultController : ControllerBase
     {
         private readonly ITestResultService _testResultService;
         private readonly IMedicalRecordService _medicalRecordService;
         private readonly IDoctorService _doctorService;
         private readonly ITestResultPdfService _pdfService;
+        private readonly HttpClient _httpClient;
 
         public TestResultController(
             ITestResultService testResultService,
             IMedicalRecordService medicalRecordService,
             IDoctorService doctorService,
-            ITestResultPdfService pdfService)
+            ITestResultPdfService pdfService,
+            HttpClient httpClient)
         {
             _testResultService = testResultService;
             _medicalRecordService = medicalRecordService;
             _doctorService = doctorService;
             _pdfService = pdfService;
+            _httpClient = httpClient;
         }
 
         [HttpGet("odata")]
@@ -638,7 +644,7 @@ namespace QuanLyPhongKham.Controllers
             }
         }
 
-
+        
         [HttpGet("pdf/{id}")]
         public IActionResult GeneratePdf(int id)
         {
@@ -679,6 +685,7 @@ namespace QuanLyPhongKham.Controllers
             }
         }
 
+        
         [HttpGet("pdf/preview/{id}")]
         public IActionResult PreviewPdf(int id)
         {

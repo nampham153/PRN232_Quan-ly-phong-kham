@@ -1,13 +1,21 @@
 ﻿using BusinessAccessLayer.IService.Authen;
 using DataAccessLayer.models;
 using DataAccessLayer.ViewModels.Authen;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace QuanLyPhongKham.Controllers.Authen
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize(Policy = "Admin")]
+    [Authorize(Roles = "Admin")]
+
     public class AccountController : ControllerBase
     {
         private readonly IManagerUserService _userService;
@@ -26,14 +34,15 @@ namespace QuanLyPhongKham.Controllers.Authen
 
         [HttpGet("list")]
         public IActionResult GetAccounts(
-            [FromQuery] string search = "",
-            [FromQuery] int page = 1,
-            [FromQuery] int? roleId = null,
-            [FromQuery] bool? status = null)
+     [FromQuery(Name = "Search")] string search = "",
+[FromQuery(Name = "page")] int pages = 1,
+     [FromQuery] int? roleId = null,
+     [FromQuery] bool? status = null)
         {
-            var accounts = _userService.GetAccounts(search, page, roleId, status);
+            var accounts = _userService.GetAccounts(search, pages, roleId, status);
             return Ok(accounts);
         }
+
 
         [HttpGet("count")]
         public async Task<IActionResult> CountAccounts(
@@ -72,6 +81,8 @@ namespace QuanLyPhongKham.Controllers.Authen
             var result = _userService.DeleteAccount(id);
             return result ? Ok("Deleted") : BadRequest("Account is active or not found");
         }
+
+
     }
 
 

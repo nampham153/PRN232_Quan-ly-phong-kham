@@ -20,7 +20,7 @@ namespace BusinessAccessLayer.Service.Authen
         }
 
         // 1 + 3: Danh sách tài khoản có search + phân trang (6 account / trang)
-        public List<Account> GetAccounts(string searchKeyword = "", int page = 1, int? roleId = null, bool? status = null)
+        public List<AccountDTO> GetAccounts(string searchKeyword = "", int pages = 1, int? roleId = null, bool? status = null)
         {
             var query = _context.Accounts
                 .Include(a => a.Role)
@@ -50,10 +50,19 @@ namespace BusinessAccessLayer.Service.Authen
 
             return query
                 .OrderBy(a => a.AccountId)
-                .Skip((page - 1) * 6)
+                .Skip((pages - 1) * 6)
                 .Take(6)
+                .Select(a => new AccountDTO
+                {
+                    AccountId = a.AccountId,
+                    Username = a.Username,
+                    RoleName = a.Role != null ? a.Role.RoleName : null,
+                    Email = a.User != null ? a.User.Email : null,
+                    Status = a.Status
+                })
                 .ToList();
         }
+
         // Lấy danh sách Role (async)
         public async Task<List<Role>> GetRolesAsync()
         {
@@ -88,7 +97,6 @@ namespace BusinessAccessLayer.Service.Authen
             return await query.CountAsync();
         }
 
-
         // 4: Tạo tài khoản mới (Status mặc định = false)
         public bool CreateAccount(UserAccountViewModel accountViewModel)
         {
@@ -102,7 +110,7 @@ namespace BusinessAccessLayer.Service.Authen
                     throw new ArgumentException("Role không hợp lệ.");
 
                 // Hash mật khẩu người dùng nhập
-                string hashedPassword =(accountViewModel.Password);
+                string hashedPassword = (accountViewModel.Password);
 
                 var account = new Account
                 {
@@ -125,19 +133,29 @@ namespace BusinessAccessLayer.Service.Authen
             }
         }
 
-
-
-
-
         // 5: Xem chi tiết tài khoản theo ID
-        public Account GetAccountById(int accountId)
+        public AccountDTO GetAccountById(int id)
         {
-            return _context.Accounts
+            var account = _context.Accounts
                 .Include(a => a.Role)
                 .Include(a => a.User)
-                .Include(a => a.Patient)
-                .FirstOrDefault(a => a.AccountId == accountId);
+                .FirstOrDefault(a => a.AccountId == id);
+
+            if (account == null) return null;
+
+            return new AccountDTO
+            {
+                AccountId = account.AccountId,
+                Username = account.Username,
+                RoleName = account.Role?.RoleName,
+                RoleId = account.RoleId, // ✅ thêm
+                Email = account.User?.Email,
+                FullName = account.User?.FullName ?? "", // ✅ thêm
+                Status = account.Status
+            };
         }
+
+
 
         // 6: Xóa tài khoản nếu Status = false
         public bool DeleteAccount(int accountId)
@@ -194,6 +212,100 @@ namespace BusinessAccessLayer.Service.Authen
             }
         }
 
+        // Lấy thông tin User theo AccountId
+        public User? GetUserByAccountId(int accountId)
+        {
+            return _context.Users
+                           .Include(u => u.Account) // nếu cần thêm thông tin tài khoản
+                           .FirstOrDefault(u => u.AccountId == accountId);
+        }
+
+        // Nếu muốn trả DTO thay vì entity (tùy chọn)
+        public UserDTO? GetUserDtoByAccountId(int accountId)
+        {
+            return _context.Users
+                           .Where(u => u.AccountId == accountId)
+                           .Select(u => new UserDTO
+                           {
+                               UserId = u.UserId,
+                               FullName = u.FullName,
+                               Gender = u.Gender,
+                               DOB = u.DOB,
+                               Phone = u.Phone,
+                               Email = u.Email,
+                               AccountId = u.AccountId,
+                               DoctorPath = u.DoctorPath
+                           })
+                           .FirstOrDefault();
+        }
+
+        //Cập nhật thông tin cá nhân 
+        public bool UpdateUserInformation(ChangeInformationViewModel updatedInfo)
+        {
+            try
+            {
+                var existingAccount = _context.Accounts
+                    .Include(a => a.User)
+                    .FirstOrDefault(a => a.AccountId == updatedInfo.AccountId);
+
+                if (existingAccount == null || existingAccount.User == null)
+                    return false;
+
+                // Cập nhật Account
+                existingAccount.Username = updatedInfo.Username;
+                existingAccount.RoleId = updatedInfo.RoleId;
+                existingAccount.Status = updatedInfo.Status;
+
+                // Cập nhật User
+                existingAccount.User.FullName = updatedInfo.FullName;
+                existingAccount.User.Email = updatedInfo.Email;
+                existingAccount.User.Phone = updatedInfo.Phone;
+                existingAccount.User.DOB = updatedInfo.DOB;
+                existingAccount.User.Gender = updatedInfo.Gender;
+
+                _context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //thay dổi mật khẩu đăng nhập
+        public bool ChangePassword(ChangePasswordViewModel model)
+        {
+            try
+            {
+                var account = _context.Accounts.FirstOrDefault(a => a.AccountId == model.AccountId);
+                if (account == null)
+                    return false;
+
+                if (string.IsNullOrEmpty(model.OldPassword) ||
+                    string.IsNullOrEmpty(model.NewPassword) ||
+                    string.IsNullOrEmpty(model.ConfirmPassword))
+                    return false;
+
+                if (model.NewPassword != model.ConfirmPassword)
+                    return false;
+
+                // So sánh mật khẩu hiện tại (tạm thời dùng plain text)
+                if (model.OldPassword != account.PasswordHash)
+                    return false;
+
+                // Gán mật khẩu mới
+                account.PasswordHash = model.NewPassword;
+
+                _context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
+
 
 }

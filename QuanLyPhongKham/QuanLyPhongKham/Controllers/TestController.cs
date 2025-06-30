@@ -1,6 +1,7 @@
 ﻿using BusinessAccessLayer.IService;
 using DataAccessLayer.ViewModels;
 using DataAccessLayer.ViewModels.Search;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,8 @@ namespace QuanLyPhongKham.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Doctor")]
+
     public class TestController : ControllerBase
     {
         private readonly ITestService _testService;

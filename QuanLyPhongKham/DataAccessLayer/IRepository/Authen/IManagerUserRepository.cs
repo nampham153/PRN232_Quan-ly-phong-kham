@@ -10,14 +10,19 @@ namespace DataAccessLayer.IRepository.Authen
 {
     public interface IManagerUserRepository
     {
-        List<Account> GetAccounts(string searchKeyword, int page, int? roleId, bool? status);
+        List<AccountDTO> GetAccounts(string searchKeyword, int pages, int? roleId, bool? status);
         Task<int> CountAccountsAsync(string searchKeyword, int? roleId, bool? status);
         bool CreateAccount(UserAccountViewModel account);
-        Account GetAccountById(int accountId);
+        AccountDTO GetAccountById(int accountId);
         bool DeleteAccount(int accountId);
         bool UpdateAccount(UserAccountViewModel updatedAccount);
         Task<List<Role>> GetRolesAsync();
+        User? GetUserByAccountId(int accountId);
+        UserDTO? GetUserDtoByAccountId(int accountId);
 
+        bool UpdateAccountInfor(ChangeInformationViewModel updatedAccount);
+
+        bool ChangepassInfor(ChangePasswordViewModel newpass);
     }
 
 }

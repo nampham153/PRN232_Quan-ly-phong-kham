@@ -37,16 +37,16 @@ namespace BusinessAccessLayer.Service.Authen
 
             var jwtToken = GenerateJwtToken(account);
             var refreshToken = GenerateRefreshToken();
-            
+
             _accountRepository.StoreRefreshToken(account.AccountId, refreshToken.Token, refreshToken.ExpiryDate);
-            
+
             return jwtToken;
         }
 
         private string GenerateJwtToken(Account account)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            
+
             // Cách 1: Tạo key trực tiếp
             var keyBytes = Encoding.UTF8.GetBytes(_jwtSecret);
             var signingKey = new SymmetricSecurityKey(keyBytes);
@@ -54,15 +54,15 @@ namespace BusinessAccessLayer.Service.Authen
 
             // Tạo claims
             var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, account.AccountId.ToString()),
-                new Claim(ClaimTypes.Name, account.Username ?? ""),
-                new Claim("role", account.Role?.ToString() ?? "User"), // Sử dụng ToString() để đảm bảo string
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Iat, 
-                    new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString(), 
-                    ClaimValueTypes.Integer64)
-            };
+         {
+             new Claim(ClaimTypes.NameIdentifier, account.AccountId.ToString()),
+             new Claim(ClaimTypes.Name, account.Username ?? ""),
+             new Claim(ClaimTypes.Role, account.Role?.RoleName ?? "User"),
+             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+             new Claim(JwtRegisteredClaimNames.Iat,
+                 new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString(),
+                 ClaimValueTypes.Integer64)
+         };
 
             // Tạo token descriptor
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -97,7 +97,7 @@ namespace BusinessAccessLayer.Service.Authen
         {
             // Debug: Log refresh token
             Console.WriteLine($"Received refresh token: {refreshToken}");
-            
+
             // 1. Lấy RefreshToken từ repository
             var storedToken = _accountRepository.GetRefreshToken(refreshToken);
             if (storedToken == null)
@@ -105,7 +105,7 @@ namespace BusinessAccessLayer.Service.Authen
                 Console.WriteLine("Refresh token not found in database");
                 return null; // Token không tồn tại
             }
-                
+
             if (storedToken.ExpiryDate <= DateTime.UtcNow)
             {
                 Console.WriteLine($"Refresh token expired. Expiry: {storedToken.ExpiryDate}, Now: {DateTime.UtcNow}");

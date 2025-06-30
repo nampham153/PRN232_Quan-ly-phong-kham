@@ -17,6 +17,7 @@ using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OData.Edm;
 using Microsoft.OData.ModelBuilder;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 namespace QuanLyPhongKham
@@ -26,7 +27,15 @@ namespace QuanLyPhongKham
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(policy =>
+                {
+                    policy.WithOrigins("https://localhost:7086") // Địa chỉ FE
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
             // ========================================
             // Register DbContext
             // ========================================
@@ -98,6 +107,8 @@ namespace QuanLyPhongKham
             // Register MVC & JSON options
             // ========================================
             builder.Services.AddControllers();
+            builder.Services.AddControllers().AddXmlDataContractSerializerFormatters();
+
 
             // Đọc cấu hình JWT từ appsettings.json
             var jwtSecret = builder.Configuration["Jwt:Key"];
@@ -126,13 +137,76 @@ namespace QuanLyPhongKham
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero
                 };
+
+                // Cho phép token không cần prefix "Bearer "
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
+                        if (!string.IsNullOrEmpty(authHeader))
+                        {
+                            if (authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+                            {
+                                context.Token = authHeader.Substring("Bearer ".Length).Trim();
+                            }
+                            else
+                            {
+                                context.Token = authHeader.Trim();
+                            }
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
+            });
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", policy => policy.RequireRole("admin"));   // hoặc "Admin"
+                options.AddPolicy("Doctor", policy => policy.RequireRole("doctor")); // hoặc "Doctor"
+                options.AddPolicy("Patient", policy => policy.RequireRole("patient"));// tương tự
+            });
+
+            // Cấu hình Swagger hỗ trợ Bearer token
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "QuanLyPhongKham API", Version = "v1" });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "Nhập token JWT của bạn, không cần tiền tố 'Bearer '",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
             });
             builder.Services.AddRazorPages();
             builder.Services.AddHttpClient();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddDistributedMemoryCache(); // Cache cho Session
 
-
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // Thời gian session hết hạn
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
             IEdmModel GetEdmModel()
             {
                 var odataBuilder = new ODataConventionModelBuilder();
@@ -161,17 +235,49 @@ namespace QuanLyPhongKham
                 app.UseSwaggerUI();
             }
 
+            //app.UseHttpsRedirection();
+
+            //app.UseStaticFiles();
+
+            //app.UseRouting();
+            //app.UseSession(); // Phải nằm giữa UseRouting và UseAuthorization
+            //app.UseAuthorization();
+            //app.UseStaticFiles();
+
+            //app.UseAuthentication();
+
+
+
+
+
+            //app.MapControllers();
+            //app.MapRazorPages();
+
+            //app.Run();
+
             app.UseHttpsRedirection();
-
             app.UseStaticFiles();
-
+            //   app.UseStaticFiles(new StaticFileOptions
+            //   {
+            //       FileProvider = new PhysicalFileProvider(
+            //Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")),
+            //       RequestPath = ""
+            //   });
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
             app.UseRouting();
 
-            app.UseStaticFiles();
+            app.UseCors(); // Thêm dòng này trước UseAuthorization nếu có
 
+
+            app.UseAuthentication();
+
+            app.UseSession(); // Phải nằm giữa UseRouting và UseAuthorization
 
             app.UseAuthorization();
-
             app.MapControllers();
             app.MapRazorPages();
 

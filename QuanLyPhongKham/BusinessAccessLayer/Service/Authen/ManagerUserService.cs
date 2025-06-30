@@ -20,12 +20,12 @@ namespace BusinessAccessLayer.Service.Authen
         }
 
 
-      
 
-        public List<Account> GetAccounts(string searchKeyword, int page, int? roleId, bool? status)
+
+        public List<AccountDTO> GetAccounts(string searchKeyword, int pages, int? roleId, bool? status)
         {
-            if (page < 1) page = 1;
-            return _repository.GetAccounts(searchKeyword, page, roleId, status);
+            if (pages < 1) pages = 1;
+            return _repository.GetAccounts(searchKeyword, pages, roleId, status);
         }
 
 
@@ -38,7 +38,7 @@ namespace BusinessAccessLayer.Service.Authen
             return _repository.CreateAccount(account);
         }
 
-        public Account GetAccountById(int accountId)
+        public AccountDTO GetAccountById(int accountId)
         {
             return _repository.GetAccountById(accountId);
         }
@@ -61,6 +61,26 @@ namespace BusinessAccessLayer.Service.Authen
         {
             // Nếu cần xử lý logic gì thêm thì thêm ở đây
             return await _repository.GetRolesAsync();
+        }
+        //new
+        public User? GetUserEntity(int accountId)
+        {
+            return _repository.GetUserByAccountId(accountId);
+        }
+
+        public UserDTO? GetUserDto(int accountId)
+        {
+            return _repository.GetUserDtoByAccountId(accountId);
+        }
+        public bool UpdateAccountInfor(ChangeInformationViewModel model)
+        {
+            // Gọi thẳng Repository, không lặp lại logic
+            return _repository.UpdateAccountInfor(model);
+        }
+
+        public bool ChangepassInfor(ChangePasswordViewModel model)
+        {
+            return _repository.ChangepassInfor(model);
         }
     }
 
