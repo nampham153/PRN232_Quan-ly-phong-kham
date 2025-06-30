@@ -11,6 +11,7 @@ using DataAccessLayer.ViewModels;
 using System.Text.Json;
 using DataAccessLayer.ViewModels.Search;
 using System.Text;
+using System.Net.Http.Headers;
 
 namespace Frontendui.Pages.TestPage
 {
@@ -35,6 +36,12 @@ namespace Frontendui.Pages.TestPage
 
         public async Task OnGetAsync()
         {
+            var token = HttpContext.Session.GetString("JWTToken");
+            if (!string.IsNullOrEmpty(token))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+
             try
             {
                 // Validate and set defaults for SearchFilter
@@ -140,6 +147,12 @@ namespace Frontendui.Pages.TestPage
         // Method for advanced search using POST (optional)
         public async Task<IActionResult> OnPostAdvancedSearchAsync()
         {
+            var token = HttpContext.Session.GetString("JWTToken");
+            if (!string.IsNullOrEmpty(token))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+
             try
             {
                 var json = JsonSerializer.Serialize(SearchFilter, new JsonSerializerOptions

@@ -11,8 +11,6 @@ namespace QuanLyPhongKham.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(Roles = "Doctor")]
-    //[Authorize(Policy = "Doctor")]
-
     public class TestResultController : ControllerBase
     {
         private readonly ITestResultService _testResultService;

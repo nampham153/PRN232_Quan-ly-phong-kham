@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json.Linq;
 using DataAccessLayer.models;
+using System.Net.Http.Headers;
 
 namespace QuanLyPhongKham.Pages.TestResultPage
 {
@@ -37,6 +38,12 @@ namespace QuanLyPhongKham.Pages.TestResultPage
 
         public async Task<IActionResult> OnGetAsync()
         {
+            var token = HttpContext.Session.GetString("JWTToken");
+            if (!string.IsNullOrEmpty(token))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+
             try
             {
                 // Load filter options
@@ -85,6 +92,12 @@ namespace QuanLyPhongKham.Pages.TestResultPage
 
         private async Task LoadResultIdMapping()
         {
+            var token = HttpContext.Session.GetString("JWTToken");
+            if (!string.IsNullOrEmpty(token))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+
             try
             {
                 // Gọi API endpoint mới để lấy danh sách TestResult với ResultId
@@ -111,6 +124,12 @@ namespace QuanLyPhongKham.Pages.TestResultPage
 
         private async Task LoadTestNameOptions()
         {
+            var token = HttpContext.Session.GetString("JWTToken");
+            if (!string.IsNullOrEmpty(token))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+
             try
             {
                 var response = await _httpClient.GetAsync($"{_apiBaseUrl}/api/TestResult/test-names");
@@ -144,6 +163,12 @@ namespace QuanLyPhongKham.Pages.TestResultPage
 
         private async Task LoadUserNameOptions()
         {
+            var token = HttpContext.Session.GetString("JWTToken");
+            if (!string.IsNullOrEmpty(token))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+
             try
             {
                 var response = await _httpClient.GetAsync($"{_apiBaseUrl}/api/TestResult/user-names");
@@ -177,6 +202,12 @@ namespace QuanLyPhongKham.Pages.TestResultPage
 
         public async Task<IActionResult> OnPostDeleteAsync(int id)
         {
+            var token = HttpContext.Session.GetString("JWTToken");
+            if (!string.IsNullOrEmpty(token))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+
             try
             {
                 // First check if test result exists

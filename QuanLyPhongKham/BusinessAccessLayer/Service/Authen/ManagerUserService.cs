@@ -62,6 +62,26 @@ namespace BusinessAccessLayer.Service.Authen
             // Nếu cần xử lý logic gì thêm thì thêm ở đây
             return await _repository.GetRolesAsync();
         }
+
+        public User? GetUserEntity(int accountId)
+        {
+            return _repository.GetUserByAccountId(accountId);
+        }
+
+        public UserDTO? GetUserDto(int accountId)
+        {
+           return _repository.GetUserDtoByAccountId(accountId);
+        }
+        public bool UpdateAccountInfor(ChangeInformationViewModel model)
+        {
+            // Gọi thẳng Repository, không lặp lại logic
+            return _repository.UpdateAccountInfor(model);
+        }
+
+        public bool ChangepassInfor(ChangePasswordViewModel model)
+        {
+            return _repository.ChangepassInfor(model);
+        }
     }
 
 }

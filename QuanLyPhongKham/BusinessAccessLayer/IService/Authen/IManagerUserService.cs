@@ -19,6 +19,14 @@ namespace BusinessAccessLayer.IService.Authen
         AccountDTO GetAccountById(int accountId);
         bool DeleteAccount(int accountId);
         bool UpdateAccount(UserAccountViewModel updatedAccount);
+
+        User? GetUserEntity(int accountId);
+        UserDTO? GetUserDto(int accountId);
+
+        bool UpdateAccountInfor(ChangeInformationViewModel model);
+        bool ChangepassInfor(ChangePasswordViewModel model);
+
+
     }
 
 }

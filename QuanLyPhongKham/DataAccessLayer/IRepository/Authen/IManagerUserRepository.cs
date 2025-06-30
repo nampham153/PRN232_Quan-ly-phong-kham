@@ -17,7 +17,12 @@ namespace DataAccessLayer.IRepository.Authen
         bool DeleteAccount(int accountId);
         bool UpdateAccount(UserAccountViewModel updatedAccount);
         Task<List<Role>> GetRolesAsync();
+        User? GetUserByAccountId(int accountId);
+        UserDTO? GetUserDtoByAccountId(int accountId);
 
+        bool UpdateAccountInfor(ChangeInformationViewModel updatedAccount);
+
+        bool ChangepassInfor(ChangePasswordViewModel newpass);
     }
 
 }

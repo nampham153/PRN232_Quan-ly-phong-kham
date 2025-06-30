@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Net.Http.Headers;
 using System.Text.Json;
 
 namespace QuanLyPhongKham.Pages.MedicinePage
@@ -21,6 +22,12 @@ namespace QuanLyPhongKham.Pages.MedicinePage
 
         public async Task OnGetAsync()
         {
+            var token = HttpContext.Session.GetString("JWTToken");
+            if (!string.IsNullOrEmpty(token))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+
             try
             {
                 var apiUrl = $"{_apiBaseUrl}/api/Medicine";
@@ -48,6 +55,12 @@ namespace QuanLyPhongKham.Pages.MedicinePage
 
         public async Task<IActionResult> OnPostDeleteAsync(int id)
         {
+            var token = HttpContext.Session.GetString("JWTToken");
+            if (!string.IsNullOrEmpty(token))
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            }
+
             try
             {
                 var apiUrl = $"{_apiBaseUrl}/api/Medicine/{id}";

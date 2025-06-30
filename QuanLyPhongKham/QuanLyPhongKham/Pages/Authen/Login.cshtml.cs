@@ -25,29 +25,6 @@ namespace QuanLyPhongKham.Pages.Authen
 
         public string ErrorMessage { get; set; }
 
-        //public async Task<IActionResult> OnPostAsync()
-        //{
-        //    var client = _httpClientFactory.CreateClient();
-
-        //    var response = await client.PostAsJsonAsync("https://localhost:7086/api/auth/login", LoginRequest);
-
-        //    if (!response.IsSuccessStatusCode)
-        //    {
-        //        ErrorMessage = "Tên đăng nhập hoặc mật khẩu không đúng";
-        //        return Page();
-        //    }
-
-        //    var jsonString = await response.Content.ReadAsStringAsync();
-        //    var jsonDoc = JsonDocument.Parse(jsonString);
-        //    var token = jsonDoc.RootElement.GetProperty("token").GetString();
-
-        //    // Lưu token vào session
-        //    HttpContext.Session.SetString("JWTToken", token);
-
-        //    // Redirect sang trang admin
-        //    return RedirectToPage("/Index"); // ✅ đúng cú pháp Razor Pages
-        //}
-
         public async Task<IActionResult> OnPostAsync()
         {
             var client = _httpClientFactory.CreateClient();

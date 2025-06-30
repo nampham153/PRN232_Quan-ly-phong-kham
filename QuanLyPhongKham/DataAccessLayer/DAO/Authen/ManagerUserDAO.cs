@@ -97,7 +97,6 @@ namespace BusinessAccessLayer.Service.Authen
             return await query.CountAsync();
         }
 
-
         // 4: Tạo tài khoản mới (Status mặc định = false)
         public bool CreateAccount(UserAccountViewModel accountViewModel)
         {
@@ -133,10 +132,6 @@ namespace BusinessAccessLayer.Service.Authen
                 return false;
             }
         }
-
-
-
-
 
         // 5: Xem chi tiết tài khoản theo ID
         public AccountDTO GetAccountById(int id)
@@ -210,6 +205,99 @@ namespace BusinessAccessLayer.Service.Authen
                     return true;
                 }
                 return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        // Lấy thông tin User theo AccountId
+        public User? GetUserByAccountId(int accountId)
+        {
+            return _context.Users
+                           .Include(u => u.Account) // nếu cần thêm thông tin tài khoản
+                           .FirstOrDefault(u => u.AccountId == accountId);
+        }
+
+        // Nếu muốn trả DTO thay vì entity (tùy chọn)
+        public UserDTO? GetUserDtoByAccountId(int accountId)
+        {
+            return _context.Users
+                           .Where(u => u.AccountId == accountId)
+                           .Select(u => new UserDTO
+                           {
+                               UserId = u.UserId,
+                               FullName = u.FullName,
+                               Gender = u.Gender,
+                               DOB = u.DOB,
+                               Phone = u.Phone,
+                               Email = u.Email,
+                               AccountId = u.AccountId,
+                               DoctorPath = u.DoctorPath
+                           })
+                           .FirstOrDefault();
+        }
+
+        //Cập nhật thông tin cá nhân 
+        public bool UpdateUserInformation(ChangeInformationViewModel updatedInfo)
+        {
+            try
+            {
+                var existingAccount = _context.Accounts
+                    .Include(a => a.User)
+                    .FirstOrDefault(a => a.AccountId == updatedInfo.AccountId);
+
+                if (existingAccount == null || existingAccount.User == null)
+                    return false;
+
+                // Cập nhật Account
+                existingAccount.Username = updatedInfo.Username;
+                existingAccount.RoleId = updatedInfo.RoleId;
+                existingAccount.Status = updatedInfo.Status;
+
+                // Cập nhật User
+                existingAccount.User.FullName = updatedInfo.FullName;
+                existingAccount.User.Email = updatedInfo.Email;
+                existingAccount.User.Phone = updatedInfo.Phone;
+                existingAccount.User.DOB = updatedInfo.DOB;
+                existingAccount.User.Gender = updatedInfo.Gender;
+
+                _context.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        //thay dổi mật khẩu đăng nhập
+        public bool ChangePassword(ChangePasswordViewModel model)
+        {
+            try
+            {
+                var account = _context.Accounts.FirstOrDefault(a => a.AccountId == model.AccountId);
+                if (account == null)
+                    return false;
+
+                if (string.IsNullOrEmpty(model.OldPassword) ||
+                    string.IsNullOrEmpty(model.NewPassword) ||
+                    string.IsNullOrEmpty(model.ConfirmPassword))
+                    return false;
+
+                if (model.NewPassword != model.ConfirmPassword)
+                    return false;
+
+                // So sánh mật khẩu hiện tại (tạm thời dùng plain text)
+                if (model.OldPassword != account.PasswordHash)
+                    return false;
+
+                // Gán mật khẩu mới
+                account.PasswordHash = model.NewPassword;
+
+                _context.SaveChanges();
+                return true;
             }
             catch
             {

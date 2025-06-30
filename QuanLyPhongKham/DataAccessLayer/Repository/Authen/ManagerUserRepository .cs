@@ -55,6 +55,27 @@ namespace DataAccessLayer.Repository.Authen
         {
             return await _accountDAO.GetRolesAsync();
         }
+
+        // Trả về entity User (bao gồm cả Account nếu cần)
+        public User? GetUserByAccountId(int accountId)
+        {
+            return _accountDAO.GetUserByAccountId(accountId);
+        }
+
+        // Trả về DTO để dùng cho view hoặc API
+        public UserDTO? GetUserDtoByAccountId(int accountId)
+        {
+            return _accountDAO.GetUserDtoByAccountId(accountId);
+        }
+        public bool UpdateAccountInfor(ChangeInformationViewModel model)
+        {
+            return _accountDAO.UpdateUserInformation(model);
+        }
+
+        public bool ChangepassInfor(ChangePasswordViewModel model)
+        {
+            return _accountDAO.ChangePassword(model);
+        }
     }
 
 }
