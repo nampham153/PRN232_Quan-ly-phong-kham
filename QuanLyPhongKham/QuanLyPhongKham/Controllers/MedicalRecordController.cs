@@ -1,7 +1,6 @@
 ﻿using BusinessAccessLayer.IService;
 using DataAccessLayer.models;
 using DataAccessLayer.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +9,6 @@ namespace QuanLyPhongKham.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Doctor")]
-
     public class MedicalRecordController : ControllerBase
     {
         private readonly IMedicalRecordService _medicalRecordService;
@@ -218,5 +215,27 @@ namespace QuanLyPhongKham.Controllers
 
             return Ok(names);
         }
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var records = _medicalRecordService.QueryAll()
+                .ToList() // ✅ Ép IQueryable về List
+                .Select(r => new MedicalRecordVM
+                {
+                    RecordId = r.RecordId,
+                    PatientId = r.PatientId,
+                    PatientName = r.Patient != null ? r.Patient.FullName : null, // ✅ Không dùng ?.
+                    UserId = r.UserId,
+                    DoctorName = r.User != null ? r.User.FullName : null,        // ✅ Không dùng ?.
+                    Date = r.Date,
+                    Symptoms = r.Symptoms,
+                    Diagnosis = r.Diagnosis,
+                    Note = r.Note
+                }).ToList();
+
+            return Ok(records);
+        }
+
+
     }
 }

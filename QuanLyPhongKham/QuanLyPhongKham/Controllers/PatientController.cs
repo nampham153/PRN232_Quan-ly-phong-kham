@@ -1,15 +1,12 @@
 ﻿using BusinessAccessLayer.IService;
 using DataAccessLayer.models;
 using DataAccessLayer.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace QuanLyPhongKham.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Doctor")]
-
     public class PatientController : ControllerBase
     {
         private readonly IPatientService _patientService;
@@ -62,10 +59,13 @@ namespace QuanLyPhongKham.Controllers
         [HttpPost]
         public ActionResult AddPatient([FromBody] PatientViewModel patientViewModel)
         {
+            ModelState.Remove(nameof(patientViewModel.AvatarPath));
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
 
             var patient = new DataAccessLayer.models.Patient
             {

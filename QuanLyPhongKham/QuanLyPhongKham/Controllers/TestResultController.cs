@@ -14,6 +14,7 @@ namespace QuanLyPhongKham.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Doctor")]
 
     public class TestResultController : ControllerBase
     {

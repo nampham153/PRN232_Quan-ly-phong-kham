@@ -33,6 +33,7 @@ namespace DataAccessLayer.ViewModels
         public string Address { get; set; }
 
         public int? MedicalRecordCount { get; set; }
-        public string AvatarPath { get; set; }
+        public string? AvatarPath { get; set; }
+
     }
 }
