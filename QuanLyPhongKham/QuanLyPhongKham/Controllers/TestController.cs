@@ -14,10 +14,12 @@ namespace QuanLyPhongKham.Controllers
     public class TestController : ControllerBase
     {
         private readonly ITestService _testService;
+        private readonly ITestResultService _testResultService;
 
-        public TestController(ITestService testService)
+        public TestController(ITestService testService, ITestResultService testResultService)
         {
             _testService = testService;
+            _testResultService = testResultService;
         }
 
         // GET: api/Test
@@ -176,8 +178,80 @@ namespace QuanLyPhongKham.Controllers
         {
             try
             {
+                // Kiểm tra xem Test có tồn tại không
+                var test = _testService.GetTestById(id);
+                if (test == null)
+                {
+                    return NotFound(new { message = "Test not found" });
+                }
+
+                // Kiểm tra xem Test có đang được sử dụng trong TestResult không
+                var testResults = _testResultService.GetAllTestResults();
+                var isTestInUse = testResults.Any(tr => tr.TestId == id);
+
+                if (isTestInUse)
+                {
+                    // Đếm số lượng TestResult đang sử dụng Test này
+                    var usageCount = testResults.Count(tr => tr.TestId == id);
+
+                    return BadRequest(new
+                    {
+                        message = "Cannot delete test because it is being used in test results",
+                        details = $"This test is currently used in {usageCount} test result(s). Please remove or update those test results first before deleting this test.",
+                        usageCount = usageCount
+                    });
+                }
+
+                // Nếu Test không được sử dụng, cho phép xóa
                 _testService.DeleteTest(id);
                 return Ok(new { message = "Test deleted successfully" });
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal server error", error = ex.Message });
+            }
+        }
+
+        // GET: api/Test/check-usage/5 - Endpoint bổ sung để kiểm tra việc sử dụng
+        [HttpGet("check-usage/{id}")]
+        public IActionResult CheckTestUsage(int id)
+        {
+            try
+            {
+                var test = _testService.GetTestById(id);
+                if (test == null)
+                {
+                    return NotFound(new { message = "Test not found" });
+                }
+
+                var testResults = _testResultService.GetAllTestResults();
+                var usageCount = testResults.Count(tr => tr.TestId == id);
+                var isInUse = usageCount > 0;
+
+                var usageDetails = testResults
+                    .Where(tr => tr.TestId == id)
+                    .Select(tr => new
+                    {
+                        ResultId = tr.ResultId,
+                        TestDate = tr.TestDate,
+                        PatientName = tr.MedicalRecord?.Patient?.FullName ?? "Unknown",
+                        DoctorName = tr.User?.FullName ?? "Unknown"
+                    })
+                    .ToList();
+
+                return Ok(new
+                {
+                    testId = id,
+                    testName = test.TestName,
+                    isInUse = isInUse,
+                    usageCount = usageCount,
+                    canDelete = !isInUse,
+                    usageDetails = usageDetails
+                });
             }
             catch (ArgumentException ex)
             {
