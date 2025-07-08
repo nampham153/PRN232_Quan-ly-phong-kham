@@ -9,13 +9,13 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims; // Thêm để lấy thông tin từ token
 
 namespace QuanLyPhongKham.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(Roles = "Doctor")]
-
     public class TestResultController : ControllerBase
     {
         private readonly ITestResultService _testResultService;
@@ -38,6 +38,7 @@ namespace QuanLyPhongKham.Controllers
             _httpClient = httpClient;
         }
 
+        // Các phương thức Get không cần sửa vì tất cả bác sĩ đều có quyền xem
         [HttpGet("odata")]
         [EnableQuery]
         public IQueryable<TestResult> GetTestResultsOData()
@@ -64,8 +65,8 @@ namespace QuanLyPhongKham.Controllers
             [FromQuery] int? userId = null,
             [FromQuery] DateTime? fromDate = null,
             [FromQuery] DateTime? toDate = null,
-            [FromQuery] string sortBy = "ResultId", // Changed default to ResultId
-            [FromQuery] bool sortDescending = false, // Changed default to false for ascending order
+            [FromQuery] string sortBy = "ResultId",
+            [FromQuery] bool sortDescending = false,
             [FromQuery] int page = 1,
             [FromQuery] int pageSize = 10)
         {
@@ -580,6 +581,32 @@ namespace QuanLyPhongKham.Controllers
                     return NotFound(new { message = "Test result not found" });
                 }
 
+                // Lấy thông tin TestResult từ service
+                var testResult = _testResultService.GetTestResultById(id);
+                if (testResult == null)
+                {
+                    Console.WriteLine($"Update: Test result with ID {id} not found in service");
+                    return NotFound(new { message = "Test result not found" });
+                }
+
+                // Lấy accountId của người dùng hiện tại từ token
+                var accountIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+                if (accountIdClaim == null)
+                {
+                    Console.WriteLine($"Update: Không tìm thấy claim AccountId trong token cho ID {id}");
+                    return Unauthorized(new { message = "Không tìm thấy thông tin người dùng trong token" });
+                }
+
+                int accountId = int.Parse(accountIdClaim.Value);
+
+                // Kiểm tra xem bác sĩ hiện tại có phải là người tạo TestResult không
+                // Giả sử UserId trong TestResult tương ứng với AccountId của bác sĩ
+                if (testResult.UserId != accountId)
+                {
+                    Console.WriteLine($"Update: User with AccountId {accountId} không có quyền chỉnh sửa TestResult ID {id} (thuộc UserId {testResult.UserId})");
+                    return StatusCode(403, new { message = "Bạn không có quyền chỉnh sửa kết quả xét nghiệm này" });
+                }
+
                 if (!_testResultService.ValidateTestResult(vm, out var errors))
                 {
                     Console.WriteLine($"Update: Validation failed for ID {id}: {string.Join(", ", errors)}");
@@ -611,6 +638,31 @@ namespace QuanLyPhongKham.Controllers
                 {
                     Console.WriteLine($"Delete: Test result with ID {id} not found");
                     return NotFound(new { message = "Test result not found" });
+                }
+
+                // Lấy thông tin TestResult từ service
+                var testResult = _testResultService.GetTestResultById(id);
+                if (testResult == null)
+                {
+                    Console.WriteLine($"Delete: Test result with ID {id} not found in service");
+                    return NotFound(new { message = "Test result not found" });
+                }
+
+                // Lấy accountId của người dùng hiện tại từ token
+                var accountIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+                if (accountIdClaim == null)
+                {
+                    Console.WriteLine($"Delete: Không tìm thấy claim AccountId trong token cho ID {id}");
+                    return Unauthorized(new { message = "Không tìm thấy thông tin người dùng trong token" });
+                }
+
+                int accountId = int.Parse(accountIdClaim.Value);
+
+                // Kiểm tra xem bác sĩ hiện tại có phải là người tạo TestResult không
+                if (testResult.UserId != accountId)
+                {
+                    Console.WriteLine($"Delete: User with AccountId {accountId} không có quyền xóa TestResult ID {id} (thuộc UserId {testResult.UserId})");
+                    return StatusCode(403, new { message = "Bạn không có quyền xóa kết quả xét nghiệm này" });
                 }
 
                 if (_testResultService.DeleteTestResult(id))
@@ -645,7 +697,6 @@ namespace QuanLyPhongKham.Controllers
             }
         }
 
-        
         [HttpGet("pdf/{id}")]
         public IActionResult GeneratePdf(int id)
         {
@@ -686,7 +737,6 @@ namespace QuanLyPhongKham.Controllers
             }
         }
 
-        
         [HttpGet("pdf/preview/{id}")]
         public IActionResult PreviewPdf(int id)
         {
