@@ -28,14 +28,11 @@ namespace QuanLyPhongKham.Pages.Patient
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if ((AvatarFile == null || AvatarFile.Length == 0) && string.IsNullOrWhiteSpace(PatientViewModel.AvatarPath))
+            // BẮT BUỘC PHẢI CÓ FILE
+            if (AvatarFile == null || AvatarFile.Length == 0)
             {
-                ModelState.AddModelError("AvatarFile", "Bạn phải chọn ảnh từ máy hoặc dán link ảnh.");
-            }
-
-            if (AvatarFile != null && AvatarFile.Length > 0)
-            {
-                ModelState.Remove("PatientViewModel.AvatarPath");
+                ModelState.AddModelError("AvatarFile", "Bạn phải chọn ảnh từ máy.");
+                return Page();
             }
 
             if (!ModelState.IsValid)
@@ -45,24 +42,22 @@ namespace QuanLyPhongKham.Pages.Patient
 
             try
             {
-                // Xử lý file upload nếu có
-                if (AvatarFile != null && AvatarFile.Length > 0)
+                // Upload ảnh
+                var uploadsFolder = Path.Combine("wwwroot/uploadsPatient");
+                Directory.CreateDirectory(uploadsFolder);
+
+                var fileName = Guid.NewGuid() + Path.GetExtension(AvatarFile.FileName);
+                var filePath = Path.Combine(uploadsFolder, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    var uploadsFolder = Path.Combine("wwwroot/uploadsPatient");
-                    Directory.CreateDirectory(uploadsFolder);
-
-                    var fileName = Guid.NewGuid() + Path.GetExtension(AvatarFile.FileName);
-                    var filePath = Path.Combine(uploadsFolder, fileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await AvatarFile.CopyToAsync(stream);
-                    }
-
-                    PatientViewModel.AvatarPath = $"/uploadsPatient/{fileName}";
+                    await AvatarFile.CopyToAsync(stream);
                 }
 
-                // Gọi API
+                // Gán đường dẫn ảnh vào ViewModel
+                PatientViewModel.AvatarPath = $"/uploadsPatient/{fileName}";
+
+                // Gọi API để tạo bệnh nhân
                 var client = _httpClientFactory.CreateClient();
                 var jsonString = JsonSerializer.Serialize(PatientViewModel, new JsonSerializerOptions
                 {
@@ -70,8 +65,7 @@ namespace QuanLyPhongKham.Pages.Patient
                 });
 
                 var content = new StringContent(jsonString, Encoding.UTF8, "application/json");
-
-                var response = await client.PostAsync("https://localhost:7086/api/Patient", content); // hoặc cổng đúng
+                var response = await client.PostAsync("https://localhost:7086/api/Patient", content);
 
                 if (response.IsSuccessStatusCode)
                 {

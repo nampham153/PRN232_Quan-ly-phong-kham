@@ -1,68 +1,692 @@
 ﻿@page
 @model QuanLyPhongKham.Pages.Prescription.ListPrescriptionModel
 @using Microsoft.AspNetCore.Mvc.Rendering
+
 @{
-    ViewData["Title"] = "Danh sách đơn thuốc";
+    ViewData["Title"] = "Prescription Management";
 }
 
-<h2>Danh sách đơn thuốc</h2>
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h4 class="card-title mb-0">Prescription Management</h4>
+                        <p class="card-description">Manage and organize all medical prescriptions in the system</p>
+                    </div>
+                    <a asp-page="CreatePrescription" class="btn btn-primary btn-sm">
+                        <i class="mdi mdi-plus"></i> Add New Prescription
+                    </a>
+                </div>
 
-<form method="get" class="mb-3">
-    <div class="row">
-        <div class="col">
-            <label>Hồ sơ</label>
-            <select asp-for="RecordId" asp-items="Model.Records" class="form-control">
-                <option value="">-- Tất cả --</option>
-            </select>
-        </div>
-        <div class="col">
-            <label>Thuốc</label>
-            <select asp-for="MedicineId" asp-items="Model.Medicines" class="form-control">
-                <option value="">-- Tất cả --</option>
-            </select>
-        </div>
-        <div class="col">
-            <label>Liều lượng</label>
-            <input asp-for="Dosage" class="form-control" />
-        </div>
-        <div class="col">
-            <label>Số lượng</label>
-            <input asp-for="Quantity" class="form-control" />
-        </div>
-        <div class="col">
-            <label>&nbsp;</label>
-            <button type="submit" class="btn btn-primary form-control">Tìm kiếm</button>
+                <!-- Filter Section -->
+                <div class="row mb-4">
+                    <div class="col-lg-3 col-md-6">
+                        <form method="get" class="d-flex align-items-end gap-2">
+                            <div class="form-group flex-grow-1 mb-0">
+                                <label for="recordId" class="form-label">
+                                    <i class="mdi mdi-file-document me-1"></i>Filter by Medical Record
+                                </label>
+                                <select asp-for="RecordId" asp-items="Model.Records"
+                                        class="form-select" id="recordId" onchange="this.form.submit()">
+                                    <option value="">-- All Records --</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <form method="get" class="d-flex align-items-end gap-2">
+                            <div class="form-group flex-grow-1 mb-0">
+                                <label for="medicineId" class="form-label">
+                                    <i class="mdi mdi-pill me-1"></i>Filter by Medicine
+                                </label>
+                                <select asp-for="MedicineId" asp-items="Model.Medicines"
+                                        class="form-select" id="medicineId" onchange="this.form.submit()">
+                                    <option value="">-- All Medicines --</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <form method="get" class="d-flex align-items-end gap-2">
+                            <div class="form-group flex-grow-1 mb-0">
+                                <label for="dosage" class="form-label">
+                                    <i class="mdi mdi-medical-bag me-1"></i>Dosage
+                                </label>
+                                <input asp-for="Dosage" class="form-control" id="dosage" placeholder="Enter dosage..." />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <form method="get" class="d-flex align-items-end gap-2">
+                            <div class="form-group flex-grow-1 mb-0">
+                                <label for="quantity" class="form-label">
+                                    <i class="mdi mdi-counter me-1"></i>Quantity
+                                </label>
+                                <input asp-for="Quantity" class="form-control" id="quantity" placeholder="Enter quantity..." />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="d-flex align-items-center gap-2">
+                            <button type="button" class="btn btn-outline-secondary btn-sm" onclick="applyFilters()">
+                                <i class="mdi mdi-filter"></i> Apply Filters
+                            </button>
+                            @if (!string.IsNullOrEmpty(Model.RecordId?.ToString()) || !string.IsNullOrEmpty(Model.MedicineId?.ToString()) || !string.IsNullOrEmpty(Model.Dosage) || !string.IsNullOrEmpty(Model.Quantity?.ToString()))
+                            {
+                                <a asp-page="./ListPrescription" class="btn btn-outline-danger btn-sm" title="Clear All Filters">
+                                    <i class="mdi mdi-close"></i> Clear All
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Filters Display -->
+                @if (!string.IsNullOrEmpty(Model.RecordId?.ToString()) || !string.IsNullOrEmpty(Model.MedicineId?.ToString()) || !string.IsNullOrEmpty(Model.Dosage) || !string.IsNullOrEmpty(Model.Quantity?.ToString()))
+                {
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="alert alert-info py-2">
+                                <i class="mdi mdi-information me-2"></i>
+                                <strong>Active Filters:</strong>
+                                @if (!string.IsNullOrEmpty(Model.RecordId?.ToString()))
+                                {
+                                    <span class="badge badge-info me-2">
+                                        Record ID: @Model.RecordId
+                                        <a asp-page="./ListPrescription" asp-route-MedicineId="@Model.MedicineId" asp-route-Dosage="@Model.Dosage" asp-route-Quantity="@Model.Quantity" class="text-white ms-1" title="Remove record filter">
+                                            <i class="mdi mdi-close"></i>
+                                        </a>
+                                    </span>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.MedicineId?.ToString()))
+                                {
+                                    <span class="badge badge-info me-2">
+                                        Medicine ID: @Model.MedicineId
+                                        <a asp-page="./ListPrescription" asp-route-RecordId="@Model.RecordId" asp-route-Dosage="@Model.Dosage" asp-route-Quantity="@Model.Quantity" class="text-white ms-1" title="Remove medicine filter">
+                                            <i class="mdi mdi-close"></i>
+                                        </a>
+                                    </span>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.Dosage))
+                                {
+                                    <span class="badge badge-info me-2">
+                                        Dosage: @Model.Dosage
+                                        <a asp-page="./ListPrescription" asp-route-RecordId="@Model.RecordId" asp-route-MedicineId="@Model.MedicineId" asp-route-Quantity="@Model.Quantity" class="text-white ms-1" title="Remove dosage filter">
+                                            <i class="mdi mdi-close"></i>
+                                        </a>
+                                    </span>
+                                }
+                                @if (!string.IsNullOrEmpty(Model.Quantity?.ToString()))
+                                {
+                                    <span class="badge badge-info me-2">
+                                        Quantity: @Model.Quantity
+                                        <a asp-page="./ListPrescription" asp-route-RecordId="@Model.RecordId" asp-route-MedicineId="@Model.MedicineId" asp-route-Dosage="@Model.Dosage" class="text-white ms-1" title="Remove quantity filter">
+                                            <i class="mdi mdi-close"></i>
+                                        </a>
+                                    </span>
+                                }
+                                <span class="badge badge-secondary">@(Model.Prescriptions?.Count ?? 0) result(s)</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <i class="mdi mdi-check-circle me-2"></i>
+                        @TempData["SuccessMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <i class="mdi mdi-alert-circle me-2"></i>
+                        @TempData["ErrorMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                <!-- Results Table -->
+                @if (Model.Prescriptions?.Count > 0)
+                {
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="prescriptionsTable">
+                            <thead>
+                                <tr>
+                                    <th>Prescription ID</th>
+                                    <th>Medical Record</th>
+                                    <th>Medicine</th>
+                                    <th>Quantity</th>
+                                    <th>Dosage</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Prescriptions)
+                                {
+                                    <tr>
+                                        <td>
+                                            <label class="badge badge-success">@item.PrescriptionId</label>
+                                        </td>
+                                        <td>
+                                            <div class="badge badge-outline-info">Record #@item.RecordId</div>
+                                        </td>
+                                        <td>
+                                            <h6 class="mb-0">@item.MedicineName</h6>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">@item.Quantity</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-muted">@item.Dosage</span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a asp-page="UpdatePrescription" asp-route-id="@item.PrescriptionId"
+                                                   class="btn btn-outline-warning btn-sm btn-icon-text" title="Edit">
+                                                    <i class="mdi mdi-pencil"></i>
+                                                    Edit
+                                                </a>
+                                                <button type="button" class="btn btn-outline-danger btn-sm btn-icon-text" title="Delete"
+                                                        onclick="confirmDelete(@item.PrescriptionId, '@item.MedicineName', '@item.RecordId')">
+                                                    <i class="mdi mdi-delete"></i>
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Enhanced Pagination -->
+                    @if (Model.TotalPages > 1)
+                    {
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <nav aria-label="Prescription pagination">
+                                    <ul class="pagination justify-content-center">
+                                        @if (Model.CurrentPage > 1)
+                                        {
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                   asp-route-CurrentPage="1"
+                                                   asp-route-PageSize="@Model.PageSize"
+                                                   asp-route-RecordId="@Model.RecordId"
+                                                   asp-route-MedicineId="@Model.MedicineId"
+                                                   asp-route-Dosage="@Model.Dosage"
+                                                   asp-route-Quantity="@Model.Quantity">
+                                                    <i class="mdi mdi-chevron-double-left"></i>
+                                                </a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                   asp-route-CurrentPage="@(Model.CurrentPage - 1)"
+                                                   asp-route-PageSize="@Model.PageSize"
+                                                   asp-route-RecordId="@Model.RecordId"
+                                                   asp-route-MedicineId="@Model.MedicineId"
+                                                   asp-route-Dosage="@Model.Dosage"
+                                                   asp-route-Quantity="@Model.Quantity">
+                                                    <i class="mdi mdi-chevron-left"></i>
+                                                </a>
+                                            </li>
+                                        }
+
+                                        @{
+                                            int startPage = Math.Max(1, Model.CurrentPage - 2);
+                                            int endPage = Math.Min(Model.TotalPages, Model.CurrentPage + 2);
+                                        }
+
+                                        @for (int i = startPage; i <= endPage; i++)
+                                        {
+                                            <li class="page-item @(Model.CurrentPage == i ? "active" : "")">
+                                                <a class="page-link"
+                                                   asp-route-CurrentPage="@i"
+                                                   asp-route-PageSize="@Model.PageSize"
+                                                   asp-route-RecordId="@Model.RecordId"
+                                                   asp-route-MedicineId="@Model.MedicineId"
+                                                   asp-route-Dosage="@Model.Dosage"
+                                                   asp-route-Quantity="@Model.Quantity">@i</a>
+                                            </li>
+                                        }
+
+                                        @if (Model.CurrentPage < Model.TotalPages)
+                                        {
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                   asp-route-CurrentPage="@(Model.CurrentPage + 1)"
+                                                   asp-route-PageSize="@Model.PageSize"
+                                                   asp-route-RecordId="@Model.RecordId"
+                                                   asp-route-MedicineId="@Model.MedicineId"
+                                                   asp-route-Dosage="@Model.Dosage"
+                                                   asp-route-Quantity="@Model.Quantity">
+                                                    <i class="mdi mdi-chevron-right"></i>
+                                                </a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                   asp-route-CurrentPage="@Model.TotalPages"
+                                                   asp-route-PageSize="@Model.PageSize"
+                                                   asp-route-RecordId="@Model.RecordId"
+                                                   asp-route-MedicineId="@Model.MedicineId"
+                                                   asp-route-Dosage="@Model.Dosage"
+                                                   asp-route-Quantity="@Model.Quantity">
+                                                    <i class="mdi mdi-chevron-double-right"></i>
+                                                </a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </nav>
+                                <div class="text-center mt-2">
+                                    <small class="text-muted">
+                                        Page @Model.CurrentPage of @Model.TotalPages
+                                        (@(Model.Prescriptions?.Count ?? 0) prescriptions shown)
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <!-- No Results Message -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body text-center py-5">
+                                    <div class="empty-state">
+                                        <i class="mdi mdi-file-search-outline display-1 text-muted mb-4"></i>
+                                        @if (!string.IsNullOrEmpty(Model.RecordId?.ToString()) || !string.IsNullOrEmpty(Model.MedicineId?.ToString()) || !string.IsNullOrEmpty(Model.Dosage) || !string.IsNullOrEmpty(Model.Quantity?.ToString()))
+                                        {
+                                            <h4 class="mb-3">No prescriptions found with current filters</h4>
+                                            <p class="text-muted mb-4">Try adjusting your filters or clear them to see all results.</p>
+                                            <div class="d-flex justify-content-center gap-2">
+                                                <a asp-page="./ListPrescription" class="btn btn-outline-secondary">
+                                                    <i class="mdi mdi-close"></i> Clear All Filters
+                                                </a>
+                                                <a asp-page="CreatePrescription" class="btn btn-primary">
+                                                    <i class="mdi mdi-plus"></i> Create New Prescription
+                                                </a>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <h4 class="mb-3">No prescriptions found</h4>
+                                            <p class="text-muted mb-4">There are currently no prescriptions in the system.</p>
+                                            <a asp-page="CreatePrescription" class="btn btn-primary">
+                                                <i class="mdi mdi-plus"></i> Create Your First Prescription
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
         </div>
     </div>
-</form>
+</div>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Hồ sơ</th>
-            <th>Thuốc</th>
-            <th>Số lượng</th>
-            <th>Liều dùng</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Prescriptions)
-        {
-            <tr>
-                <td>@item.PrescriptionId</td>
-                <td>@item.RecordSummary</td>
-                <td>@item.MedicineName</td>
-                <td>@item.Quantity</td>
-                <td>@item.Dosage</td>
-                <td>
-                    <a asp-page="UpdatePrescription" asp-route-id="@item.PrescriptionId" class="btn btn-sm btn-warning">Sửa</a>
-                    <a asp-page="DeletePrescription" asp-route-id="@item.PrescriptionId" class="btn btn-sm btn-danger">Xoá</a>
-                </td>
-            </tr>
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">
+                    <i class="mdi mdi-alert-circle text-danger me-2"></i>
+                    Confirm Delete
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning" role="alert">
+                    <i class="mdi mdi-alert me-2"></i>
+                    Are you sure you want to delete this prescription? This action cannot be undone.
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="fw-bold mb-0">Medicine:</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0" id="deleteMedicineName"></p>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-sm-3">
+                        <p class="fw-bold mb-0">Record:</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <p class="text-muted mb-0" id="deleteRecordId"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+                    <i class="mdi mdi-close me-1"></i>Cancel
+                </button>
+                <form asp-page="DeletePrescription" method="post" style="display: inline;">
+                    <input type="hidden" id="deleteId" name="id" />
+                    <button type="submit" class="btn btn-danger">
+                        <i class="mdi mdi-delete me-1"></i>Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Initialize DataTable
+            var table = $('#prescriptionsTable').DataTable({
+                "responsive": true,
+                "lengthChange": true,
+                "autoWidth": false,
+                "processing": true,
+                "order": [[0, "desc"]], // Sort by prescription ID descending
+                "columnDefs": [
+                    {
+                        "orderable": false,
+                        "targets": [5] // Disable sorting for Actions column
+                    },
+                    {
+                        "searchable": false,
+                        "targets": [5] // Disable search for Actions column
+                    }
+                ],
+                "language": {
+                    "search": "Search prescriptions:",
+                    "lengthMenu": "Show _MENU_ entries per page",
+                    "info": "Showing _START_ to _END_ of _TOTAL_ prescriptions",
+                    "infoEmpty": "Showing 0 to 0 of 0 prescriptions",
+                    "infoFiltered": "(filtered from _MAX_ total prescriptions)",
+                    "zeroRecords": "No matching prescriptions found",
+                    "emptyTable": "No prescriptions available",
+                    "paginate": {
+                        "first": "First",
+                        "last": "Last",
+                        "next": "Next",
+                        "previous": "Previous"
+                    },
+                    "loadingRecords": "Loading prescriptions...",
+                    "processing": "Processing..."
+                },
+                "pageLength": 10,
+                "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]],
+                "dom": '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>' +
+                    '<"row"<"col-sm-12"tr>>' +
+                    '<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
+                "initComplete": function () {
+                    // Add custom styling to search input
+                    $('.dataTables_filter input').addClass('form-control form-control-sm');
+                    $('.dataTables_length select').addClass('form-select form-select-sm');
+
+                    // Add search placeholder
+                    $('.dataTables_filter input').attr('placeholder', 'Search prescriptions...');
+
+                    // Style the wrapper
+                    $('.dataTables_wrapper').addClass('mt-3');
+
+                    // Add info badge
+                    var info = this.api().page.info();
+                    if (info.recordsTotal > 0) {
+                        $('.dataTables_info').before(
+                            '<div class="mb-3">' +
+                            '<span class="badge badge-info">' +
+                            info.recordsTotal + ' prescription(s) found' +
+                            '</span></div>'
+                        );
+                    }
+                }
+            });
+
+            // Update info badge when table is redrawn
+            table.on('draw', function () {
+                var info = table.page.info();
+                $('.badge-info').text(info.recordsDisplay + ' prescription(s) found');
+
+                if (info.recordsDisplay !== info.recordsTotal) {
+                    $('.badge-info').text(info.recordsDisplay + ' of ' + info.recordsTotal + ' prescription(s) found');
+                }
+            });
+
+            // Auto-hide alerts after 5 seconds
+            setTimeout(function () {
+                $('.alert').fadeOut('slow');
+            }, 5000);
+        });
+
+        function applyFilters() {
+            var recordId = $('#recordId').val();
+            var medicineId = $('#medicineId').val();
+            var dosage = $('#dosage').val();
+            var quantity = $('#quantity').val();
+
+            var url = new URL(window.location.href);
+            url.searchParams.delete('RecordId');
+            url.searchParams.delete('MedicineId');
+            url.searchParams.delete('Dosage');
+            url.searchParams.delete('Quantity');
+            url.searchParams.delete('CurrentPage');
+
+            if (recordId) {
+                url.searchParams.set('RecordId', recordId);
+            }
+            if (medicineId) {
+                url.searchParams.set('MedicineId', medicineId);
+            }
+            if (dosage) {
+                url.searchParams.set('Dosage', dosage);
+            }
+            if (quantity) {
+                url.searchParams.set('Quantity', quantity);
+            }
+
+            window.location.href = url.toString();
         }
-    </tbody>
-</table>
 
-<a asp-page="CreatePrescription" class="btn btn-success">+ Thêm đơn thuốc</a>
+        function confirmDelete(id, medicineName, recordId) {
+            $('#deleteId').val(id);
+            $('#deleteMedicineName').text(medicineName);
+            $('#deleteRecordId').text('Record #' + recordId);
+            var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+            deleteModal.show();
+        }
+    </script>
+}
+
+@section Styles {
+    <style>
+        .card-title {
+            color: #6c7293;
+            font-weight: 500;
+        }
+
+        .card-description {
+            color: #a7a7a7;
+            font-size: 0.875rem;
+            margin-bottom: 0;
+        }
+
+        .badge-info {
+            background-color: #17a2b8;
+            color: white;
+        }
+
+        .badge-success {
+            background-color: #84ba3f;
+        }
+
+        .badge-outline-info {
+            color: #17a2b8;
+            border: 1px solid #17a2b8;
+            background-color: transparent;
+        }
+
+        .badge-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .table th {
+            color: #6c7293;
+            font-weight: 500;
+            border-top: none;
+            border-bottom: 2px solid #dee2e6;
+            background-color: #f8f9fa;
+        }
+
+        .table td {
+            vertical-align: middle;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .btn-group .btn {
+            margin-right: 4px;
+        }
+
+            .btn-group .btn:last-child {
+                margin-right: 0;
+            }
+
+        .btn-icon-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .empty-state {
+            padding: 2rem 0;
+        }
+
+        .alert {
+            border: none;
+            border-radius: 0.375rem;
+        }
+
+        .alert-success {
+            background-color: #d1e7dd;
+            color: #0a3622;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #58151c;
+        }
+
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #664d03;
+        }
+
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .card {
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            border: 1px solid rgba(0, 0, 0, 0.125);
+        }
+
+        .grid-margin {
+            margin-bottom: 1.875rem;
+        }
+
+        .stretch-card {
+            display: flex;
+            align-items: stretch;
+        }
+
+            .stretch-card > .card {
+                width: 100%;
+                min-height: 100%;
+            }
+
+        .modal-header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        /* DataTables custom styling */
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_filter {
+            margin-bottom: 1rem;
+        }
+
+            .dataTables_wrapper .dataTables_filter input {
+                margin-left: 0.5rem;
+                width: 250px;
+            }
+
+            .dataTables_wrapper .dataTables_length select {
+                width: auto;
+                display: inline-block;
+            }
+
+        .dataTables_wrapper .dataTables_info {
+            color: #6c7293;
+            font-size: 0.875rem;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0.375rem 0.75rem;
+            margin-left: 2px;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            color: #6c7293;
+        }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+                background: #e9ecef;
+                border-color: #adb5bd;
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+                background: #007bff;
+                border-color: #007bff;
+                color: white !important;
+            }
+
+            .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+                color: #6c757d;
+                cursor: not-allowed;
+            }
+
+        .gap-2 {
+            gap: 0.5rem;
+        }
+
+        .filter-badge {
+            cursor: pointer;
+        }
+
+            .filter-badge a {
+                text-decoration: none;
+            }
+
+            .filter-badge:hover {
+                opacity: 0.8;
+            }
+    </style>
+}

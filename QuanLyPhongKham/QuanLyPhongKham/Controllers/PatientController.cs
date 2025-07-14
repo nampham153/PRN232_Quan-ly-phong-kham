@@ -59,6 +59,8 @@ namespace QuanLyPhongKham.Controllers
         [HttpPost]
         public ActionResult AddPatient([FromBody] PatientViewModel patientViewModel)
         {
+            ModelState.Remove(nameof(patientViewModel.AvatarPath));
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -75,9 +77,22 @@ namespace QuanLyPhongKham.Controllers
                 AvatarPath = patientViewModel.AvatarPath
             };
 
-            _patientService.AddPatient(patient);
-            return CreatedAtAction(nameof(GetPatientById), new { id = patient.PatientId }, patientViewModel);
+            try
+            {
+                _patientService.AddPatient(patient);
+                return CreatedAtAction(nameof(GetPatientById), new { id = patient.PatientId }, patientViewModel);
+            }
+            catch (ArgumentException ex) 
+            {
+                return BadRequest(new { message = ex.Message }); 
+            }
+            catch (Exception ex)
+            {
+               
+                return StatusCode(500, new { message = "Đã xảy ra lỗi khi xử lý yêu cầu." });
+            }
         }
+
 
         [HttpPut("{id}")]
         public ActionResult UpdatePatient(int id, [FromBody] PatientViewModel patientViewModel)

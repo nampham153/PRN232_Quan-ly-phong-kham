@@ -1,7 +1,7 @@
 ﻿@page
 @model QuanLyPhongKham.Pages.Patient.DeletePatientModel
 @{
-    ViewData["Title"] = "Xóa Bệnh Nhân";
+    ViewData["Title"] = "Delete Patient";
 }
 
 <div class="row">
@@ -10,27 +10,27 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
-                        <h4 class="card-title mb-0">Xóa Bệnh Nhân</h4>
-                        <p class="card-description">Xác nhận xóa bệnh nhân khỏi hệ thống</p>
+                        <h4 class="card-title mb-0">Delete Patient</h4>
+                        <p class="card-description">Confirm deletion of the patient from the system</p>
                     </div>
                     <a href="/Patient/PatientList" class="btn btn-outline-secondary btn-sm">
-                        <i class="mdi mdi-arrow-left"></i> Quay lại danh sách
+                        <i class="mdi mdi-arrow-left"></i> Back to list
                     </a>
                 </div>
 
                 <div class="alert alert-warning">
                     <i class="mdi mdi-alert-outline"></i>
-                    Bạn có chắc chắn muốn xóa bệnh nhân: <strong>@Model.PatientViewModel.FullName</strong>?
+                    Are you sure you want to delete the patient: <strong>@Model.PatientViewModel.FullName</strong>?
                 </div>
 
                 <form method="post">
                     <input type="hidden" asp-for="PatientViewModel.PatientId" />
                     <div class="d-flex justify-content-end gap-2">
                         <button type="submit" class="btn btn-danger btn-sm">
-                            <i class="mdi mdi-delete"></i> Xóa
+                            <i class="mdi mdi-delete"></i> Delete
                         </button>
                         <a asp-page="/Patient/PatientList" class="btn btn-outline-secondary btn-sm">
-                            <i class="mdi mdi-close"></i> Hủy
+                            <i class="mdi mdi-close"></i> Cancel
                         </a>
                     </div>
                 </form>

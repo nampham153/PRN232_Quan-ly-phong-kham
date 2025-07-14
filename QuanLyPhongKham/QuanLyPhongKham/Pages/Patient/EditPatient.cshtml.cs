@@ -15,6 +15,8 @@ namespace QuanLyPhongKham.Pages.Patient
         {
             _httpClientFactory = httpClientFactory;
         }
+        [BindProperty]
+        public IFormFile AvatarFile { get; set; }
 
         [BindProperty]
         public PatientViewModel PatientViewModel { get; set; }
@@ -45,8 +47,25 @@ namespace QuanLyPhongKham.Pages.Patient
                 return Page();
             }
 
-            var client = _httpClientFactory.CreateClient();
+            // Nếu người dùng upload ảnh mới
+            if (AvatarFile != null && AvatarFile.Length > 0)
+            {
+                var uploadsFolder = Path.Combine("wwwroot/uploadsPatient");
+                Directory.CreateDirectory(uploadsFolder);
 
+                var fileName = Guid.NewGuid() + Path.GetExtension(AvatarFile.FileName);
+                var filePath = Path.Combine(uploadsFolder, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await AvatarFile.CopyToAsync(stream);
+                }
+
+                // Cập nhật đường dẫn ảnh mới
+                PatientViewModel.AvatarPath = $"/uploadsPatient/{fileName}";
+            }
+
+            var client = _httpClientFactory.CreateClient();
             var jsonString = JsonSerializer.Serialize(PatientViewModel, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
@@ -67,5 +86,6 @@ namespace QuanLyPhongKham.Pages.Patient
                 return Page();
             }
         }
+
     }
 }

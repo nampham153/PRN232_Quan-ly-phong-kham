@@ -9,6 +9,7 @@ namespace DataAccessLayer.ViewModels
 {
     public class MedicineVM
     {
+
         [Required(ErrorMessage = "Medicine name is required")]
         [StringLength(100, ErrorMessage = "Medicine name cannot exceed 100 characters")]
         public string MedicineName { get; set; }
@@ -20,4 +21,5 @@ namespace DataAccessLayer.ViewModels
         [StringLength(500, ErrorMessage = "Usage cannot exceed 500 characters")]
         public string Usage { get; set; }
     }
+
 }

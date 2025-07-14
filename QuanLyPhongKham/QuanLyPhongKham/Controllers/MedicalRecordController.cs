@@ -215,5 +215,27 @@ namespace QuanLyPhongKham.Controllers
 
             return Ok(names);
         }
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var records = _medicalRecordService.QueryAll()
+                .ToList() // ✅ Ép IQueryable về List
+                .Select(r => new MedicalRecordVM
+                {
+                    RecordId = r.RecordId,
+                    PatientId = r.PatientId,
+                    PatientName = r.Patient != null ? r.Patient.FullName : null, // ✅ Không dùng ?.
+                    UserId = r.UserId,
+                    DoctorName = r.User != null ? r.User.FullName : null,        // ✅ Không dùng ?.
+                    Date = r.Date,
+                    Symptoms = r.Symptoms,
+                    Diagnosis = r.Diagnosis,
+                    Note = r.Note
+                }).ToList();
+
+            return Ok(records);
+        }
+
+
     }
 }

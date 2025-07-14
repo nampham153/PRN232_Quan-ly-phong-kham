@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 
@@ -18,39 +17,14 @@ namespace QuanLyPhongKham.Pages.Prescription
         }
 
         [BindProperty]
-        public PrescriptionViewModel Prescription { get; set; }
+        public PrescriptionViewModel Prescription { get; set; } = new();
 
         public SelectList Medicines { get; set; }
         public SelectList Records { get; set; }
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var client = _httpClientFactory.CreateClient();
-
-            // Lấy danh sách thuốc
-            var medicineResponse = await client.GetAsync("https://localhost:7086/api/Medicine");
-            if (medicineResponse.IsSuccessStatusCode)
-            {
-                var json = await medicineResponse.Content.ReadAsStringAsync();
-                var medicines = JsonSerializer.Deserialize<List<MedicineVM>>(json, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
-                Medicines = new SelectList(medicines, "MedicineId", "MedicineName");
-            }
-
-            // Lấy danh sách hồ sơ bệnh án
-            var recordResponse = await client.GetAsync("https://localhost:7086/api/MedicalRecord");
-            if (recordResponse.IsSuccessStatusCode)
-            {
-                var json = await recordResponse.Content.ReadAsStringAsync();
-                var records = JsonSerializer.Deserialize<List<MedicalRecordVM>>(json, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
-                Records = new SelectList(records, "RecordId", "RecordId");
-            }
-
+            await LoadDropdownsAsync();
             return Page();
         }
 
@@ -58,19 +32,17 @@ namespace QuanLyPhongKham.Pages.Prescription
         {
             if (!ModelState.IsValid)
             {
-                await OnGetAsync(); // Reload dropdown nếu bị lỗi
+                await LoadDropdownsAsync();
                 return Page();
             }
 
             var client = _httpClientFactory.CreateClient();
-
             var json = JsonSerializer.Serialize(Prescription, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             });
 
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-
             var response = await client.PostAsync("https://localhost:7086/api/Prescription", content);
 
             if (response.IsSuccessStatusCode)
@@ -78,9 +50,61 @@ namespace QuanLyPhongKham.Pages.Prescription
                 return RedirectToPage("ListPrescription");
             }
 
-            ModelState.AddModelError(string.Empty, "Lỗi khi thêm đơn thuốc.");
-            await OnGetAsync(); // Reload dropdown
+            ModelState.AddModelError(string.Empty, "Không thể thêm đơn thuốc.");
+            await LoadDropdownsAsync();
             return Page();
+        }
+
+        private async Task LoadDropdownsAsync()
+        {
+            var client = _httpClientFactory.CreateClient();
+
+            // Load Medicines
+            var medicineResponse = await client.GetAsync("https://localhost:7086/api/Medicine");
+            if (medicineResponse.IsSuccessStatusCode)
+            {
+                var json = await medicineResponse.Content.ReadAsStringAsync();
+                var doc = JsonDocument.Parse(json);
+                var list = new List<SelectListItem>();
+
+                foreach (var item in doc.RootElement.EnumerateArray())
+                {
+                    var id = item.GetProperty("medicineId").GetInt32();
+                    var name = item.GetProperty("medicineName").GetString();
+
+                    list.Add(new SelectListItem
+                    {
+                        Value = id.ToString(),
+                        Text = name,
+                        Selected = Prescription?.MedicineId == id
+                    });
+                }
+
+                Medicines = new SelectList(list, "Value", "Text");
+            }
+
+            // Load Records
+            var recordResponse = await client.GetAsync("https://localhost:7086/api/MedicalRecord");
+            if (recordResponse.IsSuccessStatusCode)
+            {
+                var json = await recordResponse.Content.ReadAsStringAsync();
+                var doc = JsonDocument.Parse(json);
+                var list = new List<SelectListItem>();
+
+                foreach (var item in doc.RootElement.EnumerateArray())
+                {
+                    var id = item.GetProperty("recordId").GetInt32();
+
+                    list.Add(new SelectListItem
+                    {
+                        Value = id.ToString(),
+                        Text = $"Hồ sơ #{id}",
+                        Selected = Prescription?.RecordId == id
+                    });
+                }
+
+                Records = new SelectList(list, "Value", "Text");
+            }
         }
     }
 }

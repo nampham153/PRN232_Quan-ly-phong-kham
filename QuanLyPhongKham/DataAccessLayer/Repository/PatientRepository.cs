@@ -76,7 +76,8 @@ namespace DataAccessLayer.Repository
 
             if (!string.IsNullOrEmpty(gender))
             {
-                query = query.Where(p => p.Gender == gender);
+                query = query.Where(p => p.Gender != null &&
+                    p.Gender.Equals(gender, StringComparison.OrdinalIgnoreCase));
             }
 
             if (dobFrom.HasValue)

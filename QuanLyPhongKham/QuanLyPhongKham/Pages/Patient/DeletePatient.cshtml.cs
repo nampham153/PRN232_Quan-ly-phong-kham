@@ -22,7 +22,7 @@ namespace QuanLyPhongKham.Pages.Patient
         public async Task<IActionResult> OnGetAsync(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync($"https://localhost:5001/api/Patient/{id}");
+            var response = await client.GetAsync($"https://localhost:7086/api/Patient/{id}");
 
             if (!response.IsSuccessStatusCode)
             {
@@ -41,7 +41,7 @@ namespace QuanLyPhongKham.Pages.Patient
         public async Task<IActionResult> OnPostAsync(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var response = await client.DeleteAsync($"https://localhost:5001/api/Patient/{id}");
+            var response = await client.DeleteAsync($"https://localhost:7086/api/Patient/{id}");
 
             // Có thể xử lý thêm response.StatusCode nếu cần
             return RedirectToPage("/Patient/PatientList");

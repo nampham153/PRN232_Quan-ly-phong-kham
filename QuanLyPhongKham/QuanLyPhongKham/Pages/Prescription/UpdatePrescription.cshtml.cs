@@ -28,7 +28,7 @@ namespace QuanLyPhongKham.Pages.Prescription
             var client = _httpClientFactory.CreateClient();
 
             // Lấy đơn thuốc cần sửa
-            var prescriptionResponse = await client.GetAsync($"https://localhost:5001/api/Prescription/{id}");
+            var prescriptionResponse = await client.GetAsync($"https://localhost:7086/api/Prescription/{id}");
             if (!prescriptionResponse.IsSuccessStatusCode)
                 return NotFound();
 
@@ -44,7 +44,7 @@ namespace QuanLyPhongKham.Pages.Prescription
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || Prescription.RecordId == null || Prescription.MedicineId == null)
             {
                 await LoadDropdownsAsync();
                 return Page();
@@ -58,7 +58,6 @@ namespace QuanLyPhongKham.Pages.Prescription
             });
 
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-
             var response = await client.PutAsync($"https://localhost:7086/api/Prescription/{Prescription.PrescriptionId}", content);
 
             if (response.IsSuccessStatusCode)
@@ -66,38 +65,69 @@ namespace QuanLyPhongKham.Pages.Prescription
                 return RedirectToPage("ListPrescription");
             }
 
-            ModelState.AddModelError(string.Empty, "Cập nhật đơn thuốc thất bại.");
+            var error = await response.Content.ReadAsStringAsync();
+            ModelState.AddModelError(string.Empty, "Cập nhật đơn thuốc thất bại. " + error);
             await LoadDropdownsAsync();
             return Page();
         }
+
 
         private async Task LoadDropdownsAsync()
         {
             var client = _httpClientFactory.CreateClient();
 
-            // Thuốc
-            var medicineRes = await client.GetAsync("https://localhost:7086/api/Medicine");
-            if (medicineRes.IsSuccessStatusCode)
+            // Load Medicines (sử dụng JsonDocument để duyệt từng phần tử)
+            var medicineResponse = await client.GetAsync("https://localhost:7086/api/Medicine");
+            if (medicineResponse.IsSuccessStatusCode)
             {
-                var json = await medicineRes.Content.ReadAsStringAsync();
-                var list = JsonSerializer.Deserialize<List<MedicineVM>>(json, new JsonSerializerOptions
+                var json = await medicineResponse.Content.ReadAsStringAsync();
+                using var doc = JsonDocument.Parse(json);
+
+                var list = new List<SelectListItem>();
+
+                foreach (var item in doc.RootElement.EnumerateArray())
                 {
-                    PropertyNameCaseInsensitive = true
-                });
-                Medicines = new SelectList(list, "MedicineId", "MedicineName");
+                    var id = item.GetProperty("medicineId").GetInt32();
+                    var name = item.GetProperty("medicineName").GetString();
+
+                    list.Add(new SelectListItem
+                    {
+                        Value = id.ToString(),
+                        Text = name,
+                        Selected = Prescription?.MedicineId == id
+                    });
+                }
+
+                Medicines = new SelectList(list, "Value", "Text");
+            }
+            else
+            {
+                Medicines = new SelectList(new List<SelectListItem>
+        {
+            new SelectListItem { Value = "", Text = "-- Không thể tải thuốc --" }
+        }, "Value", "Text");
             }
 
-            // Hồ sơ bệnh án
-            var recordRes = await client.GetAsync("https://localhost:7086/api/MedicalRecord");
-            if (recordRes.IsSuccessStatusCode)
+            // Load Records (giữ nguyên cách cũ nếu bạn không muốn đổi)
+            var recordResponse = await client.GetAsync("https://localhost:7086/api/MedicalRecord");
+            if (recordResponse.IsSuccessStatusCode)
             {
-                var json = await recordRes.Content.ReadAsStringAsync();
+                var json = await recordResponse.Content.ReadAsStringAsync();
                 var list = JsonSerializer.Deserialize<List<MedicalRecordVM>>(json, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 });
-                Records = new SelectList(list, "RecordId", "RecordId");
+
+                Records = new SelectList(list, "RecordId", "RecordId", Prescription?.RecordId);
+            }
+            else
+            {
+                Records = new SelectList(new List<SelectListItem>
+        {
+            new SelectListItem { Value = "", Text = "-- Không thể tải hồ sơ --" }
+        }, "Value", "Text");
             }
         }
+
     }
 }

@@ -30,39 +30,68 @@ namespace QuanLyPhongKham.Pages.Prescription
         [BindProperty(SupportsGet = true)]
         public int? Quantity { get; set; }
 
-        public SelectList Medicines { get; set; }
-        public SelectList Records { get; set; }
+        [BindProperty(SupportsGet = true, Name = "page")]
+        public int CurrentPage { get; set; } = 1;
+
+        [BindProperty(SupportsGet = true)]
+        public int PageSize { get; set; } = 11;
+
+        public int TotalRecords { get; set; }
+        public int TotalPages => (int)Math.Ceiling((double)TotalRecords / PageSize);
+
+        public SelectList Medicines { get; set; } = new SelectList(Enumerable.Empty<SelectListItem>());
+        public SelectList Records { get; set; } = new SelectList(Enumerable.Empty<SelectListItem>());
 
         public async Task<IActionResult> OnGetAsync()
         {
             var client = _httpClientFactory.CreateClient();
 
-            // Gọi API tìm đơn thuốc
-            var searchUrl = $"https://localhost:7086/api/Prescription/search?recordId={RecordId}&medicineId={MedicineId}&quantity={Quantity}&dosage={Dosage}";
+            // API phân trang + tìm kiếm
+            var searchUrl = $"https://localhost:7086/api/Prescription/search" +
+                $"?recordId={RecordId}&medicineId={MedicineId}&quantity={Quantity}&dosage={Dosage}" +
+                $"&page={CurrentPage}&pageSize={PageSize}";
+
             var prescriptionResponse = await client.GetAsync(searchUrl);
 
             if (prescriptionResponse.IsSuccessStatusCode)
             {
                 var json = await prescriptionResponse.Content.ReadAsStringAsync();
-                Prescriptions = JsonSerializer.Deserialize<List<PrescriptionViewModel>>(json, new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
+                using var doc = JsonDocument.Parse(json);
+
+                Prescriptions = JsonSerializer.Deserialize<List<PrescriptionViewModel>>(
+                    doc.RootElement.GetProperty("data").GetRawText(),
+                    new JsonSerializerOptions { PropertyNameCaseInsensitive = true }
+                ) ?? new List<PrescriptionViewModel>();
+
+                TotalRecords = doc.RootElement.GetProperty("totalRecords").GetInt32();
             }
 
-            // Gọi API để lấy danh sách thuốc
+            // Danh sách thuốc
             var medicineResponse = await client.GetAsync("https://localhost:7086/api/Medicine");
             if (medicineResponse.IsSuccessStatusCode)
             {
                 var json = await medicineResponse.Content.ReadAsStringAsync();
-                var medicines = JsonSerializer.Deserialize<List<MedicineVM>>(json, new JsonSerializerOptions
+                using var doc = JsonDocument.Parse(json);
+
+                var list = new List<SelectListItem>();
+
+                foreach (var item in doc.RootElement.EnumerateArray())
                 {
-                    PropertyNameCaseInsensitive = true
-                });
-                Medicines = new SelectList(medicines, "MedicineId", "MedicineName");
+                    var id = item.GetProperty("medicineId").GetInt32();
+                    var name = item.GetProperty("medicineName").GetString();
+
+                    list.Add(new SelectListItem
+                    {
+                        Value = id.ToString(),
+                        Text = name
+                    });
+                }
+
+                Medicines = new SelectList(list, "Value", "Text");
+
             }
 
-            // Gọi API để lấy danh sách hồ sơ
+            // Danh sách hồ sơ
             var recordResponse = await client.GetAsync("https://localhost:7086/api/MedicalRecord");
             if (recordResponse.IsSuccessStatusCode)
             {
@@ -70,8 +99,9 @@ namespace QuanLyPhongKham.Pages.Prescription
                 var records = JsonSerializer.Deserialize<List<MedicalRecordVM>>(json, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
-                });
-                Records = new SelectList(records, "RecordId", "RecordId"); // hoặc "PatientName" nếu muốn
+                }) ?? new List<MedicalRecordVM>();
+
+                Records = new SelectList(records, "RecordId", "RecordId");
             }
 
             return Page();
