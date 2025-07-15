@@ -32,7 +32,10 @@ namespace DataAccessLayer.ViewModels
 
         [Required(ErrorMessage = "AccountId là bắt buộc")]
         public int AccountId { get; set; }
-        public string? DoctorPath { get; set; } 
+        public string? DoctorPath { get; set; }
+        [Required]
+        [Range(0, 1, ErrorMessage = "Status phải là 0 hoặc 1")]
+        public int Status { get; set; } = 1;
 
         public static User ToEntity(DoctorVM vm)
         {
@@ -45,7 +48,8 @@ namespace DataAccessLayer.ViewModels
                 Phone = vm.Phone,
                 Email = vm.Email,
                 AccountId = vm.AccountId,
-                DoctorPath = vm.DoctorPath
+                DoctorPath = vm.DoctorPath,
+                Status = vm.Status
             };
         }
     }

@@ -1,245 +1,245 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\",
+  "WorkspaceRootPath": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\medicalrecordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\medicalrecordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\iservice\\imedicalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\iservice\\imedicalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\service\\medicalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\service\\medicalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\repository\\medicalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\repository\\medicalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\irepository\\imedicalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\irepository\\imedicalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\dao\\medicalrecorddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\dao\\medicalrecorddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\service\\medicineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\service\\medicineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\irepository\\idoctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\irepository\\idoctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\irepository\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\irepository\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\repository\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\repository\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\iservice\\idoctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\iservice\\idoctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\service\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\service\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\dao\\doctordao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\dao\\doctordao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\medicalrecordvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\medicalrecordvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\doctorvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\doctorvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\iservice\\ipatientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\iservice\\ipatientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\repository\\testresultrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\repository\\testresultrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\testsummaryvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\testsummaryvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\testresultvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\testresultvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\patientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\patientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\models\\medicalrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\models\\medicalrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\testvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\testvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\irepository\\imedicinerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\irepository\\imedicinerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\testresultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\testresultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\details.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\details.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testresultpage\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testresultpage\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testresultpage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testresultpage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testpage\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testpage\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testresultpage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testresultpage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testresultpage\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testresultpage\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testpage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testpage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testpage\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testpage\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\details.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\details.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\medicinecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\medicinecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\medicalrecordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\medicalrecordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\doctorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\models\\medicalrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\models\\medicalrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\dao\\medicalrecorddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\dao\\medicalrecorddao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\medicalrecordvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\medicalrecordvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\service\\medicalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\service\\medicalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\iservice\\imedicalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\iservice\\imedicalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\irepository\\imedicalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\irepository\\imedicalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\repository\\medicalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\repository\\medicalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\dao\\doctordao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\dao\\doctordao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\iservice\\idoctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\iservice\\idoctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\service\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\service\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\repository\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\repository\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\irepository\\idoctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\irepository\\idoctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\irepository\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\irepository\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\doctorvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\doctorvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\edit.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\delete.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone5\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicinepage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\doctors\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\doctors\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\service\\medicineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\service\\medicineservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\businessaccesslayer\\iservice\\ipatientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1CA63E7-31FE-424D-BC51-017301089B65}|BusinessAccessLayer\\BusinessAccessLayer.csproj|solutionrelative:businessaccesslayer\\iservice\\ipatientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\repository\\testresultrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\repository\\testresultrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\testsummaryvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\testsummaryvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\testresultvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\testresultvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\patientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\patientviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\viewmodels\\testvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\viewmodels\\testvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\dataaccesslayer\\irepository\\imedicinerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F229E44C-312D-45B5-8D86-395550C61981}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\irepository\\imedicinerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\testresultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\testresultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\patientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicalrecords\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicalrecords\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testresultpage\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testresultpage\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testresultpage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testresultpage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\testcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testpage\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testpage\\index.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testresultpage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testresultpage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testresultpage\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testresultpage\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testpage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testpage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\testpage\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\testpage\\create.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\controllers\\medicinecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\controllers\\medicinecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|e:\\clone8\\prn232_quan-ly-phong-kham\\quanlyphongkham\\quanlyphongkham\\pages\\medicinepage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{35900027-227F-4133-BF30-0FBCC8BE1A13}|QuanLyPhongKham\\QuanLyPhongKham.csproj|solutionrelative:quanlyphongkham\\pages\\medicinepage\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -250,7 +250,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 18,
           "Children": [
             {
               "$type": "Bookmark",
@@ -302,154 +302,455 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MedicalRecordService.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\MedicalRecordService.cs",
-              "RelativeDocumentMoniker": "BusinessAccessLayer\\Service\\MedicalRecordService.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\MedicalRecordService.cs",
-              "RelativeToolTip": "BusinessAccessLayer\\Service\\MedicalRecordService.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowDMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T06:18:18.322Z",
+              "DocumentIndex": 7,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml",
+              "ViewState": "AgIAACQAAAAAAAAAAAAIwDkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T06:27:56.158Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "Create.cshtml.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml.cs",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAIwEMAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAIwFQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-19T06:28:02.393Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IMedicalRecordService.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\IService\\IMedicalRecordService.cs",
-              "RelativeDocumentMoniker": "BusinessAccessLayer\\IService\\IMedicalRecordService.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\IService\\IMedicalRecordService.cs",
-              "RelativeToolTip": "BusinessAccessLayer\\IService\\IMedicalRecordService.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T06:14:14.836Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "DoctorController.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\DoctorController.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\DoctorController.cs",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\DoctorController.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\DoctorController.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\DoctorController.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Controllers\\DoctorController.cs",
-              "ViewState": "AgIAALMAAAAAAAAAAAAYwL4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALUAAAAAAAAAAAAwwMkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-23T05:41:15.057Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Edit.cshtml.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-25T08:48:39.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAADsAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-25T08:48:10.181Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Details.cshtml.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAgwDUAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-24T05:01:40.464Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAEcAAABTAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T06:15:42.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml.cs",
+              "ViewState": "AgIAAKwAAAAAAAAAAAAywL4AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T08:00:06.598Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MedicalRecord.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\models\\MedicalRecord.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\models\\MedicalRecord.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\models\\MedicalRecord.cs",
+              "RelativeToolTip": "DataAccessLayer\\models\\MedicalRecord.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T07:20:02.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "MedicalRecordController.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\MedicalRecordController.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\MedicalRecordController.cs",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\MedicalRecordController.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\MedicalRecordController.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\MedicalRecordController.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Controllers\\MedicalRecordController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADoAAAAAAAAAAAAIwD0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-19T07:39:51.352Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MedicalRecordRepository.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\MedicalRecordRepository.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\Repository\\MedicalRecordRepository.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\MedicalRecordRepository.cs",
-              "RelativeToolTip": "DataAccessLayer\\Repository\\MedicalRecordRepository.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAswDQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T07:31:04.057Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IMedicalRecordRepository.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IMedicalRecordRepository.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\IRepository\\IMedicalRecordRepository.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IMedicalRecordRepository.cs",
-              "RelativeToolTip": "DataAccessLayer\\IRepository\\IMedicalRecordRepository.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAxwBkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T07:30:36.382Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "MedicalRecordDAO.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\DAO\\MedicalRecordDAO.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\DAO\\MedicalRecordDAO.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\DAO\\MedicalRecordDAO.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\DAO\\MedicalRecordDAO.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\DAO\\MedicalRecordDAO.cs",
               "RelativeToolTip": "DataAccessLayer\\DAO\\MedicalRecordDAO.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAA/wFUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEIAAAAAAAAAAAA/wFYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-19T07:38:01.793Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "MedicineService.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\MedicineService.cs",
-              "RelativeDocumentMoniker": "BusinessAccessLayer\\Service\\MedicineService.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\MedicineService.cs",
-              "RelativeToolTip": "BusinessAccessLayer\\Service\\MedicineService.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAADwvykAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "MedicalRecordVM.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\MedicalRecordVM.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\MedicalRecordVM.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\MedicalRecordVM.cs",
+              "RelativeToolTip": "DataAccessLayer\\ViewModels\\MedicalRecordVM.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwCYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T11:35:30.859Z",
+              "WhenOpened": "2025-06-19T06:21:47.361Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IDoctorRepository.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IDoctorRepository.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\IRepository\\IDoctorRepository.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IDoctorRepository.cs",
-              "RelativeToolTip": "DataAccessLayer\\IRepository\\IDoctorRepository.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwA8AAAAmAAAAAAAAAA==",
+              "DocumentIndex": 17,
+              "Title": "MedicalRecordRepository.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\MedicalRecordRepository.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\Repository\\MedicalRecordRepository.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\MedicalRecordRepository.cs",
+              "RelativeToolTip": "DataAccessLayer\\Repository\\MedicalRecordRepository.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAswDQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T07:52:01.103Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-19T07:31:04.057Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "IAccountRepository.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IAccountRepository.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\IRepository\\IAccountRepository.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IAccountRepository.cs",
-              "RelativeToolTip": "DataAccessLayer\\IRepository\\IAccountRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 12,
+              "Title": "Delete.cshtml.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAADwvzoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T07:30:34.046Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-25T08:52:08.729Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-25T08:52:00.41Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MedicalRecordService.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\MedicalRecordService.cs",
+              "RelativeDocumentMoniker": "BusinessAccessLayer\\Service\\MedicalRecordService.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\MedicalRecordService.cs",
+              "RelativeToolTip": "BusinessAccessLayer\\Service\\MedicalRecordService.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAowDMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T06:18:18.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "IMedicalRecordService.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\IService\\IMedicalRecordService.cs",
+              "RelativeDocumentMoniker": "BusinessAccessLayer\\IService\\IMedicalRecordService.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\IService\\IMedicalRecordService.cs",
+              "RelativeToolTip": "BusinessAccessLayer\\IService\\IMedicalRecordService.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T06:14:14.836Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "IMedicalRecordRepository.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IMedicalRecordRepository.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\IRepository\\IMedicalRecordRepository.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IMedicalRecordRepository.cs",
+              "RelativeToolTip": "DataAccessLayer\\IRepository\\IMedicalRecordRepository.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAxwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T07:30:36.382Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "DoctorDAO.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\DAO\\DoctorDAO.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\DAO\\DoctorDAO.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\DAO\\DoctorDAO.cs",
+              "RelativeToolTip": "DataAccessLayer\\DAO\\DoctorDAO.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAwwCMAAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T07:51:43.391Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\models\\User.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\models\\User.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\models\\User.cs",
+              "RelativeToolTip": "DataAccessLayer\\models\\User.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T06:28:21.947Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAAAKMAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-19T06:19:42.398Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Index.cshtml.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml.cs",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAAAJ0AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T06:19:48.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IDoctorService.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\IService\\IDoctorService.cs",
+              "RelativeDocumentMoniker": "BusinessAccessLayer\\IService\\IDoctorService.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\IService\\IDoctorService.cs",
+              "RelativeToolTip": "BusinessAccessLayer\\IService\\IDoctorService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAgwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T07:18:52.439Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "DoctorService.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\DoctorService.cs",
+              "RelativeDocumentMoniker": "BusinessAccessLayer\\Service\\DoctorService.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\DoctorService.cs",
+              "RelativeToolTip": "BusinessAccessLayer\\Service\\DoctorService.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAADwv0wAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T07:51:32.058Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "DoctorRepository.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\DoctorRepository.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\Repository\\DoctorRepository.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\DoctorRepository.cs",
+              "RelativeToolTip": "DataAccessLayer\\Repository\\DoctorRepository.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAA/wEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T07:52:25.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "IDoctorRepository.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IDoctorRepository.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\IRepository\\IDoctorRepository.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IDoctorRepository.cs",
+              "RelativeToolTip": "DataAccessLayer\\IRepository\\IDoctorRepository.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAgwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T07:52:01.103Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "IAccountRepository.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IAccountRepository.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\IRepository\\IAccountRepository.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IAccountRepository.cs",
+              "RelativeToolTip": "DataAccessLayer\\IRepository\\IAccountRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-19T07:30:34.046Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "DoctorVM.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\DoctorVM.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\DoctorVM.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\DoctorVM.cs",
+              "RelativeToolTip": "DataAccessLayer\\ViewModels\\DoctorVM.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAwwDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T06:32:36.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "Edit.cshtml.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAIwEYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T06:21:43.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml",
+              "ViewState": "AgIAADoAAAAAAAAAAAAIwE8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-25T15:31:57.644Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "Delete.cshtml.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAADwvzYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T06:21:38.539Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAIwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T06:21:35.815Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Create.cshtml.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml.cs",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml.cs",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAIwGUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-23T05:51:17.313Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml",
+              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml",
+              "ViewState": "AgIAADMAAAAAAAAAAAAIwEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-23T05:51:12.307Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\appsettings.json",
+              "RelativeDocumentMoniker": "QuanLyPhongKham\\appsettings.json",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\appsettings.json",
+              "RelativeToolTip": "QuanLyPhongKham\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-25T09:10:55.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "MedicineService.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\MedicineService.cs",
+              "RelativeDocumentMoniker": "BusinessAccessLayer\\Service\\MedicineService.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\MedicineService.cs",
+              "RelativeToolTip": "BusinessAccessLayer\\Service\\MedicineService.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAADwvykAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T11:35:30.859Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
               "Title": "Patient.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\models\\Patient.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\models\\Patient.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\models\\Patient.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\models\\Patient.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\models\\Patient.cs",
               "RelativeToolTip": "DataAccessLayer\\models\\Patient.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAxwBQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -457,144 +758,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml.cs",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAIwKIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T06:19:48.889Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Index.cshtml",
-              "ViewState": "AgIAAFUBAAAAipjNpYMrwAkBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-19T06:19:42.398Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAACIAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-25T15:31:57.644Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml",
-              "ViewState": "AgIAADAAAAAAAAAAAAAAAEIAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-23T05:51:12.307Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "DoctorDAO.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\DAO\\DoctorDAO.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\DAO\\DoctorDAO.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\DAO\\DoctorDAO.cs",
-              "RelativeToolTip": "DataAccessLayer\\DAO\\DoctorDAO.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAIwCMAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T07:51:43.391Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "DoctorRepository.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\DoctorRepository.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\Repository\\DoctorRepository.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\DoctorRepository.cs",
-              "RelativeToolTip": "DataAccessLayer\\Repository\\DoctorRepository.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAkwEUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T07:52:25.931Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "User.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\models\\User.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\models\\User.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\models\\User.cs",
-              "RelativeToolTip": "DataAccessLayer\\models\\User.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T06:28:21.947Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "DoctorService.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\DoctorService.cs",
-              "RelativeDocumentMoniker": "BusinessAccessLayer\\Service\\DoctorService.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\Service\\DoctorService.cs",
-              "RelativeToolTip": "BusinessAccessLayer\\Service\\DoctorService.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAowEgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T07:51:32.058Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "IDoctorService.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\IService\\IDoctorService.cs",
-              "RelativeDocumentMoniker": "BusinessAccessLayer\\IService\\IDoctorService.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\IService\\IDoctorService.cs",
-              "RelativeToolTip": "BusinessAccessLayer\\IService\\IDoctorService.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAAwA4AAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T07:18:52.439Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "DoctorVM.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\DoctorVM.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\DoctorVM.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\DoctorVM.cs",
-              "RelativeToolTip": "DataAccessLayer\\ViewModels\\DoctorVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T06:32:36.228Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "MedicalRecordVM.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\MedicalRecordVM.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\MedicalRecordVM.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\MedicalRecordVM.cs",
-              "RelativeToolTip": "DataAccessLayer\\ViewModels\\MedicalRecordVM.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAawBIAAABPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T06:21:47.361Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 37,
               "Title": "IPatientService.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\IService\\IPatientService.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\IService\\IPatientService.cs",
               "RelativeDocumentMoniker": "BusinessAccessLayer\\IService\\IPatientService.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\IService\\IPatientService.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\BusinessAccessLayer\\IService\\IPatientService.cs",
               "RelativeToolTip": "BusinessAccessLayer\\IService\\IPatientService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -602,59 +770,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-23T06:21:35.815Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Edit.cshtml.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Edit.cshtml.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAowCsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T06:21:43.833Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Create.cshtml.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Create.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T05:51:17.313Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml",
-              "ViewState": "AgIAABsAAAAAAAAAAAAQwDkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-19T06:27:56.158Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 44,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Shared\\_Layout.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Shared\\_Layout.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAOsAAAByAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -662,11 +782,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 45,
               "Title": "_ValidationScriptsPartial.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\Shared\\_ValidationScriptsPartial.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -674,11 +794,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 38,
               "Title": "TestResultRepository.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\TestResultRepository.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\TestResultRepository.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Repository\\TestResultRepository.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\TestResultRepository.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\Repository\\TestResultRepository.cs",
               "RelativeToolTip": "DataAccessLayer\\Repository\\TestResultRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -686,11 +806,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 46,
               "Title": "TestResultController.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestResultController.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestResultController.cs",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\TestResultController.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestResultController.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestResultController.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Controllers\\TestResultController.cs",
               "ViewState": "AgIAAPMAAAAAAAAAAAAAwBABAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -698,11 +818,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 47,
               "Title": "PatientController.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\PatientController.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\PatientController.cs",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\PatientController.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\PatientController.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\PatientController.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Controllers\\PatientController.cs",
               "ViewState": "AgIAACYAAAAAAAAAAADwvzEAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -710,23 +830,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-25T08:48:10.181Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 40,
               "Title": "TestResultVM.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\TestResultVM.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\TestResultVM.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\TestResultVM.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\TestResultVM.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\TestResultVM.cs",
               "RelativeToolTip": "DataAccessLayer\\ViewModels\\TestResultVM.cs",
               "ViewState": "AgIAABQAAAAAAAAAAADwvykAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -734,11 +842,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 39,
               "Title": "TestSummaryVM.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\TestSummaryVM.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\TestSummaryVM.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\TestSummaryVM.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\TestSummaryVM.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\TestSummaryVM.cs",
               "RelativeToolTip": "DataAccessLayer\\ViewModels\\TestSummaryVM.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -746,11 +854,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 48,
               "Title": "Details.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml",
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml",
               "ViewState": "AgIAADUAAAAAAAAAAAAQwEMAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -759,22 +867,10 @@
             {
               "$type": "Document",
               "DocumentIndex": 41,
-              "Title": "Details.cshtml.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Details.cshtml.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAkwEcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-24T05:01:40.464Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
               "Title": "PatientViewModel.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\PatientViewModel.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\PatientViewModel.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\PatientViewModel.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\PatientViewModel.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\PatientViewModel.cs",
               "RelativeToolTip": "DataAccessLayer\\ViewModels\\PatientViewModel.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -782,47 +878,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "MedicalRecord.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\models\\MedicalRecord.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\models\\MedicalRecord.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\models\\MedicalRecord.cs",
-              "RelativeToolTip": "DataAccessLayer\\models\\MedicalRecord.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAswB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T07:20:02.096Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 49,
               "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml.cs",
-              "ViewState": "AgIAAKEAAAAAAAAAAAAIwMEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-19T08:00:06.598Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Index.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACcAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-19T06:15:42.196Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 44,
-              "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml.cs",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml.cs",
               "ViewState": "AgIAAMoAAAAAAAAAAAAowOYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -830,11 +890,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 50,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml",
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\TestResultPage\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -842,11 +902,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 51,
               "Title": "Program.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Program.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Program.cs",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Program.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Program.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Program.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Program.cs",
               "ViewState": "AgIAAJAAAAAAAAAAAAAswK0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -854,23 +914,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\appsettings.json",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\appsettings.json",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\appsettings.json",
-              "RelativeToolTip": "QuanLyPhongKham\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-25T09:10:55.937Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 52,
               "Title": "TestController.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestController.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestController.cs",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\TestController.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestController.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\TestController.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Controllers\\TestController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -878,11 +926,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 53,
               "Title": "Index.cshtml.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestPage\\Index.cshtml.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestPage\\Index.cshtml.cs",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\TestPage\\Index.cshtml.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestPage\\Index.cshtml.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestPage\\Index.cshtml.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\TestPage\\Index.cshtml.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -890,11 +938,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 54,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml",
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAIIBAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -902,35 +950,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-25T08:52:00.41Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 52,
-              "Title": "Delete.cshtml.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Delete.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T08:52:08.729Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 55,
               "Title": "Create.cshtml.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml.cs",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\TestResultPage\\Create.cshtml.cs",
               "ViewState": "AgIAALgBAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -938,23 +962,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
-              "Title": "Edit.cshtml.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAAuwCQAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-25T08:48:39.33Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 56,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestPage\\Create.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestPage\\Create.cshtml",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\TestPage\\Create.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestPage\\Create.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestPage\\Create.cshtml",
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\TestPage\\Create.cshtml",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAwCgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -962,11 +974,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 57,
               "Title": "Create.cshtml.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestPage\\Create.cshtml.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestPage\\Create.cshtml.cs",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\TestPage\\Create.cshtml.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestPage\\Create.cshtml.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\TestPage\\Create.cshtml.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\TestPage\\Create.cshtml.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAAwE8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -974,11 +986,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 58,
               "Title": "MedicineController.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\MedicineController.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\MedicineController.cs",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Controllers\\MedicineController.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\MedicineController.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Controllers\\MedicineController.cs",
               "RelativeToolTip": "QuanLyPhongKham\\Controllers\\MedicineController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -986,11 +998,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 42,
               "Title": "TestVM.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\TestVM.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\TestVM.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\ViewModels\\TestVM.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\TestVM.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\ViewModels\\TestVM.cs",
               "RelativeToolTip": "DataAccessLayer\\ViewModels\\TestVM.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -998,23 +1010,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
-              "Title": "Delete.cshtml.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml.cs",
-              "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml.cs",
-              "RelativeToolTip": "QuanLyPhongKham\\Pages\\Doctors\\Delete.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-23T06:21:38.539Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 43,
               "Title": "IMedicineRepository.cs",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IMedicineRepository.cs",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IMedicineRepository.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\IRepository\\IMedicineRepository.cs",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IMedicineRepository.cs",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\DataAccessLayer\\IRepository\\IMedicineRepository.cs",
               "RelativeToolTip": "DataAccessLayer\\IRepository\\IMedicineRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -1024,9 +1024,9 @@
               "$type": "Document",
               "DocumentIndex": 59,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicinePage\\Create.cshtml",
+              "DocumentMoniker": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicinePage\\Create.cshtml",
               "RelativeDocumentMoniker": "QuanLyPhongKham\\Pages\\MedicinePage\\Create.cshtml",
-              "ToolTip": "E:\\clone5\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicinePage\\Create.cshtml",
+              "ToolTip": "E:\\clone8\\PRN232_Quan-ly-phong-kham\\QuanLyPhongKham\\QuanLyPhongKham\\Pages\\MedicinePage\\Create.cshtml",
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicinePage\\Create.cshtml",
               "ViewState": "AgIAAIkAAAAAAAAAAAAAAI0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",

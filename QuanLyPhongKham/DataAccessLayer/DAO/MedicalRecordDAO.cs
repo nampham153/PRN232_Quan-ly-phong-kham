@@ -60,7 +60,8 @@ namespace DataAccessLayer.DAO
 
         public void Delete(MedicalRecord record)
         {
-            _context.MedicalRecords.Remove(record);
+            record.Status = 0;
+            _context.MedicalRecords.Update(record);
             _context.SaveChanges();
         }
         public IQueryable<MedicalRecord> QueryAll()

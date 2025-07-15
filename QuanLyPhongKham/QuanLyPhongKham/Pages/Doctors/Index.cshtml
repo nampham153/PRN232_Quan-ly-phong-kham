@@ -71,6 +71,7 @@
                                     <th>Phone</th>
                                     <th>Gender</th>
                                     <th>Date of Birth</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -86,6 +87,16 @@
                                         <td>@doctor.Phone</td>
                                         <td>@(doctor.Gender == "Male" ? "Male" : doctor.Gender == "Female" ? "Female" : "Other")</td>
                                         <td>@(doctor.DOB.HasValue ? doctor.DOB.Value.ToString("dd/MM/yyyy") : "")</td>
+                                        <td>
+                                            @if (doctor.Status == 1)
+                                            {
+                                                <span class="badge badge-success">Active</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="badge badge-secondary">Inactive</span>
+                                            }
+                                        </td>
                                         <td>
                                             <div class="btn-group">
                                                 <a asp-page="./Edit" asp-route-id="@doctor.AccountId"
@@ -149,8 +160,8 @@
                 responsive: true,
                 order: [[1, 'asc']],
                 columnDefs: [
-                    { orderable: false, targets: [0, 6] },
-                    { searchable: false, targets: [0, 6] }
+                    { orderable: false, targets: [0, 7] },
+                    { searchable: false, targets: [0, 7] }
                 ]
             });
 
@@ -206,6 +217,16 @@
             border-bottom: 2px solid #dee2e6;
             background-color: #f8f9fa;
         }
+
+        .badge-success {
+            background-color: #84ba3f;
+        }
+
+        .badge-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
 
         .table td {
             vertical-align: middle;
