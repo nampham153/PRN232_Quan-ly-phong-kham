@@ -52,6 +52,7 @@ namespace BusinessAccessLayer.Service
             existingDoctor.DOB = updatedDoctor.DOB;
             existingDoctor.Phone = updatedDoctor.Phone;
             existingDoctor.Email = updatedDoctor.Email;
+            existingDoctor.Status = updatedDoctor.Status;
 
             _doctorRepository.UpdateDoctor(existingDoctor);
         }
@@ -65,8 +66,11 @@ namespace BusinessAccessLayer.Service
             if (_medicalRecordRepository.DoctorHasRecord(doctor.UserId))
                 throw new Exception("Bác sĩ đang có hồ sơ liên quan, vui lòng không xóa.");
 
-            _doctorRepository.DeleteDoctor(doctor.UserId);
+            doctor.Status = 0;
+            _doctorRepository.UpdateDoctor(doctor);
+
             return true;
         }
+
     }
 }

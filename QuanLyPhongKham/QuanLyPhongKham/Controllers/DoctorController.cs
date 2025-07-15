@@ -112,7 +112,8 @@ namespace QuanLyPhongKham.Controllers
                     Phone = doctorVM.Phone,
                     Email = doctorVM.Email,
                     AccountId = doctorVM.AccountId,
-                    DoctorPath = doctorVM.DoctorPath
+                    DoctorPath = doctorVM.DoctorPath,
+                    Status = doctorVM.Status,
                 };
 
                 _doctorService.UpdateDoctor(accountId, doctorEntity);

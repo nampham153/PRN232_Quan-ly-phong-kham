@@ -24,6 +24,16 @@ namespace QuanLyPhongKham.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            // ✅ Kiểm tra bác sĩ có tồn tại và đang hoạt động
+            var doctor = _medicalRecordService.QueryAll()
+                .Select(r => r.User)
+                .FirstOrDefault(u => u != null && u.UserId == model.UserId);
+
+            if (doctor == null || doctor.Status == 0)
+            {
+                return BadRequest(new { message = "Bác sĩ không tồn tại hoặc đã bị vô hiệu hóa." });
+            }
+
             if (_medicalRecordService.PatientHasRecord(model.PatientId))
             {
                 return BadRequest(new { message = "Bệnh nhân đã có hồ sơ y tế." });
@@ -51,6 +61,7 @@ namespace QuanLyPhongKham.Controllers
         }
 
 
+
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] MedicalRecordVM model)
         {
@@ -60,6 +71,7 @@ namespace QuanLyPhongKham.Controllers
             existing.PatientId = model.PatientId;
             existing.UserId = model.UserId;
             existing.Date = model.Date;
+            existing.Status = model.Status;
             existing.Symptoms = model.Symptoms;
             existing.Diagnosis = model.Diagnosis;
             existing.Note = model.Note;
@@ -132,6 +144,7 @@ namespace QuanLyPhongKham.Controllers
                     UserId = r.UserId,
                     DoctorName = r.User != null ? r.User.FullName : null,
                     Date = r.Date,
+                    Status = r.Status,
                     Symptoms = r.Symptoms,
                     Diagnosis = r.Diagnosis,
                     Note = r.Note
@@ -228,6 +241,7 @@ namespace QuanLyPhongKham.Controllers
                     UserId = r.UserId,
                     DoctorName = r.User != null ? r.User.FullName : null,        // ✅ Không dùng ?.
                     Date = r.Date,
+                    Status = r.Status,
                     Symptoms = r.Symptoms,
                     Diagnosis = r.Diagnosis,
                     Note = r.Note

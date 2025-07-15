@@ -52,8 +52,6 @@ namespace QuanLyPhongKham.Pages.MedicalRecords
                 var recordResults = allResults
                     .Where(tr => tr.RecordId == Record.RecordId)
                     .ToList();
-
-                // Group l?i theo ngày xét nghi?m
                 Record.TestSummaries = recordResults
                     .GroupBy(tr => tr.TestDate.Date)
                     .OrderByDescending(g => g.Key)

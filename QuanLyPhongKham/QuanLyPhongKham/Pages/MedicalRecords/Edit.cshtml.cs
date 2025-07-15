@@ -40,7 +40,13 @@ namespace QuanLyPhongKham.Pages.MedicalRecords
                 return Page();
 
             var client = _httpClientFactory.CreateClient();
-            var json = JsonSerializer.Serialize(MedicalRecord, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
+
+            // Chu?n b? JSON bao g?m c? tr??ng Status
+            var json = JsonSerializer.Serialize(MedicalRecord, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
+
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
             var response = await client.PutAsync($"https://localhost:7086/api/MedicalRecord/{MedicalRecord.RecordId}", content);
