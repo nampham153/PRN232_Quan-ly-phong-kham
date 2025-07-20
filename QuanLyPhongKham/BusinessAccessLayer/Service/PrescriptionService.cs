@@ -1,4 +1,5 @@
-﻿using BusinessAccessLayer.IService;
+﻿
+using BusinessAccessLayer.IService;
 using DataAccessLayer.IRepository;
 using DataAccessLayer.models;
 using DataAccessLayer.ViewModels;
@@ -27,8 +28,7 @@ namespace BusinessAccessLayer.Service
                 PrescriptionId = p.PrescriptionId,
                 RecordId = p.RecordId,
                 MedicineId = p.MedicineId,
-                MedicineName = p.Medicine != null ? p.Medicine.MedicineName : "Unknown",
-                Quantity = p.Quantity,
+                MedicineName = p.Medicine != null ? p.Medicine.MedicineName : "Unknown",              
                 Dosage = p.Dosage
             }).ToList();
         }
@@ -42,16 +42,16 @@ namespace BusinessAccessLayer.Service
                 PrescriptionId = prescription.PrescriptionId,
                 RecordId = prescription.RecordId,
                 MedicineId = prescription.MedicineId,
-                MedicineName = prescription.Medicine != null ? prescription.Medicine.MedicineName : "Unknown", // Sửa từ p.Medicine thành prescription.Medicine
-                Quantity = prescription.Quantity,
+                MedicineName = prescription.Medicine != null ? prescription.Medicine.MedicineName : "Unknown", // Sửa từ p.Medicine thành prescription.Medicine              
                 Dosage = prescription.Dosage
             };
         }
 
         public Prescription CreatePrescription(Prescription prescription)
         {
-            if (prescription.Quantity <= 0) throw new ArgumentException("Quantity must be positive.");
+           
             return _repository.Create(prescription);
+
         }
 
         public void UpdatePrescription(Prescription prescription)
@@ -65,12 +65,11 @@ namespace BusinessAccessLayer.Service
             _repository.Delete(id);
         }
 
-        public List<PrescriptionViewModel> SearchPrescriptions(int? recordId = null, int? medicineId = null, int? quantity = null, string dosage = null)
+        public List<PrescriptionViewModel> SearchPrescriptions(int? recordId = null, int? medicineId = null, string dosage = null)
         {
             var prescriptions = _repository.GetAll().AsQueryable();
             if (recordId.HasValue) prescriptions = prescriptions.Where(p => p.RecordId == recordId.Value);
             if (medicineId.HasValue) prescriptions = prescriptions.Where(p => p.MedicineId == medicineId.Value);
-            if (quantity.HasValue) prescriptions = prescriptions.Where(p => p.Quantity == quantity.Value);
             if (!string.IsNullOrEmpty(dosage)) prescriptions = prescriptions.Where(p => p.Dosage == dosage);
 
             return prescriptions.Select(p => new PrescriptionViewModel
@@ -78,8 +77,7 @@ namespace BusinessAccessLayer.Service
                 PrescriptionId = p.PrescriptionId,
                 RecordId = p.RecordId,
                 MedicineId = p.MedicineId,
-                MedicineName = p.Medicine != null ? p.Medicine.MedicineName : "Unknown",
-                Quantity = p.Quantity,
+                MedicineName = p.Medicine != null ? p.Medicine.MedicineName : "Unknown",            
                 Dosage = p.Dosage
             }).ToList();
         }
@@ -93,7 +91,7 @@ namespace BusinessAccessLayer.Service
                 PrescriptionId = prescription.PrescriptionId,
                 RecordId = prescription.RecordId,
                 MedicineId = prescription.MedicineId,            
-                Quantity = prescription.Quantity,
+                
                 Dosage = prescription.Dosage
             };
         }

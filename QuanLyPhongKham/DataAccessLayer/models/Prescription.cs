@@ -19,8 +19,7 @@ namespace DataAccessLayer.models
 
         public int MedicineId { get; set; }
         public Medicine Medicine { get; set; }
-
-        public int Quantity { get; set; }
+       
         public string Dosage { get; set; }
     }
 }

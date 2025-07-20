@@ -60,7 +60,7 @@
                 </div>
 
                 <!-- Table Section -->
-                <div class="table-responsive">
+                <div class="table-responsive" style="overflow-x: auto;">
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -72,7 +72,9 @@
                                 <th>Phone</th>
                                 <th>Email</th>
                                 <th>Address</th>
-                                <th>Medical Records</th>
+                                
+                                <th>Underlying Diseases</th>
+                                <th>Disease Details</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -80,7 +82,7 @@
                             @foreach (var patient in Model.Patients)
                             {
                                 <tr>
-                                    <td>
+                                    <td >
                                         @if (!string.IsNullOrEmpty(patient.AvatarPath))
                                         {
                                             <img src="@patient.AvatarPath" alt="Avatar" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" />
@@ -97,15 +99,16 @@
                                     <td>@patient.Phone</td>
                                     <td>@patient.Email</td>
                                     <td>@patient.Address</td>
-                                    <td>@patient.MedicalRecordCount</td>
+                                    
+                                    <td>@patient.UnderlyingDiseases</td>
+                                    <td>@patient.DiseaseDetails</td>
+
                                     <td>
                                         <div class="btn-group">
                                             <a href="/Patient/EditPatient?id=@patient.PatientId" class="btn btn-outline-warning btn-sm btn-icon-text">
                                                 <i class="mdi mdi-pencil"></i> Edit
                                             </a>
-                                            <a href="/Patient/DeletePatient?id=@patient.PatientId" class="btn btn-outline-danger btn-sm btn-icon-text">
-                                                <i class="mdi mdi-delete"></i> Delete
-                                            </a>
+                
                                         </div>
                                     </td>
                                 </tr>
@@ -124,10 +127,14 @@
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+        .dataTables_wrapper {
+      overflow-x: auto;
+    }
 
     <script>
         $(document).ready(function () {
-            var table = $('.table').DataTable({
+            var table = $('#patientTable').DataTable({
+                scrollX: true,
                 responsive: true,
                 lengthChange: true,
                 autoWidth: false,
@@ -167,6 +174,7 @@
                 }
             });
         });
+
     </script>
 }
 

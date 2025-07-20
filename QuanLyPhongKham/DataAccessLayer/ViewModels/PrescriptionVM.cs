@@ -13,7 +13,7 @@ namespace DataAccessLayer.ViewModels
         public int MedicineId { get; set; }
         public string MedicineName { get; set; }
 
-        public int Quantity { get; set; }
+       
         public string Dosage { get; set; }
         public string Unit { get; set; }
         public string Usage { get; set; }

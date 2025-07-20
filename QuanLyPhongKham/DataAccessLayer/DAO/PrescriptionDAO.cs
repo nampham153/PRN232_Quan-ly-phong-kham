@@ -47,7 +47,7 @@ namespace DataAccessLayer.DAO
             {
                 existing.RecordId = updatedPrescription.RecordId;
                 existing.MedicineId = updatedPrescription.MedicineId;
-                existing.Quantity = updatedPrescription.Quantity;
+                
                 existing.Dosage = updatedPrescription.Dosage;
 
                 _context.SaveChanges();

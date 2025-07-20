@@ -51,9 +51,9 @@
                         <label asp-for="PatientViewModel.Gender" class="form-label">Gender</label>
                         <select asp-for="PatientViewModel.Gender" class="form-select form-select-sm">
                             <option value="">-- Select gender --</option>
-                            <option value="Nam">Male</option>
-                            <option value="Nữ">Female</option>
-                            <option value="Khác">Other</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
                         </select>
                         <span asp-validation-for="PatientViewModel.Gender" class="text-danger"></span>
                     </div>
@@ -75,12 +75,23 @@
                         <input asp-for="PatientViewModel.Address" class="form-control form-control-sm" />
                         <span asp-validation-for="PatientViewModel.Address" class="text-danger"></span>
                     </div>
+                    <div class="col-md-6">
+                        <label asp-for="PatientViewModel.UnderlyingDiseases" class="form-label">Underlying Diseases</label>
+                        <input asp-for="PatientViewModel.UnderlyingDiseases" class="form-control form-control-sm" />
+                        <span asp-validation-for="PatientViewModel.UnderlyingDiseases" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="PatientViewModel.DiseaseDetails" class="form-label">Disease Details</label>
+                        <textarea asp-for="PatientViewModel.DiseaseDetails" class="form-control form-control-sm" rows="2"></textarea>
+                        <span asp-validation-for="PatientViewModel.DiseaseDetails" class="text-danger"></span>
+                    </div>
 
                     <div class="mb-3">
                         <label class="form-label">New Avatar (optional)</label>
                         <input type="file" name="AvatarFile" accept="image/*" class="form-control form-control-sm" />
                         <span asp-validation-for="AvatarFile" class="text-danger"></span>
                     </div>
+                    <input type="hidden" asp-for="PatientViewModel.AvatarPath" />
 
                     @if (!string.IsNullOrEmpty(Model.PatientViewModel.AvatarPath))
                     {

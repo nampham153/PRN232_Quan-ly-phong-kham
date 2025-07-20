@@ -16,7 +16,7 @@ namespace QuanLyPhongKham.Pages.Patient
             _httpClientFactory = httpClientFactory;
         }
         [BindProperty]
-        public IFormFile AvatarFile { get; set; }
+        public IFormFile? AvatarFile { get; set; }
 
         [BindProperty]
         public PatientViewModel PatientViewModel { get; set; }

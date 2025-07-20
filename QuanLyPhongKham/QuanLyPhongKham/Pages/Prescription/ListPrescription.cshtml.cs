@@ -27,8 +27,7 @@ namespace QuanLyPhongKham.Pages.Prescription
         [BindProperty(SupportsGet = true)]
         public string Dosage { get; set; }
 
-        [BindProperty(SupportsGet = true)]
-        public int? Quantity { get; set; }
+        
 
         [BindProperty(SupportsGet = true, Name = "page")]
         public int CurrentPage { get; set; } = 1;
@@ -48,7 +47,7 @@ namespace QuanLyPhongKham.Pages.Prescription
 
             // API phân trang + tìm kiếm
             var searchUrl = $"https://localhost:7086/api/Prescription/search" +
-                $"?recordId={RecordId}&medicineId={MedicineId}&quantity={Quantity}&dosage={Dosage}" +
+                $"?recordId={RecordId}&medicineId={MedicineId}&dosage={Dosage}" +
                 $"&page={CurrentPage}&pageSize={PageSize}";
 
             var prescriptionResponse = await client.GetAsync(searchUrl);

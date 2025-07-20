@@ -75,15 +75,7 @@
                                 <span asp-validation-for="Prescription.Dosage" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group mb-3">
-                                <label asp-for="Prescription.Quantity" class="form-label">
-                                    <i class="mdi mdi-counter me-1"></i>Quantity
-                                </label>
-                                <input asp-for="Prescription.Quantity" class="form-control" placeholder="Enter quantity..." />
-                                <span asp-validation-for="Prescription.Quantity" class="text-danger"></span>
-                            </div>
-                        </div>
+                        
                     </div>
 
                     <div class="d-flex justify-content-end gap-2">
@@ -100,16 +92,11 @@
     </div>
 </div>
 
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-    <script>
-        $(document).ready(function () {
-            // Auto-hide alerts after 5 seconds
-            setTimeout(function () {
-                $('.alert').fadeOut('slow');
-            }, 5000);
-        });
-    </script>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
 }
 
 @section Styles {
