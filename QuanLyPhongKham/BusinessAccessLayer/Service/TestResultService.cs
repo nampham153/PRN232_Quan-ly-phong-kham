@@ -13,15 +13,19 @@ namespace BusinessAccessLayer.Service
     public class TestResultService : ITestResultService
     {
         private readonly ITestResultRepository _testResultRepository;
+        private readonly ITestResultHistoryService _historyService;
 
-        public TestResultService(ITestResultRepository testResultRepository)
+        public TestResultService(ITestResultRepository testResultRepository, ITestResultHistoryService historyService)
         {
             _testResultRepository = testResultRepository;
+            _historyService = historyService;
         }
 
         public List<TestResult> GetAllTestResults()
         {
-            return _testResultRepository.GetAllTestResults();
+            var results = _testResultRepository.GetAllTestResults();
+            // Không log lịch sử cho lấy danh sách chung
+            return results;
         }
 
         public List<TestResultVM> GetAllTestResultVMs()
@@ -32,7 +36,20 @@ namespace BusinessAccessLayer.Service
         public TestResult GetTestResultById(int id)
         {
             if (id <= 0) return null;
-            return _testResultRepository.GetTestResultById(id);
+            var result = _testResultRepository.GetTestResultById(id);
+            if (result != null)
+            {
+                // Ghi log lịch sử xem
+                _historyService.AddHistory(new DataAccessLayer.ViewModels.TestResultHistoryVM
+                {
+                    UserId = result.UserId,
+                    TestResultId = result.ResultId,
+                    Action = "View",
+                    ActionTime = DateTime.Now,
+                    Note = "Xem chi tiết kết quả xét nghiệm"
+                });
+            }
+            return result;
         }
 
         public List<TestResult> GetTestResultsByRecordId(int recordId)
@@ -52,7 +69,25 @@ namespace BusinessAccessLayer.Service
             if (!ValidateTestResult(testResultVM, out List<string> errors))
                 return false;
 
-            return _testResultRepository.AddTestResult(testResultVM);
+            var success = _testResultRepository.AddTestResult(testResultVM);
+            if (success)
+            {
+                // Lấy lại TestResult vừa tạo (giả sử UserId, TestId, RecordId, TestDate là duy nhất)
+                var created = _testResultRepository.GetAllTestResults()
+                    .FirstOrDefault(tr => tr.UserId == testResultVM.UserId && tr.TestId == testResultVM.TestId && tr.RecordId == testResultVM.RecordId && tr.TestDate == testResultVM.TestDate);
+                if (created != null)
+                {
+                    _historyService.AddHistory(new DataAccessLayer.ViewModels.TestResultHistoryVM
+                    {
+                        UserId = created.UserId,
+                        TestResultId = created.ResultId,
+                        Action = "Create",
+                        ActionTime = DateTime.Now,
+                        Note = "Tạo mới kết quả xét nghiệm"
+                    });
+                }
+            }
+            return success;
         }
 
         public bool UpdateTestResult(int id, TestResultVM testResultVM)
@@ -65,7 +100,56 @@ namespace BusinessAccessLayer.Service
             if (!_testResultRepository.TestResultExists(id))
                 return false;
 
-            return _testResultRepository.UpdateTestResult(id, testResultVM);
+            // Lấy giá trị cũ trước khi update (clone lại để tránh bị thay đổi bởi EF)
+            var oldResultEntity = _testResultRepository.GetTestResultById(id);
+            TestResult oldResult = null;
+            if (oldResultEntity != null)
+            {
+                oldResult = new TestResult
+                {
+                    ResultId = oldResultEntity.ResultId,
+                    RecordId = oldResultEntity.RecordId,
+                    TestId = oldResultEntity.TestId,
+                    UserId = oldResultEntity.UserId,
+                    ResultDetail = oldResultEntity.ResultDetail,
+                    TestDate = oldResultEntity.TestDate
+                };
+            }
+
+            var success = _testResultRepository.UpdateTestResult(id, testResultVM);
+            if (success)
+            {
+                // So sánh và tạo note chi tiết
+                var changes = new List<string>();
+                if (oldResult != null)
+                {
+                    if (oldResult.RecordId != testResultVM.RecordId)
+                        changes.Add($"recordId: {oldResult.RecordId} => {testResultVM.RecordId}");
+                    if (oldResult.TestId != testResultVM.TestId)
+                        changes.Add($"testId: {oldResult.TestId} => {testResultVM.TestId}");
+                    if (oldResult.UserId != testResultVM.UserId)
+                        changes.Add($"userId: {oldResult.UserId} => {testResultVM.UserId}");
+                    // Log rõ cả khi null/rỗng
+                    var oldDetail = oldResult.ResultDetail ?? "<null>";
+                    var newDetail = testResultVM.ResultDetail ?? "<null>";
+                    if (oldDetail != newDetail)
+                        changes.Add($"resultDetail: '{oldDetail}' => '{newDetail}'");
+                    if (oldResult.TestDate != testResultVM.TestDate)
+                        changes.Add($"testDate: {oldResult.TestDate:dd/MM/yyyy HH:mm} => {testResultVM.TestDate:dd/MM/yyyy HH:mm}");
+                }
+                var note = changes.Count > 0
+                    ? $"Cập nhật kết quả xét nghiệm: {string.Join(", ", changes)}"
+                    : "Cập nhật kết quả xét nghiệm (không thay đổi dữ liệu)";
+                _historyService.AddHistory(new DataAccessLayer.ViewModels.TestResultHistoryVM
+                {
+                    UserId = testResultVM.UserId,
+                    TestResultId = id,
+                    Action = "Update",
+                    ActionTime = DateTime.Now,
+                    Note = note
+                });
+            }
+            return success;
         }
 
         public bool DeleteTestResult(int id)
@@ -75,7 +159,21 @@ namespace BusinessAccessLayer.Service
             if (!_testResultRepository.TestResultExists(id))
                 return false;
 
-            return _testResultRepository.DeleteTestResult(id);
+            // Lấy thông tin trước khi xóa để log
+            var testResult = _testResultRepository.GetTestResultById(id);
+            var success = _testResultRepository.DeleteTestResult(id);
+            if (success && testResult != null)
+            {
+                _historyService.AddHistory(new DataAccessLayer.ViewModels.TestResultHistoryVM
+                {
+                    UserId = testResult.UserId,
+                    TestResultId = id,
+                    Action = "Delete",
+                    ActionTime = DateTime.Now,
+                    Note = "Xóa kết quả xét nghiệm"
+                });
+            }
+            return success;
         }
 
         public bool TestResultExists(int id)

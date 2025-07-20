@@ -29,6 +29,7 @@ namespace DataAccessLayer.dbcontext
         public DbSet<TestResult> TestResults { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
         public DbSet<Prescription> Prescriptions { get; set; }
+        public DbSet<TestResultHistory> TestResultHistories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -58,6 +59,19 @@ namespace DataAccessLayer.dbcontext
                 .HasOne(t => t.User)
                 .WithMany(u => u.TestResults)
                 .HasForeignKey(t => t.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<TestResultHistory>()
+                .HasKey(h => h.Id);
+            modelBuilder.Entity<TestResultHistory>()
+                .HasOne<User>()
+                .WithMany()
+                .HasForeignKey(h => h.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<TestResultHistory>()
+                .HasOne<TestResult>()
+                .WithMany()
+                .HasForeignKey(h => h.TestResultId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             // Seed Data
@@ -180,6 +194,20 @@ namespace DataAccessLayer.dbcontext
                 new TestResult { ResultId = 8, RecordId = 8, TestId = 8, UserId = 5, ResultDetail = "Glucose: 180 mg/dL", TestDate = DateTime.Now.AddDays(-2) },
                 new TestResult { ResultId = 9, RecordId = 9, TestId = 1, UserId = 6, ResultDetail = "Normal blood parameters", TestDate = DateTime.Now.AddDays(-1) },
                 new TestResult { ResultId = 10, RecordId = 10, TestId = 7, UserId = 6, ResultDetail = "Increased histamine levels", TestDate = DateTime.Now }
+            );
+
+            // Seed Test Result Histories (10 histories) - Updated UserId and TestResultId references
+            modelBuilder.Entity<TestResultHistory>().HasData(
+                new TestResultHistory { Id = 1, UserId = 2, TestResultId = 1, Action = "Create", ActionTime = DateTime.Now.AddDays(-29) },
+                new TestResultHistory { Id = 2, UserId = 2, TestResultId = 2, Action = "Create", ActionTime = DateTime.Now.AddDays(-24) },
+                new TestResultHistory { Id = 3, UserId = 3, TestResultId = 3, Action = "Create", ActionTime = DateTime.Now.AddDays(-19) },
+                new TestResultHistory { Id = 4, UserId = 3, TestResultId = 4, Action = "Create", ActionTime = DateTime.Now.AddDays(-14) },
+                new TestResultHistory { Id = 5, UserId = 4, TestResultId = 5, Action = "Create", ActionTime = DateTime.Now.AddDays(-9) },
+                new TestResultHistory { Id = 6, UserId = 4, TestResultId = 6, Action = "Create", ActionTime = DateTime.Now.AddDays(-7) },
+                new TestResultHistory { Id = 7, UserId = 5, TestResultId = 7, Action = "Create", ActionTime = DateTime.Now.AddDays(-4) },
+                new TestResultHistory { Id = 8, UserId = 5, TestResultId = 8, Action = "Create", ActionTime = DateTime.Now.AddDays(-2) },
+                new TestResultHistory { Id = 9, UserId = 6, TestResultId = 9, Action = "Create", ActionTime = DateTime.Now.AddDays(-1) },
+                new TestResultHistory { Id = 10, UserId = 6, TestResultId = 10, Action = "Create", ActionTime = DateTime.Now }
             );
 
             // Seed Prescriptions (10 prescriptions)

@@ -85,6 +85,8 @@ namespace QuanLyPhongKham
             builder.Services.AddScoped<ITestResultRepository, TestResultRepository>();
             builder.Services.AddScoped<ITestResultService, TestResultService>();
 
+            builder.Services.AddScoped<ITestResultHistoryRepository, TestResultHistoryRepository>();
+            builder.Services.AddScoped<ITestResultHistoryService, TestResultHistoryService>();
 
             // ManagerUser Logic
             builder.Services.AddScoped<ManagerUserDAO>();

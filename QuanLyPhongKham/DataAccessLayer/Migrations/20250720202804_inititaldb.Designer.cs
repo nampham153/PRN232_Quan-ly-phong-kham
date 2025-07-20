@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(ClinicDbContext))]
-    [Migration("20250628123418_inititaldb")]
+    [Migration("20250720202804_inititaldb")]
     partial class inititaldb
     {
         /// <inheritdoc />
@@ -257,7 +257,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             RecordId = 1,
-                            Date = new DateTime(2025, 5, 29, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(3993),
+                            Date = new DateTime(2025, 6, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7561),
                             Diagnosis = "Common cold",
                             Note = "Rest and fluids recommended",
                             PatientId = 1,
@@ -267,7 +267,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             RecordId = 2,
-                            Date = new DateTime(2025, 6, 3, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4010),
+                            Date = new DateTime(2025, 6, 26, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7582),
                             Diagnosis = "Muscle strain",
                             Note = "Apply heat therapy",
                             PatientId = 2,
@@ -277,7 +277,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             RecordId = 3,
-                            Date = new DateTime(2025, 6, 8, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4012),
+                            Date = new DateTime(2025, 7, 1, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7583),
                             Diagnosis = "Asthma",
                             Note = "Prescribed inhaler",
                             PatientId = 3,
@@ -287,7 +287,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             RecordId = 4,
-                            Date = new DateTime(2025, 6, 13, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4013),
+                            Date = new DateTime(2025, 7, 6, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7585),
                             Diagnosis = "Hypertension",
                             Note = "Lifestyle changes needed",
                             PatientId = 4,
@@ -297,7 +297,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             RecordId = 5,
-                            Date = new DateTime(2025, 6, 18, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4016),
+                            Date = new DateTime(2025, 7, 11, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7586),
                             Diagnosis = "Gastritis",
                             Note = "Avoid spicy foods",
                             PatientId = 5,
@@ -307,7 +307,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             RecordId = 6,
-                            Date = new DateTime(2025, 6, 20, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4017),
+                            Date = new DateTime(2025, 7, 13, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7587),
                             Diagnosis = "Arthritis",
                             Note = "Physical therapy recommended",
                             PatientId = 6,
@@ -317,7 +317,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             RecordId = 7,
-                            Date = new DateTime(2025, 6, 23, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4019),
+                            Date = new DateTime(2025, 7, 16, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7589),
                             Diagnosis = "Allergic reaction",
                             Note = "Avoid allergens",
                             PatientId = 7,
@@ -327,7 +327,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             RecordId = 8,
-                            Date = new DateTime(2025, 6, 25, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4020),
+                            Date = new DateTime(2025, 7, 18, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7590),
                             Diagnosis = "Type 2 Diabetes",
                             Note = "Diet control important",
                             PatientId = 8,
@@ -337,7 +337,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             RecordId = 9,
-                            Date = new DateTime(2025, 6, 26, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4023),
+                            Date = new DateTime(2025, 7, 19, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7592),
                             Diagnosis = "Anxiety disorder",
                             Note = "Counseling recommended",
                             PatientId = 9,
@@ -347,7 +347,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             RecordId = 10,
-                            Date = new DateTime(2025, 6, 27, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4024),
+                            Date = new DateTime(2025, 7, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7593),
                             Diagnosis = "Hay fever",
                             Note = "Seasonal allergy",
                             PatientId = 1,
@@ -755,160 +755,160 @@ namespace DataAccessLayer.Migrations
                         {
                             TokenId = 1,
                             AccountId = 1,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4136),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4134),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7742),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7741),
                             Token = "refresh_token_1"
                         },
                         new
                         {
                             TokenId = 2,
                             AccountId = 2,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4138),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4138),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7745),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7745),
                             Token = "refresh_token_2"
                         },
                         new
                         {
                             TokenId = 3,
                             AccountId = 3,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4140),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4139),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7747),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7746),
                             Token = "refresh_token_3"
                         },
                         new
                         {
                             TokenId = 4,
                             AccountId = 4,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4141),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4140),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7748),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7748),
                             Token = "refresh_token_4"
                         },
                         new
                         {
                             TokenId = 5,
                             AccountId = 5,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4142),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4142),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7750),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7749),
                             Token = "refresh_token_5"
                         },
                         new
                         {
                             TokenId = 6,
                             AccountId = 6,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4144),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4143),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7751),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7751),
                             Token = "refresh_token_6"
                         },
                         new
                         {
                             TokenId = 7,
                             AccountId = 7,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4145),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4144),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7753),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7752),
                             Token = "refresh_token_7"
                         },
                         new
                         {
                             TokenId = 8,
                             AccountId = 8,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4146),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4146),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7754),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7753),
                             Token = "refresh_token_8"
                         },
                         new
                         {
                             TokenId = 9,
                             AccountId = 9,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4148),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4147),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7755),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7755),
                             Token = "refresh_token_9"
                         },
                         new
                         {
                             TokenId = 10,
                             AccountId = 10,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4149),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4148),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7757),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7756),
                             Token = "refresh_token_10"
                         },
                         new
                         {
                             TokenId = 11,
                             AccountId = 11,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4150),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4150),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7759),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7758),
                             Token = "refresh_token_11"
                         },
                         new
                         {
                             TokenId = 12,
                             AccountId = 12,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4152),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4151),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7760),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7760),
                             Token = "refresh_token_12"
                         },
                         new
                         {
                             TokenId = 13,
                             AccountId = 13,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4153),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4152),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7762),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7761),
                             Token = "refresh_token_13"
                         },
                         new
                         {
                             TokenId = 14,
                             AccountId = 14,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4154),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4154),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7763),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7763),
                             Token = "refresh_token_14"
                         },
                         new
                         {
                             TokenId = 15,
                             AccountId = 15,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4155),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4155),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7764),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7764),
                             Token = "refresh_token_15"
                         },
                         new
                         {
                             TokenId = 16,
                             AccountId = 16,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4157),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4156),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7766),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7765),
                             Token = "refresh_token_16"
                         },
                         new
                         {
                             TokenId = 17,
                             AccountId = 17,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4158),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4158),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7767),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7767),
                             Token = "refresh_token_17"
                         },
                         new
                         {
                             TokenId = 18,
                             AccountId = 18,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4159),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4159),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7769),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7768),
                             Token = "refresh_token_18"
                         },
                         new
                         {
                             TokenId = 19,
                             AccountId = 19,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4160),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4160),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7770),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7770),
                             Token = "refresh_token_19"
                         },
                         new
                         {
                             TokenId = 20,
                             AccountId = 20,
-                            CreatedDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4162),
-                            ExpiryDate = new DateTime(2025, 7, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4161),
+                            CreatedDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7772),
+                            ExpiryDate = new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7771),
                             Token = "refresh_token_20"
                         });
                 });
@@ -1075,7 +1075,7 @@ namespace DataAccessLayer.Migrations
                             ResultId = 1,
                             RecordId = 1,
                             ResultDetail = "WBC: 8.5, RBC: 4.2",
-                            TestDate = new DateTime(2025, 5, 30, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4047),
+                            TestDate = new DateTime(2025, 6, 22, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7620),
                             TestId = 1,
                             UserId = 2
                         },
@@ -1084,7 +1084,7 @@ namespace DataAccessLayer.Migrations
                             ResultId = 2,
                             RecordId = 2,
                             ResultDetail = "Chest clear, no abnormalities",
-                            TestDate = new DateTime(2025, 6, 4, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4048),
+                            TestDate = new DateTime(2025, 6, 27, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7622),
                             TestId = 2,
                             UserId = 2
                         },
@@ -1093,7 +1093,7 @@ namespace DataAccessLayer.Migrations
                             ResultId = 3,
                             RecordId = 3,
                             ResultDetail = "Normal heart rhythm",
-                            TestDate = new DateTime(2025, 6, 9, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4049),
+                            TestDate = new DateTime(2025, 7, 2, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7623),
                             TestId = 3,
                             UserId = 3
                         },
@@ -1102,7 +1102,7 @@ namespace DataAccessLayer.Migrations
                             ResultId = 4,
                             RecordId = 4,
                             ResultDetail = "BP: 140/90 mmHg",
-                            TestDate = new DateTime(2025, 6, 14, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4051),
+                            TestDate = new DateTime(2025, 7, 7, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7624),
                             TestId = 10,
                             UserId = 3
                         },
@@ -1111,7 +1111,7 @@ namespace DataAccessLayer.Migrations
                             ResultId = 5,
                             RecordId = 5,
                             ResultDetail = "Mild gastric inflammation",
-                            TestDate = new DateTime(2025, 6, 19, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4052),
+                            TestDate = new DateTime(2025, 7, 12, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7626),
                             TestId = 4,
                             UserId = 4
                         },
@@ -1120,7 +1120,7 @@ namespace DataAccessLayer.Migrations
                             ResultId = 6,
                             RecordId = 6,
                             ResultDetail = "Joint space narrowing",
-                            TestDate = new DateTime(2025, 6, 21, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4053),
+                            TestDate = new DateTime(2025, 7, 14, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7627),
                             TestId = 2,
                             UserId = 4
                         },
@@ -1129,7 +1129,7 @@ namespace DataAccessLayer.Migrations
                             ResultId = 7,
                             RecordId = 7,
                             ResultDetail = "Elevated eosinophils",
-                            TestDate = new DateTime(2025, 6, 24, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4054),
+                            TestDate = new DateTime(2025, 7, 17, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7628),
                             TestId = 1,
                             UserId = 5
                         },
@@ -1138,7 +1138,7 @@ namespace DataAccessLayer.Migrations
                             ResultId = 8,
                             RecordId = 8,
                             ResultDetail = "Glucose: 180 mg/dL",
-                            TestDate = new DateTime(2025, 6, 26, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4055),
+                            TestDate = new DateTime(2025, 7, 19, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7630),
                             TestId = 8,
                             UserId = 5
                         },
@@ -1147,7 +1147,7 @@ namespace DataAccessLayer.Migrations
                             ResultId = 9,
                             RecordId = 9,
                             ResultDetail = "Normal blood parameters",
-                            TestDate = new DateTime(2025, 6, 27, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4056),
+                            TestDate = new DateTime(2025, 7, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7631),
                             TestId = 1,
                             UserId = 6
                         },
@@ -1156,8 +1156,123 @@ namespace DataAccessLayer.Migrations
                             ResultId = 10,
                             RecordId = 10,
                             ResultDetail = "Increased histamine levels",
-                            TestDate = new DateTime(2025, 6, 28, 19, 34, 18, 570, DateTimeKind.Local).AddTicks(4057),
+                            TestDate = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7632),
                             TestId = 7,
+                            UserId = 6
+                        });
+                });
+
+            modelBuilder.Entity("DataAccessLayer.models.TestResultHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ActionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TestResultId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TestResultId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("TestResultHistories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Action = "Create",
+                            ActionTime = new DateTime(2025, 6, 22, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7653),
+                            TestResultId = 1,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Action = "Create",
+                            ActionTime = new DateTime(2025, 6, 27, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7654),
+                            TestResultId = 2,
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Action = "Create",
+                            ActionTime = new DateTime(2025, 7, 2, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7655),
+                            TestResultId = 3,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Action = "Create",
+                            ActionTime = new DateTime(2025, 7, 7, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7656),
+                            TestResultId = 4,
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Action = "Create",
+                            ActionTime = new DateTime(2025, 7, 12, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7658),
+                            TestResultId = 5,
+                            UserId = 4
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Action = "Create",
+                            ActionTime = new DateTime(2025, 7, 14, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7659),
+                            TestResultId = 6,
+                            UserId = 4
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Action = "Create",
+                            ActionTime = new DateTime(2025, 7, 17, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7660),
+                            TestResultId = 7,
+                            UserId = 5
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Action = "Create",
+                            ActionTime = new DateTime(2025, 7, 19, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7661),
+                            TestResultId = 8,
+                            UserId = 5
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Action = "Create",
+                            ActionTime = new DateTime(2025, 7, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7662),
+                            TestResultId = 9,
+                            UserId = 6
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Action = "Create",
+                            ActionTime = new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7663),
+                            TestResultId = 10,
                             UserId = 6
                         });
                 });
@@ -1409,6 +1524,21 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Test");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("DataAccessLayer.models.TestResultHistory", b =>
+                {
+                    b.HasOne("DataAccessLayer.models.TestResult", null)
+                        .WithMany()
+                        .HasForeignKey("TestResultId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DataAccessLayer.models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DataAccessLayer.models.User", b =>
