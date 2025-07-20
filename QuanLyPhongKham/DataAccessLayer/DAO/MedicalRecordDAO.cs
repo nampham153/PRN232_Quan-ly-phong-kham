@@ -81,6 +81,13 @@ namespace DataAccessLayer.DAO
         {
             return _context.MedicalRecords.Any(r => r.UserId == doctorId);
         }
+        public User? GetDoctorById(int doctorId)
+        {
+            return _context.Users
+                .Include(u => u.Account)
+                .FirstOrDefault(u => u.UserId == doctorId && u.Account.RoleId == 2);
+        }
+
 
     }
 }

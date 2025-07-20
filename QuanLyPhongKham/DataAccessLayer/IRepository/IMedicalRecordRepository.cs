@@ -20,6 +20,7 @@ namespace DataAccessLayer.IRepository
         bool DoctorHasRecord(int doctorId);
         bool PatientExists(int patientId);
         bool DoctorExists(int doctorId);
+        User? GetDoctorById(int doctorId);
 
     }
 }

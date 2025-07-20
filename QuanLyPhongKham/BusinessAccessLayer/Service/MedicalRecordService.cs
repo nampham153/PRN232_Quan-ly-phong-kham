@@ -46,6 +46,10 @@ namespace BusinessAccessLayer.Service
         {
             return _repository.PatientHasRecord(patientId);
         }
+        public User? GetDoctorById(int doctorId)
+        {
+            return _repository.GetDoctorById(doctorId);
+        }
 
     }
 }

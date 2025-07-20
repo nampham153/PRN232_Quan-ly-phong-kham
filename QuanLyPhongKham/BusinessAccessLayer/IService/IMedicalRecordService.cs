@@ -18,6 +18,7 @@ namespace BusinessAccessLayer.IService
         bool PatientHasRecord(int patientId);
 
         IQueryable<MedicalRecord> QueryAll();
+        User? GetDoctorById(int doctorId);
 
     }
 

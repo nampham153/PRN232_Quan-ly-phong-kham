@@ -47,6 +47,10 @@ namespace DataAccessLayer.Repository
         {
             return _dao.PatientExists(patientId);
         }
+        public User? GetDoctorById(int doctorId)
+        {
+            return _dao.GetDoctorById(doctorId);
+        }
 
     }
 }

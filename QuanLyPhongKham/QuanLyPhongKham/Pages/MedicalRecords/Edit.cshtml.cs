@@ -36,12 +36,9 @@ namespace QuanLyPhongKham.Pages.MedicalRecords
 
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-                return Page();
 
             var client = _httpClientFactory.CreateClient();
 
-            // Chu?n b? JSON bao g?m c? tr??ng Status
             var json = JsonSerializer.Serialize(MedicalRecord, new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
@@ -54,9 +51,40 @@ namespace QuanLyPhongKham.Pages.MedicalRecords
             if (response.IsSuccessStatusCode)
                 return RedirectToPage("Index");
 
-            var error = await response.Content.ReadAsStringAsync();
-            ModelState.AddModelError(string.Empty, $"L?i c?p nh?t: {error}");
+            var errorJson = await response.Content.ReadAsStringAsync();
+
+            try
+            {
+                using var doc = JsonDocument.Parse(errorJson);
+                if (doc.RootElement.TryGetProperty("message", out var messageProp))
+                {
+                    var message = messageProp.GetString();
+
+                    if (message != null)
+                    {
+                        if (message.Contains("ngày") || message.Contains("th?i ?i?m"))
+                            ModelState.AddModelError("MedicalRecord.Date", message);
+                        else if (message.Contains("bác s?") || message.Contains("quy?n"))
+                            ModelState.AddModelError("MedicalRecord.UserId", message);
+                        else
+                            ModelState.AddModelError(string.Empty, message);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, errorJson);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, errorJson);
+                }
+            }
+            catch
+            {
+                ModelState.AddModelError(string.Empty, errorJson);
+            }
             return Page();
         }
+
     }
 }
