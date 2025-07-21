@@ -1,0 +1,9 @@
+﻿@page
+@model DeletePrescriptionModel
+<h1>Delete Prescription</h1>
+<p>Are you sure you want to delete prescription for Medicine: @Model.Prescription.MedicineName?</p>
+<form method="post">
+    <input type="hidden" asp-for="Prescription.PrescriptionId" />
+    <button type="submit">Delete</button>
+    <a asp-page="/ListPrescription">Cancel</a>
+</form>

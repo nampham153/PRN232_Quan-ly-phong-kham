@@ -1,0 +1,26 @@
+﻿@page "{id:int}"
+@model QuanLyPhongKham.Pages.Patient.DeleteModel
+@{
+    ViewData["Title"] = "Delete Patient";
+}
+
+<h3 class="text-danger">Delete Patient</h3>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessage
+    </div>
+}
+else
+{
+    <div class="alert alert-warning">
+        Are you sure you want to delete patient: <strong>@Model.Patient.FullName</strong>?
+    </div>
+
+    <form method="post">
+        <input type="hidden" asp-for="Patient.PatientId" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-page="PatientList" class="btn btn-secondary">Cancel</a>
+    </form>
+}

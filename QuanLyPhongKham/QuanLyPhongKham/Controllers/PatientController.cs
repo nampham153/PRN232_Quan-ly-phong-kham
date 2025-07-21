@@ -142,6 +142,8 @@ namespace QuanLyPhongKham.Controllers
             {
                 return NotFound();
             }
+            if (patient.MedicalRecords != null && patient.MedicalRecords.Any())
+                return BadRequest("Bệnh nhân có hồ sơ y tế, không thể xóa.");
             _patientService.DeletePatient(id);
             return NoContent();
         }

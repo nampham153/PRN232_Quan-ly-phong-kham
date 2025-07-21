@@ -16,7 +16,7 @@ namespace QuanLyPhongKham.Pages.Patient
             _httpClient.BaseAddress = new Uri("https://localhost:7086/api/"); // API base address
         }
 
-        public List<PatientViewModel> Patients { get; set; }
+        public List<PatientViewModel> Patients { get; set; } = new List<PatientViewModel>();
 
         [BindProperty(SupportsGet = true)]
         public string SearchFullName { get; set; }
