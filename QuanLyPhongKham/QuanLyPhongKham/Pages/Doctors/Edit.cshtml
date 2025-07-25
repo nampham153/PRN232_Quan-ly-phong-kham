@@ -57,6 +57,15 @@
                 <img src="@Model.Doctor.DoctorPath" alt="Avatar" style="width: 100px; height: 100px; object-fit: cover;" />
             </div>
         }
+        <div class="mb-3">
+            <label asp-for="Doctor.Status" class="form-label">Trạng thái bác sĩ</label>
+            <select asp-for="Doctor.Status" class="form-select">
+                <option value="1" selected="@(Model.Doctor.Status == 1)">Hoạt động</option>
+                <option value="0" selected="@(Model.Doctor.Status == 0)">Không hoạt động</option>
+            </select>
+            <span asp-validation-for="Doctor.Status" class="text-danger"></span>
+        </div>
+
 
         <div>
             <button type="submit" class="btn btn-primary">Save Changes</button>

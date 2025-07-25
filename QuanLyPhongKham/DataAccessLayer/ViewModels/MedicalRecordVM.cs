@@ -23,12 +23,15 @@ namespace DataAccessLayer.ViewModels
         [Required(ErrorMessage = "Vui lòng nhập ngày.")]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
+        [Required]
+        public int Status { get; set; } = 1;
 
         [Required(ErrorMessage = "Vui lòng nhập triệu chứng.")]
         public string Symptoms { get; set; }
         public string Diagnosis { get; set; }
 
         public string Note { get; set; }
+
         public List<TestSummaryVM> TestSummaries { get; set; } = new();
     }
 }

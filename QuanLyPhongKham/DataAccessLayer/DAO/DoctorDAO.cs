@@ -38,7 +38,7 @@ namespace DataAccessLayer.DAO
 
         public User? GetById(int userId)
         {
-            return _context.Users.Include(u => u.Account).FirstOrDefault(u => u.UserId == userId);
+            return _context.Users.Include(u => u.Account).FirstOrDefault(u => u.UserId == userId && u.Status == 1);
         }
 
         public bool ExistsUserByAccountId(int accountId)
@@ -65,7 +65,8 @@ namespace DataAccessLayer.DAO
 
         public void Delete(User doctor)
         {
-            _context.Users.Remove(doctor);
+            doctor.Status = 0;
+            _context.Users.Update(doctor);
             _context.SaveChanges();
         }
     }

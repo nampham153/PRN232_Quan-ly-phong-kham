@@ -15,7 +15,7 @@
     </div>
     <div class="col-md-4">
         <label asp-for="MedicalRecord.UserId" class="form-label">Bác sĩ</label>
-        <input asp-for="MedicalRecord.UserId" class="form-control" readonly />
+        <input asp-for="MedicalRecord.UserId" class="form-control" />
         <span asp-validation-for="MedicalRecord.UserId" class="text-danger"></span>
     </div>
     <div class="col-md-4">
@@ -25,18 +25,26 @@
     </div>
     <div class="col-12">
         <label asp-for="MedicalRecord.Symptoms" class="form-label">Triệu chứng</label>
-        <textarea asp-for="MedicalRecord.Symptoms" class="form-control" rows="2"></textarea>
+        <textarea asp-for="MedicalRecord.Symptoms" class="form-control force-height"></textarea>
         <span asp-validation-for="MedicalRecord.Symptoms" class="text-danger"></span>
     </div>
     <div class="col-12">
         <label asp-for="MedicalRecord.Diagnosis" class="form-label">Chuẩn đoán</label>
-        <textarea asp-for="MedicalRecord.Diagnosis" class="form-control" rows="2"></textarea>
+        <textarea asp-for="MedicalRecord.Diagnosis" class="form-control force-height-large"></textarea>
         <span asp-validation-for="MedicalRecord.Diagnosis" class="text-danger"></span>
     </div>
     <div class="col-12">
         <label asp-for="MedicalRecord.Note" class="form-label">Ghi chú</label>
-        <textarea asp-for="MedicalRecord.Note" class="form-control" rows="2"></textarea>
+        <textarea asp-for="MedicalRecord.Note" class="form-control force-height-large"></textarea>
         <span asp-validation-for="MedicalRecord.Note" class="text-danger"></span>
+    </div>
+    <div class="col-md-4">
+        <label asp-for="MedicalRecord.Status" class="form-label">Trạng thái</label>
+        <select asp-for="MedicalRecord.Status" class="form-select">
+            <option value="1" selected="@((Model.MedicalRecord.Status == 1) ? "selected" : null)">Hoạt động</option>
+            <option value="0" selected="@((Model.MedicalRecord.Status == 0) ? "selected" : null)">Vô hiệu</option>
+        </select>
+        <span asp-validation-for="MedicalRecord.Status" class="text-danger"></span>
     </div>
     <div class="col-12">
         <button type="submit" class="btn btn-success">Cập nhật</button>
@@ -47,3 +55,14 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+<style>
+    .force-height {
+        min-height: 60px !important;
+        height: auto !important;
+    }
+
+    .force-height-large {
+        min-height: 100px !important;
+        height: auto !important;
+    }
+</style>

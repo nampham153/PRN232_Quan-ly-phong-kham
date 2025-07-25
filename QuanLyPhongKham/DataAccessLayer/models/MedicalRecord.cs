@@ -18,6 +18,7 @@ namespace DataAccessLayer.models
 
         public int UserId { get; set; }
         public User User { get; set; }
+        public int Status { get; set; } = 1;
 
         public DateTime Date { get; set; }
         public string Symptoms { get; set; }

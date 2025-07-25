@@ -60,7 +60,8 @@ namespace DataAccessLayer.DAO
 
         public void Delete(MedicalRecord record)
         {
-            _context.MedicalRecords.Remove(record);
+            record.Status = 0;
+            _context.MedicalRecords.Update(record);
             _context.SaveChanges();
         }
         public IQueryable<MedicalRecord> QueryAll()
@@ -80,6 +81,13 @@ namespace DataAccessLayer.DAO
         {
             return _context.MedicalRecords.Any(r => r.UserId == doctorId);
         }
+        public User? GetDoctorById(int doctorId)
+        {
+            return _context.Users
+                .Include(u => u.Account)
+                .FirstOrDefault(u => u.UserId == doctorId && u.Account.RoleId == 2);
+        }
+
 
     }
 }

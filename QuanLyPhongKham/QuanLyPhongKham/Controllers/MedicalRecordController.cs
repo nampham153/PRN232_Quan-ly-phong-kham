@@ -24,9 +24,28 @@ namespace QuanLyPhongKham.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+
+            var doctor = _medicalRecordService.GetDoctorById(model.UserId);
+
+            if (doctor == null)
+            {
+                return BadRequest(new { message = "Bác sĩ không tồn tại hoặc không đúng quyền." });
+            }
+
+            if (doctor.Status == 0)
+            {
+                return BadRequest(new { message = "Bác sĩ đã bị vô hiệu hóa." });
+            }
+
+
             if (_medicalRecordService.PatientHasRecord(model.PatientId))
             {
                 return BadRequest(new { message = "Bệnh nhân đã có hồ sơ y tế." });
+            }
+
+            if (model.Date > DateTime.Today)
+            {
+                return BadRequest(new { message = "Không được chọn ngày vượt quá hiện tại." });
             }
 
             var newRecord = new MedicalRecord
@@ -50,22 +69,46 @@ namespace QuanLyPhongKham.Controllers
             }
         }
 
-
         [HttpPut("{id}")]
         public IActionResult Update(int id, [FromBody] MedicalRecordVM model)
         {
             var existing = _medicalRecordService.GetById(id);
             if (existing == null) return NotFound();
 
+
+            var doctor = _medicalRecordService.GetDoctorById(model.UserId);
+
+            if (doctor == null)
+            {
+                return BadRequest(new { message = "Bác sĩ không tồn tại hoặc không đúng quyền." });
+            }
+
+            if (doctor.Status == 0)
+            {
+                return BadRequest(new { message = "Bác sĩ đã bị vô hiệu hóa." });
+            }
+            if (model.Date > DateTime.Today)
+            {
+                return BadRequest(new { message = "Không được chọn ngày vượt quá hiện tại." });
+            }
+
             existing.PatientId = model.PatientId;
             existing.UserId = model.UserId;
             existing.Date = model.Date;
+            existing.Status = model.Status;
             existing.Symptoms = model.Symptoms;
             existing.Diagnosis = model.Diagnosis;
             existing.Note = model.Note;
 
-            _medicalRecordService.Update(existing);
-            return Ok();
+            try
+            {
+                _medicalRecordService.Update(existing);
+                return Ok(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
         }
 
         [HttpDelete("{id}")]
@@ -132,6 +175,7 @@ namespace QuanLyPhongKham.Controllers
                     UserId = r.UserId,
                     DoctorName = r.User != null ? r.User.FullName : null,
                     Date = r.Date,
+                    Status = r.Status,
                     Symptoms = r.Symptoms,
                     Diagnosis = r.Diagnosis,
                     Note = r.Note
@@ -224,10 +268,11 @@ namespace QuanLyPhongKham.Controllers
                 {
                     RecordId = r.RecordId,
                     PatientId = r.PatientId,
-                    PatientName = r.Patient != null ? r.Patient.FullName : null, // ✅ Không dùng ?.
+                    PatientName = r.Patient != null ? r.Patient.FullName : null, 
                     UserId = r.UserId,
-                    DoctorName = r.User != null ? r.User.FullName : null,        // ✅ Không dùng ?.
+                    DoctorName = r.User != null ? r.User.FullName : null,        
                     Date = r.Date,
+                    Status = r.Status,
                     Symptoms = r.Symptoms,
                     Diagnosis = r.Diagnosis,
                     Note = r.Note
