@@ -17,6 +17,6 @@ namespace BusinessAccessLayer.IService
         Prescription CreatePrescription(Prescription prescription); // Thay void bằng Prescription
         void UpdatePrescription(Prescription prescription);
         void DeletePrescription(int id);
-        List<PrescriptionViewModel> SearchPrescriptions(int? recordId = null, int? medicineId = null, int? quantity = null, string dosage = null);
+        List<PrescriptionViewModel> SearchPrescriptions(int? recordId = null, int? medicineId = null, string dosage = null);
     }
 }

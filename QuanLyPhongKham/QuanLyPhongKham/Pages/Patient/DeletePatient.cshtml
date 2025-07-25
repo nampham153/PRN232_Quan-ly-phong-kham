@@ -1,40 +1,26 @@
-﻿@page
-@model QuanLyPhongKham.Pages.Patient.DeletePatientModel
+﻿@page "{id:int}"
+@model QuanLyPhongKham.Pages.Patient.DeleteModel
 @{
     ViewData["Title"] = "Delete Patient";
 }
 
-<div class="row">
-    <div class="col-lg-6 offset-lg-3 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <div>
-                        <h4 class="card-title mb-0">Delete Patient</h4>
-                        <p class="card-description">Confirm deletion of the patient from the system</p>
-                    </div>
-                    <a href="/Patient/PatientList" class="btn btn-outline-secondary btn-sm">
-                        <i class="mdi mdi-arrow-left"></i> Back to list
-                    </a>
-                </div>
+<h3 class="text-danger">Delete Patient</h3>
 
-                <div class="alert alert-warning">
-                    <i class="mdi mdi-alert-outline"></i>
-                    Are you sure you want to delete the patient: <strong>@Model.PatientViewModel.FullName</strong>?
-                </div>
-
-                <form method="post">
-                    <input type="hidden" asp-for="PatientViewModel.PatientId" />
-                    <div class="d-flex justify-content-end gap-2">
-                        <button type="submit" class="btn btn-danger btn-sm">
-                            <i class="mdi mdi-delete"></i> Delete
-                        </button>
-                        <a asp-page="/Patient/PatientList" class="btn btn-outline-secondary btn-sm">
-                            <i class="mdi mdi-close"></i> Cancel
-                        </a>
-                    </div>
-                </form>
-            </div>
-        </div>
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">
+        @Model.ErrorMessage
     </div>
-</div>
+}
+else
+{
+    <div class="alert alert-warning">
+        Are you sure you want to delete patient: <strong>@Model.Patient.FullName</strong>?
+    </div>
+
+    <form method="post">
+        <input type="hidden" asp-for="Patient.PatientId" />
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-page="PatientList" class="btn btn-secondary">Cancel</a>
+    </form>
+}

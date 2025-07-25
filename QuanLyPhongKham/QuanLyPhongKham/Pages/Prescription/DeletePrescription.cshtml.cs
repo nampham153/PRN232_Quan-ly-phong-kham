@@ -1,54 +1,31 @@
-﻿using DataAccessLayer.ViewModels;
-using Microsoft.AspNetCore.Mvc;
+using BusinessAccessLayer.IService;
+using DataAccessLayer.ViewModels;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Net.Http;
-using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
 
-namespace QuanLyPhongKham.Pages.Prescription
+public class DeletePrescriptionModel : PageModel
 {
-    public class DeletePrescriptionModel : PageModel
+    private readonly IPrescriptionService _service;
+
+    public DeletePrescriptionModel(IPrescriptionService service)
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        _service = service;
+    }
 
-        public DeletePrescriptionModel(IHttpClientFactory httpClientFactory)
-        {
-            _httpClientFactory = httpClientFactory;
-        }
+    [BindProperty]
+    public PrescriptionViewModel Prescription { get; set; }
 
-        [BindProperty]
-        public PrescriptionViewModel Prescription { get; set; }
+    public IActionResult OnGet(int id)
+    {
+        var prescription = _service.GetPrescriptionById(id);
+        if (prescription == null) return NotFound();
+        Prescription = prescription;
+        return Page();
+    }
 
-        public async Task<IActionResult> OnGetAsync(int id)
-        {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync($"https://localhost:7086/api/Prescription/{id}");
-
-            if (!response.IsSuccessStatusCode)
-            {
-                return NotFound();
-            }
-
-            var json = await response.Content.ReadAsStringAsync();
-            Prescription = JsonSerializer.Deserialize<PrescriptionViewModel>(json, new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            });
-
-            return Page();
-        }
-
-        public async Task<IActionResult> OnPostAsync()
-        {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.DeleteAsync($"https://localhost:7086/api/Prescription/{Prescription.PrescriptionId}");
-
-            if (!response.IsSuccessStatusCode)
-            {
-                ModelState.AddModelError(string.Empty, "Xoá đơn thuốc thất bại.");
-                return Page();
-            }
-
-            return RedirectToPage("ListPrescription");
-        }
+    public IActionResult OnPost(int id)
+    {
+        _service.DeletePrescription(id);
+        return RedirectToPage("ListPrescription");
     }
 }

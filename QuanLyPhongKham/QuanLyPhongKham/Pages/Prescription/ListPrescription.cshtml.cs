@@ -25,16 +25,13 @@ namespace QuanLyPhongKham.Pages.Prescription
         public int? MedicineId { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string Dosage { get; set; }
-
-        [BindProperty(SupportsGet = true)]
-        public int? Quantity { get; set; }
+        public string? Dosage { get; set; }
 
         [BindProperty(SupportsGet = true, Name = "page")]
         public int CurrentPage { get; set; } = 1;
 
         [BindProperty(SupportsGet = true)]
-        public int PageSize { get; set; } = 11;
+        public int PageSize { get; set; } = 10;
 
         public int TotalRecords { get; set; }
         public int TotalPages => (int)Math.Ceiling((double)TotalRecords / PageSize);
@@ -46,12 +43,11 @@ namespace QuanLyPhongKham.Pages.Prescription
         {
             var client = _httpClientFactory.CreateClient();
 
-            // API phân trang + tìm kiếm
-            var searchUrl = $"https://localhost:7086/api/Prescription/search" +
-                $"?recordId={RecordId}&medicineId={MedicineId}&quantity={Quantity}&dosage={Dosage}" +
-                $"&page={CurrentPage}&pageSize={PageSize}";
+            // 1. Lấy danh sách đơn thuốc có tìm kiếm và phân trang
+            var query = $"?recordId={RecordId}&medicineId={MedicineId}&dosage={Dosage}" +
+                        $"&page={CurrentPage}&pageSize={PageSize}";
 
-            var prescriptionResponse = await client.GetAsync(searchUrl);
+            var prescriptionResponse = await client.GetAsync("https://localhost:7086/api/Prescription/search" + query);
 
             if (prescriptionResponse.IsSuccessStatusCode)
             {
@@ -65,33 +61,30 @@ namespace QuanLyPhongKham.Pages.Prescription
 
                 TotalRecords = doc.RootElement.GetProperty("totalRecords").GetInt32();
             }
+            else
+            {
+                Prescriptions = new List<PrescriptionViewModel>();
+                TotalRecords = 0;
+            }
 
-            // Danh sách thuốc
+            // 2. Lấy danh sách thuốc (dropdown)
             var medicineResponse = await client.GetAsync("https://localhost:7086/api/Medicine");
             if (medicineResponse.IsSuccessStatusCode)
             {
                 var json = await medicineResponse.Content.ReadAsStringAsync();
                 using var doc = JsonDocument.Parse(json);
 
-                var list = new List<SelectListItem>();
-
-                foreach (var item in doc.RootElement.EnumerateArray())
-                {
-                    var id = item.GetProperty("medicineId").GetInt32();
-                    var name = item.GetProperty("medicineName").GetString();
-
-                    list.Add(new SelectListItem
+                var list = doc.RootElement.EnumerateArray()
+                    .Select(item => new SelectListItem
                     {
-                        Value = id.ToString(),
-                        Text = name
-                    });
-                }
+                        Value = item.GetProperty("medicineId").GetInt32().ToString(),
+                        Text = item.GetProperty("medicineName").GetString() ?? "Unknown"
+                    }).ToList();
 
                 Medicines = new SelectList(list, "Value", "Text");
-
             }
 
-            // Danh sách hồ sơ
+            // 3. Lấy danh sách hồ sơ (dropdown)
             var recordResponse = await client.GetAsync("https://localhost:7086/api/MedicalRecord");
             if (recordResponse.IsSuccessStatusCode)
             {

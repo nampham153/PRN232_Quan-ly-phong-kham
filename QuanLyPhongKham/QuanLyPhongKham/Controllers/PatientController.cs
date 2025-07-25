@@ -29,8 +29,12 @@ namespace QuanLyPhongKham.Controllers
                 Phone = p.Phone,
                 Email = p.Email,
                 Address = p.Address,
-                MedicalRecordCount = p.MedicalRecords?.Count ?? 0
+                MedicalRecordCount = p.MedicalRecords?.Count ?? 0,
+                AvatarPath = p.AvatarPath,
+                UnderlyingDiseases = p.UnderlyingDiseases,   
+                DiseaseDetails = p.DiseaseDetails           
             }).ToList();
+
             return Ok(patientViewModels);
         }
 
@@ -51,8 +55,12 @@ namespace QuanLyPhongKham.Controllers
                 Phone = patient.Phone,
                 Email = patient.Email,
                 Address = patient.Address,
-                MedicalRecordCount = patient.MedicalRecords?.Count ?? 0
+                MedicalRecordCount = patient.MedicalRecords?.Count ?? 0,
+                AvatarPath = patient.AvatarPath,
+                UnderlyingDiseases = patient.UnderlyingDiseases, 
+                DiseaseDetails = patient.DiseaseDetails         
             };
+
             return Ok(viewModel);
         }
 
@@ -74,8 +82,11 @@ namespace QuanLyPhongKham.Controllers
                 Phone = patientViewModel.Phone,
                 Email = patientViewModel.Email,
                 Address = patientViewModel.Address,
-                AvatarPath = patientViewModel.AvatarPath
+                AvatarPath = patientViewModel.AvatarPath,
+                UnderlyingDiseases = patientViewModel.UnderlyingDiseases, 
+                DiseaseDetails = patientViewModel.DiseaseDetails           
             };
+
 
             try
             {
@@ -115,6 +126,9 @@ namespace QuanLyPhongKham.Controllers
             patient.Email = patientViewModel.Email;
             patient.Address = patientViewModel.Address;
             patient.AvatarPath = patientViewModel.AvatarPath;
+            patient.UnderlyingDiseases = patientViewModel.UnderlyingDiseases; 
+            patient.DiseaseDetails = patientViewModel.DiseaseDetails;         
+
 
             _patientService.UpdatePatient(patient);
             return NoContent();
@@ -128,6 +142,8 @@ namespace QuanLyPhongKham.Controllers
             {
                 return NotFound();
             }
+            if (patient.MedicalRecords != null && patient.MedicalRecords.Any())
+                return BadRequest("Bệnh nhân có hồ sơ y tế, không thể xóa.");
             _patientService.DeletePatient(id);
             return NoContent();
         }
@@ -135,14 +151,20 @@ namespace QuanLyPhongKham.Controllers
         [HttpGet("search")]
         public ActionResult<IEnumerable<PatientViewModel>> SearchPatients(
        string fullName = null,
-       string phone = null,
-       string email = null,
-       string address = null,
-       string gender = null,
-       DateTime? dobFrom = null,
-       DateTime? dobTo = null)
+   string phone = null,
+   string email = null,
+   string address = null,
+   string gender = null,
+   DateTime? dobFrom = null,
+   DateTime? dobTo = null,
+   string underlyingDiseases = null,
+   string diseaseDetails = null)
         {
-            var patients = _patientService.SearchPatients(fullName, phone, email, address, gender, dobFrom, dobTo);
+            var patients = _patientService.SearchPatients(
+                fullName, phone, email, address, gender, dobFrom, dobTo,
+                underlyingDiseases, diseaseDetails
+            );
+
             var patientViewModels = patients.Select(p => new PatientViewModel
             {
                 PatientId = p.PatientId,
@@ -153,7 +175,9 @@ namespace QuanLyPhongKham.Controllers
                 Email = p.Email,
                 Address = p.Address,
                 MedicalRecordCount = p.MedicalRecords?.Count ?? 0,
-                AvatarPath = p.AvatarPath // Ensure this is mapped
+                AvatarPath = p.AvatarPath,
+                UnderlyingDiseases = p.UnderlyingDiseases,
+                DiseaseDetails = p.DiseaseDetails
             }).ToList();
             return Ok(patientViewModels);
         }

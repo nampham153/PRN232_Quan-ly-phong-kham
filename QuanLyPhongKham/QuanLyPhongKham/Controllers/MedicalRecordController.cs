@@ -24,6 +24,7 @@ namespace QuanLyPhongKham.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+
             var doctor = _medicalRecordService.GetDoctorById(model.UserId);
 
             if (doctor == null)
@@ -36,15 +37,16 @@ namespace QuanLyPhongKham.Controllers
                 return BadRequest(new { message = "Bác sĩ đã bị vô hiệu hóa." });
             }
 
+
             if (_medicalRecordService.PatientHasRecord(model.PatientId))
             {
                 return BadRequest(new { message = "Bệnh nhân đã có hồ sơ y tế." });
             }
+
             if (model.Date > DateTime.Today)
             {
                 return BadRequest(new { message = "Không được chọn ngày vượt quá hiện tại." });
             }
-
 
             var newRecord = new MedicalRecord
             {
@@ -72,6 +74,7 @@ namespace QuanLyPhongKham.Controllers
         {
             var existing = _medicalRecordService.GetById(id);
             if (existing == null) return NotFound();
+
 
             var doctor = _medicalRecordService.GetDoctorById(model.UserId);
 

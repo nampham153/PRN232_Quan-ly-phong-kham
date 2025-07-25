@@ -76,6 +76,16 @@
                             <span asp-validation-for="PatientViewModel.Address" class="text-danger"></span>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <label asp-for="PatientViewModel.UnderlyingDiseases" class="form-label">Underlying Diseases</label>
+                        <input asp-for="PatientViewModel.UnderlyingDiseases" class="form-control form-control-sm" />
+                        <span asp-validation-for="PatientViewModel.UnderlyingDiseases" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="PatientViewModel.DiseaseDetails" class="form-label">Disease Details</label>
+                        <textarea asp-for="PatientViewModel.DiseaseDetails" class="form-control form-control-sm" rows="2"></textarea>
+                        <span asp-validation-for="PatientViewModel.DiseaseDetails" class="text-danger"></span>
+                    </div>
 
                     <div class="mb-3">
                         <label class="form-label">Avatar (from device)</label>

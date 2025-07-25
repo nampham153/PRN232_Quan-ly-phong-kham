@@ -57,54 +57,84 @@ namespace QuanLyPhongKham.Pages.Prescription
 
         private async Task LoadDropdownsAsync()
         {
-            var client = _httpClientFactory.CreateClient();
-
-            // Load Medicines
-            var medicineResponse = await client.GetAsync("https://localhost:7086/api/Medicine");
-            if (medicineResponse.IsSuccessStatusCode)
+            try
             {
-                var json = await medicineResponse.Content.ReadAsStringAsync();
-                var doc = JsonDocument.Parse(json);
-                var list = new List<SelectListItem>();
+                var client = _httpClientFactory.CreateClient();
 
-                foreach (var item in doc.RootElement.EnumerateArray())
+                // Load Medicines
+                try
                 {
-                    var id = item.GetProperty("medicineId").GetInt32();
-                    var name = item.GetProperty("medicineName").GetString();
-
-                    list.Add(new SelectListItem
+                    var medicineResponse = await client.GetAsync("https://localhost:7086/api/Medicine");
+                    if (medicineResponse.IsSuccessStatusCode)
                     {
-                        Value = id.ToString(),
-                        Text = name,
-                        Selected = Prescription?.MedicineId == id
-                    });
+                        var json = await medicineResponse.Content.ReadAsStringAsync();
+                        var doc = JsonDocument.Parse(json);
+                        var list = new List<SelectListItem>();
+
+                        foreach (var item in doc.RootElement.EnumerateArray())
+                        {
+                            var id = item.GetProperty("medicineId").GetInt32();
+                            var name = item.GetProperty("medicineName").GetString();
+
+                            list.Add(new SelectListItem
+                            {
+                                Value = id.ToString(),
+                                Text = name,
+                                Selected = Prescription?.MedicineId == id
+                            });
+                        }
+
+                        Medicines = new SelectList(list, "Value", "Text");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Lỗi lấy danh sách thuốc: {(int)medicineResponse.StatusCode} {medicineResponse.ReasonPhrase}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Exception khi gọi API thuốc: {ex.Message}");
                 }
 
-                Medicines = new SelectList(list, "Value", "Text");
+                // Load Records
+                try
+                {
+                    var recordResponse = await client.GetAsync("https://localhost:7086/api/MedicalRecord");
+                    if (recordResponse.IsSuccessStatusCode)
+                    {
+                        var json = await recordResponse.Content.ReadAsStringAsync();
+                        var doc = JsonDocument.Parse(json);
+                        var list = new List<SelectListItem>();
+
+                        foreach (var item in doc.RootElement.EnumerateArray())
+                        {
+                            var id = item.GetProperty("recordId").GetInt32();
+
+                            list.Add(new SelectListItem
+                            {
+                                Value = id.ToString(),
+                                Text = $"Hồ sơ #{id}",
+                                Selected = Prescription?.RecordId == id
+                            });
+                        }
+
+                        Records = new SelectList(list, "Value", "Text");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Lỗi lấy danh sách hồ sơ: {(int)recordResponse.StatusCode} {recordResponse.ReasonPhrase}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Exception khi gọi API hồ sơ: {ex.Message}");
+                }
             }
-
-            // Load Records
-            var recordResponse = await client.GetAsync("https://localhost:7086/api/MedicalRecord");
-            if (recordResponse.IsSuccessStatusCode)
+            catch (Exception ex)
             {
-                var json = await recordResponse.Content.ReadAsStringAsync();
-                var doc = JsonDocument.Parse(json);
-                var list = new List<SelectListItem>();
-
-                foreach (var item in doc.RootElement.EnumerateArray())
-                {
-                    var id = item.GetProperty("recordId").GetInt32();
-
-                    list.Add(new SelectListItem
-                    {
-                        Value = id.ToString(),
-                        Text = $"Hồ sơ #{id}",
-                        Selected = Prescription?.RecordId == id
-                    });
-                }
-
-                Records = new SelectList(list, "Value", "Text");
+                Console.WriteLine($"Lỗi chung trong LoadDropdownsAsync: {ex.Message}");
             }
         }
+
     }
 }

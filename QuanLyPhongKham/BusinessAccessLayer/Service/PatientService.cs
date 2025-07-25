@@ -95,10 +95,23 @@ namespace BusinessAccessLayer.Service
             _patientRepository.DeletePatient(id);
         }
 
-        public List<DataAccessLayer.models.Patient> SearchPatients(string fullName, string phone, string email, string address, string gender, DateTime? dobFrom, DateTime? dobTo)
+        public List<DataAccessLayer.models.Patient> SearchPatients(
+     string fullName,
+     string phone,
+     string email,
+     string address,
+     string gender,
+     DateTime? dobFrom,
+     DateTime? dobTo,
+     string underlyingDiseases = null,
+     string diseaseDetails = null)
         {
-            return _patientRepository.SearchPatients(fullName, phone, email, address, gender, dobFrom, dobTo);
+            return _patientRepository.SearchPatients(
+                fullName, phone, email, address, gender, dobFrom, dobTo,
+                underlyingDiseases, diseaseDetails
+            );
         }
+
 
         private bool IsValidEmail(string email)
         {

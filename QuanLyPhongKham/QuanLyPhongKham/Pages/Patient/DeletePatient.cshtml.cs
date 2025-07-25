@@ -1,36 +1,38 @@
-﻿using DataAccessLayer.ViewModels;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net.Http;
-using System.Net.Http.Json;
 using System.Text.Json;
+using DataAccessLayer.ViewModels;
 
 namespace QuanLyPhongKham.Pages.Patient
 {
-    public class DeletePatientModel : PageModel
+    public class DeleteModel : PageModel
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly HttpClient _httpClient;
 
-        public DeletePatientModel(IHttpClientFactory httpClientFactory)
+        public DeleteModel(IHttpClientFactory httpClientFactory)
         {
-            _httpClientFactory = httpClientFactory;
+            _httpClient = httpClientFactory.CreateClient();
+            _httpClient.BaseAddress = new Uri("https://localhost:7086/api/");
         }
 
         [BindProperty]
-        public PatientViewModel PatientViewModel { get; set; }
+        public PatientViewModel Patient { get; set; }
+
+        [TempData]
+        public string ErrorMessage { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.GetAsync($"https://localhost:7086/api/Patient/{id}");
-
+            var response = await _httpClient.GetAsync($"Patient/{id}");
             if (!response.IsSuccessStatusCode)
             {
-                return NotFound();
+                ErrorMessage = "Không tìm thấy bệnh nhân.";
+                return RedirectToPage("PatientList");
             }
 
-            var json = await response.Content.ReadAsStringAsync();
-            PatientViewModel = JsonSerializer.Deserialize<PatientViewModel>(json, new JsonSerializerOptions
+            var content = await response.Content.ReadAsStringAsync();
+            Patient = JsonSerializer.Deserialize<PatientViewModel>(content, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             });
@@ -38,13 +40,27 @@ namespace QuanLyPhongKham.Pages.Patient
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int id)
+        public async Task<IActionResult> OnPostAsync()
         {
-            var client = _httpClientFactory.CreateClient();
-            var response = await client.DeleteAsync($"https://localhost:7086/api/Patient/{id}");
+            if (Patient == null || Patient.PatientId == 0)
+            {
+                ErrorMessage = "Bệnh nhân không hợp lệ.";
+                return RedirectToPage("/Patient/PatientList");
+            }
 
-            // Có thể xử lý thêm response.StatusCode nếu cần
-            return RedirectToPage("/Patient/PatientList");
+            var response = await _httpClient.DeleteAsync($"Patient/{Patient.PatientId}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToPage("/Patient/PatientList");
+            }
+            else
+            {
+                ErrorMessage = "Không thể xóa bệnh nhân vì có liên kết đến hồ sơ y tế.";
+                return RedirectToPage("/Patient/DeletePatient", new { id = Patient.PatientId });
+            }
         }
+
+
     }
 }

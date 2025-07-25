@@ -27,7 +27,7 @@ namespace QuanLyPhongKham.Controllers
                     RecordId = p.RecordId,
                     MedicineId = p.MedicineId,
                     MedicineName = p.MedicineName,
-                    Quantity = p.Quantity,
+                   
                     Dosage = p.Dosage
                 }).ToList();
 
@@ -47,7 +47,7 @@ namespace QuanLyPhongKham.Controllers
                 RecordId = p.RecordId,
                 MedicineId = p.MedicineId,
                 MedicineName = p.MedicineName,
-                Quantity = p.Quantity,
+                
                 Dosage = p.Dosage
             });
         }
@@ -63,7 +63,7 @@ namespace QuanLyPhongKham.Controllers
             {
                 RecordId = vm.RecordId.Value,
                 MedicineId = vm.MedicineId.Value,
-                Quantity = vm.Quantity,
+               
                 Dosage = vm.Dosage ?? string.Empty
             };
 
@@ -84,7 +84,7 @@ namespace QuanLyPhongKham.Controllers
 
             prescription.RecordId = vm.RecordId ?? 0;
             prescription.MedicineId = vm.MedicineId ?? 0;
-            prescription.Quantity = vm.Quantity;
+           
             prescription.Dosage = vm.Dosage ?? string.Empty;
 
             _prescriptionService.UpdatePrescription(prescription);
@@ -107,12 +107,12 @@ namespace QuanLyPhongKham.Controllers
         public IActionResult SearchPrescriptions(
             int? recordId = null,
             int? medicineId = null,
-            int? quantity = null,
+            
             string? dosage = null,
             int page = 1,
             int pageSize = 5)
         {
-            var result = _prescriptionService.SearchPrescriptions(recordId, medicineId, quantity, dosage);
+            var result = _prescriptionService.SearchPrescriptions(recordId, medicineId,dosage);
 
             var total = result.Count();
             var data = result.Skip((page - 1) * pageSize).Take(pageSize)
@@ -122,7 +122,6 @@ namespace QuanLyPhongKham.Controllers
                     RecordId = p.RecordId,
                     MedicineId = p.MedicineId,
                     MedicineName = p.MedicineName,
-                    Quantity = p.Quantity,
                     Dosage = p.Dosage
                 }).ToList();
 
