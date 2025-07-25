@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(ClinicDbContext))]
-    [Migration("20250723150949_updateinititalDb")]
-    partial class updateinititalDb
+    [Migration("20250725145846_inititaldb")]
+    partial class inititaldb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,7 +66,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             AccountId = 1,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7708),
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5207),
                             IsCheck = true,
                             PasswordHash = "hashed_password_1",
                             RoleId = 1,
@@ -76,7 +76,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             AccountId = 2,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7714),
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5213),
                             IsCheck = true,
                             PasswordHash = "hashed_password_2",
                             RoleId = 2,
@@ -86,7 +86,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             AccountId = 3,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7715),
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5214),
                             IsCheck = true,
                             PasswordHash = "hashed_password_3",
                             RoleId = 2,
@@ -96,7 +96,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             AccountId = 4,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7716),
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5215),
                             IsCheck = true,
                             PasswordHash = "hashed_password_4",
                             RoleId = 2,
@@ -106,7 +106,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             AccountId = 5,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7717),
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5216),
                             IsCheck = true,
                             PasswordHash = "hashed_password_5",
                             RoleId = 2,
@@ -116,7 +116,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             AccountId = 6,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7718),
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5217),
                             IsCheck = true,
                             PasswordHash = "hashed_password_6",
                             RoleId = 2,
@@ -126,7 +126,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             AccountId = 7,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7719),
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5218),
                             IsCheck = true,
                             PasswordHash = "hashed_password_7",
                             RoleId = 2,
@@ -136,7 +136,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             AccountId = 8,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7720),
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5219),
                             IsCheck = true,
                             PasswordHash = "hashed_password_8",
                             RoleId = 2,
@@ -146,7 +146,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             AccountId = 9,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7723),
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5220),
                             IsCheck = true,
                             PasswordHash = "hashed_password_9",
                             RoleId = 2,
@@ -156,7 +156,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             AccountId = 10,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7723),
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5221),
                             IsCheck = true,
                             PasswordHash = "hashed_password_10",
                             RoleId = 2,
@@ -166,102 +166,102 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             AccountId = 11,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7724),
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5222),
                             IsCheck = true,
                             PasswordHash = "hashed_password_11",
+                            RoleId = 2,
+                            Status = true,
+                            Username = "doctor10"
+                        },
+                        new
+                        {
+                            AccountId = 12,
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5223),
+                            IsCheck = true,
+                            PasswordHash = "hashed_password_12",
                             RoleId = 3,
                             Status = true,
                             Username = "staff1"
                         },
                         new
                         {
-                            AccountId = 12,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7725),
+                            AccountId = 13,
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5224),
                             IsCheck = true,
-                            PasswordHash = "hashed_password_12",
+                            PasswordHash = "hashed_password_13",
                             RoleId = 4,
                             Status = true,
                             Username = "patient1"
                         },
                         new
                         {
-                            AccountId = 13,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7726),
+                            AccountId = 14,
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5225),
                             IsCheck = true,
-                            PasswordHash = "hashed_password_13",
+                            PasswordHash = "hashed_password_14",
                             RoleId = 4,
                             Status = true,
                             Username = "patient2"
                         },
                         new
                         {
-                            AccountId = 14,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7727),
+                            AccountId = 15,
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5226),
                             IsCheck = true,
-                            PasswordHash = "hashed_password_14",
+                            PasswordHash = "hashed_password_15",
                             RoleId = 4,
                             Status = true,
                             Username = "patient3"
                         },
                         new
                         {
-                            AccountId = 15,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7728),
+                            AccountId = 16,
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5226),
                             IsCheck = true,
-                            PasswordHash = "hashed_password_15",
+                            PasswordHash = "hashed_password_16",
                             RoleId = 4,
                             Status = true,
                             Username = "patient4"
                         },
                         new
                         {
-                            AccountId = 16,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7728),
+                            AccountId = 17,
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5227),
                             IsCheck = true,
-                            PasswordHash = "hashed_password_16",
+                            PasswordHash = "hashed_password_17",
                             RoleId = 4,
                             Status = true,
                             Username = "patient5"
                         },
                         new
                         {
-                            AccountId = 17,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7729),
+                            AccountId = 18,
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5228),
                             IsCheck = true,
-                            PasswordHash = "hashed_password_17",
+                            PasswordHash = "hashed_password_18",
                             RoleId = 4,
                             Status = true,
                             Username = "patient6"
                         },
                         new
                         {
-                            AccountId = 18,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7730),
+                            AccountId = 19,
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5229),
                             IsCheck = true,
-                            PasswordHash = "hashed_password_18",
+                            PasswordHash = "hashed_password_19",
                             RoleId = 4,
                             Status = true,
                             Username = "patient7"
                         },
                         new
                         {
-                            AccountId = 19,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7731),
-                            IsCheck = true,
-                            PasswordHash = "hashed_password_19",
-                            RoleId = 4,
-                            Status = true,
-                            Username = "patient8"
-                        },
-                        new
-                        {
                             AccountId = 20,
-                            CreatedAt = new DateTime(2025, 7, 23, 15, 9, 48, 774, DateTimeKind.Utc).AddTicks(7732),
+                            CreatedAt = new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5230),
                             IsCheck = true,
                             PasswordHash = "hashed_password_20",
                             RoleId = 4,
                             Status = true,
-                            Username = "patient9"
+                            Username = "patient8"
                         });
                 });
 
@@ -306,7 +306,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             RecordId = 1,
-                            Date = new DateTime(2025, 6, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(7967),
+                            Date = new DateTime(2025, 6, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5561),
                             Diagnosis = "Common cold",
                             Note = "Rest and fluids recommended",
                             PatientId = 1,
@@ -316,92 +316,92 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             RecordId = 2,
-                            Date = new DateTime(2025, 6, 28, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(7991),
+                            Date = new DateTime(2025, 6, 30, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5584),
                             Diagnosis = "Muscle strain",
                             Note = "Apply heat therapy",
                             PatientId = 2,
                             Symptoms = "Chest pain",
-                            UserId = 2
+                            UserId = 3
                         },
                         new
                         {
                             RecordId = 3,
-                            Date = new DateTime(2025, 7, 3, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(7992),
+                            Date = new DateTime(2025, 7, 5, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5586),
                             Diagnosis = "Asthma",
                             Note = "Prescribed inhaler",
                             PatientId = 3,
                             Symptoms = "Shortness of breath",
-                            UserId = 3
+                            UserId = 4
                         },
                         new
                         {
                             RecordId = 4,
-                            Date = new DateTime(2025, 7, 8, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(7994),
+                            Date = new DateTime(2025, 7, 10, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5588),
                             Diagnosis = "Hypertension",
                             Note = "Lifestyle changes needed",
                             PatientId = 4,
                             Symptoms = "High blood pressure",
-                            UserId = 3
+                            UserId = 5
                         },
                         new
                         {
                             RecordId = 5,
-                            Date = new DateTime(2025, 7, 13, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(7995),
+                            Date = new DateTime(2025, 7, 15, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5589),
                             Diagnosis = "Gastritis",
                             Note = "Avoid spicy foods",
                             PatientId = 5,
                             Symptoms = "Stomach pain",
-                            UserId = 4
+                            UserId = 6
                         },
                         new
                         {
                             RecordId = 6,
-                            Date = new DateTime(2025, 7, 15, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(7997),
+                            Date = new DateTime(2025, 7, 17, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5591),
                             Diagnosis = "Arthritis",
                             Note = "Physical therapy recommended",
                             PatientId = 6,
                             Symptoms = "Joint pain",
-                            UserId = 4
+                            UserId = 7
                         },
                         new
                         {
                             RecordId = 7,
-                            Date = new DateTime(2025, 7, 18, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(7998),
+                            Date = new DateTime(2025, 7, 20, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5593),
                             Diagnosis = "Allergic reaction",
                             Note = "Avoid allergens",
                             PatientId = 7,
                             Symptoms = "Skin rash",
-                            UserId = 5
+                            UserId = 8
                         },
                         new
                         {
                             RecordId = 8,
-                            Date = new DateTime(2025, 7, 20, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8000),
+                            Date = new DateTime(2025, 7, 22, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5594),
                             Diagnosis = "Type 2 Diabetes",
                             Note = "Diet control important",
                             PatientId = 8,
                             Symptoms = "Diabetes symptoms",
-                            UserId = 5
+                            UserId = 9
                         },
                         new
                         {
                             RecordId = 9,
-                            Date = new DateTime(2025, 7, 21, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8001),
+                            Date = new DateTime(2025, 7, 23, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5596),
                             Diagnosis = "Anxiety disorder",
                             Note = "Counseling recommended",
-                            PatientId = 9,
+                            PatientId = 1,
                             Symptoms = "Anxiety",
-                            UserId = 6
+                            UserId = 10
                         },
                         new
                         {
                             RecordId = 10,
-                            Date = new DateTime(2025, 7, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8002),
+                            Date = new DateTime(2025, 7, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5597),
                             Diagnosis = "Hay fever",
                             Note = "Seasonal allergy",
-                            PatientId = 1,
+                            PatientId = 2,
                             Symptoms = "Allergic rhinitis",
-                            UserId = 6
+                            UserId = 11
                         });
                 });
 
@@ -537,6 +537,10 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime?>("DOB")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("DiseaseDetails")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -553,6 +557,10 @@ namespace DataAccessLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UnderlyingDiseases")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("PatientId");
 
                     b.HasIndex("AccountId")
@@ -565,110 +573,114 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             PatientId = 1,
-                            AccountId = 12,
+                            AccountId = 13,
                             Address = "123 Nguyen Trai, Hanoi",
                             AvatarPath = "/images/avatars/patient1.jpg",
                             DOB = new DateTime(1995, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DiseaseDetails = "Diagnosed with hypertension in 2020, managed with lifestyle changes and medication.",
                             Email = "patient1@email.com",
                             FullName = "Nguyen Thi K",
                             Gender = "Female",
-                            Phone = "0987654321"
+                            Phone = "0987654321",
+                            UnderlyingDiseases = "Hypertension"
                         },
                         new
                         {
                             PatientId = 2,
-                            AccountId = 13,
+                            AccountId = 14,
                             Address = "456 Le Loi, Ho Chi Minh",
                             AvatarPath = "/images/avatars/patient2.jpg",
                             DOB = new DateTime(1992, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DiseaseDetails = "No significant chronic conditions, occasional muscle strain from physical activity.",
                             Email = "patient2@email.com",
                             FullName = "Tran Van L",
                             Gender = "Male",
-                            Phone = "0987654322"
+                            Phone = "0987654322",
+                            UnderlyingDiseases = "None"
                         },
                         new
                         {
                             PatientId = 3,
-                            AccountId = 14,
+                            AccountId = 15,
                             Address = "789 Tran Phu, Da Nang",
                             AvatarPath = "/images/avatars/patient3.jpg",
                             DOB = new DateTime(1988, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DiseaseDetails = "Diagnosed with asthma at age 15, uses inhaler as needed.",
                             Email = "patient3@email.com",
                             FullName = "Le Thi M",
                             Gender = "Female",
-                            Phone = "0987654323"
+                            Phone = "0987654323",
+                            UnderlyingDiseases = "Asthma"
                         },
                         new
                         {
                             PatientId = 4,
-                            AccountId = 15,
+                            AccountId = 16,
                             Address = "321 Hai Ba Trung, Hue",
                             AvatarPath = "/images/avatars/patient4.jpg",
                             DOB = new DateTime(1990, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DiseaseDetails = "Hypertension since 2018, Type 2 Diabetes diagnosed in 2021, on metformin.",
                             Email = "patient4@email.com",
                             FullName = "Hoang Van N",
                             Gender = "Male",
-                            Phone = "0987654324"
+                            Phone = "0987654324",
+                            UnderlyingDiseases = "Hypertension, Type 2 Diabetes"
                         },
                         new
                         {
                             PatientId = 5,
-                            AccountId = 16,
+                            AccountId = 17,
                             Address = "654 Dong Khoi, Can Tho",
                             AvatarPath = "/images/avatars/patient5.jpg",
                             DOB = new DateTime(1985, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DiseaseDetails = "Chronic gastritis diagnosed in 2019, managed with PPI and diet.",
                             Email = "patient5@email.com",
                             FullName = "Pham Thi O",
                             Gender = "Female",
-                            Phone = "0987654325"
+                            Phone = "0987654325",
+                            UnderlyingDiseases = "Gastritis"
                         },
                         new
                         {
                             PatientId = 6,
-                            AccountId = 17,
+                            AccountId = 18,
                             Address = "987 Bach Dang, Hai Phong",
                             AvatarPath = "/images/avatars/patient6.jpg",
                             DOB = new DateTime(1993, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DiseaseDetails = "Rheumatoid arthritis diagnosed in 2022, on anti-inflammatory medication.",
                             Email = "patient6@email.com",
                             FullName = "Vu Van P",
                             Gender = "Male",
-                            Phone = "0987654326"
+                            Phone = "0987654326",
+                            UnderlyingDiseases = "Arthritis"
                         },
                         new
                         {
                             PatientId = 7,
-                            AccountId = 18,
+                            AccountId = 19,
                             Address = "147 Ly Thuong Kiet, Nha Trang",
                             AvatarPath = "/images/avatars/patient7.jpg",
                             DOB = new DateTime(1987, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DiseaseDetails = "Seasonal allergies since childhood, managed with antihistamines.",
                             Email = "patient7@email.com",
                             FullName = "Dang Thi Q",
                             Gender = "Female",
-                            Phone = "0987654327"
+                            Phone = "0987654327",
+                            UnderlyingDiseases = "Allergic Rhinitis"
                         },
                         new
                         {
                             PatientId = 8,
-                            AccountId = 19,
+                            AccountId = 20,
                             Address = "258 Quang Trung, Vung Tau",
                             AvatarPath = "/images/avatars/patient8.jpg",
                             DOB = new DateTime(1991, 9, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DiseaseDetails = "Diagnosed with Type 2 Diabetes in 2020, controlled with metformin and diet.",
                             Email = "patient8@email.com",
                             FullName = "Bui Van R",
                             Gender = "Male",
-                            Phone = "0987654328"
-                        },
-                        new
-                        {
-                            PatientId = 9,
-                            AccountId = 20,
-                            Address = "369 Le Duan, Dalat",
-                            AvatarPath = "/images/avatars/patient9.jpg",
-                            DOB = new DateTime(1989, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Email = "patient9@email.com",
-                            FullName = "Do Thi S",
-                            Gender = "Female",
-                            Phone = "0987654329"
+                            Phone = "0987654328",
+                            UnderlyingDiseases = "Type 2 Diabetes"
                         });
                 });
 
@@ -679,6 +691,9 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PrescriptionId"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Dosage")
                         .IsRequired()
@@ -705,6 +720,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             PrescriptionId = 1,
+                            Date = new DateTime(2025, 6, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5708),
                             Dosage = "500mg twice daily",
                             MedicineId = 1,
                             Quantity = 20,
@@ -713,6 +729,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             PrescriptionId = 2,
+                            Date = new DateTime(2025, 6, 30, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5709),
                             Dosage = "400mg three times daily",
                             MedicineId = 3,
                             Quantity = 15,
@@ -721,6 +738,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             PrescriptionId = 3,
+                            Date = new DateTime(2025, 7, 5, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5711),
                             Dosage = "2 puffs as needed",
                             MedicineId = 8,
                             Quantity = 1,
@@ -729,6 +747,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             PrescriptionId = 4,
+                            Date = new DateTime(2025, 7, 10, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5713),
                             Dosage = "10mg once daily",
                             MedicineId = 6,
                             Quantity = 30,
@@ -737,6 +756,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             PrescriptionId = 5,
+                            Date = new DateTime(2025, 7, 15, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5714),
                             Dosage = "20mg before breakfast",
                             MedicineId = 7,
                             Quantity = 14,
@@ -745,6 +765,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             PrescriptionId = 6,
+                            Date = new DateTime(2025, 7, 17, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5715),
                             Dosage = "200mg twice daily",
                             MedicineId = 3,
                             Quantity = 30,
@@ -753,6 +774,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             PrescriptionId = 7,
+                            Date = new DateTime(2025, 7, 20, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5716),
                             Dosage = "10mg once daily",
                             MedicineId = 10,
                             Quantity = 10,
@@ -761,6 +783,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             PrescriptionId = 8,
+                            Date = new DateTime(2025, 7, 22, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5718),
                             Dosage = "500mg twice daily",
                             MedicineId = 5,
                             Quantity = 60,
@@ -769,6 +792,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             PrescriptionId = 9,
+                            Date = new DateTime(2025, 7, 23, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5719),
                             Dosage = "2mg as needed",
                             MedicineId = 9,
                             Quantity = 10,
@@ -777,6 +801,7 @@ namespace DataAccessLayer.Migrations
                         new
                         {
                             PrescriptionId = 10,
+                            Date = new DateTime(2025, 7, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5738),
                             Dosage = "10mg once daily",
                             MedicineId = 10,
                             Quantity = 30,
@@ -817,160 +842,160 @@ namespace DataAccessLayer.Migrations
                         {
                             TokenId = 1,
                             AccountId = 1,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8170),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8169),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5764),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5764),
                             Token = "refresh_token_1"
                         },
                         new
                         {
                             TokenId = 2,
                             AccountId = 2,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8172),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8171),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5767),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5766),
                             Token = "refresh_token_2"
                         },
                         new
                         {
                             TokenId = 3,
                             AccountId = 3,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8173),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8173),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5768),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5768),
                             Token = "refresh_token_3"
                         },
                         new
                         {
                             TokenId = 4,
                             AccountId = 4,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8175),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8174),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5770),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5769),
                             Token = "refresh_token_4"
                         },
                         new
                         {
                             TokenId = 5,
                             AccountId = 5,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8176),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8175),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5771),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5771),
                             Token = "refresh_token_5"
                         },
                         new
                         {
                             TokenId = 6,
                             AccountId = 6,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8177),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8177),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5773),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5772),
                             Token = "refresh_token_6"
                         },
                         new
                         {
                             TokenId = 7,
                             AccountId = 7,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8179),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8178),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5774),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5774),
                             Token = "refresh_token_7"
                         },
                         new
                         {
                             TokenId = 8,
                             AccountId = 8,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8180),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8180),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5776),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5775),
                             Token = "refresh_token_8"
                         },
                         new
                         {
                             TokenId = 9,
                             AccountId = 9,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8181),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8181),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5777),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5777),
                             Token = "refresh_token_9"
                         },
                         new
                         {
                             TokenId = 10,
                             AccountId = 10,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8183),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8182),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5779),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5778),
                             Token = "refresh_token_10"
                         },
                         new
                         {
                             TokenId = 11,
                             AccountId = 11,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8184),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8184),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5780),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5780),
                             Token = "refresh_token_11"
                         },
                         new
                         {
                             TokenId = 12,
                             AccountId = 12,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8186),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8185),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5782),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5781),
                             Token = "refresh_token_12"
                         },
                         new
                         {
                             TokenId = 13,
                             AccountId = 13,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8187),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8187),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5783),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5783),
                             Token = "refresh_token_13"
                         },
                         new
                         {
                             TokenId = 14,
                             AccountId = 14,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8189),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8188),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5785),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5784),
                             Token = "refresh_token_14"
                         },
                         new
                         {
                             TokenId = 15,
                             AccountId = 15,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8190),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8189),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5786),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5786),
                             Token = "refresh_token_15"
                         },
                         new
                         {
                             TokenId = 16,
                             AccountId = 16,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8191),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8191),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5788),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5787),
                             Token = "refresh_token_16"
                         },
                         new
                         {
                             TokenId = 17,
                             AccountId = 17,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8193),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8192),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5789),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5789),
                             Token = "refresh_token_17"
                         },
                         new
                         {
                             TokenId = 18,
                             AccountId = 18,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8194),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8194),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5791),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5790),
                             Token = "refresh_token_18"
                         },
                         new
                         {
                             TokenId = 19,
                             AccountId = 19,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8195),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8195),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5792),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5792),
                             Token = "refresh_token_19"
                         },
                         new
                         {
                             TokenId = 20,
                             AccountId = 20,
-                            CreatedDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8197),
-                            ExpiryDate = new DateTime(2025, 8, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8196),
+                            CreatedDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5794),
+                            ExpiryDate = new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5793),
                             Token = "refresh_token_20"
                         });
                 });
@@ -1137,7 +1162,7 @@ namespace DataAccessLayer.Migrations
                             ResultId = 1,
                             RecordId = 1,
                             ResultDetail = "WBC: 8.5, RBC: 4.2",
-                            TestDate = new DateTime(2025, 6, 24, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8029),
+                            TestDate = new DateTime(2025, 6, 26, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5625),
                             TestId = 1,
                             UserId = 2
                         },
@@ -1146,81 +1171,81 @@ namespace DataAccessLayer.Migrations
                             ResultId = 2,
                             RecordId = 2,
                             ResultDetail = "Chest clear, no abnormalities",
-                            TestDate = new DateTime(2025, 6, 29, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8031),
+                            TestDate = new DateTime(2025, 7, 1, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5627),
                             TestId = 2,
-                            UserId = 2
+                            UserId = 3
                         },
                         new
                         {
                             ResultId = 3,
                             RecordId = 3,
                             ResultDetail = "Normal heart rhythm",
-                            TestDate = new DateTime(2025, 7, 4, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8032),
+                            TestDate = new DateTime(2025, 7, 6, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5628),
                             TestId = 3,
-                            UserId = 3
+                            UserId = 4
                         },
                         new
                         {
                             ResultId = 4,
                             RecordId = 4,
                             ResultDetail = "BP: 140/90 mmHg",
-                            TestDate = new DateTime(2025, 7, 9, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8034),
+                            TestDate = new DateTime(2025, 7, 11, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5630),
                             TestId = 10,
-                            UserId = 3
+                            UserId = 5
                         },
                         new
                         {
                             ResultId = 5,
                             RecordId = 5,
                             ResultDetail = "Mild gastric inflammation",
-                            TestDate = new DateTime(2025, 7, 14, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8037),
+                            TestDate = new DateTime(2025, 7, 16, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5631),
                             TestId = 4,
-                            UserId = 4
+                            UserId = 6
                         },
                         new
                         {
                             ResultId = 6,
                             RecordId = 6,
                             ResultDetail = "Joint space narrowing",
-                            TestDate = new DateTime(2025, 7, 16, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8038),
+                            TestDate = new DateTime(2025, 7, 18, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5632),
                             TestId = 2,
-                            UserId = 4
+                            UserId = 7
                         },
                         new
                         {
                             ResultId = 7,
                             RecordId = 7,
                             ResultDetail = "Elevated eosinophils",
-                            TestDate = new DateTime(2025, 7, 19, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8039),
+                            TestDate = new DateTime(2025, 7, 21, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5633),
                             TestId = 1,
-                            UserId = 5
+                            UserId = 8
                         },
                         new
                         {
                             ResultId = 8,
                             RecordId = 8,
                             ResultDetail = "Glucose: 180 mg/dL",
-                            TestDate = new DateTime(2025, 7, 21, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8040),
+                            TestDate = new DateTime(2025, 7, 23, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5634),
                             TestId = 8,
-                            UserId = 5
+                            UserId = 9
                         },
                         new
                         {
                             ResultId = 9,
                             RecordId = 9,
                             ResultDetail = "Normal blood parameters",
-                            TestDate = new DateTime(2025, 7, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8042),
+                            TestDate = new DateTime(2025, 7, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5636),
                             TestId = 1,
-                            UserId = 6
+                            UserId = 10
                         },
                         new
                         {
                             ResultId = 10,
                             RecordId = 10,
                             ResultDetail = "Increased histamine levels",
-                            TestDate = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8043),
+                            TestDate = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5637),
                             TestId = 7,
-                            UserId = 6
+                            UserId = 11
                         });
                 });
 
@@ -1261,7 +1286,7 @@ namespace DataAccessLayer.Migrations
                         {
                             Id = 1,
                             Action = "Create",
-                            ActionTime = new DateTime(2025, 6, 24, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8068),
+                            ActionTime = new DateTime(2025, 6, 26, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5660),
                             TestResultId = 1,
                             UserId = 2
                         },
@@ -1269,73 +1294,73 @@ namespace DataAccessLayer.Migrations
                         {
                             Id = 2,
                             Action = "Create",
-                            ActionTime = new DateTime(2025, 6, 29, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8077),
+                            ActionTime = new DateTime(2025, 7, 1, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5662),
                             TestResultId = 2,
-                            UserId = 2
+                            UserId = 3
                         },
                         new
                         {
                             Id = 3,
                             Action = "Create",
-                            ActionTime = new DateTime(2025, 7, 4, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8078),
+                            ActionTime = new DateTime(2025, 7, 6, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5663),
                             TestResultId = 3,
-                            UserId = 3
+                            UserId = 4
                         },
                         new
                         {
                             Id = 4,
                             Action = "Create",
-                            ActionTime = new DateTime(2025, 7, 9, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8079),
+                            ActionTime = new DateTime(2025, 7, 11, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5664),
                             TestResultId = 4,
-                            UserId = 3
+                            UserId = 5
                         },
                         new
                         {
                             Id = 5,
                             Action = "Create",
-                            ActionTime = new DateTime(2025, 7, 14, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8080),
+                            ActionTime = new DateTime(2025, 7, 16, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5665),
                             TestResultId = 5,
-                            UserId = 4
+                            UserId = 6
                         },
                         new
                         {
                             Id = 6,
                             Action = "Create",
-                            ActionTime = new DateTime(2025, 7, 16, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8082),
+                            ActionTime = new DateTime(2025, 7, 18, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5667),
                             TestResultId = 6,
-                            UserId = 4
+                            UserId = 7
                         },
                         new
                         {
                             Id = 7,
                             Action = "Create",
-                            ActionTime = new DateTime(2025, 7, 19, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8083),
+                            ActionTime = new DateTime(2025, 7, 21, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5668),
                             TestResultId = 7,
-                            UserId = 5
+                            UserId = 8
                         },
                         new
                         {
                             Id = 8,
                             Action = "Create",
-                            ActionTime = new DateTime(2025, 7, 21, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8084),
+                            ActionTime = new DateTime(2025, 7, 23, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5669),
                             TestResultId = 8,
-                            UserId = 5
+                            UserId = 9
                         },
                         new
                         {
                             Id = 9,
                             Action = "Create",
-                            ActionTime = new DateTime(2025, 7, 22, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8085),
+                            ActionTime = new DateTime(2025, 7, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5670),
                             TestResultId = 9,
-                            UserId = 6
+                            UserId = 10
                         },
                         new
                         {
                             Id = 10,
                             Action = "Create",
-                            ActionTime = new DateTime(2025, 7, 23, 22, 9, 48, 774, DateTimeKind.Local).AddTicks(8086),
+                            ActionTime = new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5671),
                             TestResultId = 10,
-                            UserId = 6
+                            UserId = 11
                         });
                 });
 
@@ -1484,9 +1509,19 @@ namespace DataAccessLayer.Migrations
                         {
                             UserId = 11,
                             AccountId = 11,
+                            DOB = new DateTime(1984, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "doctor10@clinic.com",
+                            FullName = "Dr. Ngo Van J",
+                            Gender = "Male",
+                            Phone = "0901234577"
+                        },
+                        new
+                        {
+                            UserId = 12,
+                            AccountId = 12,
                             DOB = new DateTime(1990, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "staff1@clinic.com",
-                            FullName = "Staff Ngo Van J",
+                            FullName = "Staff Ngo Van K",
                             Gender = "Male",
                             Phone = "0901234569"
                         });

@@ -19,6 +19,8 @@ namespace DataAccessLayer.DAO
         {
             return _context.Prescriptions
                            .Include(p => p.Medicine)
+                           .Include(p => p.MedicalRecord)
+                           .ThenInclude(m => m.User)
                            .AsNoTracking()
                            .ToList();
         }
@@ -27,6 +29,8 @@ namespace DataAccessLayer.DAO
         {
             return _context.Prescriptions
                            .Include(p => p.Medicine)
+                           .Include(p => p.MedicalRecord)
+                           .ThenInclude(m => m.User)
                            .AsNoTracking()
                            .FirstOrDefault(p => p.PrescriptionId == id);
         }
@@ -47,8 +51,8 @@ namespace DataAccessLayer.DAO
             {
                 existing.RecordId = updatedPrescription.RecordId;
                 existing.MedicineId = updatedPrescription.MedicineId;
-                existing.Quantity = updatedPrescription.Quantity;
                 existing.Dosage = updatedPrescription.Dosage;
+                existing.Date = updatedPrescription.Date;
 
                 _context.SaveChanges();
             }

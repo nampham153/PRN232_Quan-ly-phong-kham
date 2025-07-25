@@ -31,6 +31,8 @@ namespace DataAccessLayer.ViewModels
 
         [StringLength(200, ErrorMessage = "Địa chỉ không được vượt quá 200 ký tự")]
         public string Address { get; set; }
+        public string UnderlyingDiseases { get; set; } // bệnh nền
+        public string DiseaseDetails { get; set; }     // thông tin bệnh chi tiết
 
         public int? MedicalRecordCount { get; set; }
         public string? AvatarPath { get; set; }

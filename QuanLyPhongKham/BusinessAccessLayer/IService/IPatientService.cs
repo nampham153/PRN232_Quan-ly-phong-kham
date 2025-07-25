@@ -14,6 +14,7 @@ namespace BusinessAccessLayer.IService
         void AddPatient(DataAccessLayer.models.Patient patient);
         void UpdatePatient(DataAccessLayer.models.Patient patient);
         void DeletePatient(int id);
-        List<DataAccessLayer.models.Patient> SearchPatients(string fullName, string phone, string email, string address, string gender, DateTime? dobFrom, DateTime? dobTo);
+        List<DataAccessLayer.models.Patient> SearchPatients(string fullName, string phone, string email, string address, string gender, DateTime? dobFrom, DateTime? dobTo, string underlyingDiseases = null,
+    string diseaseDetails = null);
     }
 }

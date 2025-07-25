@@ -50,7 +50,16 @@ namespace DataAccessLayer.Repository
             return patients.Any(p => p.Phone == phone && (excludePatientId == null || p.PatientId != excludePatientId));
         }
 
-        public List<Patient> SearchPatients(string fullName, string phone, string email, string address, string gender, DateTime? dobFrom, DateTime? dobTo)
+        public List<Patient> SearchPatients(
+     string fullName,
+     string phone,
+     string email,
+     string address,
+     string gender,
+     DateTime? dobFrom,
+     DateTime? dobTo,
+     string underlyingDiseases = null,
+     string diseaseDetails = null)
         {
             var query = _patientDAO.GetPatients().AsQueryable();
 
@@ -76,7 +85,8 @@ namespace DataAccessLayer.Repository
 
             if (!string.IsNullOrEmpty(gender))
             {
-                query = query.Where(p => p.Gender == gender);
+                query = query.Where(p => p.Gender != null &&
+                    p.Gender.Equals(gender, StringComparison.OrdinalIgnoreCase));
             }
 
             if (dobFrom.HasValue)
@@ -87,6 +97,18 @@ namespace DataAccessLayer.Repository
             if (dobTo.HasValue)
             {
                 query = query.Where(p => p.DOB <= dobTo.Value);
+            }
+
+            if (!string.IsNullOrEmpty(underlyingDiseases))
+            {
+                query = query.Where(p => p.UnderlyingDiseases != null &&
+                    p.UnderlyingDiseases.Contains(underlyingDiseases));
+            }
+
+            if (!string.IsNullOrEmpty(diseaseDetails))
+            {
+                query = query.Where(p => p.DiseaseDetails != null &&
+                    p.DiseaseDetails.Contains(diseaseDetails));
             }
 
             return query.ToList();

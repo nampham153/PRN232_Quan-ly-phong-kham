@@ -21,7 +21,8 @@ namespace DataAccessLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MedicineName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Unit = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Usage = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Usage = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -64,7 +65,10 @@ namespace DataAccessLayer.Migrations
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<bool>(type: "bit", nullable: false)
+                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    IsCheck = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -90,7 +94,9 @@ namespace DataAccessLayer.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AccountId = table.Column<int>(type: "int", nullable: true),
-                    AvatarPath = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    AvatarPath = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UnderlyingDiseases = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DiseaseDetails = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -187,8 +193,9 @@ namespace DataAccessLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     RecordId = table.Column<int>(type: "int", nullable: false),
                     MedicineId = table.Column<int>(type: "int", nullable: false),
+                    Dosage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    Dosage = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -273,19 +280,19 @@ namespace DataAccessLayer.Migrations
 
             migrationBuilder.InsertData(
                 table: "Medicines",
-                columns: new[] { "MedicineId", "MedicineName", "Unit", "Usage" },
+                columns: new[] { "MedicineId", "CreatedDate", "MedicineName", "Unit", "Usage" },
                 values: new object[,]
                 {
-                    { 1, "Paracetamol", "tablet", "Take 1-2 tablets every 4-6 hours" },
-                    { 2, "Amoxicillin", "capsule", "Take 1 capsule 3 times daily" },
-                    { 3, "Ibuprofen", "tablet", "Take 1 tablet every 8 hours" },
-                    { 4, "Aspirin", "tablet", "Take 1 tablet daily" },
-                    { 5, "Metformin", "tablet", "Take 1 tablet twice daily with meals" },
-                    { 6, "Lisinopril", "tablet", "Take 1 tablet once daily" },
-                    { 7, "Omeprazole", "capsule", "Take 1 capsule before breakfast" },
-                    { 8, "Salbutamol", "inhaler", "2 puffs when needed" },
-                    { 9, "Diazepam", "tablet", "Take 1 tablet when needed" },
-                    { 10, "Cetirizine", "tablet", "Take 1 tablet once daily" }
+                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Paracetamol", "tablet", "Take 1-2 tablets every 4-6 hours" },
+                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Amoxicillin", "capsule", "Take 1 capsule 3 times daily" },
+                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ibuprofen", "tablet", "Take 1 tablet every 8 hours" },
+                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Aspirin", "tablet", "Take 1 tablet daily" },
+                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Metformin", "tablet", "Take 1 tablet twice daily with meals" },
+                    { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lisinopril", "tablet", "Take 1 tablet once daily" },
+                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Omeprazole", "capsule", "Take 1 capsule before breakfast" },
+                    { 8, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Salbutamol", "inhaler", "2 puffs when needed" },
+                    { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Diazepam", "tablet", "Take 1 tablet when needed" },
+                    { 10, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Cetirizine", "tablet", "Take 1 tablet once daily" }
                 });
 
             migrationBuilder.InsertData(
@@ -318,45 +325,44 @@ namespace DataAccessLayer.Migrations
 
             migrationBuilder.InsertData(
                 table: "Accounts",
-                columns: new[] { "AccountId", "PasswordHash", "RoleId", "Status", "Username" },
+                columns: new[] { "AccountId", "CreatedAt", "IsCheck", "PasswordHash", "RoleId", "Status", "UpdatedAt", "Username" },
                 values: new object[,]
                 {
-                    { 1, "hashed_password_1", 1, true, "admin1" },
-                    { 2, "hashed_password_2", 2, true, "doctor1" },
-                    { 3, "hashed_password_3", 2, true, "doctor2" },
-                    { 4, "hashed_password_4", 2, true, "doctor3" },
-                    { 5, "hashed_password_5", 2, true, "doctor4" },
-                    { 6, "hashed_password_6", 2, true, "doctor5" },
-                    { 7, "hashed_password_7", 2, true, "doctor6" },
-                    { 8, "hashed_password_8", 2, true, "doctor7" },
-                    { 9, "hashed_password_9", 2, true, "doctor8" },
-                    { 10, "hashed_password_10", 2, true, "doctor9" },
-                    { 11, "hashed_password_11", 3, true, "staff1" },
-                    { 12, "hashed_password_12", 4, true, "patient1" },
-                    { 13, "hashed_password_13", 4, true, "patient2" },
-                    { 14, "hashed_password_14", 4, true, "patient3" },
-                    { 15, "hashed_password_15", 4, true, "patient4" },
-                    { 16, "hashed_password_16", 4, true, "patient5" },
-                    { 17, "hashed_password_17", 4, true, "patient6" },
-                    { 18, "hashed_password_18", 4, true, "patient7" },
-                    { 19, "hashed_password_19", 4, true, "patient8" },
-                    { 20, "hashed_password_20", 4, true, "patient9" }
+                    { 1, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5207), true, "hashed_password_1", 1, true, null, "admin1" },
+                    { 2, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5213), true, "hashed_password_2", 2, true, null, "doctor1" },
+                    { 3, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5214), true, "hashed_password_3", 2, true, null, "doctor2" },
+                    { 4, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5215), true, "hashed_password_4", 2, true, null, "doctor3" },
+                    { 5, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5216), true, "hashed_password_5", 2, true, null, "doctor4" },
+                    { 6, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5217), true, "hashed_password_6", 2, true, null, "doctor5" },
+                    { 7, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5218), true, "hashed_password_7", 2, true, null, "doctor6" },
+                    { 8, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5219), true, "hashed_password_8", 2, true, null, "doctor7" },
+                    { 9, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5220), true, "hashed_password_9", 2, true, null, "doctor8" },
+                    { 10, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5221), true, "hashed_password_10", 2, true, null, "doctor9" },
+                    { 11, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5222), true, "hashed_password_11", 2, true, null, "doctor10" },
+                    { 12, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5223), true, "hashed_password_12", 3, true, null, "staff1" },
+                    { 13, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5224), true, "hashed_password_13", 4, true, null, "patient1" },
+                    { 14, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5225), true, "hashed_password_14", 4, true, null, "patient2" },
+                    { 15, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5226), true, "hashed_password_15", 4, true, null, "patient3" },
+                    { 16, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5226), true, "hashed_password_16", 4, true, null, "patient4" },
+                    { 17, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5227), true, "hashed_password_17", 4, true, null, "patient5" },
+                    { 18, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5228), true, "hashed_password_18", 4, true, null, "patient6" },
+                    { 19, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5229), true, "hashed_password_19", 4, true, null, "patient7" },
+                    { 20, new DateTime(2025, 7, 25, 14, 58, 46, 500, DateTimeKind.Utc).AddTicks(5230), true, "hashed_password_20", 4, true, null, "patient8" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Patients",
-                columns: new[] { "PatientId", "AccountId", "Address", "AvatarPath", "DOB", "Email", "FullName", "Gender", "Phone" },
+                columns: new[] { "PatientId", "AccountId", "Address", "AvatarPath", "DOB", "DiseaseDetails", "Email", "FullName", "Gender", "Phone", "UnderlyingDiseases" },
                 values: new object[,]
                 {
-                    { 1, 12, "123 Nguyen Trai, Hanoi", "/images/avatars/patient1.jpg", new DateTime(1995, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "patient1@email.com", "Nguyen Thi K", "Female", "0987654321" },
-                    { 2, 13, "456 Le Loi, Ho Chi Minh", "/images/avatars/patient2.jpg", new DateTime(1992, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "patient2@email.com", "Tran Van L", "Male", "0987654322" },
-                    { 3, 14, "789 Tran Phu, Da Nang", "/images/avatars/patient3.jpg", new DateTime(1988, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "patient3@email.com", "Le Thi M", "Female", "0987654323" },
-                    { 4, 15, "321 Hai Ba Trung, Hue", "/images/avatars/patient4.jpg", new DateTime(1990, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "patient4@email.com", "Hoang Van N", "Male", "0987654324" },
-                    { 5, 16, "654 Dong Khoi, Can Tho", "/images/avatars/patient5.jpg", new DateTime(1985, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "patient5@email.com", "Pham Thi O", "Female", "0987654325" },
-                    { 6, 17, "987 Bach Dang, Hai Phong", "/images/avatars/patient6.jpg", new DateTime(1993, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "patient6@email.com", "Vu Van P", "Male", "0987654326" },
-                    { 7, 18, "147 Ly Thuong Kiet, Nha Trang", "/images/avatars/patient7.jpg", new DateTime(1987, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "patient7@email.com", "Dang Thi Q", "Female", "0987654327" },
-                    { 8, 19, "258 Quang Trung, Vung Tau", "/images/avatars/patient8.jpg", new DateTime(1991, 9, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "patient8@email.com", "Bui Van R", "Male", "0987654328" },
-                    { 9, 20, "369 Le Duan, Dalat", "/images/avatars/patient9.jpg", new DateTime(1989, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "patient9@email.com", "Do Thi S", "Female", "0987654329" }
+                    { 1, 13, "123 Nguyen Trai, Hanoi", "/images/avatars/patient1.jpg", new DateTime(1995, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified), "Diagnosed with hypertension in 2020, managed with lifestyle changes and medication.", "patient1@email.com", "Nguyen Thi K", "Female", "0987654321", "Hypertension" },
+                    { 2, 14, "456 Le Loi, Ho Chi Minh", "/images/avatars/patient2.jpg", new DateTime(1992, 8, 20, 0, 0, 0, 0, DateTimeKind.Unspecified), "No significant chronic conditions, occasional muscle strain from physical activity.", "patient2@email.com", "Tran Van L", "Male", "0987654322", "None" },
+                    { 3, 15, "789 Tran Phu, Da Nang", "/images/avatars/patient3.jpg", new DateTime(1988, 12, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), "Diagnosed with asthma at age 15, uses inhaler as needed.", "patient3@email.com", "Le Thi M", "Female", "0987654323", "Asthma" },
+                    { 4, 16, "321 Hai Ba Trung, Hue", "/images/avatars/patient4.jpg", new DateTime(1990, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), "Hypertension since 2018, Type 2 Diabetes diagnosed in 2021, on metformin.", "patient4@email.com", "Hoang Van N", "Male", "0987654324", "Hypertension, Type 2 Diabetes" },
+                    { 5, 17, "654 Dong Khoi, Can Tho", "/images/avatars/patient5.jpg", new DateTime(1985, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified), "Chronic gastritis diagnosed in 2019, managed with PPI and diet.", "patient5@email.com", "Pham Thi O", "Female", "0987654325", "Gastritis" },
+                    { 6, 18, "987 Bach Dang, Hai Phong", "/images/avatars/patient6.jpg", new DateTime(1993, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Rheumatoid arthritis diagnosed in 2022, on anti-inflammatory medication.", "patient6@email.com", "Vu Van P", "Male", "0987654326", "Arthritis" },
+                    { 7, 19, "147 Ly Thuong Kiet, Nha Trang", "/images/avatars/patient7.jpg", new DateTime(1987, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified), "Seasonal allergies since childhood, managed with antihistamines.", "patient7@email.com", "Dang Thi Q", "Female", "0987654327", "Allergic Rhinitis" },
+                    { 8, 20, "258 Quang Trung, Vung Tau", "/images/avatars/patient8.jpg", new DateTime(1991, 9, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), "Diagnosed with Type 2 Diabetes in 2020, controlled with metformin and diet.", "patient8@email.com", "Bui Van R", "Male", "0987654328", "Type 2 Diabetes" }
                 });
 
             migrationBuilder.InsertData(
@@ -364,26 +370,26 @@ namespace DataAccessLayer.Migrations
                 columns: new[] { "TokenId", "AccountId", "CreatedDate", "ExpiryDate", "Token" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7742), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7741), "refresh_token_1" },
-                    { 2, 2, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7745), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7745), "refresh_token_2" },
-                    { 3, 3, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7747), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7746), "refresh_token_3" },
-                    { 4, 4, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7748), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7748), "refresh_token_4" },
-                    { 5, 5, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7750), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7749), "refresh_token_5" },
-                    { 6, 6, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7751), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7751), "refresh_token_6" },
-                    { 7, 7, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7753), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7752), "refresh_token_7" },
-                    { 8, 8, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7754), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7753), "refresh_token_8" },
-                    { 9, 9, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7755), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7755), "refresh_token_9" },
-                    { 10, 10, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7757), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7756), "refresh_token_10" },
-                    { 11, 11, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7759), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7758), "refresh_token_11" },
-                    { 12, 12, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7760), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7760), "refresh_token_12" },
-                    { 13, 13, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7762), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7761), "refresh_token_13" },
-                    { 14, 14, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7763), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7763), "refresh_token_14" },
-                    { 15, 15, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7764), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7764), "refresh_token_15" },
-                    { 16, 16, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7766), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7765), "refresh_token_16" },
-                    { 17, 17, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7767), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7767), "refresh_token_17" },
-                    { 18, 18, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7769), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7768), "refresh_token_18" },
-                    { 19, 19, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7770), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7770), "refresh_token_19" },
-                    { 20, 20, new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7772), new DateTime(2025, 8, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7771), "refresh_token_20" }
+                    { 1, 1, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5764), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5764), "refresh_token_1" },
+                    { 2, 2, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5767), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5766), "refresh_token_2" },
+                    { 3, 3, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5768), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5768), "refresh_token_3" },
+                    { 4, 4, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5770), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5769), "refresh_token_4" },
+                    { 5, 5, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5771), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5771), "refresh_token_5" },
+                    { 6, 6, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5773), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5772), "refresh_token_6" },
+                    { 7, 7, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5774), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5774), "refresh_token_7" },
+                    { 8, 8, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5776), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5775), "refresh_token_8" },
+                    { 9, 9, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5777), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5777), "refresh_token_9" },
+                    { 10, 10, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5779), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5778), "refresh_token_10" },
+                    { 11, 11, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5780), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5780), "refresh_token_11" },
+                    { 12, 12, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5782), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5781), "refresh_token_12" },
+                    { 13, 13, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5783), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5783), "refresh_token_13" },
+                    { 14, 14, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5785), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5784), "refresh_token_14" },
+                    { 15, 15, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5786), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5786), "refresh_token_15" },
+                    { 16, 16, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5788), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5787), "refresh_token_16" },
+                    { 17, 17, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5789), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5789), "refresh_token_17" },
+                    { 18, 18, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5791), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5790), "refresh_token_18" },
+                    { 19, 19, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5792), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5792), "refresh_token_19" },
+                    { 20, 20, new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5794), new DateTime(2025, 8, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5793), "refresh_token_20" }
                 });
 
             migrationBuilder.InsertData(
@@ -401,7 +407,8 @@ namespace DataAccessLayer.Migrations
                     { 8, 8, new DateTime(1983, 9, 14, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "doctor7@clinic.com", "Dr. Dang Thi G", "Female", "0901234574" },
                     { 9, 9, new DateTime(1987, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "doctor8@clinic.com", "Dr. Bui Van H", "Male", "0901234575" },
                     { 10, 10, new DateTime(1981, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "doctor9@clinic.com", "Dr. Do Thi I", "Female", "0901234576" },
-                    { 11, 11, new DateTime(1990, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "staff1@clinic.com", "Staff Ngo Van J", "Male", "0901234569" }
+                    { 11, 11, new DateTime(1984, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "doctor10@clinic.com", "Dr. Ngo Van J", "Male", "0901234577" },
+                    { 12, 12, new DateTime(1990, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "staff1@clinic.com", "Staff Ngo Van K", "Male", "0901234569" }
                 });
 
             migrationBuilder.InsertData(
@@ -409,33 +416,33 @@ namespace DataAccessLayer.Migrations
                 columns: new[] { "RecordId", "Date", "Diagnosis", "Note", "PatientId", "Symptoms", "UserId" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2025, 6, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7561), "Common cold", "Rest and fluids recommended", 1, "Fever, headache", 2 },
-                    { 2, new DateTime(2025, 6, 26, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7582), "Muscle strain", "Apply heat therapy", 2, "Chest pain", 2 },
-                    { 3, new DateTime(2025, 7, 1, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7583), "Asthma", "Prescribed inhaler", 3, "Shortness of breath", 3 },
-                    { 4, new DateTime(2025, 7, 6, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7585), "Hypertension", "Lifestyle changes needed", 4, "High blood pressure", 3 },
-                    { 5, new DateTime(2025, 7, 11, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7586), "Gastritis", "Avoid spicy foods", 5, "Stomach pain", 4 },
-                    { 6, new DateTime(2025, 7, 13, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7587), "Arthritis", "Physical therapy recommended", 6, "Joint pain", 4 },
-                    { 7, new DateTime(2025, 7, 16, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7589), "Allergic reaction", "Avoid allergens", 7, "Skin rash", 5 },
-                    { 8, new DateTime(2025, 7, 18, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7590), "Type 2 Diabetes", "Diet control important", 8, "Diabetes symptoms", 5 },
-                    { 9, new DateTime(2025, 7, 19, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7592), "Anxiety disorder", "Counseling recommended", 9, "Anxiety", 6 },
-                    { 10, new DateTime(2025, 7, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7593), "Hay fever", "Seasonal allergy", 1, "Allergic rhinitis", 6 }
+                    { 1, new DateTime(2025, 6, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5561), "Common cold", "Rest and fluids recommended", 1, "Fever, headache", 2 },
+                    { 2, new DateTime(2025, 6, 30, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5584), "Muscle strain", "Apply heat therapy", 2, "Chest pain", 3 },
+                    { 3, new DateTime(2025, 7, 5, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5586), "Asthma", "Prescribed inhaler", 3, "Shortness of breath", 4 },
+                    { 4, new DateTime(2025, 7, 10, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5588), "Hypertension", "Lifestyle changes needed", 4, "High blood pressure", 5 },
+                    { 5, new DateTime(2025, 7, 15, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5589), "Gastritis", "Avoid spicy foods", 5, "Stomach pain", 6 },
+                    { 6, new DateTime(2025, 7, 17, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5591), "Arthritis", "Physical therapy recommended", 6, "Joint pain", 7 },
+                    { 7, new DateTime(2025, 7, 20, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5593), "Allergic reaction", "Avoid allergens", 7, "Skin rash", 8 },
+                    { 8, new DateTime(2025, 7, 22, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5594), "Type 2 Diabetes", "Diet control important", 8, "Diabetes symptoms", 9 },
+                    { 9, new DateTime(2025, 7, 23, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5596), "Anxiety disorder", "Counseling recommended", 1, "Anxiety", 10 },
+                    { 10, new DateTime(2025, 7, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5597), "Hay fever", "Seasonal allergy", 2, "Allergic rhinitis", 11 }
                 });
 
             migrationBuilder.InsertData(
                 table: "Prescriptions",
-                columns: new[] { "PrescriptionId", "Dosage", "MedicineId", "Quantity", "RecordId" },
+                columns: new[] { "PrescriptionId", "Date", "Dosage", "MedicineId", "Quantity", "RecordId" },
                 values: new object[,]
                 {
-                    { 1, "500mg twice daily", 1, 20, 1 },
-                    { 2, "400mg three times daily", 3, 15, 2 },
-                    { 3, "2 puffs as needed", 8, 1, 3 },
-                    { 4, "10mg once daily", 6, 30, 4 },
-                    { 5, "20mg before breakfast", 7, 14, 5 },
-                    { 6, "200mg twice daily", 3, 30, 6 },
-                    { 7, "10mg once daily", 10, 10, 7 },
-                    { 8, "500mg twice daily", 5, 60, 8 },
-                    { 9, "2mg as needed", 9, 10, 9 },
-                    { 10, "10mg once daily", 10, 30, 10 }
+                    { 1, new DateTime(2025, 6, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5708), "500mg twice daily", 1, 20, 1 },
+                    { 2, new DateTime(2025, 6, 30, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5709), "400mg three times daily", 3, 15, 2 },
+                    { 3, new DateTime(2025, 7, 5, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5711), "2 puffs as needed", 8, 1, 3 },
+                    { 4, new DateTime(2025, 7, 10, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5713), "10mg once daily", 6, 30, 4 },
+                    { 5, new DateTime(2025, 7, 15, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5714), "20mg before breakfast", 7, 14, 5 },
+                    { 6, new DateTime(2025, 7, 17, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5715), "200mg twice daily", 3, 30, 6 },
+                    { 7, new DateTime(2025, 7, 20, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5716), "10mg once daily", 10, 10, 7 },
+                    { 8, new DateTime(2025, 7, 22, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5718), "500mg twice daily", 5, 60, 8 },
+                    { 9, new DateTime(2025, 7, 23, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5719), "2mg as needed", 9, 10, 9 },
+                    { 10, new DateTime(2025, 7, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5738), "10mg once daily", 10, 30, 10 }
                 });
 
             migrationBuilder.InsertData(
@@ -443,16 +450,16 @@ namespace DataAccessLayer.Migrations
                 columns: new[] { "ResultId", "RecordId", "ResultDetail", "TestDate", "TestId", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 1, "WBC: 8.5, RBC: 4.2", new DateTime(2025, 6, 22, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7620), 1, 2 },
-                    { 2, 2, "Chest clear, no abnormalities", new DateTime(2025, 6, 27, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7622), 2, 2 },
-                    { 3, 3, "Normal heart rhythm", new DateTime(2025, 7, 2, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7623), 3, 3 },
-                    { 4, 4, "BP: 140/90 mmHg", new DateTime(2025, 7, 7, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7624), 10, 3 },
-                    { 5, 5, "Mild gastric inflammation", new DateTime(2025, 7, 12, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7626), 4, 4 },
-                    { 6, 6, "Joint space narrowing", new DateTime(2025, 7, 14, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7627), 2, 4 },
-                    { 7, 7, "Elevated eosinophils", new DateTime(2025, 7, 17, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7628), 1, 5 },
-                    { 8, 8, "Glucose: 180 mg/dL", new DateTime(2025, 7, 19, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7630), 8, 5 },
-                    { 9, 9, "Normal blood parameters", new DateTime(2025, 7, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7631), 1, 6 },
-                    { 10, 10, "Increased histamine levels", new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7632), 7, 6 }
+                    { 1, 1, "WBC: 8.5, RBC: 4.2", new DateTime(2025, 6, 26, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5625), 1, 2 },
+                    { 2, 2, "Chest clear, no abnormalities", new DateTime(2025, 7, 1, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5627), 2, 3 },
+                    { 3, 3, "Normal heart rhythm", new DateTime(2025, 7, 6, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5628), 3, 4 },
+                    { 4, 4, "BP: 140/90 mmHg", new DateTime(2025, 7, 11, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5630), 10, 5 },
+                    { 5, 5, "Mild gastric inflammation", new DateTime(2025, 7, 16, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5631), 4, 6 },
+                    { 6, 6, "Joint space narrowing", new DateTime(2025, 7, 18, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5632), 2, 7 },
+                    { 7, 7, "Elevated eosinophils", new DateTime(2025, 7, 21, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5633), 1, 8 },
+                    { 8, 8, "Glucose: 180 mg/dL", new DateTime(2025, 7, 23, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5634), 8, 9 },
+                    { 9, 9, "Normal blood parameters", new DateTime(2025, 7, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5636), 1, 10 },
+                    { 10, 10, "Increased histamine levels", new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5637), 7, 11 }
                 });
 
             migrationBuilder.InsertData(
@@ -460,16 +467,16 @@ namespace DataAccessLayer.Migrations
                 columns: new[] { "Id", "Action", "ActionTime", "Note", "TestResultId", "UserId" },
                 values: new object[,]
                 {
-                    { 1, "Create", new DateTime(2025, 6, 22, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7653), null, 1, 2 },
-                    { 2, "Create", new DateTime(2025, 6, 27, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7654), null, 2, 2 },
-                    { 3, "Create", new DateTime(2025, 7, 2, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7655), null, 3, 3 },
-                    { 4, "Create", new DateTime(2025, 7, 7, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7656), null, 4, 3 },
-                    { 5, "Create", new DateTime(2025, 7, 12, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7658), null, 5, 4 },
-                    { 6, "Create", new DateTime(2025, 7, 14, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7659), null, 6, 4 },
-                    { 7, "Create", new DateTime(2025, 7, 17, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7660), null, 7, 5 },
-                    { 8, "Create", new DateTime(2025, 7, 19, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7661), null, 8, 5 },
-                    { 9, "Create", new DateTime(2025, 7, 20, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7662), null, 9, 6 },
-                    { 10, "Create", new DateTime(2025, 7, 21, 3, 28, 4, 317, DateTimeKind.Local).AddTicks(7663), null, 10, 6 }
+                    { 1, "Create", new DateTime(2025, 6, 26, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5660), null, 1, 2 },
+                    { 2, "Create", new DateTime(2025, 7, 1, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5662), null, 2, 3 },
+                    { 3, "Create", new DateTime(2025, 7, 6, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5663), null, 3, 4 },
+                    { 4, "Create", new DateTime(2025, 7, 11, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5664), null, 4, 5 },
+                    { 5, "Create", new DateTime(2025, 7, 16, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5665), null, 5, 6 },
+                    { 6, "Create", new DateTime(2025, 7, 18, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5667), null, 6, 7 },
+                    { 7, "Create", new DateTime(2025, 7, 21, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5668), null, 7, 8 },
+                    { 8, "Create", new DateTime(2025, 7, 23, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5669), null, 8, 9 },
+                    { 9, "Create", new DateTime(2025, 7, 24, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5670), null, 9, 10 },
+                    { 10, "Create", new DateTime(2025, 7, 25, 21, 58, 46, 500, DateTimeKind.Local).AddTicks(5671), null, 10, 11 }
                 });
 
             migrationBuilder.CreateIndex(

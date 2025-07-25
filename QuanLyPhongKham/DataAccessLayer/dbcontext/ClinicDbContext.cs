@@ -88,165 +88,304 @@ namespace DataAccessLayer.dbcontext
                 new Role { RoleId = 4, RoleName = "Patient" }
             );
 
-            // Seed Accounts (20 accounts - 1 admin, 10 doctors, 1 staff, 8 patients)
-            modelBuilder.Entity<Account>().HasData(
-                new Account { AccountId = 1, Username = "admin1", PasswordHash = "hashed_password_1", RoleId = 1, Status = true },
-                new Account { AccountId = 2, Username = "doctor1", PasswordHash = "hashed_password_2", RoleId = 2, Status = true },
-                new Account { AccountId = 3, Username = "doctor2", PasswordHash = "hashed_password_3", RoleId = 2, Status = true },
-                new Account { AccountId = 4, Username = "doctor3", PasswordHash = "hashed_password_4", RoleId = 2, Status = true },
-                new Account { AccountId = 5, Username = "doctor4", PasswordHash = "hashed_password_5", RoleId = 2, Status = true },
-                new Account { AccountId = 6, Username = "doctor5", PasswordHash = "hashed_password_6", RoleId = 2, Status = true },
-                new Account { AccountId = 7, Username = "doctor6", PasswordHash = "hashed_password_7", RoleId = 2, Status = true },
-                new Account { AccountId = 8, Username = "doctor7", PasswordHash = "hashed_password_8", RoleId = 2, Status = true },
-                new Account { AccountId = 9, Username = "doctor8", PasswordHash = "hashed_password_9", RoleId = 2, Status = true },
-                new Account { AccountId = 10, Username = "doctor9", PasswordHash = "hashed_password_10", RoleId = 2, Status = true },
-                new Account { AccountId = 11, Username = "staff1", PasswordHash = "hashed_password_11", RoleId = 3, Status = true },
-                new Account { AccountId = 12, Username = "patient1", PasswordHash = "hashed_password_12", RoleId = 4, Status = true },
-                new Account { AccountId = 13, Username = "patient2", PasswordHash = "hashed_password_13", RoleId = 4, Status = true },
-                new Account { AccountId = 14, Username = "patient3", PasswordHash = "hashed_password_14", RoleId = 4, Status = true },
-                new Account { AccountId = 15, Username = "patient4", PasswordHash = "hashed_password_15", RoleId = 4, Status = true },
-                new Account { AccountId = 16, Username = "patient5", PasswordHash = "hashed_password_16", RoleId = 4, Status = true },
-                new Account { AccountId = 17, Username = "patient6", PasswordHash = "hashed_password_17", RoleId = 4, Status = true },
-                new Account { AccountId = 18, Username = "patient7", PasswordHash = "hashed_password_18", RoleId = 4, Status = true },
-                new Account { AccountId = 19, Username = "patient8", PasswordHash = "hashed_password_19", RoleId = 4, Status = true },
-                new Account { AccountId = 20, Username = "patient9", PasswordHash = "hashed_password_20", RoleId = 4, Status = true }
-            );
+            // Seed Accounts (120 accounts - 1 admin, 30 doctors, 9 staff, 80 patients)
+            var accounts = new List<Account>();
 
-            // Seed Users (10 users - 1 admin, 9 doctors, 1 staff) - Fixed AccountId mapping
-            modelBuilder.Entity<User>().HasData(
-                new User { UserId = 1, FullName = "Admin User", Gender = "Male", DOB = new DateTime(1975, 1, 1), Phone = "0901234560", Email = "admin@clinic.com", AccountId = 1 },
-                new User { UserId = 2, FullName = "Dr. Nguyen Van A", Gender = "Male", DOB = new DateTime(1980, 5, 15), Phone = "0901234567", Email = "doctor1@clinic.com", AccountId = 2 },
-                new User { UserId = 3, FullName = "Dr. Le Thi B", Gender = "Female", DOB = new DateTime(1985, 8, 20), Phone = "0901234568", Email = "doctor2@clinic.com", AccountId = 3 },
-                new User { UserId = 4, FullName = "Dr. Tran Van C", Gender = "Male", DOB = new DateTime(1978, 12, 25), Phone = "0901234570", Email = "doctor3@clinic.com", AccountId = 4 },
-                new User { UserId = 5, FullName = "Dr. Pham Minh D", Gender = "Male", DOB = new DateTime(1982, 7, 18), Phone = "0901234571", Email = "doctor4@clinic.com", AccountId = 5 },
-                new User { UserId = 6, FullName = "Dr. Hoang Thi E", Gender = "Female", DOB = new DateTime(1975, 11, 5), Phone = "0901234572", Email = "doctor5@clinic.com", AccountId = 6 },
-                new User { UserId = 7, FullName = "Dr. Vu Van F", Gender = "Male", DOB = new DateTime(1988, 4, 22), Phone = "0901234573", Email = "doctor6@clinic.com", AccountId = 7 },
-                new User { UserId = 8, FullName = "Dr. Dang Thi G", Gender = "Female", DOB = new DateTime(1983, 9, 14), Phone = "0901234574", Email = "doctor7@clinic.com", AccountId = 8 },
-                new User { UserId = 9, FullName = "Dr. Bui Van H", Gender = "Male", DOB = new DateTime(1987, 6, 30), Phone = "0901234575", Email = "doctor8@clinic.com", AccountId = 9 },
-                new User { UserId = 10, FullName = "Dr. Do Thi I", Gender = "Female", DOB = new DateTime(1981, 2, 8), Phone = "0901234576", Email = "doctor9@clinic.com", AccountId = 10 },
-                new User { UserId = 11, FullName = "Staff Ngo Van J", Gender = "Male", DOB = new DateTime(1990, 3, 10), Phone = "0901234569", Email = "staff1@clinic.com", AccountId = 11 }
-            );
+            // Admin account
+            accounts.Add(new Account { AccountId = 1, Username = "admin1", PasswordHash = "hashed_password_1", RoleId = 1, Status = true });
 
-            // Seed Patients (9 patients) - Fixed AccountId mapping  
-            modelBuilder.Entity<Patient>().HasData(
-                new Patient { PatientId = 1, FullName = "Nguyen Thi K", Gender = "Female", DOB = new DateTime(1995, 3, 15), Phone = "0987654321", Email = "patient1@email.com", Address = "123 Nguyen Trai, Hanoi", AccountId = 12, AvatarPath = "/images/avatars/patient1.jpg" },
-                new Patient { PatientId = 2, FullName = "Tran Van L", Gender = "Male", DOB = new DateTime(1992, 8, 20), Phone = "0987654322", Email = "patient2@email.com", Address = "456 Le Loi, Ho Chi Minh", AccountId = 13, AvatarPath = "/images/avatars/patient2.jpg" },
-                new Patient { PatientId = 3, FullName = "Le Thi M", Gender = "Female", DOB = new DateTime(1988, 12, 10), Phone = "0987654323", Email = "patient3@email.com", Address = "789 Tran Phu, Da Nang", AccountId = 14, AvatarPath = "/images/avatars/patient3.jpg" },
-                new Patient { PatientId = 4, FullName = "Hoang Van N", Gender = "Male", DOB = new DateTime(1990, 5, 25), Phone = "0987654324", Email = "patient4@email.com", Address = "321 Hai Ba Trung, Hue", AccountId = 15, AvatarPath = "/images/avatars/patient4.jpg" },
-                new Patient { PatientId = 5, FullName = "Pham Thi O", Gender = "Female", DOB = new DateTime(1985, 7, 18), Phone = "0987654325", Email = "patient5@email.com", Address = "654 Dong Khoi, Can Tho", AccountId = 16, AvatarPath = "/images/avatars/patient5.jpg" },
-                new Patient { PatientId = 6, FullName = "Vu Van P", Gender = "Male", DOB = new DateTime(1993, 11, 5), Phone = "0987654326", Email = "patient6@email.com", Address = "987 Bach Dang, Hai Phong", AccountId = 17, AvatarPath = "/images/avatars/patient6.jpg" },
-                new Patient { PatientId = 7, FullName = "Dang Thi Q", Gender = "Female", DOB = new DateTime(1987, 4, 22), Phone = "0987654327", Email = "patient7@email.com", Address = "147 Ly Thuong Kiet, Nha Trang", AccountId = 18, AvatarPath = "/images/avatars/patient7.jpg" },
-                new Patient { PatientId = 8, FullName = "Bui Van R", Gender = "Male", DOB = new DateTime(1991, 9, 14), Phone = "0987654328", Email = "patient8@email.com", Address = "258 Quang Trung, Vung Tau", AccountId = 19, AvatarPath = "/images/avatars/patient8.jpg" },
-                new Patient { PatientId = 9, FullName = "Do Thi S", Gender = "Female", DOB = new DateTime(1989, 6, 30), Phone = "0987654329", Email = "patient9@email.com", Address = "369 Le Duan, Dalat", AccountId = 20, AvatarPath = "/images/avatars/patient9.jpg" }
-            );
+            // Doctor accounts (30)
+            for (int i = 2; i <= 31; i++)
+            {
+                accounts.Add(new Account { AccountId = i, Username = $"doctor{i - 1}", PasswordHash = $"hashed_password_{i}", RoleId = 2, Status = true });
+            }
 
-            // Seed Tests (10 tests)
-            modelBuilder.Entity<Test>().HasData(
-                new Test { TestId = 1, TestName = "Blood Test", Description = "Complete blood count analysis" },
-                new Test { TestId = 2, TestName = "X-Ray", Description = "Chest X-ray examination" },
-                new Test { TestId = 3, TestName = "ECG", Description = "Electrocardiogram test" },
-                new Test { TestId = 4, TestName = "Ultrasound", Description = "Abdominal ultrasound" },
-                new Test { TestId = 5, TestName = "CT Scan", Description = "Computed tomography scan" },
-                new Test { TestId = 6, TestName = "MRI", Description = "Magnetic resonance imaging" },
-                new Test { TestId = 7, TestName = "Urine Test", Description = "Urinalysis examination" },
-                new Test { TestId = 8, TestName = "Blood Sugar", Description = "Glucose level test" },
-                new Test { TestId = 9, TestName = "Cholesterol", Description = "Lipid profile test" },
-                new Test { TestId = 10, TestName = "Blood Pressure", Description = "Hypertension screening" }
-            );
+            // Staff accounts (9)
+            for (int i = 32; i <= 40; i++)
+            {
+                accounts.Add(new Account { AccountId = i, Username = $"staff{i - 31}", PasswordHash = $"hashed_password_{i}", RoleId = 3, Status = true });
+            }
 
-            // Seed Medicines (10 medicines)
-            modelBuilder.Entity<Medicine>().HasData(
-                new Medicine { MedicineId = 1, MedicineName = "Paracetamol", Unit = "tablet", Usage = "Take 1-2 tablets every 4-6 hours" },
-                new Medicine { MedicineId = 2, MedicineName = "Amoxicillin", Unit = "capsule", Usage = "Take 1 capsule 3 times daily" },
-                new Medicine { MedicineId = 3, MedicineName = "Ibuprofen", Unit = "tablet", Usage = "Take 1 tablet every 8 hours" },
-                new Medicine { MedicineId = 4, MedicineName = "Aspirin", Unit = "tablet", Usage = "Take 1 tablet daily" },
-                new Medicine { MedicineId = 5, MedicineName = "Metformin", Unit = "tablet", Usage = "Take 1 tablet twice daily with meals" },
-                new Medicine { MedicineId = 6, MedicineName = "Lisinopril", Unit = "tablet", Usage = "Take 1 tablet once daily" },
-                new Medicine { MedicineId = 7, MedicineName = "Omeprazole", Unit = "capsule", Usage = "Take 1 capsule before breakfast" },
-                new Medicine { MedicineId = 8, MedicineName = "Salbutamol", Unit = "inhaler", Usage = "2 puffs when needed" },
-                new Medicine { MedicineId = 9, MedicineName = "Diazepam", Unit = "tablet", Usage = "Take 1 tablet when needed" },
-                new Medicine { MedicineId = 10, MedicineName = "Cetirizine", Unit = "tablet", Usage = "Take 1 tablet once daily" }
-            );
+            // Patient accounts (80)
+            for (int i = 41; i <= 120; i++)
+            {
+                accounts.Add(new Account { AccountId = i, Username = $"patient{i - 40}", PasswordHash = $"hashed_password_{i}", RoleId = 4, Status = true });
+            }
 
-            // Seed Medical Records (10 records) - Updated UserId references
-            modelBuilder.Entity<MedicalRecord>().HasData(
-                new MedicalRecord { RecordId = 1, PatientId = 1, UserId = 2, Date = DateTime.Now.AddDays(-30), Symptoms = "Fever, headache", Diagnosis = "Common cold", Note = "Rest and fluids recommended" },
-                new MedicalRecord { RecordId = 2, PatientId = 2, UserId = 2, Date = DateTime.Now.AddDays(-25), Symptoms = "Chest pain", Diagnosis = "Muscle strain", Note = "Apply heat therapy" },
-                new MedicalRecord { RecordId = 3, PatientId = 3, UserId = 3, Date = DateTime.Now.AddDays(-20), Symptoms = "Shortness of breath", Diagnosis = "Asthma", Note = "Prescribed inhaler" },
-                new MedicalRecord { RecordId = 4, PatientId = 4, UserId = 3, Date = DateTime.Now.AddDays(-15), Symptoms = "High blood pressure", Diagnosis = "Hypertension", Note = "Lifestyle changes needed" },
-                new MedicalRecord { RecordId = 5, PatientId = 5, UserId = 4, Date = DateTime.Now.AddDays(-10), Symptoms = "Stomach pain", Diagnosis = "Gastritis", Note = "Avoid spicy foods" },
-                new MedicalRecord { RecordId = 6, PatientId = 6, UserId = 4, Date = DateTime.Now.AddDays(-8), Symptoms = "Joint pain", Diagnosis = "Arthritis", Note = "Physical therapy recommended" },
-                new MedicalRecord { RecordId = 7, PatientId = 7, UserId = 5, Date = DateTime.Now.AddDays(-5), Symptoms = "Skin rash", Diagnosis = "Allergic reaction", Note = "Avoid allergens" },
-                new MedicalRecord { RecordId = 8, PatientId = 8, UserId = 5, Date = DateTime.Now.AddDays(-3), Symptoms = "Diabetes symptoms", Diagnosis = "Type 2 Diabetes", Note = "Diet control important" },
-                new MedicalRecord { RecordId = 9, PatientId = 9, UserId = 6, Date = DateTime.Now.AddDays(-2), Symptoms = "Anxiety", Diagnosis = "Anxiety disorder", Note = "Counseling recommended" },
-                new MedicalRecord { RecordId = 10, PatientId = 1, UserId = 6, Date = DateTime.Now.AddDays(-1), Symptoms = "Allergic rhinitis", Diagnosis = "Hay fever", Note = "Seasonal allergy" }
-            );
+            modelBuilder.Entity<Account>().HasData(accounts);
 
-            // Seed Test Results (10 results) - Updated UserId references
-            modelBuilder.Entity<TestResult>().HasData(
-                new TestResult { ResultId = 1, RecordId = 1, TestId = 1, UserId = 2, ResultDetail = "WBC: 8.5, RBC: 4.2", TestDate = DateTime.Now.AddDays(-29) },
-                new TestResult { ResultId = 2, RecordId = 2, TestId = 2, UserId = 2, ResultDetail = "Chest clear, no abnormalities", TestDate = DateTime.Now.AddDays(-24) },
-                new TestResult { ResultId = 3, RecordId = 3, TestId = 3, UserId = 3, ResultDetail = "Normal heart rhythm", TestDate = DateTime.Now.AddDays(-19) },
-                new TestResult { ResultId = 4, RecordId = 4, TestId = 10, UserId = 3, ResultDetail = "BP: 140/90 mmHg", TestDate = DateTime.Now.AddDays(-14) },
-                new TestResult { ResultId = 5, RecordId = 5, TestId = 4, UserId = 4, ResultDetail = "Mild gastric inflammation", TestDate = DateTime.Now.AddDays(-9) },
-                new TestResult { ResultId = 6, RecordId = 6, TestId = 2, UserId = 4, ResultDetail = "Joint space narrowing", TestDate = DateTime.Now.AddDays(-7) },
-                new TestResult { ResultId = 7, RecordId = 7, TestId = 1, UserId = 5, ResultDetail = "Elevated eosinophils", TestDate = DateTime.Now.AddDays(-4) },
-                new TestResult { ResultId = 8, RecordId = 8, TestId = 8, UserId = 5, ResultDetail = "Glucose: 180 mg/dL", TestDate = DateTime.Now.AddDays(-2) },
-                new TestResult { ResultId = 9, RecordId = 9, TestId = 1, UserId = 6, ResultDetail = "Normal blood parameters", TestDate = DateTime.Now.AddDays(-1) },
-                new TestResult { ResultId = 10, RecordId = 10, TestId = 7, UserId = 6, ResultDetail = "Increased histamine levels", TestDate = DateTime.Now }
-            );
+            // Seed Users (40 users - 1 admin, 30 doctors, 9 staff)
+            var users = new List<User>();
+            var doctorNames = new string[] {
+                "Dr. Nguyen Van A", "Dr. Le Thi B", "Dr. Tran Van C", "Dr. Pham Minh D", "Dr. Hoang Thi E",
+                "Dr. Vu Van F", "Dr. Dang Thi G", "Dr. Bui Van H", "Dr. Do Thi I", "Dr. Ngo Van J",
+                "Dr. Ly Minh K", "Dr. Cao Thi L", "Dr. Duong Van M", "Dr. Thai Thi N", "Dr. Lam Van O",
+                "Dr. Ha Thi P", "Dr. Vo Van Q", "Dr. Trinh Thi R", "Dr. Dinh Van S", "Dr. Mai Thi T",
+                "Dr. Phung Van U", "Dr. Chu Thi V", "Dr. Le Van W", "Dr. Tran Thi X", "Dr. Nguyen Van Y",
+                "Dr. Pham Thi Z", "Dr. Hoang Van AA", "Dr. Vu Thi BB", "Dr. Dang Van CC", "Dr. Bui Thi DD"
+            };
 
-            // Seed Test Result Histories (10 histories) - Updated UserId and TestResultId references
-            modelBuilder.Entity<TestResultHistory>().HasData(
-                new TestResultHistory { Id = 1, UserId = 2, TestResultId = 1, Action = "Create", ActionTime = DateTime.Now.AddDays(-29) },
-                new TestResultHistory { Id = 2, UserId = 2, TestResultId = 2, Action = "Create", ActionTime = DateTime.Now.AddDays(-24) },
-                new TestResultHistory { Id = 3, UserId = 3, TestResultId = 3, Action = "Create", ActionTime = DateTime.Now.AddDays(-19) },
-                new TestResultHistory { Id = 4, UserId = 3, TestResultId = 4, Action = "Create", ActionTime = DateTime.Now.AddDays(-14) },
-                new TestResultHistory { Id = 5, UserId = 4, TestResultId = 5, Action = "Create", ActionTime = DateTime.Now.AddDays(-9) },
-                new TestResultHistory { Id = 6, UserId = 4, TestResultId = 6, Action = "Create", ActionTime = DateTime.Now.AddDays(-7) },
-                new TestResultHistory { Id = 7, UserId = 5, TestResultId = 7, Action = "Create", ActionTime = DateTime.Now.AddDays(-4) },
-                new TestResultHistory { Id = 8, UserId = 5, TestResultId = 8, Action = "Create", ActionTime = DateTime.Now.AddDays(-2) },
-                new TestResultHistory { Id = 9, UserId = 6, TestResultId = 9, Action = "Create", ActionTime = DateTime.Now.AddDays(-1) },
-                new TestResultHistory { Id = 10, UserId = 6, TestResultId = 10, Action = "Create", ActionTime = DateTime.Now }
-            );
+            var genders = new string[] { "Male", "Female" };
+            var random = new Random(123); // Fixed seed for consistent data
 
-            // Seed Prescriptions (10 prescriptions)
-            modelBuilder.Entity<Prescription>().HasData(
-                new Prescription { PrescriptionId = 1, RecordId = 1, MedicineId = 1, Quantity = 20, Dosage = "500mg twice daily" },
-                new Prescription { PrescriptionId = 2, RecordId = 2, MedicineId = 3, Quantity = 15, Dosage = "400mg three times daily" },
-                new Prescription { PrescriptionId = 3, RecordId = 3, MedicineId = 8, Quantity = 1, Dosage = "2 puffs as needed" },
-                new Prescription { PrescriptionId = 4, RecordId = 4, MedicineId = 6, Quantity = 30, Dosage = "10mg once daily" },
-                new Prescription { PrescriptionId = 5, RecordId = 5, MedicineId = 7, Quantity = 14, Dosage = "20mg before breakfast" },
-                new Prescription { PrescriptionId = 6, RecordId = 6, MedicineId = 3, Quantity = 30, Dosage = "200mg twice daily" },
-                new Prescription { PrescriptionId = 7, RecordId = 7, MedicineId = 10, Quantity = 10, Dosage = "10mg once daily" },
-                new Prescription { PrescriptionId = 8, RecordId = 8, MedicineId = 5, Quantity = 60, Dosage = "500mg twice daily" },
-                new Prescription { PrescriptionId = 9, RecordId = 9, MedicineId = 9, Quantity = 10, Dosage = "2mg as needed" },
-                new Prescription { PrescriptionId = 10, RecordId = 10, MedicineId = 10, Quantity = 30, Dosage = "10mg once daily" }
-            );
+            // Admin user
+            users.Add(new User { UserId = 1, FullName = "Admin User", Gender = "Male", DOB = new DateTime(1975, 1, 1), Phone = "0901234560", Email = "admin@clinic.com", AccountId = 1 });
 
-            // Seed Refresh Tokens (20 tokens - one for each account)
-            modelBuilder.Entity<RefreshToken>().HasData(
-                new RefreshToken { TokenId = 1, Token = "refresh_token_1", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 1 },
-                new RefreshToken { TokenId = 2, Token = "refresh_token_2", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 2 },
-                new RefreshToken { TokenId = 3, Token = "refresh_token_3", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 3 },
-                new RefreshToken { TokenId = 4, Token = "refresh_token_4", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 4 },
-                new RefreshToken { TokenId = 5, Token = "refresh_token_5", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 5 },
-                new RefreshToken { TokenId = 6, Token = "refresh_token_6", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 6 },
-                new RefreshToken { TokenId = 7, Token = "refresh_token_7", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 7 },
-                new RefreshToken { TokenId = 8, Token = "refresh_token_8", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 8 },
-                new RefreshToken { TokenId = 9, Token = "refresh_token_9", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 9 },
-                new RefreshToken { TokenId = 10, Token = "refresh_token_10", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 10 },
-                new RefreshToken { TokenId = 11, Token = "refresh_token_11", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 11 },
-                new RefreshToken { TokenId = 12, Token = "refresh_token_12", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 12 },
-                new RefreshToken { TokenId = 13, Token = "refresh_token_13", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 13 },
-                new RefreshToken { TokenId = 14, Token = "refresh_token_14", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 14 },
-                new RefreshToken { TokenId = 15, Token = "refresh_token_15", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 15 },
-                new RefreshToken { TokenId = 16, Token = "refresh_token_16", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 16 },
-                new RefreshToken { TokenId = 17, Token = "refresh_token_17", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 17 },
-                new RefreshToken { TokenId = 18, Token = "refresh_token_18", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 18 },
-                new RefreshToken { TokenId = 19, Token = "refresh_token_19", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 19 },
-                new RefreshToken { TokenId = 20, Token = "refresh_token_20", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 20 }
-            );
+            // Doctor users (30)
+            for (int i = 2; i <= 31; i++)
+            {
+                var gender = doctorNames[i - 2].Contains("Thi") ? "Female" : "Male";
+                users.Add(new User
+                {
+                    UserId = i,
+                    FullName = doctorNames[i - 2],
+                    Gender = gender,
+                    DOB = new DateTime(random.Next(1970, 1990), random.Next(1, 13), random.Next(1, 29)),
+                    Phone = $"090123{4560 + i}",
+                    Email = $"doctor{i - 1}@clinic.com",
+                    AccountId = i
+                });
+            }
+
+            // Staff users (9)
+            for (int i = 32; i <= 40; i++)
+            {
+                var gender = genders[random.Next(2)];
+                users.Add(new User
+                {
+                    UserId = i,
+                    FullName = $"Staff {(char)('A' + i - 32)} {(gender == "Male" ? "Van" : "Thi")} {(char)('K' + i - 32)}",
+                    Gender = gender,
+                    DOB = new DateTime(random.Next(1985, 1995), random.Next(1, 13), random.Next(1, 29)),
+                    Phone = $"090123{4560 + i}",
+                    Email = $"staff{i - 31}@clinic.com",
+                    AccountId = i
+                });
+            }
+
+            modelBuilder.Entity<User>().HasData(users);
+
+            // Seed Patients (80 patients)
+            var patients = new List<Patient>();
+            var patientFirstNames = new string[] { "Nguyen", "Tran", "Le", "Pham", "Hoang", "Vu", "Dang", "Bui", "Do", "Ngo", "Ly", "Cao", "Duong", "Thai", "Lam", "Ha", "Vo", "Trinh", "Dinh", "Mai" };
+            var patientMiddleNames = new string[] { "Van", "Thi", "Minh", "Thanh", "Duc", "Huu", "Quang", "Anh" };
+            var patientLastNames = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T" };
+            var diseases = new string[] {
+                "None", "Hypertension", "Type 2 Diabetes", "Asthma", "Gastritis", "Arthritis",
+                "Allergic Rhinitis", "Migraine", "Depression", "Anxiety", "COPD", "Heart Disease",
+                "Kidney Disease", "Liver Disease", "Thyroid Disorder", "Osteoporosis"
+            };
+            var cities = new string[] { "Hanoi", "Ho Chi Minh", "Da Nang", "Hue", "Can Tho", "Hai Phong", "Nha Trang", "Vung Tau", "Quy Nhon", "Buon Ma Thuot" };
+
+            for (int i = 1; i <= 80; i++)
+            {
+                var gender = random.Next(2) == 0 ? "Male" : "Female";
+                var middleName = gender == "Male" ? "Van" : "Thi";
+                var firstName = patientFirstNames[random.Next(patientFirstNames.Length)];
+                var lastName = patientLastNames[random.Next(patientLastNames.Length)];
+                var disease = diseases[random.Next(diseases.Length)];
+                var city = cities[random.Next(cities.Length)];
+
+                patients.Add(new Patient
+                {
+                    PatientId = i,
+                    FullName = $"{firstName} {middleName} {lastName}{i}",
+                    Gender = gender,
+                    DOB = new DateTime(random.Next(1960, 2000), random.Next(1, 13), random.Next(1, 29)),
+                    Phone = $"098765432{i % 10}",
+                    Email = $"patient{i}@email.com",
+                    Address = $"{random.Next(1, 999)} {firstName} Street, {city}",
+                    AccountId = i + 40,
+                    AvatarPath = $"/images/avatars/patient{i}.jpg",
+                    UnderlyingDiseases = disease,
+                    DiseaseDetails = disease == "None" ? "No significant chronic conditions." : $"Diagnosed with {disease.ToLower()}, managed with appropriate treatment."
+                });
+            }
+
+            modelBuilder.Entity<Patient>().HasData(patients);
+
+            // Seed Tests (50 tests)
+            var tests = new List<Test>();
+            var testNames = new string[] {
+                "Blood Test", "X-Ray", "ECG", "Ultrasound", "CT Scan", "MRI", "Urine Test", "Blood Sugar", "Cholesterol", "Blood Pressure",
+                "Liver Function", "Kidney Function", "Thyroid Test", "Vitamin D", "Hemoglobin A1C", "PSA Test", "Mammography", "Colonoscopy",
+                "Endoscopy", "Spirometry", "Bone Density", "Stress Test", "Holter Monitor", "Echocardiogram", "Biopsy", "Allergy Test",
+                "HIV Test", "Hepatitis Panel", "Tuberculosis Test", "Pap Smear", "Eye Exam", "Hearing Test", "Skin Test", "Pregnancy Test",
+                "Stool Test", "Sputum Test", "Culture Test", "Genetic Test", "Cardiac Enzymes", "Tumor Markers", "Coagulation Panel",
+                "Electrolytes", "Arterial Blood Gas", "Lactate", "Troponin", "BNP", "D-Dimer", "ESR", "CRP", "Procalcitonin"
+            };
+
+            for (int i = 1; i <= 50; i++)
+            {
+                tests.Add(new Test
+                {
+                    TestId = i,
+                    TestName = testNames[i - 1],
+                    Description = $"Medical examination: {testNames[i - 1].ToLower()}"
+                });
+            }
+
+            modelBuilder.Entity<Test>().HasData(tests);
+
+            // Seed Medicines (100 medicines)
+            var medicines = new List<Medicine>();
+            var medicineNames = new string[] {
+                "Paracetamol", "Amoxicillin", "Ibuprofen", "Aspirin", "Metformin", "Lisinopril", "Omeprazole", "Salbutamol", "Diazepam", "Cetirizine",
+                "Atorvastatin", "Losartan", "Amlodipine", "Simvastatin", "Furosemide", "Warfarin", "Insulin", "Prednisone", "Albuterol", "Hydrochlorothiazide",
+                "Gabapentin", "Tramadol", "Morphine", "Codeine", "Dexamethasone", "Ciprofloxacin", "Azithromycin", "Cephalexin", "Clindamycin", "Doxycycline",
+                "Fluoxetine", "Sertraline", "Alprazolam", "Lorazepam", "Zolpidem", "Trazodone", "Mirtazapine", "Venlafaxine", "Duloxetine", "Bupropion",
+                "Levothyroxine", "Methimazole", "Propranolol", "Metoprolol", "Carvedilol", "Digoxin", "Nitroglycerin", "Isosorbide", "Clopidogrel", "Heparin",
+                "Ranitidine", "Lansoprazole", "Pantoprazole", "Sucralfate", "Metoclopramide", "Ondansetron", "Loperamide", "Bisacodyl", "Lactulose", "Psyllium",
+                "Montelukast", "Loratadine", "Fexofenadine", "Diphenhydramine", "Pseudoephedrine", "Guaifenesin", "Dextromethorphan", "Benzonatate", "Ipratropium", "Budesonide",
+                "Calcium", "Vitamin D", "Iron", "Folic Acid", "Vitamin B12", "Magnesium", "Potassium", "Zinc", "Selenium", "Multivitamin",
+                "Acetaminophen", "Naproxen", "Meloxicam", "Celecoxib", "Indomethacin", "Ketorolac", "Diclofenac", "Piroxicam", "Sulindac", "Etodolac",
+                "Clonazepam", "Phenytoin", "Carbamazepine", "Valproic Acid", "Lamotrigine", "Levetiracetam", "Topiramate", "Oxcarbazepine", "Pregabalin", "Baclofen"
+            };
+
+            var units = new string[] { "tablet", "capsule", "ml", "mg", "inhaler", "injection", "cream", "drops" };
+
+            for (int i = 1; i <= 100; i++)
+            {
+                var unit = units[random.Next(units.Length)];
+                medicines.Add(new Medicine
+                {
+                    MedicineId = i,
+                    MedicineName = medicineNames[i - 1],
+                    Unit = unit,
+                    Usage = $"Take as prescribed by doctor - {unit} form"
+                });
+            }
+
+            modelBuilder.Entity<Medicine>().HasData(medicines);
+
+            // Seed Medical Records (200 records)
+            var medicalRecords = new List<MedicalRecord>();
+            var symptoms = new string[] {
+                "Fever, headache", "Chest pain", "Shortness of breath", "High blood pressure", "Stomach pain",
+                "Joint pain", "Skin rash", "Diabetes symptoms", "Anxiety", "Allergic rhinitis", "Fatigue",
+                "Dizziness", "Nausea", "Vomiting", "Diarrhea", "Constipation", "Back pain", "Neck pain",
+                "Muscle pain", "Insomnia", "Depression", "Cough", "Sore throat", "Runny nose", "Ear pain"
+            };
+
+            var diagnoses = new string[] {
+                "Common cold", "Muscle strain", "Asthma", "Hypertension", "Gastritis", "Arthritis",
+                "Allergic reaction", "Type 2 Diabetes", "Anxiety disorder", "Hay fever", "Viral infection",
+                "Bacterial infection", "Migraine", "Tension headache", "GERD", "IBS", "UTI", "Bronchitis",
+                "Pneumonia", "Flu", "Food poisoning", "Dermatitis", "Osteoarthritis", "Fibromyalgia", "Sinusitis"
+            };
+
+            for (int i = 1; i <= 200; i++)
+            {
+                var patientId = random.Next(1, 81);
+                var doctorId = random.Next(2, 32);
+                var symptom = symptoms[random.Next(symptoms.Length)];
+                var diagnosis = diagnoses[random.Next(diagnoses.Length)];
+
+                medicalRecords.Add(new MedicalRecord
+                {
+                    RecordId = i,
+                    PatientId = patientId,
+                    UserId = doctorId,
+                    Date = DateTime.Now.AddDays(-random.Next(1, 365)),
+                    Symptoms = symptom,
+                    Diagnosis = diagnosis,
+                    Note = $"Treatment plan recommended for {diagnosis.ToLower()}"
+                });
+            }
+
+            modelBuilder.Entity<MedicalRecord>().HasData(medicalRecords);
+
+            // Seed Test Results (300 results)
+            var testResults = new List<TestResult>();
+            var resultDetails = new string[] {
+                "Normal range", "Slightly elevated", "Within normal limits", "Abnormal findings detected",
+                "Requires follow-up", "Improved from previous", "No significant changes", "Critical values noted"
+            };
+
+            for (int i = 1; i <= 300; i++)
+            {
+                var recordId = random.Next(1, 201);
+                var testId = random.Next(1, 51);
+                var doctorId = random.Next(2, 32);
+                var resultDetail = resultDetails[random.Next(resultDetails.Length)];
+
+                testResults.Add(new TestResult
+                {
+                    ResultId = i,
+                    RecordId = recordId,
+                    TestId = testId,
+                    UserId = doctorId,
+                    ResultDetail = $"{resultDetail} - Test #{testId}",
+                    TestDate = DateTime.Now.AddDays(-random.Next(1, 365))
+                });
+            }
+
+            modelBuilder.Entity<TestResult>().HasData(testResults);
+
+            // Seed Test Result Histories (300 histories)
+            var testResultHistories = new List<TestResultHistory>();
+            var actions = new string[] { "Create", "Update", "Review", "Approve", "Cancel" };
+
+            for (int i = 1; i <= 300; i++)
+            {
+                var userId = random.Next(2, 32);
+                var action = actions[random.Next(actions.Length)];
+
+                testResultHistories.Add(new TestResultHistory
+                {
+                    Id = i,
+                    UserId = userId,
+                    TestResultId = i,
+                    Action = action,
+                    ActionTime = DateTime.Now.AddDays(-random.Next(1, 365))
+                });
+            }
+
+            modelBuilder.Entity<TestResultHistory>().HasData(testResultHistories);
+
+            // Seed Prescriptions (400 prescriptions)
+            var prescriptions = new List<Prescription>();
+            var dosages = new string[] {
+                "Once daily", "Twice daily", "Three times daily", "Four times daily", "As needed",
+                "Every 8 hours", "Every 12 hours", "Before meals", "After meals", "At bedtime"
+            };
+
+            for (int i = 1; i <= 400; i++)
+            {
+                var recordId = random.Next(1, 201);
+                var medicineId = random.Next(1, 101);
+                var quantity = random.Next(10, 100);
+                var dosage = dosages[random.Next(dosages.Length)];
+
+                prescriptions.Add(new Prescription
+                {
+                    PrescriptionId = i,
+                    RecordId = recordId,
+                    MedicineId = medicineId,
+                    Quantity = quantity,
+                    Dosage = dosage,
+                    Date = DateTime.Now.AddDays(-random.Next(1, 365))
+                });
+            }
+
+            modelBuilder.Entity<Prescription>().HasData(prescriptions);
+
+            // Seed Refresh Tokens (120 tokens - one for each account)
+            var refreshTokens = new List<RefreshToken>();
+
+            for (int i = 1; i <= 120; i++)
+            {
+                refreshTokens.Add(new RefreshToken
+                {
+                    TokenId = i,
+                    Token = $"refresh_token_{i}_{Guid.NewGuid().ToString().Substring(0, 8)}",
+                    ExpiryDate = DateTime.Now.AddDays(30),
+                    CreatedDate = DateTime.Now.AddDays(-random.Next(0, 30)),
+                    AccountId = i
+                });
+            }
+
+            modelBuilder.Entity<RefreshToken>().HasData(refreshTokens);
         }
     }
 }

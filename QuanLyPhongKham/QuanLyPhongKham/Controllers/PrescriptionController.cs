@@ -16,7 +16,6 @@ namespace QuanLyPhongKham.Controllers
             _prescriptionService = prescriptionService;
         }
 
-        // Lấy tất cả đơn thuốc
         [HttpGet]
         public ActionResult<IEnumerable<PrescriptionViewModel>> GetAllPrescriptions()
         {
@@ -27,14 +26,15 @@ namespace QuanLyPhongKham.Controllers
                     RecordId = p.RecordId,
                     MedicineId = p.MedicineId,
                     MedicineName = p.MedicineName,
-                    Quantity = p.Quantity,
-                    Dosage = p.Dosage
+                    Dosage = p.Dosage,
+                    Date = p.Date,
+                    Diagnosis = p.Diagnosis,
+                    DoctorName = p.DoctorName
                 }).ToList();
 
             return Ok(list);
         }
 
-        // Lấy đơn thuốc theo ID
         [HttpGet("{id}")]
         public ActionResult<PrescriptionViewModel> GetPrescriptionById(int id)
         {
@@ -47,12 +47,13 @@ namespace QuanLyPhongKham.Controllers
                 RecordId = p.RecordId,
                 MedicineId = p.MedicineId,
                 MedicineName = p.MedicineName,
-                Quantity = p.Quantity,
-                Dosage = p.Dosage
+                Dosage = p.Dosage,
+                Date = p.Date,
+                Diagnosis = p.Diagnosis,
+                DoctorName = p.DoctorName
             });
         }
 
-        // Thêm mới đơn thuốc
         [HttpPost]
         public ActionResult AddPrescription([FromBody] PrescriptionViewModel vm)
         {
@@ -63,8 +64,8 @@ namespace QuanLyPhongKham.Controllers
             {
                 RecordId = vm.RecordId.Value,
                 MedicineId = vm.MedicineId.Value,
-                Quantity = vm.Quantity,
-                Dosage = vm.Dosage ?? string.Empty
+                Dosage = vm.Dosage ?? string.Empty,
+                Date = DateTime.Now // Gán thời gian tạo
             };
 
             var created = _prescriptionService.CreatePrescription(prescription);
@@ -72,7 +73,6 @@ namespace QuanLyPhongKham.Controllers
             return CreatedAtAction(nameof(GetPrescriptionById), new { id = created.PrescriptionId }, vm);
         }
 
-        // Cập nhật đơn thuốc
         [HttpPut("{id}")]
         public ActionResult UpdatePrescription(int id, [FromBody] PrescriptionViewModel vm)
         {
@@ -84,14 +84,13 @@ namespace QuanLyPhongKham.Controllers
 
             prescription.RecordId = vm.RecordId ?? 0;
             prescription.MedicineId = vm.MedicineId ?? 0;
-            prescription.Quantity = vm.Quantity;
             prescription.Dosage = vm.Dosage ?? string.Empty;
+            prescription.Date = vm.Date; // Cập nhật thời gian nếu cần
 
             _prescriptionService.UpdatePrescription(prescription);
             return NoContent();
         }
 
-        // Xóa đơn thuốc
         [HttpDelete("{id}")]
         public ActionResult DeletePrescription(int id)
         {
@@ -102,17 +101,18 @@ namespace QuanLyPhongKham.Controllers
             return NoContent();
         }
 
-        // Tìm kiếm đơn thuốc có phân trang
         [HttpGet("search")]
         public IActionResult SearchPrescriptions(
             int? recordId = null,
             int? medicineId = null,
-            int? quantity = null,
             string? dosage = null,
+            DateTime? date = null,
+            string? diagnosis = null,
+            string? doctorName = null,
             int page = 1,
             int pageSize = 5)
         {
-            var result = _prescriptionService.SearchPrescriptions(recordId, medicineId, quantity, dosage);
+            var result = _prescriptionService.SearchPrescriptions(recordId, medicineId, dosage, date, diagnosis, doctorName);
 
             var total = result.Count();
             var data = result.Skip((page - 1) * pageSize).Take(pageSize)
@@ -122,8 +122,10 @@ namespace QuanLyPhongKham.Controllers
                     RecordId = p.RecordId,
                     MedicineId = p.MedicineId,
                     MedicineName = p.MedicineName,
-                    Quantity = p.Quantity,
-                    Dosage = p.Dosage
+                    Dosage = p.Dosage,
+                    Date = p.Date,
+                    Diagnosis = p.Diagnosis,
+                    DoctorName = p.DoctorName
                 }).ToList();
 
             return Ok(new

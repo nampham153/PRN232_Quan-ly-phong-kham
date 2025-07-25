@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccessLayer.models
 {
@@ -20,8 +15,9 @@ namespace DataAccessLayer.models
         public int MedicineId { get; set; }
         public Medicine Medicine { get; set; }
 
-        public int Quantity { get; set; }
         public string Dosage { get; set; }
+        public int Quantity { get; set; }
+
+        public DateTime Date { get; set; } // Thêm thời gian tạo đơn thuốc
     }
 }
-

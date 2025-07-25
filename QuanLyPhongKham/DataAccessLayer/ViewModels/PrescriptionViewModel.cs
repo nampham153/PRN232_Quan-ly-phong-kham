@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DataAccessLayer.ViewModels
 {
-    using System.ComponentModel.DataAnnotations;
-
     public class PrescriptionViewModel
     {
         public int PrescriptionId { get; set; }
@@ -23,11 +17,10 @@ namespace DataAccessLayer.ViewModels
         [Required(ErrorMessage = "Vui lòng nhập liều dùng")]
         public string? Dosage { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Số lượng phải lớn hơn 0")]
-        public int Quantity { get; set; }
+        public DateTime Date { get; set; } // Thêm thời gian tạo
 
-        public string? RecordSummary { get; set; }
+        public string? Diagnosis { get; set; } // Thêm chẩn đoán từ MedicalRecord
+
+        public string? DoctorName { get; set; } // Thêm tên bác sĩ từ User
     }
-
-
 }

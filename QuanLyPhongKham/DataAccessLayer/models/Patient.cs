@@ -12,6 +12,7 @@ namespace DataAccessLayer.models
     {
         [Key]
         public int PatientId { get; set; }
+
         public string FullName { get; set; }
         public string Gender { get; set; }
         public DateTime? DOB { get; set; }
@@ -21,8 +22,14 @@ namespace DataAccessLayer.models
 
         public int? AccountId { get; set; }
         public Account Account { get; set; }
+
         public string AvatarPath { get; set; }
+
+        // ➕ Thêm trường mới
+        public string UnderlyingDiseases { get; set; } // bệnh nền
+        public string DiseaseDetails { get; set; }     // thông tin bệnh chi tiết
 
         public ICollection<MedicalRecord> MedicalRecords { get; set; }
     }
+
 }
