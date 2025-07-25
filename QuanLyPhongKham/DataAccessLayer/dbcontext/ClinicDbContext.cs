@@ -86,19 +86,19 @@ namespace DataAccessLayer.dbcontext
                 new Account { AccountId = 8, Username = "doctor7", PasswordHash = "hashed_password_8", RoleId = 2, Status = true },
                 new Account { AccountId = 9, Username = "doctor8", PasswordHash = "hashed_password_9", RoleId = 2, Status = true },
                 new Account { AccountId = 10, Username = "doctor9", PasswordHash = "hashed_password_10", RoleId = 2, Status = true },
-                new Account { AccountId = 11, Username = "staff1", PasswordHash = "hashed_password_11", RoleId = 3, Status = true },
-                new Account { AccountId = 12, Username = "patient1", PasswordHash = "hashed_password_12", RoleId = 4, Status = true },
-                new Account { AccountId = 13, Username = "patient2", PasswordHash = "hashed_password_13", RoleId = 4, Status = true },
-                new Account { AccountId = 14, Username = "patient3", PasswordHash = "hashed_password_14", RoleId = 4, Status = true },
-                new Account { AccountId = 15, Username = "patient4", PasswordHash = "hashed_password_15", RoleId = 4, Status = true },
-                new Account { AccountId = 16, Username = "patient5", PasswordHash = "hashed_password_16", RoleId = 4, Status = true },
-                new Account { AccountId = 17, Username = "patient6", PasswordHash = "hashed_password_17", RoleId = 4, Status = true },
-                new Account { AccountId = 18, Username = "patient7", PasswordHash = "hashed_password_18", RoleId = 4, Status = true },
-                new Account { AccountId = 19, Username = "patient8", PasswordHash = "hashed_password_19", RoleId = 4, Status = true },
-                new Account { AccountId = 20, Username = "patient9", PasswordHash = "hashed_password_20", RoleId = 4, Status = true }
+                new Account { AccountId = 11, Username = "doctor10", PasswordHash = "hashed_password_11", RoleId = 2, Status = true }, // Thêm bác sĩ thứ 10
+                new Account { AccountId = 12, Username = "staff1", PasswordHash = "hashed_password_12", RoleId = 3, Status = true },
+                new Account { AccountId = 13, Username = "patient1", PasswordHash = "hashed_password_13", RoleId = 4, Status = true },
+                new Account { AccountId = 14, Username = "patient2", PasswordHash = "hashed_password_14", RoleId = 4, Status = true },
+                new Account { AccountId = 15, Username = "patient3", PasswordHash = "hashed_password_15", RoleId = 4, Status = true },
+                new Account { AccountId = 16, Username = "patient4", PasswordHash = "hashed_password_16", RoleId = 4, Status = true },
+                new Account { AccountId = 17, Username = "patient5", PasswordHash = "hashed_password_17", RoleId = 4, Status = true },
+                new Account { AccountId = 18, Username = "patient6", PasswordHash = "hashed_password_18", RoleId = 4, Status = true },
+                new Account { AccountId = 19, Username = "patient7", PasswordHash = "hashed_password_19", RoleId = 4, Status = true },
+                new Account { AccountId = 20, Username = "patient8", PasswordHash = "hashed_password_20", RoleId = 4, Status = true }
             );
 
-            // Seed Users (10 users - 1 admin, 9 doctors, 1 staff) - Fixed AccountId mapping
+            // Seed Users (11 users - 1 admin, 10 doctors, 1 staff)
             modelBuilder.Entity<User>().HasData(
                 new User { UserId = 1, FullName = "Admin User", Gender = "Male", DOB = new DateTime(1975, 1, 1), Phone = "0901234560", Email = "admin@clinic.com", AccountId = 1 },
                 new User { UserId = 2, FullName = "Dr. Nguyen Van A", Gender = "Male", DOB = new DateTime(1980, 5, 15), Phone = "0901234567", Email = "doctor1@clinic.com", AccountId = 2 },
@@ -110,137 +110,20 @@ namespace DataAccessLayer.dbcontext
                 new User { UserId = 8, FullName = "Dr. Dang Thi G", Gender = "Female", DOB = new DateTime(1983, 9, 14), Phone = "0901234574", Email = "doctor7@clinic.com", AccountId = 8 },
                 new User { UserId = 9, FullName = "Dr. Bui Van H", Gender = "Male", DOB = new DateTime(1987, 6, 30), Phone = "0901234575", Email = "doctor8@clinic.com", AccountId = 9 },
                 new User { UserId = 10, FullName = "Dr. Do Thi I", Gender = "Female", DOB = new DateTime(1981, 2, 8), Phone = "0901234576", Email = "doctor9@clinic.com", AccountId = 10 },
-                new User { UserId = 11, FullName = "Staff Ngo Van J", Gender = "Male", DOB = new DateTime(1990, 3, 10), Phone = "0901234569", Email = "staff1@clinic.com", AccountId = 11 }
+                new User { UserId = 11, FullName = "Dr. Ngo Van J", Gender = "Male", DOB = new DateTime(1984, 3, 12), Phone = "0901234577", Email = "doctor10@clinic.com", AccountId = 11 },
+                new User { UserId = 12, FullName = "Staff Ngo Van K", Gender = "Male", DOB = new DateTime(1990, 3, 10), Phone = "0901234569", Email = "staff1@clinic.com", AccountId = 12 }
             );
 
-            // Seed Patients (9 patients) - Updated with UnderlyingDiseases and DiseaseDetails
+            // Seed Patients (8 patients)
             modelBuilder.Entity<Patient>().HasData(
-                new Patient
-                {
-                    PatientId = 1,
-                    FullName = "Nguyen Thi K",
-                    Gender = "Female",
-                    DOB = new DateTime(1995, 3, 15),
-                    Phone = "0987654321",
-                    Email = "patient1@email.com",
-                    Address = "123 Nguyen Trai, Hanoi",
-                    AccountId = 12,
-                    AvatarPath = "/images/avatars/patient1.jpg",
-                    UnderlyingDiseases = "Hypertension",
-                    DiseaseDetails = "Diagnosed with hypertension in 2020, managed with lifestyle changes and medication."
-                },
-                new Patient
-                {
-                    PatientId = 2,
-                    FullName = "Tran Van L",
-                    Gender = "Male",
-                    DOB = new DateTime(1992, 8, 20),
-                    Phone = "0987654322",
-                    Email = "patient2@email.com",
-                    Address = "456 Le Loi, Ho Chi Minh",
-                    AccountId = 13,
-                    AvatarPath = "/images/avatars/patient2.jpg",
-                    UnderlyingDiseases = "None",
-                    DiseaseDetails = "No significant chronic conditions, occasional muscle strain from physical activity."
-                },
-                new Patient
-                {
-                    PatientId = 3,
-                    FullName = "Le Thi M",
-                    Gender = "Female",
-                    DOB = new DateTime(1988, 12, 10),
-                    Phone = "0987654323",
-                    Email = "patient3@email.com",
-                    Address = "789 Tran Phu, Da Nang",
-                    AccountId = 14,
-                    AvatarPath = "/images/avatars/patient3.jpg",
-                    UnderlyingDiseases = "Asthma",
-                    DiseaseDetails = "Diagnosed with asthma at age 15, uses inhaler as needed."
-                },
-                new Patient
-                {
-                    PatientId = 4,
-                    FullName = "Hoang Van N",
-                    Gender = "Male",
-                    DOB = new DateTime(1990, 5, 25),
-                    Phone = "0987654324",
-                    Email = "patient4@email.com",
-                    Address = "321 Hai Ba Trung, Hue",
-                    AccountId = 15,
-                    AvatarPath = "/images/avatars/patient4.jpg",
-                    UnderlyingDiseases = "Hypertension, Type 2 Diabetes",
-                    DiseaseDetails = "Hypertension since 2018, Type 2 Diabetes diagnosed in 2021, on metformin."
-                },
-                new Patient
-                {
-                    PatientId = 5,
-                    FullName = "Pham Thi O",
-                    Gender = "Female",
-                    DOB = new DateTime(1985, 7, 18),
-                    Phone = "0987654325",
-                    Email = "patient5@email.com",
-                    Address = "654 Dong Khoi, Can Tho",
-                    AccountId = 16,
-                    AvatarPath = "/images/avatars/patient5.jpg",
-                    UnderlyingDiseases = "Gastritis",
-                    DiseaseDetails = "Chronic gastritis diagnosed in 2019, managed with PPI and diet."
-                },
-                new Patient
-                {
-                    PatientId = 6,
-                    FullName = "Vu Van P",
-                    Gender = "Male",
-                    DOB = new DateTime(1993, 11, 5),
-                    Phone = "0987654326",
-                    Email = "patient6@email.com",
-                    Address = "987 Bach Dang, Hai Phong",
-                    AccountId = 17,
-                    AvatarPath = "/images/avatars/patient6.jpg",
-                    UnderlyingDiseases = "Arthritis",
-                    DiseaseDetails = "Rheumatoid arthritis diagnosed in 2022, on anti-inflammatory medication."
-                },
-                new Patient
-                {
-                    PatientId = 7,
-                    FullName = "Dang Thi Q",
-                    Gender = "Female",
-                    DOB = new DateTime(1987, 4, 22),
-                    Phone = "0987654327",
-                    Email = "patient7@email.com",
-                    Address = "147 Ly Thuong Kiet, Nha Trang",
-                    AccountId = 18,
-                    AvatarPath = "/images/avatars/patient7.jpg",
-                    UnderlyingDiseases = "Allergic Rhinitis",
-                    DiseaseDetails = "Seasonal allergies since childhood, managed with antihistamines."
-                },
-                new Patient
-                {
-                    PatientId = 8,
-                    FullName = "Bui Van R",
-                    Gender = "Male",
-                    DOB = new DateTime(1991, 9, 14),
-                    Phone = "0987654328",
-                    Email = "patient8@email.com",
-                    Address = "258 Quang Trung, Vung Tau",
-                    AccountId = 19,
-                    AvatarPath = "/images/avatars/patient8.jpg",
-                    UnderlyingDiseases = "Type 2 Diabetes",
-                    DiseaseDetails = "Diagnosed with Type 2 Diabetes in 2020, controlled with metformin and diet."
-                },
-                new Patient
-                {
-                    PatientId = 9,
-                    FullName = "Do Thi S",
-                    Gender = "Female",
-                    DOB = new DateTime(1989, 6, 30),
-                    Phone = "0987654329",
-                    Email = "patient9@email.com",
-                    Address = "369 Le Duan, Dalat",
-                    AccountId = 20,
-                    AvatarPath = "/images/avatars/patient9.jpg",
-                    UnderlyingDiseases = "Anxiety Disorder",
-                    DiseaseDetails = "Diagnosed with generalized anxiety disorder in 2023, undergoing counseling."
-                }
+                new Patient { PatientId = 1, FullName = "Nguyen Thi K", Gender = "Female", DOB = new DateTime(1995, 3, 15), Phone = "0987654321", Email = "patient1@email.com", Address = "123 Nguyen Trai, Hanoi", AccountId = 13, AvatarPath = "/images/avatars/patient1.jpg", UnderlyingDiseases = "Hypertension", DiseaseDetails = "Diagnosed with hypertension in 2020, managed with lifestyle changes and medication." },
+                new Patient { PatientId = 2, FullName = "Tran Van L", Gender = "Male", DOB = new DateTime(1992, 8, 20), Phone = "0987654322", Email = "patient2@email.com", Address = "456 Le Loi, Ho Chi Minh", AccountId = 14, AvatarPath = "/images/avatars/patient2.jpg", UnderlyingDiseases = "None", DiseaseDetails = "No significant chronic conditions, occasional muscle strain from physical activity." },
+                new Patient { PatientId = 3, FullName = "Le Thi M", Gender = "Female", DOB = new DateTime(1988, 12, 10), Phone = "0987654323", Email = "patient3@email.com", Address = "789 Tran Phu, Da Nang", AccountId = 15, AvatarPath = "/images/avatars/patient3.jpg", UnderlyingDiseases = "Asthma", DiseaseDetails = "Diagnosed with asthma at age 15, uses inhaler as needed." },
+                new Patient { PatientId = 4, FullName = "Hoang Van N", Gender = "Male", DOB = new DateTime(1990, 5, 25), Phone = "0987654324", Email = "patient4@email.com", Address = "321 Hai Ba Trung, Hue", AccountId = 16, AvatarPath = "/images/avatars/patient4.jpg", UnderlyingDiseases = "Hypertension, Type 2 Diabetes", DiseaseDetails = "Hypertension since 2018, Type 2 Diabetes diagnosed in 2021, on metformin." },
+                new Patient { PatientId = 5, FullName = "Pham Thi O", Gender = "Female", DOB = new DateTime(1985, 7, 18), Phone = "0987654325", Email = "patient5@email.com", Address = "654 Dong Khoi, Can Tho", AccountId = 17, AvatarPath = "/images/avatars/patient5.jpg", UnderlyingDiseases = "Gastritis", DiseaseDetails = "Chronic gastritis diagnosed in 2019, managed with PPI and diet." },
+                new Patient { PatientId = 6, FullName = "Vu Van P", Gender = "Male", DOB = new DateTime(1993, 11, 5), Phone = "0987654326", Email = "patient6@email.com", Address = "987 Bach Dang, Hai Phong", AccountId = 18, AvatarPath = "/images/avatars/patient6.jpg", UnderlyingDiseases = "Arthritis", DiseaseDetails = "Rheumatoid arthritis diagnosed in 2022, on anti-inflammatory medication." },
+                new Patient { PatientId = 7, FullName = "Dang Thi Q", Gender = "Female", DOB = new DateTime(1987, 4, 22), Phone = "0987654327", Email = "patient7@email.com", Address = "147 Ly Thuong Kiet, Nha Trang", AccountId = 19, AvatarPath = "/images/avatars/patient7.jpg", UnderlyingDiseases = "Allergic Rhinitis", DiseaseDetails = "Seasonal allergies since childhood, managed with antihistamines." },
+                new Patient { PatientId = 8, FullName = "Bui Van R", Gender = "Male", DOB = new DateTime(1991, 9, 14), Phone = "0987654328", Email = "patient8@email.com", Address = "258 Quang Trung, Vung Tau", AccountId = 20, AvatarPath = "/images/avatars/patient8.jpg", UnderlyingDiseases = "Type 2 Diabetes", DiseaseDetails = "Diagnosed with Type 2 Diabetes in 2020, controlled with metformin and diet." }
             );
 
             // Seed Tests (10 tests)
@@ -271,46 +154,40 @@ namespace DataAccessLayer.dbcontext
                 new Medicine { MedicineId = 10, MedicineName = "Cetirizine", Unit = "tablet", Usage = "Take 1 tablet once daily" }
             );
 
-            // Seed Medical Records (10 records) - Updated UserId references
+            // Seed Medical Records (8 records) - Đảm bảo khớp với số lượng Patient
             modelBuilder.Entity<MedicalRecord>().HasData(
                 new MedicalRecord { RecordId = 1, PatientId = 1, UserId = 2, Date = DateTime.Now.AddDays(-30), Symptoms = "Fever, headache", Diagnosis = "Common cold", Note = "Rest and fluids recommended" },
-                new MedicalRecord { RecordId = 2, PatientId = 2, UserId = 2, Date = DateTime.Now.AddDays(-25), Symptoms = "Chest pain", Diagnosis = "Muscle strain", Note = "Apply heat therapy" },
-                new MedicalRecord { RecordId = 3, PatientId = 3, UserId = 3, Date = DateTime.Now.AddDays(-20), Symptoms = "Shortness of breath", Diagnosis = "Asthma", Note = "Prescribed inhaler" },
-                new MedicalRecord { RecordId = 4, PatientId = 4, UserId = 3, Date = DateTime.Now.AddDays(-15), Symptoms = "High blood pressure", Diagnosis = "Hypertension", Note = "Lifestyle changes needed" },
-                new MedicalRecord { RecordId = 5, PatientId = 5, UserId = 4, Date = DateTime.Now.AddDays(-10), Symptoms = "Stomach pain", Diagnosis = "Gastritis", Note = "Avoid spicy foods" },
-                new MedicalRecord { RecordId = 6, PatientId = 6, UserId = 4, Date = DateTime.Now.AddDays(-8), Symptoms = "Joint pain", Diagnosis = "Arthritis", Note = "Physical therapy recommended" },
-                new MedicalRecord { RecordId = 7, PatientId = 7, UserId = 5, Date = DateTime.Now.AddDays(-5), Symptoms = "Skin rash", Diagnosis = "Allergic reaction", Note = "Avoid allergens" },
-                new MedicalRecord { RecordId = 8, PatientId = 8, UserId = 5, Date = DateTime.Now.AddDays(-3), Symptoms = "Diabetes symptoms", Diagnosis = "Type 2 Diabetes", Note = "Diet control important" },
-                new MedicalRecord { RecordId = 9, PatientId = 9, UserId = 6, Date = DateTime.Now.AddDays(-2), Symptoms = "Anxiety", Diagnosis = "Anxiety disorder", Note = "Counseling recommended" },
-                new MedicalRecord { RecordId = 10, PatientId = 1, UserId = 6, Date = DateTime.Now.AddDays(-1), Symptoms = "Allergic rhinitis", Diagnosis = "Hay fever", Note = "Seasonal allergy" }
+                new MedicalRecord { RecordId = 2, PatientId = 2, UserId = 3, Date = DateTime.Now.AddDays(-25), Symptoms = "Chest pain", Diagnosis = "Muscle strain", Note = "Apply heat therapy" },
+                new MedicalRecord { RecordId = 3, PatientId = 3, UserId = 4, Date = DateTime.Now.AddDays(-20), Symptoms = "Shortness of breath", Diagnosis = "Asthma", Note = "Prescribed inhaler" },
+                new MedicalRecord { RecordId = 4, PatientId = 4, UserId = 5, Date = DateTime.Now.AddDays(-15), Symptoms = "High blood pressure", Diagnosis = "Hypertension", Note = "Lifestyle changes needed" },
+                new MedicalRecord { RecordId = 5, PatientId = 5, UserId = 6, Date = DateTime.Now.AddDays(-10), Symptoms = "Stomach pain", Diagnosis = "Gastritis", Note = "Avoid spicy foods" },
+                new MedicalRecord { RecordId = 6, PatientId = 6, UserId = 7, Date = DateTime.Now.AddDays(-8), Symptoms = "Joint pain", Diagnosis = "Arthritis", Note = "Physical therapy recommended" },
+                new MedicalRecord { RecordId = 7, PatientId = 7, UserId = 8, Date = DateTime.Now.AddDays(-5), Symptoms = "Skin rash", Diagnosis = "Allergic reaction", Note = "Avoid allergens" },
+                new MedicalRecord { RecordId = 8, PatientId = 8, UserId = 9, Date = DateTime.Now.AddDays(-3), Symptoms = "Diabetes symptoms", Diagnosis = "Type 2 Diabetes", Note = "Diet control important" }
             );
 
-            // Seed Test Results (10 results) - Updated UserId references
+            // Seed Test Results (8 results) - Đảm bảo khớp với số lượng MedicalRecord
             modelBuilder.Entity<TestResult>().HasData(
                 new TestResult { ResultId = 1, RecordId = 1, TestId = 1, UserId = 2, ResultDetail = "WBC: 8.5, RBC: 4.2", TestDate = DateTime.Now.AddDays(-29) },
-                new TestResult { ResultId = 2, RecordId = 2, TestId = 2, UserId = 2, ResultDetail = "Chest clear, no abnormalities", TestDate = DateTime.Now.AddDays(-24) },
-                new TestResult { ResultId = 3, RecordId = 3, TestId = 3, UserId = 3, ResultDetail = "Normal heart rhythm", TestDate = DateTime.Now.AddDays(-19) },
-                new TestResult { ResultId = 4, RecordId = 4, TestId = 10, UserId = 3, ResultDetail = "BP: 140/90 mmHg", TestDate = DateTime.Now.AddDays(-14) },
-                new TestResult { ResultId = 5, RecordId = 5, TestId = 4, UserId = 4, ResultDetail = "Mild gastric inflammation", TestDate = DateTime.Now.AddDays(-9) },
-                new TestResult { ResultId = 6, RecordId = 6, TestId = 2, UserId = 4, ResultDetail = "Joint space narrowing", TestDate = DateTime.Now.AddDays(-7) },
-                new TestResult { ResultId = 7, RecordId = 7, TestId = 1, UserId = 5, ResultDetail = "Elevated eosinophils", TestDate = DateTime.Now.AddDays(-4) },
-                new TestResult { ResultId = 8, RecordId = 8, TestId = 8, UserId = 5, ResultDetail = "Glucose: 180 mg/dL", TestDate = DateTime.Now.AddDays(-2) },
-                new TestResult { ResultId = 9, RecordId = 9, TestId = 1, UserId = 6, ResultDetail = "Normal blood parameters", TestDate = DateTime.Now.AddDays(-1) },
-                new TestResult { ResultId = 10, RecordId = 10, TestId = 7, UserId = 6, ResultDetail = "Increased histamine levels", TestDate = DateTime.Now }
+                new TestResult { ResultId = 2, RecordId = 2, TestId = 2, UserId = 3, ResultDetail = "Chest clear, no abnormalities", TestDate = DateTime.Now.AddDays(-24) },
+                new TestResult { ResultId = 3, RecordId = 3, TestId = 3, UserId = 4, ResultDetail = "Normal heart rhythm", TestDate = DateTime.Now.AddDays(-19) },
+                new TestResult { ResultId = 4, RecordId = 4, TestId = 10, UserId = 5, ResultDetail = "BP: 140/90 mmHg", TestDate = DateTime.Now.AddDays(-14) },
+                new TestResult { ResultId = 5, RecordId = 5, TestId = 4, UserId = 6, ResultDetail = "Mild gastric inflammation", TestDate = DateTime.Now.AddDays(-9) },
+                new TestResult { ResultId = 6, RecordId = 6, TestId = 2, UserId = 7, ResultDetail = "Joint space narrowing", TestDate = DateTime.Now.AddDays(-7) },
+                new TestResult { ResultId = 7, RecordId = 7, TestId = 1, UserId = 8, ResultDetail = "Elevated eosinophils", TestDate = DateTime.Now.AddDays(-4) },
+                new TestResult { ResultId = 8, RecordId = 8, TestId = 8, UserId = 9, ResultDetail = "Glucose: 180 mg/dL", TestDate = DateTime.Now.AddDays(-2) }
             );
 
-            // Seed Prescriptions (10 prescriptions)
+            // Seed Prescriptions (8 prescriptions) - Đảm bảo khớp với số lượng MedicalRecord
             modelBuilder.Entity<Prescription>().HasData(
-                new Prescription { PrescriptionId = 1, RecordId = 1, MedicineId = 1, Dosage = "500mg twice daily" },
-                new Prescription { PrescriptionId = 2, RecordId = 2, MedicineId = 3, Dosage = "400mg three times daily" },
-                new Prescription { PrescriptionId = 3, RecordId = 3, MedicineId = 8, Dosage = "2 puffs as needed" },
-                new Prescription { PrescriptionId = 4, RecordId = 4, MedicineId = 6, Dosage = "10mg once daily" },
-                new Prescription { PrescriptionId = 5, RecordId = 5, MedicineId = 7, Dosage = "20mg before breakfast" },
-                new Prescription { PrescriptionId = 6, RecordId = 6, MedicineId = 3, Dosage = "200mg twice daily" },
-                new Prescription { PrescriptionId = 7, RecordId = 7, MedicineId = 10, Dosage = "10mg once daily" },
-                new Prescription { PrescriptionId = 8, RecordId = 8, MedicineId = 5, Dosage = "500mg twice daily" },
-                new Prescription { PrescriptionId = 9, RecordId = 9, MedicineId = 9, Dosage = "2mg as needed" },
-                new Prescription { PrescriptionId = 10, RecordId = 10, MedicineId = 10, Dosage = "10mg once daily" }
+                new Prescription { PrescriptionId = 1, RecordId = 1, MedicineId = 1, Dosage = "500mg twice daily", Date = DateTime.Now.AddDays(-30) },
+                new Prescription { PrescriptionId = 2, RecordId = 2, MedicineId = 3, Dosage = "400mg three times daily", Date = DateTime.Now.AddDays(-25) },
+                new Prescription { PrescriptionId = 3, RecordId = 3, MedicineId = 8, Dosage = "2 puffs as needed", Date = DateTime.Now.AddDays(-20) },
+                new Prescription { PrescriptionId = 4, RecordId = 4, MedicineId = 6, Dosage = "10mg once daily", Date = DateTime.Now.AddDays(-15) },
+                new Prescription { PrescriptionId = 5, RecordId = 5, MedicineId = 7, Dosage = "20mg before breakfast", Date = DateTime.Now.AddDays(-10) },
+                new Prescription { PrescriptionId = 6, RecordId = 6, MedicineId = 3, Dosage = "200mg twice daily", Date = DateTime.Now.AddDays(-8) },
+                new Prescription { PrescriptionId = 7, RecordId = 7, MedicineId = 10, Dosage = "10mg once daily", Date = DateTime.Now.AddDays(-5) },
+                new Prescription { PrescriptionId = 8, RecordId = 8, MedicineId = 5, Dosage = "500mg twice daily", Date = DateTime.Now.AddDays(-3) }
             );
 
             // Seed Refresh Tokens (20 tokens - one for each account)
@@ -336,7 +213,6 @@ namespace DataAccessLayer.dbcontext
                 new RefreshToken { TokenId = 19, Token = "refresh_token_19", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 19 },
                 new RefreshToken { TokenId = 20, Token = "refresh_token_20", ExpiryDate = DateTime.Now.AddDays(30), CreatedDate = DateTime.Now, AccountId = 20 }
             );
-
         }
     }
 }

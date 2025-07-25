@@ -1,0 +1,236 @@
+﻿@page
+@model QuanLyPhongKham.Pages.Dashboard.IndexModel
+@{
+    ViewData["Title"] = "Thống kê xét nghiệm";
+}
+
+<h2 class="mb-4">Thống kê xét nghiệm</h2>
+
+<div class="row">
+    <!-- Tổng số loại xét nghiệm -->
+    <div class="col-md-6 col-lg-3 mb-3">
+        <div class="card text-white bg-primary shadow">
+            <div class="card-body">
+                <h5 class="card-title">Số loại xét nghiệm</h5>
+                <p class="card-text fs-2 fw-bold" id="testCount">0</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tổng kết quả xét nghiệm -->
+    <div class="col-md-6 col-lg-3 mb-3">
+        <div class="card text-white bg-success shadow">
+            <div class="card-body">
+                <h5 class="card-title">Số kết quả xét nghiệm</h5>
+                <p class="card-text fs-2 fw-bold" id="resultCount">0</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Biểu đồ kết quả theo ngày -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow">
+            <div class="card-header">Kết quả theo ngày</div>
+            <div class="card-body">
+                <canvas id="resultsByDateChart" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Biểu đồ loại xét nghiệm phổ biến -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow">
+            <div class="card-header">Top loại xét nghiệm</div>
+            <div class="card-body">
+                <canvas id="testTypeChart" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Biểu đồ số lượt xét nghiệm theo bác sĩ -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow">
+            <div class="card-header">Số lượt xét nghiệm theo bác sĩ</div>
+            <div class="card-body">
+                <canvas id="chartByDoctor" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Biểu đồ thống kê giới tính và độ tuổi -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow">
+            <div class="card-header">Thống kê giới tính & độ tuổi bệnh nhân</div>
+            <div class="card-body">
+                <canvas id="chartByGenderAge" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        async function loadCounts() {
+            const testRes = await fetch("/api/Dashboard/test-count");
+            const testData = await testRes.json();
+            document.getElementById("testCount").innerText = testData.count;
+
+            const resultRes = await fetch("/api/Dashboard/test-result-count");
+            const resultData = await resultRes.json();
+            document.getElementById("resultCount").innerText = resultData.count;
+        }
+
+        async function loadResultsByDateChart() {
+            const res = await fetch("/api/Dashboard/results-by-date");
+            const data = await res.json();
+            const labels = data.map(d => d.date);
+            const values = data.map(d => d.count);
+
+            new Chart(document.getElementById("resultsByDateChart"), {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Số kết quả',
+                        data: values,
+                        borderColor: 'rgb(75, 192, 192)',
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        async function loadTestTypeChart() {
+            const res = await fetch("/api/Dashboard/test-type-distribution");
+            const data = await res.json();
+            const labels = data.map(d => d.testName);
+            const values = data.map(d => d.count);
+
+            new Chart(document.getElementById("testTypeChart"), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Số lượt thực hiện',
+                        data: values,
+                        backgroundColor: 'rgba(153, 102, 255, 0.6)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        async function loadChartByDoctor() {
+            const res = await fetch("/api/Dashboard/tests-by-doctor");
+            const data = await res.json();
+
+            new Chart(document.getElementById("chartByDoctor"), {
+                type: 'bar',
+                data: {
+                    labels: data.map(d => d.doctorName),
+                    datasets: [{
+                        label: 'Số lượt xét nghiệm',
+                        data: data.map(d => d.count),
+                        backgroundColor: '#4f46e5'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { title: { display: true, text: 'Bác sĩ' } },
+                        y: { beginAtZero: true, title: { display: true, text: 'Lượt' } }
+                    }
+                }
+            });
+        }
+
+        async function loadChartByDoctor() {
+            const res = await fetch("/api/Dashboard/tests-by-doctor");
+            const data = await res.json();
+
+            const labels = data.map(d => d.doctor);   
+            const values = data.map(d => d.count);
+
+
+            new Chart(document.getElementById("chartByDoctor"), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Số lượt xét nghiệm',
+                        data: values,
+                        backgroundColor: '#4f46e5'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { title: { display: true, text: 'Bác sĩ' } },
+                        y: { beginAtZero: true, title: { display: true, text: 'Lượt' } }
+                    }
+                }
+            });
+        }
+
+        async function loadChartByGenderAge() {
+            const res = await fetch("/api/Dashboard/results-by-age-gender");
+            const data = await res.json();
+
+            const labels = data.map(d => d.label);
+            const values = data.map(d => d.count);
+
+            new Chart(document.getElementById("chartByGenderAge"), {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Lượt xét nghiệm',
+                        data: values,
+                        backgroundColor: '#10b981'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { title: { display: true, text: 'Nhóm bệnh nhân' } },
+                        y: { beginAtZero: true, title: { display: true, text: 'Lượt' } }
+                    }
+                }
+            });
+        }
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadCounts();
+            loadResultsByDateChart();
+            loadTestTypeChart();
+            loadChartByDoctor();
+            loadChartByGenderAge();
+        });
+    </script>
+}

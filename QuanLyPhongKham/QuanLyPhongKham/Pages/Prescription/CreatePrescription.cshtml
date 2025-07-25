@@ -1,5 +1,4 @@
-﻿
-@page
+﻿@page
 @model QuanLyPhongKham.Pages.Prescription.CreatePrescriptionModel
 @using Microsoft.AspNetCore.Mvc.Rendering
 
@@ -49,10 +48,14 @@
                                 <label asp-for="Prescription.RecordId" class="form-label">
                                     <i class="mdi mdi-file-document me-1"></i>Medical Record
                                 </label>
-                                <select asp-for="Prescription.RecordId" asp-items="Model.Records" class="form-select">
+                                <select asp-for="Prescription.RecordId" asp-items="Model.Records" class="form-select" id="recordId" onchange="loadRecordDetails(this.value)">
                                     <option value="">-- Select Record --</option>
                                 </select>
                                 <span asp-validation-for="Prescription.RecordId" class="text-danger"></span>
+                                <div id="recordDetails" class="mt-2">
+                                    <small class="text-muted">Diagnosis: @Model.Diagnosis</small><br />
+                                    <small class="text-muted">Doctor: @Model.DoctorName</small>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -76,6 +79,15 @@
                                 </label>
                                 <input asp-for="Prescription.Dosage" class="form-control" placeholder="Enter dosage..." />
                                 <span asp-validation-for="Prescription.Dosage" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-3">
+                                <label asp-for="Prescription.Date" class="form-label">
+                                    <i class="mdi mdi-calendar me-1"></i>Date
+                                </label>
+                                <input asp-for="Prescription.Date" type="date" class="form-control" value="@Model.Prescription.Date.ToString("yyyy-MM-dd")" />
+                                <span asp-validation-for="Prescription.Date" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
@@ -106,6 +118,37 @@
             setTimeout(function () {
                 $('.alert').fadeOut('slow');
             }, 5000);
+
+            // Load record details when RecordId changes
+            function loadRecordDetails(recordId) {
+                if (recordId) {
+                    $.ajax({
+                        url: `https://localhost:7086/api/MedicalRecord/${recordId}`,
+                        method: 'GET',
+                        success: function (data) {
+                            $('#recordDetails').html(
+                                `<small class="text-muted">Diagnosis: ${data.diagnosis || 'N/A'}</small><br />` +
+                                `<small class="text-muted">Doctor: ${data.user?.fullName || 'N/A'}</small>`
+                            );
+                        },
+                        error: function () {
+                            $('#recordDetails').html(
+                                '<small class="text-muted">Diagnosis: N/A</small><br /><small class="text-muted">Doctor: N/A</small>'
+                            );
+                        }
+                    });
+                } else {
+                    $('#recordDetails').html(
+                        '<small class="text-muted">Diagnosis: N/A</small><br /><small class="text-muted">Doctor: N/A</small>'
+                    );
+                }
+            }
+
+            // Trigger initial load if RecordId is pre-selected
+            var initialRecordId = $('#recordId').val();
+            if (initialRecordId) {
+                loadRecordDetails(initialRecordId);
+            }
         });
     </script>
 }
@@ -116,54 +159,67 @@
             color: #6c7293;
             font-weight: 500;
         }
+
         .card-description {
             color: #a7a7a7;
             font-size: 0.875rem;
             margin-bottom: 0;
         }
+
         .alert {
             border: none;
             border-radius: 0.375rem;
         }
+
         .alert-success {
             background-color: #d1e7dd;
             color: #0a3622;
         }
+
         .alert-danger {
             background-color: #f8d7da;
             color: #58151c;
         }
+
         .card {
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
             border: 1px solid rgba(0, 0, 0, 0.125);
         }
+
         .grid-margin {
             margin-bottom: 1.875rem;
         }
+
         .stretch-card {
             display: flex;
             align-items: stretch;
         }
-        .stretch-card > .card {
-            width: 100%;
-            min-height: 100%;
-        }
+
+            .stretch-card > .card {
+                width: 100%;
+                min-height: 100%;
+            }
+
         .form-label {
             color: #6c7293;
             font-weight: 500;
         }
+
         .form-control,
         .form-select {
             border-radius: 0.375rem;
         }
+
         .btn-icon-text {
             display: inline-flex;
             align-items: center;
             gap: 4px;
         }
+
         .gap-2 {
             gap: 0.5rem;
         }
+
         .text-danger {
             font-size: 0.875rem;
         }

@@ -137,6 +137,9 @@ namespace QuanLyPhongKham
                 odataBuilder.EntitySet<TestResult>("TestResults");
                 odataBuilder.EntitySet<User>("Doctors");
                 odataBuilder.EntitySet<MedicalRecord>("MedicalRecords");
+                odataBuilder.EntitySet<Prescription>("Prescriptions");
+                odataBuilder.EntitySet<MedicalRecord>("MedicalRecords");
+                odataBuilder.EntitySet<Medicine>("Medicines");
                 return odataBuilder.GetEdmModel();
             }
 

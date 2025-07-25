@@ -12,11 +12,11 @@ namespace BusinessAccessLayer.IService
     {
         List<PrescriptionViewModel> GetAllPrescriptions();
         PrescriptionViewModel GetPrescriptionById(int id);
-        Prescription GetPrescriptionEntityById(int id); // thêm hàm này để lấy entity gốc
+        Prescription GetPrescriptionEntityById(int id);
 
-        Prescription CreatePrescription(Prescription prescription); // Thay void bằng Prescription
+        Prescription CreatePrescription(Prescription prescription);
         void UpdatePrescription(Prescription prescription);
         void DeletePrescription(int id);
-        List<PrescriptionViewModel> SearchPrescriptions(int? recordId = null, int? medicineId = null, string dosage = null);
+        List<PrescriptionViewModel> SearchPrescriptions(int? recordId = null, int? medicineId = null, string dosage = null, DateTime? date = null, string diagnosis = null, string doctorName = null);
     }
 }

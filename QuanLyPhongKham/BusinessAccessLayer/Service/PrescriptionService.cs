@@ -1,5 +1,4 @@
-﻿
-using BusinessAccessLayer.IService;
+﻿using BusinessAccessLayer.IService;
 using DataAccessLayer.IRepository;
 using DataAccessLayer.models;
 using DataAccessLayer.ViewModels;
@@ -23,14 +22,18 @@ namespace BusinessAccessLayer.Service
         public List<PrescriptionViewModel> GetAllPrescriptions()
         {
             var prescriptions = _repository.GetAll();
-            return prescriptions.Select(p => new PrescriptionViewModel
-            {
-                PrescriptionId = p.PrescriptionId,
-                RecordId = p.RecordId,
-                MedicineId = p.MedicineId,
-                MedicineName = p.Medicine != null ? p.Medicine.MedicineName : "Unknown",              
-                Dosage = p.Dosage
-            }).ToList();
+            return prescriptions.AsEnumerable() // Chuyển sang IEnumerable trước khi ánh xạ
+                .Select(p => new PrescriptionViewModel
+                {
+                    PrescriptionId = p.PrescriptionId,
+                    RecordId = p.RecordId,
+                    MedicineId = p.MedicineId,
+                    MedicineName = p.Medicine != null ? p.Medicine.MedicineName : "Unknown",
+                    Dosage = p.Dosage,
+                    Date = p.Date,
+                    Diagnosis = p.MedicalRecord?.Diagnosis ?? "Unknown", // Xử lý null
+                    DoctorName = p.MedicalRecord?.User?.FullName ?? "Unknown" // Xử lý null
+                }).ToList();
         }
 
         public PrescriptionViewModel GetPrescriptionById(int id)
@@ -42,16 +45,18 @@ namespace BusinessAccessLayer.Service
                 PrescriptionId = prescription.PrescriptionId,
                 RecordId = prescription.RecordId,
                 MedicineId = prescription.MedicineId,
-                MedicineName = prescription.Medicine != null ? prescription.Medicine.MedicineName : "Unknown", // Sửa từ p.Medicine thành prescription.Medicine              
-                Dosage = prescription.Dosage
+                MedicineName = prescription.Medicine != null ? prescription.Medicine.MedicineName : "Unknown",
+                Dosage = prescription.Dosage,
+                Date = prescription.Date,
+                Diagnosis = prescription.MedicalRecord?.Diagnosis ?? "Unknown", // Xử lý null
+                DoctorName = prescription.MedicalRecord?.User?.FullName ?? "Unknown" // Xử lý null
             };
         }
 
         public Prescription CreatePrescription(Prescription prescription)
         {
-           
+            prescription.Date = DateTime.Now; // Gán thời gian tạo mặc định
             return _repository.Create(prescription);
-
         }
 
         public void UpdatePrescription(Prescription prescription)
@@ -65,21 +70,28 @@ namespace BusinessAccessLayer.Service
             _repository.Delete(id);
         }
 
-        public List<PrescriptionViewModel> SearchPrescriptions(int? recordId = null, int? medicineId = null, string dosage = null)
+        public List<PrescriptionViewModel> SearchPrescriptions(int? recordId = null, int? medicineId = null, string dosage = null, DateTime? date = null, string diagnosis = null, string doctorName = null)
         {
             var prescriptions = _repository.GetAll().AsQueryable();
             if (recordId.HasValue) prescriptions = prescriptions.Where(p => p.RecordId == recordId.Value);
             if (medicineId.HasValue) prescriptions = prescriptions.Where(p => p.MedicineId == medicineId.Value);
             if (!string.IsNullOrEmpty(dosage)) prescriptions = prescriptions.Where(p => p.Dosage == dosage);
+            if (date.HasValue) prescriptions = prescriptions.Where(p => p.Date.Date == date.Value.Date);
+            if (!string.IsNullOrEmpty(diagnosis)) prescriptions = prescriptions.Where(p => p.MedicalRecord.Diagnosis == diagnosis);
+            if (!string.IsNullOrEmpty(doctorName)) prescriptions = prescriptions.Where(p => p.MedicalRecord.User.FullName == doctorName);
 
-            return prescriptions.Select(p => new PrescriptionViewModel
-            {
-                PrescriptionId = p.PrescriptionId,
-                RecordId = p.RecordId,
-                MedicineId = p.MedicineId,
-                MedicineName = p.Medicine != null ? p.Medicine.MedicineName : "Unknown",            
-                Dosage = p.Dosage
-            }).ToList();
+            return prescriptions.AsEnumerable() // Chuyển sang IEnumerable trước khi ánh xạ
+                .Select(p => new PrescriptionViewModel
+                {
+                    PrescriptionId = p.PrescriptionId,
+                    RecordId = p.RecordId,
+                    MedicineId = p.MedicineId,
+                    MedicineName = p.Medicine != null ? p.Medicine.MedicineName : "Unknown",
+                    Dosage = p.Dosage,
+                    Date = p.Date,
+                    Diagnosis = p.MedicalRecord?.Diagnosis ?? "Unknown", // Xử lý null
+                    DoctorName = p.MedicalRecord?.User?.FullName ?? "Unknown" // Xử lý null
+                }).ToList();
         }
 
         public Prescription GetPrescriptionEntityById(int id)
@@ -90,9 +102,9 @@ namespace BusinessAccessLayer.Service
             {
                 PrescriptionId = prescription.PrescriptionId,
                 RecordId = prescription.RecordId,
-                MedicineId = prescription.MedicineId,            
-                
-                Dosage = prescription.Dosage
+                MedicineId = prescription.MedicineId,
+                Dosage = prescription.Dosage,
+                Date = prescription.Date
             };
         }
     }
