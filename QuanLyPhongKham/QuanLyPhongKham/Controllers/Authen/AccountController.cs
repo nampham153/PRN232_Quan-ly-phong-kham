@@ -4,10 +4,7 @@ using DataAccessLayer.ViewModels.Authen;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace QuanLyPhongKham.Controllers.Authen
 {
@@ -64,9 +61,25 @@ namespace QuanLyPhongKham.Controllers.Authen
         [HttpPost]
         public IActionResult Create([FromBody] UserAccountViewModel account)
         {
-            var result = _userService.CreateAccount(account);
-            return result ? Ok("Created") : BadRequest("Invalid data or failed to create");
+            try
+            {
+                var success = _userService.CreateAccount(account); // hoặc DAO nếu gọi trực tiếp
+
+                return success
+                    ? Ok("Tạo tài khoản thành công")
+                    : BadRequest("Tên đăng nhập đã tồn tại.");
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message); // "Tên đăng nhập đã tồn tại" hoặc lỗi khác
+            }
+            catch (Exception ex)
+            {
+                // log lỗi nếu cần
+                return StatusCode(500, "Lỗi hệ thống");
+            }
         }
+
 
         [HttpPut]
         public IActionResult Update([FromBody] UserAccountViewModel account)

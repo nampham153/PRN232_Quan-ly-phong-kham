@@ -17,6 +17,9 @@ namespace DataAccessLayer.models
         public string Unit { get; set; }
         public string Usage { get; set; }
 
+        public DateTime CreatedDate { get; set; }
+
+
         [JsonIgnore]
         public ICollection<Prescription> Prescriptions { get; set; }
     }

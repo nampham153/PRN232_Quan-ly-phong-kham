@@ -20,6 +20,15 @@ namespace DataAccessLayer.models
         public bool Status { get; set; }
         public Role Role { get; set; }
 
+        // Soft delete flag
+        public bool IsCheck { get; set; } = true;
+
+        // Ngày tạo tài khoản
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+        // Ngày cập nhật gần nhất
+        public DateTime? UpdatedAt { get; set; }
+
         public RefreshToken RefreshToken { get; set; }
         [JsonIgnore]
         public User User { get; set; }

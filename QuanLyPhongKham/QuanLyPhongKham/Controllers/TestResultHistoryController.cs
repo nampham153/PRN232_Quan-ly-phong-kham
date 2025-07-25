@@ -1,11 +1,14 @@
 using BusinessAccessLayer.IService;
 using DataAccessLayer.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace QuanLyPhongKham.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]
+
     public class TestResultHistoryController : ControllerBase
     {
         private readonly ITestResultHistoryService _historyService;

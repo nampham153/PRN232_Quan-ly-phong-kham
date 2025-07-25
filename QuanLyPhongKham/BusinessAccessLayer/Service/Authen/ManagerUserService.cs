@@ -74,7 +74,6 @@ namespace BusinessAccessLayer.Service.Authen
         }
         public bool UpdateAccountInfor(ChangeInformationViewModel model)
         {
-            // Gọi thẳng Repository, không lặp lại logic
             return _repository.UpdateAccountInfor(model);
         }
 
