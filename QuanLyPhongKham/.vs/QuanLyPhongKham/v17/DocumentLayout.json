@@ -102,15 +102,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Bookmark",
@@ -145,6 +137,14 @@
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "TestResultController.cs",
@@ -154,8 +154,7 @@
               "RelativeToolTip": "QuanLyPhongKham\\Controllers\\TestResultController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-20T05:08:58.318Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-20T05:08:58.318Z"
             },
             {
               "$type": "Document",
@@ -180,8 +179,7 @@
               "RelativeToolTip": "QuanLyPhongKham\\Controllers\\DoctorController.cs",
               "ViewState": "AgIAALUAAAAAAAAAAADwv8kAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T09:59:50.258Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T09:59:50.258Z"
             },
             {
               "$type": "Document",
@@ -193,8 +191,7 @@
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Edit.cshtml",
               "ViewState": "AgIAACYAAAAAAAAAAAAAADgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-20T04:13:20.883Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-20T04:13:20.883Z"
             },
             {
               "$type": "Document",
@@ -206,8 +203,7 @@
               "RelativeToolTip": "BusinessAccessLayer\\IService\\IMedicalRecordService.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAQwBUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T10:09:24.92Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T10:09:24.92Z"
             },
             {
               "$type": "Document",
@@ -219,8 +215,7 @@
               "RelativeToolTip": "DataAccessLayer\\ViewModels\\MedicalRecordVM.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAzwBcAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T10:08:50.892Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T10:08:50.892Z"
             },
             {
               "$type": "Document",
@@ -232,8 +227,7 @@
               "RelativeToolTip": "QuanLyPhongKham\\Controllers\\MedicalRecordController.cs",
               "ViewState": "AgIAAB0AAAAAAAAAAAAYwC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T09:59:50.669Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T09:59:50.669Z"
             },
             {
               "$type": "Document",
@@ -245,8 +239,7 @@
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T09:34:10.266Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T09:34:10.266Z"
             },
             {
               "$type": "Document",
@@ -258,8 +251,7 @@
               "RelativeToolTip": "QuanLyPhongKham\\Pages\\MedicalRecords\\Create.cshtml",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-17T09:52:23.704Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T09:52:23.704Z"
             },
             {
               "$type": "Document",
@@ -271,8 +263,7 @@
               "RelativeToolTip": "BusinessAccessLayer\\Service\\MedicalRecordService.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAowDQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T10:09:31.809Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T10:09:31.809Z"
             },
             {
               "$type": "Document",
@@ -284,8 +275,7 @@
               "RelativeToolTip": "DataAccessLayer\\IRepository\\IMedicalRecordRepository.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAQwBcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T10:09:00.359Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T10:09:00.359Z"
             },
             {
               "$type": "Document",
@@ -297,8 +287,7 @@
               "RelativeToolTip": "BusinessAccessLayer\\IService\\IDoctorService.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAxwA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-20T04:06:17.457Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-20T04:06:17.457Z"
             },
             {
               "$type": "Document",
@@ -310,8 +299,7 @@
               "RelativeToolTip": "BusinessAccessLayer\\Service\\DoctorService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-20T04:06:51.992Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-20T04:06:51.992Z"
             },
             {
               "$type": "Document",
@@ -323,8 +311,7 @@
               "RelativeToolTip": "DataAccessLayer\\DAO\\MedicalRecordDAO.cs",
               "ViewState": "AgIAAEUAAAAAAAAAAAAwwFkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T10:09:15.867Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T10:09:15.867Z"
             },
             {
               "$type": "Document",
@@ -336,8 +323,7 @@
               "RelativeToolTip": "DataAccessLayer\\DAO\\DoctorDAO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T10:21:31.871Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T10:21:31.871Z"
             },
             {
               "$type": "Document",
@@ -349,8 +335,7 @@
               "RelativeToolTip": "DataAccessLayer\\Repository\\MedicalRecordRepository.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAswDUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-17T10:09:09.086Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-17T10:09:09.086Z"
             },
             {
               "$type": "Document",
@@ -362,8 +347,7 @@
               "RelativeToolTip": "DataAccessLayer\\Repository\\DoctorRepository.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T04:16:02.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-19T04:16:02.024Z"
             },
             {
               "$type": "Document",
@@ -412,16 +396,6 @@
               "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-17T09:27:39.851Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 73,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             }
           ]
         }
