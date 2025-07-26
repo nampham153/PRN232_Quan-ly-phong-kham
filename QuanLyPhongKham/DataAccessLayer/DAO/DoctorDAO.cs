@@ -15,8 +15,11 @@ namespace DataAccessLayer.DAO
 
         public IQueryable<User> GetAllDoctors()
         {
-            return _context.Users.Include(u => u.Account).Where(u => u.Account.RoleId == 2);
+            return _context.Users
+                .Include(u => u.Account)
+                .Where(u => u.Account.RoleId == 2 && u.Account.Status == true);
         }
+
 
         public List<Account> GetAvailableAccountsForDoctor()
         {
@@ -26,15 +29,17 @@ namespace DataAccessLayer.DAO
                 .ToList();
 
             return _context.Accounts
-                .Where(a => a.RoleId == 2 && !usedAccountIds.Contains(a.AccountId))
+                .Where(a => a.RoleId == 2 && a.Status == true && !usedAccountIds.Contains(a.AccountId))
                 .ToList();
         }
 
         public User? GetByAccountId(int accountId)
         {
-            return _context.Users.Include(u => u.Account)
-                                 .FirstOrDefault(u => u.AccountId == accountId && u.Account.RoleId == 2);
+            return _context.Users
+                .Include(u => u.Account)
+                .FirstOrDefault(u => u.AccountId == accountId && u.Account.RoleId == 2 && u.Account.Status == true);
         }
+
 
         public User? GetById(int userId)
         {
@@ -43,8 +48,10 @@ namespace DataAccessLayer.DAO
 
         public bool ExistsUserByAccountId(int accountId)
         {
-            return _context.Users.Any(u => u.AccountId == accountId);
+            return _context.Users
+                .Any(u => u.AccountId == accountId && u.Account.Status == true);
         }
+
 
         public Account? GetAccount(int accountId)
         {
@@ -60,12 +67,6 @@ namespace DataAccessLayer.DAO
         public void Update(User doctor)
         {
             _context.Users.Update(doctor);
-            _context.SaveChanges();
-        }
-
-        public void Delete(User doctor)
-        {
-            _context.Users.Remove(doctor);
             _context.SaveChanges();
         }
     }

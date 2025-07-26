@@ -65,7 +65,7 @@ namespace QuanLyPhongKham.Controllers
                 RecordId = vm.RecordId.Value,
                 MedicineId = vm.MedicineId.Value,
                 Dosage = vm.Dosage ?? string.Empty,
-                Date = DateTime.Now // Gán thời gian tạo
+                Date = DateTime.Now
             };
 
             var created = _prescriptionService.CreatePrescription(prescription);
@@ -82,10 +82,10 @@ namespace QuanLyPhongKham.Controllers
             var prescription = _prescriptionService.GetPrescriptionEntityById(id);
             if (prescription == null) return NotFound();
 
-            prescription.RecordId = vm.RecordId ?? 0;
-            prescription.MedicineId = vm.MedicineId ?? 0;
+            prescription.RecordId = vm.RecordId.Value;
+            prescription.MedicineId = vm.MedicineId.Value;
             prescription.Dosage = vm.Dosage ?? string.Empty;
-            prescription.Date = vm.Date; // Cập nhật thời gian nếu cần
+            prescription.Date = vm.Date;
 
             _prescriptionService.UpdatePrescription(prescription);
             return NoContent();
@@ -114,8 +114,10 @@ namespace QuanLyPhongKham.Controllers
         {
             var result = _prescriptionService.SearchPrescriptions(recordId, medicineId, dosage, date, diagnosis, doctorName);
 
-            var total = result.Count();
-            var data = result.Skip((page - 1) * pageSize).Take(pageSize)
+            var totalRecords = result.Count();
+            var pagedData = result
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
                 .Select(p => new PrescriptionViewModel
                 {
                     PrescriptionId = p.PrescriptionId,
@@ -126,14 +128,15 @@ namespace QuanLyPhongKham.Controllers
                     Date = p.Date,
                     Diagnosis = p.Diagnosis,
                     DoctorName = p.DoctorName
-                }).ToList();
+                })
+                .ToList();
 
             return Ok(new
             {
-                Data = data,
-                TotalRecords = total,
-                Page = page,
-                PageSize = pageSize
+                data = pagedData,
+                totalRecords,
+                page,
+                pageSize
             });
         }
     }

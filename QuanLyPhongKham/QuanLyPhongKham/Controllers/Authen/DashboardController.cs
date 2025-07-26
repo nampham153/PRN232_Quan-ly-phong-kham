@@ -1,13 +1,14 @@
 ﻿using DataAccessLayer.dbcontext;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace QuanLyPhongKham.Controllers.Authen
 {
     [Route("api/dashboard")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
+
     public class DashboardController : ControllerBase
     {
         private readonly ClinicDbContext _context;
@@ -505,6 +506,12 @@ namespace QuanLyPhongKham.Controllers.Authen
 
             return Ok(result);
         }
+
+
+
+
+
+
 // TestResult Dashboard 
         // 1. Tổng số loại xét nghiệm
         [HttpGet("test-count")]

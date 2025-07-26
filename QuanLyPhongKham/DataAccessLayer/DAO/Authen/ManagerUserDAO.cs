@@ -25,7 +25,8 @@ namespace BusinessAccessLayer.Service.Authen
             var query = _context.Accounts
                 .Include(a => a.Role)
                 .Include(a => a.User)
-                .Include(a => a.Patient)
+                .Include(a => a.Patient).
+                Where(a => a.IsCheck)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(searchKeyword))
@@ -73,6 +74,7 @@ namespace BusinessAccessLayer.Service.Authen
         {
             var query = _context.Accounts
                 .Include(a => a.User)
+                .Where(a => a.IsCheck)
                 .AsQueryable();
 
             if (!string.IsNullOrEmpty(searchKeyword))
@@ -105,19 +107,38 @@ namespace BusinessAccessLayer.Service.Authen
                 if (string.IsNullOrWhiteSpace(accountViewModel.Username) || string.IsNullOrWhiteSpace(accountViewModel.Password))
                     throw new ArgumentException("Username và Password không được để trống.");
 
+                // ✅ Kiểm tra trùng Username
+                var existingAccount = _context.Accounts.FirstOrDefault(a => a.Username == accountViewModel.Username);
+                if (existingAccount != null)
+                    throw new ArgumentException("Tên đăng nhập đã tồn tại.");
+
                 var role = _context.Roles.Find(accountViewModel.RoleId);
                 if (role == null)
                     throw new ArgumentException("Role không hợp lệ.");
 
-                // Hash mật khẩu người dùng nhập
-                string hashedPassword = (accountViewModel.Password);
+                // ✅ Validate password: tối thiểu 8 ký tự, bắt đầu chữ hoa, kết thúc ký tự đặc biệt
+                var password = accountViewModel.Password;
+
+                if (password.Length < 8)
+                    throw new ArgumentException("Mật khẩu phải có ít nhất 8 ký tự.");
+
+                if (!char.IsUpper(password[0]))
+                    throw new ArgumentException("Mật khẩu phải bắt đầu bằng chữ hoa.");
+
+                if (!IsSpecialCharacter(password[^1]))
+                    throw new ArgumentException("Mật khẩu phải kết thúc bằng ký tự đặc biệt.");
+
+                // TODO: Hash mật khẩu nếu cần
+                string hashedPassword = password; // Nên hash mật khẩu thật nhé
 
                 var account = new Account
                 {
                     Username = accountViewModel.Username,
                     PasswordHash = hashedPassword,
-                    Status = false, // mặc định khóa, hoặc true tùy bạn
-                    RoleId = accountViewModel.RoleId
+                    Status = accountViewModel.Status, // lấy giá trị truyền vào
+                    RoleId = accountViewModel.RoleId,
+                    CreatedAt = DateTime.Now // Gán đúng thời gian
+
                 };
 
                 _context.Accounts.Add(account);
@@ -133,12 +154,21 @@ namespace BusinessAccessLayer.Service.Authen
             }
         }
 
+        // Hàm kiểm tra ký tự đặc biệt (bạn có thể sửa danh sách ký tự đặc biệt phù hợp)
+        private bool IsSpecialCharacter(char c)
+        {
+            const string specialChars = "!@#$%^&*()_+-=[]{}|;':\",./<>?";
+            return specialChars.Contains(c);
+        }
+
+
+
         // 5: Xem chi tiết tài khoản theo ID
         public AccountDTO GetAccountById(int id)
         {
             var account = _context.Accounts
                 .Include(a => a.Role)
-                .Include(a => a.User)
+                .Include(a => a.User).Where(a => a.IsCheck)
                 .FirstOrDefault(a => a.AccountId == id);
 
             if (account == null) return null;
@@ -162,20 +192,38 @@ namespace BusinessAccessLayer.Service.Authen
         {
             try
             {
-                var account = _context.Accounts.Find(accountId);
-                if (account != null && account.Status == false)
-                {
-                    _context.Accounts.Remove(account);
-                    _context.SaveChanges();
-                    return true;
-                }
-                return false; // Không xóa nếu account đang hoạt động
+                var account = _context.Accounts
+                    .Include(a => a.Patient)
+                        .ThenInclude(p => p.MedicalRecords)
+                    .Include(a => a.User)
+                    .Include(a => a.RefreshToken)
+                    .FirstOrDefault(a => a.AccountId == accountId);
+
+                if (account == null || account.Status)
+                    return false;
+
+                if (account.Patient?.MedicalRecords != null && account.Patient.MedicalRecords.Any())
+                    return false;
+
+                if (account.User != null)
+                    return false;
+
+                if (account.RefreshToken != null)
+                    return false;
+
+                // Đánh dấu xóa mềm
+                account.IsCheck = false;
+                account.UpdatedAt = DateTime.UtcNow;
+
+                _context.SaveChanges();
+                return true;
             }
             catch
             {
                 return false;
             }
         }
+
 
         // 7: Cập nhật tài khoản theo ID
         public bool UpdateAccount(UserAccountViewModel updatedAccount)
@@ -306,6 +354,5 @@ namespace BusinessAccessLayer.Service.Authen
         }
 
     }
-
 
 }

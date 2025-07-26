@@ -47,8 +47,15 @@ namespace DataAccessLayer.Repository
                 return false;
             }
 
+            if (!account.Status)
+            {
+                errorMessage = "Tài khoản này đã bị vô hiệu hóa";
+                return false;
+            }
+
             return true;
         }
+
 
         public void CreateDoctor(User doctor)
         {
@@ -60,13 +67,17 @@ namespace DataAccessLayer.Repository
             _doctorDao.Update(doctor);
         }
 
-        public void DeleteDoctor(int userId)
+        public bool IsEmailExists(string email)
         {
-            var doctor = _doctorDao.GetById(userId);
-            if (doctor != null)
-            {
-                _doctorDao.Delete(doctor);
-            }
+            return _doctorDao.GetAllDoctors()
+                .Any(d => d.Email == email && d.Account != null && d.Account.Status == true);
         }
+
+        public bool IsPhoneExists(string phone)
+        {
+            return _doctorDao.GetAllDoctors()
+                .Any(d => d.Phone == phone && d.Account != null && d.Account.Status == true);
+        }
+
     }
 }

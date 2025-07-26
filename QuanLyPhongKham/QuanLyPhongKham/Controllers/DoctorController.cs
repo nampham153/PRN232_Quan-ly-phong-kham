@@ -2,15 +2,12 @@
 using DataAccessLayer.IRepository;
 using DataAccessLayer.models;
 using DataAccessLayer.ViewModels;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace QuanLyPhongKham.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Doctor")]
-
     public class DoctorController : ControllerBase
     {
         private readonly IDoctorService _doctorService;
@@ -86,6 +83,11 @@ namespace QuanLyPhongKham.Controllers
             if (account == null || account.RoleId != 2)
                 return BadRequest("Vui lòng nhập lại AccountId hợp lệ.");
 
+            if (_doctorService.IsEmailExists(doctorVM.Email))
+                return BadRequest("Email đã được sử dụng bởi bác sĩ khác.");
+
+            if (_doctorService.IsPhoneExists(doctorVM.Phone))
+                return BadRequest("Số điện thoại đã được sử dụng bởi bác sĩ khác.");
             var doctorEntity = new User
             {
                 FullName = doctorVM.FullName,
@@ -106,6 +108,17 @@ namespace QuanLyPhongKham.Controllers
         {
             try
             {
+                var existingDoctor = _doctorService.GetDoctorByAccountId(accountId);
+                if (!string.Equals(existingDoctor.Email, doctorVM.Email, StringComparison.OrdinalIgnoreCase)
+                    && _doctorService.IsEmailExists(doctorVM.Email))
+                {
+                    return BadRequest("Email đã được sử dụng bởi bác sĩ khác.");
+                }
+                if (!string.Equals(existingDoctor.Phone, doctorVM.Phone, StringComparison.OrdinalIgnoreCase)
+                    && _doctorService.IsPhoneExists(doctorVM.Phone))
+                {
+                    return BadRequest("Số điện thoại đã được sử dụng bởi bác sĩ khác.");
+                }
                 var doctorEntity = new User
                 {
                     UserId = doctorVM.UserId,
@@ -115,7 +128,7 @@ namespace QuanLyPhongKham.Controllers
                     Phone = doctorVM.Phone,
                     Email = doctorVM.Email,
                     AccountId = doctorVM.AccountId,
-                    DoctorPath = doctorVM.DoctorPath
+                    DoctorPath = doctorVM.DoctorPath,
                 };
 
                 _doctorService.UpdateDoctor(accountId, doctorEntity);
@@ -127,24 +140,6 @@ namespace QuanLyPhongKham.Controllers
             }
         }
 
-        [HttpDelete("{accountId}")]
-        public IActionResult DeleteDoctor(int accountId)
-        {
-            try
-            {
-                _doctorService.DeleteDoctor(accountId);
-                return Ok("Xóa bác sĩ thành công.");
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message.Contains("hồ sơ liên quan"))
-                {
-                    return BadRequest(new { message = ex.Message });
-                }
-
-                return StatusCode(500, new { message = "Lỗi xóa bác sĩ", error = ex.Message });
-            }
-        }
 
         [HttpGet("accounts/available")]
         public IActionResult GetAvailableDoctorAccounts()

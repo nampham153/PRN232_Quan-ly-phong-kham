@@ -13,7 +13,8 @@ namespace DataAccessLayer.IRepository
         User GetDoctorByAccountId(int accountId);
         void CreateDoctor(User doctor);
         void UpdateDoctor(User doctor);
-        void DeleteDoctor(int userId);
+        bool IsEmailExists(string email);
+        bool IsPhoneExists(string phone);
     }
 
 

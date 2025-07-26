@@ -12,7 +12,8 @@ namespace BusinessAccessLayer.IService
         User GetDoctorByAccountId(int accountId);
         void CreateDoctor(User doctor);
         void UpdateDoctor(int accountId, User doctor);
-        bool DeleteDoctor(int accountId);
+        bool IsEmailExists(string email);
+        bool IsPhoneExists(string phone);
 
     }
 }
